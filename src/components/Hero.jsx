@@ -13,13 +13,14 @@ const Hero = () => {
             </div>
 
             <div className="">
-                <h1 className={`${styles.heroHeadText} text-white`}>Hi, I{`'`}m <span className="text-[#915eff]">Frank Patrick NAMEGNI</span></h1>
+                <h1 className={`${styles.heroHeadText} text-white`}>Hi, I{`'`}m <span className="text-[#915eff]">Patrick</span></h1>
                 <p className={`${styles.heroSubText} mt-2 text-white-100`}>
-                    Welcome to my web portfolio.<br className="sm:block hidden" />
-                    Below, you will find a selection 
+                    Welcome to my 3D web portfolio.<br className="sm:block hidden" />
+                    Hope you enjoy taking a look at my projects <span className='text-[12px]'>(Have fun with playing with my desktop right here :D)</span>
+                    {/* Below, you will find a selection 
                     of projects that showcase my skills in front-end and back-end development. 
                     Each project represents a unique challenge and an opportunity to 
-                    push the boundaries of what{`'`}s possible on the web.
+                    push the boundaries of what{`'`}s possible on the web. */}
                 </p>
             </div>
         </div>
