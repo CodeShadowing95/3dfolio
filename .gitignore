@@ -26,3 +26,6 @@ dist-ssr
 
 # git config
 .push
+
+# env variables
+.env
