@@ -3,11 +3,20 @@ import { Link } from 'react-router-dom';
 
 import { styles } from '../styles';
 import { navLinks } from '../constants';
-import { logo, menu, close } from '../assets';
+import { logo, menu, close, world } from '../assets';
+// import { Switch } from '@headlessui/react';
 
 const Navbar = () => {
     const [active, setActive] = useState("");
     const [toggle, setToggle] = useState(false);
+
+    // const [lang, setLang] = useState("EN");
+    // const [enabled, setEnabled] = useState(false);
+
+    // const handleLang = () => {
+    //     setEnabled(!enabled);
+    //     lang == 'EN' ? setLang('FR') : setLang('EN');
+    // }
 
   return (
     <nav className={`${styles.paddingX} w-full flex items-center py-5 fixed top-0 z-20 bg-primary`}>
@@ -21,7 +30,7 @@ const Navbar = () => {
                 }}
             >
                 <img src={logo} alt="logo" className="w-9 h-9 object-contain" />
-                <p className="text-white text-[18px] font-bold cursor-pointer flex">Patrick &nbsp; <span className="font-light sm:block hidden">| Fullstack Web Developer</span></p>
+                <p className="text-white text-[18px] font-bold cursor-pointer flex">Patrick{/* &nbsp; <span className="font-light sm:block hidden">| Fullstack Web Developer</span>*/}</p>
             </Link>
 
             <ul className="list-none hidden sm:flex flex-row gap-10">
@@ -34,6 +43,26 @@ const Navbar = () => {
                         <a href={`#${link.id}`}>{link.title}</a>
                     </li>
                 ))}
+                {/* <li>
+                    <div className="flex justify-center items-center gap-2">
+                        <p className="text-secondary text-[18px] font-medium">EN</p>
+                        <Switch
+                            checked={enabled}
+                            onChange={handleLang}
+                            className={`${
+                                enabled ? 'bg-gray-700' : 'bg-gray-500'
+                            } relative inline-flex h-6 w-11 items-center rounded-full`}
+                            >
+                            <span className="sr-only">Enable notifications</span>
+                            <span
+                                className={`${
+                                enabled ? 'translate-x-6' : 'translate-x-1'
+                                } inline-block h-4 w-4 transform rounded-full bg-white transition`}
+                            />
+                        </Switch>
+                        <p className="text-secondary text-[18px] font-medium">FR</p>
+                    </div>
+                </li> */}
             </ul>
 
             <div className="sm:hidden flex flex-1 justify-end items-center">

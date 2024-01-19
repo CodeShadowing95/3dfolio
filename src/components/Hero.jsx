@@ -1,7 +1,7 @@
 import { motion } from 'framer-motion';
 
 import { styles } from '../styles';
-import { ComputersCanvas } from './canvas';
+import { ComputersCanvas } from './';
 
 const Hero = () => {
   return (
@@ -13,14 +13,14 @@ const Hero = () => {
             </div>
 
             <div className="">
-                <h1 className={`${styles.heroHeadText} text-white`}>Hi, I{`'`}m <span className="text-[#915eff]">Patrick</span></h1>
+                <h1 className={`${styles.heroHeadText} text-white`}><span className="text-[#915eff]">Patrick NAMEGNI</span></h1>
                 <p className={`${styles.heroSubText} mt-2 text-white-100`}>
-                    Welcome to my 3D web portfolio.<br className="sm:block hidden" />
-                    Hope you enjoy taking a look at my projects <span className='text-[12px]'>(Have fun with playing with my desktop right here :D)</span>
-                    {/* Below, you will find a selection 
-                    of projects that showcase my skills in front-end and back-end development. 
-                    Each project represents a unique challenge and an opportunity to 
-                    push the boundaries of what{`'`}s possible on the web. */}
+                    Développeur web.<br className="sm:block hidden" />
+                </p>
+                <p className="text-[18px] leading-8 mt-3">
+                    Vous trouverez un certain nombre de projets qui illustrent mes compétences en matière<br />
+                    de développement front-end et back-end. Chaque projet représente un défi unique et<br />
+                    une opportunité d'en apprendre plus et grandir en compétences. Profitez de la visite 😉.
                 </p>
             </div>
         </div>

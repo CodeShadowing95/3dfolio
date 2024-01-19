@@ -48,8 +48,8 @@ const Experience = () => {
   return (
     <>
         <motion.div variants={textVariant()}>
-            <p className={styles.sectionSubText}>What I have done so far</p>
-            <h2 className={styles.sectionHeadText}>Work Experience.</h2>
+            <p className={styles.sectionSubText}>Ce que j'ai fait jusque là</p>
+            <h2 className={styles.sectionHeadText}>Expériences pro.</h2>
         </motion.div>
         <div className="mt-20 flex flex-col">
             <VerticalTimeline>
@@ -63,4 +63,4 @@ const Experience = () => {
 }
 
 // eslint-disable-next-line react-refresh/only-export-components
-export default SectionWrapper(Experience, "work");
+export default SectionWrapper(Experience, "expérience");

@@ -13,26 +13,38 @@ import {
     nodejs,
     mongodb,
     git,
-    figma,
+    // figma,
     docker,
-    meta,
-    starbucks,
-    tesla,
-    shopify,
-    carrent,
-    jobit,
-    tripguide,
     threejs,
+    ub,
+    hkdigitals,
+    pristydelices,
+    estiam,
+    nextjs,
+    python,
+    gpt3,
+    exalta,
+    youwatch,
+    lyriks,
+    lugia,
+    animevault,
+    carhub,
+    promptopia,
+    pricesniffer,
   } from "../assets";
   
   export const navLinks = [
     {
-      id: "about",
-      title: "About",
+      id: "profil",
+      title: "Profil",
     },
     {
-      id: "work",
-      title: "Work",
+      id: "expérience",
+      title: "Expérience",
+    },
+    {
+      id: "projets",
+      title: "Projets",
     },
     {
       id: "contact",
@@ -42,19 +54,19 @@ import {
   
   const services = [
     {
-      title: "Web Developer",
+      title: "Développeur Web",
       icon: web,
     },
     {
-      title: "React Native Developer",
+      title: "Intégrateur Web",
       icon: mobile,
     },
     {
-      title: "Backend Developer",
+      title: "Développeur Backend",
       icon: backend,
     },
     {
-      title: "Content Creator",
+      title: "Data Analyste",
       icon: creator,
     },
   ];
@@ -81,8 +93,8 @@ import {
       icon: reactjs,
     },
     {
-      name: "Redux Toolkit",
-      icon: redux,
+      name: "Next JS",
+      icon: nextjs,
     },
     {
       name: "Tailwind CSS",
@@ -96,18 +108,26 @@ import {
       name: "MongoDB",
       icon: mongodb,
     },
+    // {
+    //   name: "Three JS",
+    //   icon: threejs,
+    // },
     {
-      name: "Three JS",
-      icon: threejs,
+      name: "Redux Toolkit",
+      icon: redux,
     },
     {
       name: "git",
       icon: git,
     },
     {
-      name: "figma",
-      icon: figma,
+      name: "python",
+      icon: python,
     },
+    // {
+    //   name: "figma",
+    //   icon: figma,
+    // },
     {
       name: "docker",
       icon: docker,
@@ -116,55 +136,55 @@ import {
   
   const experiences = [
     {
-      title: "React.js Developer",
-      company_name: "Starbucks",
-      icon: starbucks,
+      title: "Développeur web Junior",
+      company_name: "Univers Binaire SARL",
+      icon: ub,
       iconBg: "#383E56",
-      date: "March 2020 - April 2021",
+      date: "Octobre 2019 - Juillet 2021",
       points: [
-        "Developing and maintaining web applications using React.js and other related technologies.",
-        "Collaborating with cross-functional teams including designers, product managers, and other developers to create high-quality products.",
-        "Implementing responsive design and ensuring cross-browser compatibility.",
-        "Participating in code reviews and providing constructive feedback to other developers.",
+        "Participation au développement d'applications e-commerce en utilisant les langages de programmation et les frameworks pertinents.",
+        "Maintenance des applications existantes en corrigeant les bugs, en effectuant des mises à jour et en améliorant les fonctionnalités existantes.",
+        "Collaboration étroite avec d'autres membres de l'équipe de développement, ainsi qu'avec des équipes interfonctionnelles telles que le marketing.",
+        "Suivi des tendances et des nouvelles technologies liées au e-commerce et aux applications afin de rester à jour et d'apporter des solutions innovantes.",
       ],
     },
     {
-      title: "React Native Developer",
-      company_name: "Tesla",
-      icon: tesla,
-      iconBg: "#E6DEDD",
-      date: "Jan 2021 - Feb 2022",
-      points: [
-        "Developing and maintaining web applications using React.js and other related technologies.",
-        "Collaborating with cross-functional teams including designers, product managers, and other developers to create high-quality products.",
-        "Implementing responsive design and ensuring cross-browser compatibility.",
-        "Participating in code reviews and providing constructive feedback to other developers.",
-      ],
-    },
-    {
-      title: "Web Developer",
-      company_name: "Shopify",
-      icon: shopify,
+      title: "Développeur Web en Freelance",
+      company_name: "PristyDelices",
+      icon: pristydelices,
       iconBg: "#383E56",
-      date: "Jan 2022 - Jan 2023",
+      date: "Juin 2022 - Janvier 2023",
       points: [
-        "Developing and maintaining web applications using React.js and other related technologies.",
-        "Collaborating with cross-functional teams including designers, product managers, and other developers to create high-quality products.",
-        "Implementing responsive design and ensuring cross-browser compatibility.",
-        "Participating in code reviews and providing constructive feedback to other developers.",
+        "Conception d'une application web de commande de pâtisseries. S'assurer de la convivialité du site et de la conformité à l'image de la pâtisserie.",
+        "Intégration des fonctionnalités de personnalisation si nécessaire.",
+        "Veiller à ce que le site web soit rapide et performant en optimisant les images, en minimisant les requêtes et en adoptant d'autres bonnes pratiques.",
+        "Intégrer des liens vers les réseaux sociaux de la pâtisserie et, si nécessaire, intégrer des flux sociaux sur le site web.",
       ],
     },
     {
-      title: "Full stack Developer",
-      company_name: "Meta",
-      icon: meta,
+      title: "Développeur Web Fullstack",
+      company_name: "HKDigitals",
+      icon: hkdigitals,
       iconBg: "#E6DEDD",
-      date: "Jan 2023 - Present",
+      date: "Juillet 2023 - Décembre 2023",
       points: [
-        "Developing and maintaining web applications using React.js and other related technologies.",
-        "Collaborating with cross-functional teams including designers, product managers, and other developers to create high-quality products.",
-        "Implementing responsive design and ensuring cross-browser compatibility.",
-        "Participating in code reviews and providing constructive feedback to other developers.",
+        "Développement d'une application de scraping de données à partir de sources telles que LinkedIn, Google Maps, Pages Jaunes afin d'optimiser la stratégie marketing de l'entreprise.",
+        "Mise en place des mécanismes pour collecter efficacement des données pertinentes à partir de ces sources de données, en respectant les règles d'utilisation.",
+        "Collaboration avec d'autres équipes, telles que le marketing ou l'analyse des données, pour intégrer les résultats du webscraping dans d'autres outils utilisés par l'entreprise.",
+        "Documentation du code pour faciliter la compréhension et la collaboration au sein de l'équipe.",
+      ],
+    },
+    {
+      title: "Étudiant Développeur - Formation",
+      company_name: "ÉSTIAM",
+      icon: estiam,
+      iconBg: "#E6DEDD",
+      date: "Janvier 2024 - Actuellement",
+      points: [
+        "Acquisition des connaissances relatives à l'analyse de données et la BI avec les technos telles que Python, Pandas, Numpy, Power BI, etc...",
+        "Acquisition des connaissances sur le Cloud Computing notamment avec Amazon AWS et des technologies de conteneurisation d'applications telles que Docker, Kubernetes",
+        "Acquisition de connaissances sur le développement d'applications mobiles avec Androïd, Flutter, Dart",
+        "Apprentissage des fondamentaux de la robotique logicielle (RPA)",
       ],
     },
   ];
@@ -172,93 +192,276 @@ import {
   const testimonials = [
     {
       testimonial:
-        "I thought it was impossible to make a website as beautiful as our product, but Rick proved me wrong.",
-      name: "Sara Lee",
-      designation: "CFO",
-      company: "Acme Co",
+        "Son travail à HKDigitals est superbe, il est travailleur, motivé, et a le sens de l'initiative.",
+      name: "Hermann Kuaté",
+      designation: "CEO",
+      company: "HKDigitals",
       image: "https://randomuser.me/api/portraits/women/4.jpg",
     },
     {
       testimonial:
-        "I've never met a web developer who truly cares about their clients' success like Rick does.",
-      name: "Chris Brown",
-      designation: "COO",
-      company: "DEF Corp",
+        "Il est très autonome, en 2 mois il a développé notre app sans nécessiter mon intervention. Bon profil.",
+      name: "Emmanuel G. G.",
+      designation: "CTO",
+      company: "HKDigitals",
       image: "https://randomuser.me/api/portraits/men/5.jpg",
     },
     {
       testimonial:
-        "After Rick optimized our website, our traffic increased by 50%. We can't thank them enough!",
-      name: "Lisa Wang",
-      designation: "CTO",
-      company: "456 Enterprises",
+        "Son investissement et son apport dans nos projets e-commerce sont très louables. Je recommande.",
+      name: "N. Martial",
+      designation: "CEO",
+      company: "Univers Binaire",
       image: "https://randomuser.me/api/portraits/women/6.jpg",
     },
   ];
   
   const projects = [
     {
-      name: "Car Rent",
+      name: "GPT3_Showcase",
       description:
-        "Web-based platform that allows users to search, book, and manage car rentals from various providers, providing a convenient and efficient solution for transportation needs.",
+        "Transformation d'un design Figma en site web fonctionnel, moderne et responsive. Amélioration de mes capacités actuelles en CSS.",
       tags: [
         {
-          name: "react",
+          name: "html",
+          color: "orange-text-gradient",
+        },
+        {
+          name: "css",
           color: "blue-text-gradient",
         },
         {
-          name: "mongodb",
-          color: "green-text-gradient",
-        },
-        {
-          name: "tailwind",
+          name: "react",
           color: "pink-text-gradient",
         },
       ],
-      image: carrent,
-      source_code_link: "https://github.com/",
+      image: gpt3,
+      source_code_link: "https://github.com/CodeShadowing95/GPT3-Webpage",
+      app_link: "https://gpt3-ui-ux-app.netlify.app/"
     },
     {
-      name: "Job IT",
+      name: "Fit Guide",
       description:
-        "Web application that enables users to search for job openings, view estimated salary ranges for positions, and locate available jobs based on their current location.",
+        "Explorez une collection complète d'exercices de gym classés par parties du corps et par équipement, garantissant une approche ciblée d'un programme d'entraînement.",
       tags: [
         {
           name: "react",
           color: "blue-text-gradient",
+        },
+        {
+          name: "nodejs",
+          color: "green-text-gradient",
         },
         {
           name: "restapi",
-          color: "green-text-gradient",
-        },
-        {
-          name: "scss",
-          color: "pink-text-gradient",
-        },
-      ],
-      image: jobit,
-      source_code_link: "https://github.com/",
-    },
-    {
-      name: "Trip Guide",
-      description:
-        "A comprehensive travel booking platform that allows users to book flights, hotels, and rental cars, and offers curated recommendations for popular destinations.",
-      tags: [
-        {
-          name: "nextjs",
-          color: "blue-text-gradient",
-        },
-        {
-          name: "supabase",
-          color: "green-text-gradient",
+          color: "orange-text-gradient",
         },
         {
           name: "css",
           color: "pink-text-gradient",
         },
       ],
-      image: tripguide,
-      source_code_link: "https://github.com/",
+      image: exalta,
+      source_code_link: "https://github.com/CodeShadowing95/gym_tutorial",
+      app_link: "https://exalta.netlify.app/"
+    },
+    {
+      name: "YouWatch",
+      description:
+        "Pseudo-clone de la plateforme YouTube permettant de voir n'importe quelle vidéo, rechercher des vidéos précises, consulter des vidéos par catégorie et par chaîne, etc...",
+      tags: [
+        {
+          name: "react",
+          color: "blue-text-gradient",
+        },
+        {
+          name: "nodejs",
+          color: "green-text-gradient",
+        },
+        {
+          name: "restapi",
+          color: "pink-text-gradient",
+        },
+        {
+          name: "materialui",
+          color: "orange-text-gradient",
+        },
+      ],
+      image: youwatch,
+      source_code_link: "https://github.com/CodeShadowing95/yutubewatch",
+      app_link: "https://yutubewatch.netlify.app/"
+    },
+    {
+      name: "Lyriks",
+      description:
+        "Site web de streaming temporaire (limité par par l'API utilisé) de musiques, découvrir les nouveaux morceaux, les artistes du moment, etc... Assez conviviale",
+      tags: [
+        {
+          name: "react",
+          color: "blue-text-gradient",
+        },
+        {
+          name: "nodejs",
+          color: "green-text-gradient",
+        },
+        {
+          name: "redux",
+          color: "violet-text-gradient",
+        },
+        {
+          name: "restapi",
+          color: "pink-text-gradient",
+        },
+      ],
+      image: lyriks,
+      source_code_link: "https://github.com/CodeShadowing95/Lyriks",
+      app_link: "https://na-lyriks-app.netlify.app/"
+    },
+    {
+      name: "Memory Mingle",
+      description:
+        "Application de création et de partage de photos (un peu comme Pinterest🙂), listing de photos et créations par catégorie et par utilisateur, recherche de photos,...",
+      tags: [
+        {
+          name: "react",
+          color: "blue-text-gradient",
+        },
+        {
+          name: "nodejs",
+          color: "green-text-gradient",
+        },
+        {
+          name: "mongodb",
+          color: "violet-text-gradient",
+        },
+        {
+          name: "tailwindcss",
+          color: "yellow-text-gradient",
+        },
+      ],
+      image: lugia,
+      source_code_link: "https://github.com/CodeShadowing95/lugia",
+      app_link: "https://lugia-app.netlify.app/"
+    },
+    {
+      name: "Anime Vault",
+      description:
+        "Application web de diffusion en streaming d'Animés japonais en HD, explorer tout type d'Animés par catégorie, par nom, par nom d'auteur, par titre, etc...",
+      tags: [
+        {
+          name: "nextjs",
+          color: "orange-text-gradient",
+        },
+        {
+          name: "nodejs",
+          color: "green-text-gradient",
+        },
+        {
+          name: "restapi",
+          color: "yellow-text-gradient",
+        },
+        {
+          name: "tailwindcss",
+          color: "pink-text-gradient",
+        },
+      ],
+      image: animevault,
+      source_code_link: "https://github.com/CodeShadowing95/anime237",
+      app_link: "https://anime237.vercel.app/"
+    },
+    {
+      name: "Car Hub",
+      description:
+        "Application de location de voitures de manière rapide. Naviguez par modèle, nom, type de carburant ou année de fabrication. La voiture idéale est à portée de main.",
+      tags: [
+        {
+          name: "nextjs",
+          color: "orange-text-gradient",
+        },
+        {
+          name: "nodejs",
+          color: "green-text-gradient",
+        },
+        {
+          name: "typescript",
+          color: "blue-text-gradient",
+        },
+        {
+          name: "restapi",
+          color: "yellow-text-gradient",
+        },
+        {
+          name: "tailwindcss",
+          color: "pink-text-gradient",
+        },
+      ],
+      image: carhub,
+      source_code_link: "https://github.com/CodeShadowing95/carhub",
+      app_link: "https://rentalcar237.vercel.app/"
+    },
+    {
+      name: "Promptopia",
+      description:
+        "Promptopia est un outil open-source d'IA pour le monde moderne qui permet de découvrir, de créer et de partager des messages créatifs. (En développement)",
+      tags: [
+        {
+          name: "nextjs",
+          color: "orange-text-gradient",
+        },
+        {
+          name: "nodejs",
+          color: "green-text-gradient",
+        },
+        {
+          name: "typescript",
+          color: "blue-text-gradient",
+        },
+        {
+          name: "restapi",
+          color: "yellow-text-gradient",
+        },
+        {
+          name: "tailwindcss",
+          color: "pink-text-gradient",
+        },
+      ],
+      image: promptopia,
+      source_code_link: "https://github.com/CodeShadowing95/prompts",
+      app_link: "https://promptopia-mu-livid.vercel.app/"
+    },
+    {
+      name: "Price Sniffer",
+      description:
+        "Outil de webscraping de suivi des prix de produits depuis Amazon afin d'économiser de l'argent sur les achats en ligne. Intégration d'autres plateformes bientôt.",
+      tags: [
+        {
+          name: "nextjs",
+          color: "blue-text-gradient",
+        },
+        {
+          name: "typescript",
+          color: "green-text-gradient",
+        },
+        {
+          name: "restapi",
+          color: "yellow-text-gradient",
+        },
+        {
+          name: "tailwindcss",
+          color: "pink-text-gradient",
+        },
+        {
+          name: "brightdata",
+          color: "text-white-100",
+        },
+        {
+          name: "cronjob",
+          color: "orange-text-gradient",
+        },
+      ],
+      image: pricesniffer,
+      source_code_link: "https://github.com/CodeShadowing95/pricesniffer",
+      app_link: "https://pricesniffer.vercel.app/"
     },
   ];
   

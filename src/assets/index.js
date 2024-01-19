@@ -7,6 +7,7 @@ import github from "./github.png";
 import menu from "./menu.svg";
 import close from "./close.svg";
 import website from "./share.png";
+import world from "./world.png";
 
 import css from "./tech/css.png";
 import docker from "./tech/docker.png";
@@ -21,15 +22,23 @@ import redux from "./tech/redux.png";
 import tailwind from "./tech/tailwind.png";
 import typescript from "./tech/typescript.png";
 import threejs from "./tech/threejs.svg";
+import python from "./tech/python.png";
+import nextjs from "./tech/nextjs.png";
 
-import meta from "./company/meta.png";
-import shopify from "./company/shopify.png";
-import starbucks from "./company/starbucks.png";
-import tesla from "./company/tesla.png";
+import ub from "./company/ub.png";
+import hkdigitals from "./company/hkdigitals.png";
+import pristydelices from "./company/pristydelices.png";
+import estiam from "./company/estiam.png";
 
-import carrent from "./carrent.png";
-import jobit from "./jobit.png";
-import tripguide from "./tripguide.png";
+import gpt3 from "./GPT3.png";
+import exalta from "./exalta.png";
+import youwatch from "./youwatch.png";
+import lyriks from "./lyrikcs.png";
+import lugia from "./lugia.png";
+import animevault from "./animevault.png";
+import carhub from "./carhub.png";
+import promptopia from "./promptopia.png";
+import pricesniffer from "./pricesniffer.png";
 
 export {
   logo,
@@ -41,6 +50,7 @@ export {
   menu,
   close,
   website,
+  world,
   css,
   docker,
   figma,
@@ -54,11 +64,19 @@ export {
   tailwind,
   typescript,
   threejs,
-  meta,
-  shopify,
-  starbucks,
-  tesla,
-  carrent,
-  jobit,
-  tripguide,
+  python,
+  nextjs,
+  ub,
+  hkdigitals,
+  pristydelices,
+  estiam,
+  gpt3,
+  exalta,
+  youwatch,
+  lyriks,
+  lugia,
+  animevault,
+  carhub,
+  promptopia,
+  pricesniffer,
 };
