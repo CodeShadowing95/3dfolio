@@ -16,12 +16,21 @@ const Hero = () => {
                 <h1 className={`${styles.heroHeadText} text-white`}><span className="text-[#915eff]">Patrick NAMEGNI</span></h1>
                 <p className={`${styles.heroSubText} mt-2 text-white-100`}>
                     Développeur web.<br className="sm:block hidden" />
+                    <span className="text-[18px]">
+                        Bienvenue sur mon portfolio. J'espère que vous apprécierez la visite
+                        <br />et n'oubliez pas de jouer avec mon poste de travail 😉👇.
+                    </span>
                 </p>
-                <p className="text-[18px] leading-8 mt-3">
+                {/* <p className="text-[16px] text-white-100 leading-8 mt-3 max-md:hidden visible">
                     Vous trouverez un certain nombre de projets qui illustrent mes compétences en matière<br />
                     de développement front-end et back-end. Chaque projet représente un défi unique et<br />
-                    une opportunité d'en apprendre plus et grandir en compétences. Profitez de la visite 😉.
-                </p>
+                    une opportunité d'en apprendre plus et grandir en compétences. Profitez de la visite<br />
+                    et n'oubliez pas de jouer avec mon poste de travail 😉👇.
+                </p> */}
+                {/* <p className="text-[16px] text-white-100 leading-8 mt-2">
+                    Bienvenue sur mon portfolio. J'espère que vous apprécierez la visite<br />
+                    et n'oubliez pas de jouer avec mon poste de travail 😉👇.
+                </p> */}
             </div>
         </div>
 
