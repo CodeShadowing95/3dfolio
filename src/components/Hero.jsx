@@ -17,8 +17,8 @@ const Hero = () => {
                 <p className={`${styles.heroSubText} mt-2 text-white-100`}>
                     Développeur web.<br className="sm:block hidden" />
                     <span className="text-[18px]">
-                        Bienvenue sur mon portfolio. J'espère que vous apprécierez la visite
-                        <br />et n'oubliez pas de jouer avec mon poste de travail 😉👇.
+                        Bienvenue sur mon portfolio. J'espère que vous apprécierez la visite.
+                        <br />(N'oubliez pas de jouer avec mon poste de travail 😉👇)
                     </span>
                 </p>
                 {/* <p className="text-[16px] text-white-100 leading-8 mt-3 max-md:hidden visible">
