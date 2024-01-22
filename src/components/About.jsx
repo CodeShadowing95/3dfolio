@@ -39,9 +39,9 @@ const About = () => {
         >
             Je suis un junior en développement d'applications avec de l'expérience en 
             Python, Java, PHP, Typescript, JavaScript et une expertise dans des frameworks tels 
-            que Node.js, React, Next.js et frameworks CSS. Je suis actuellement étudiant et suit 
+            que Node.js, React, Next.js et frameworks CSS. Je suis actuellement étudiant et poursuis 
             une formation en Conception d'Applications & Analyse de Données. Durant mes 
-            différents stages, j'ai appris beaucoup du domaine et acquis beaucoup de compétences. 
+            différents stages, j'ai acquis des connaissances et développé des compétences sur le domaine. 
             J'ai notamment collaboré avec des équipes pour créer des solutions efficaces et 
             conviviales qui résolvent des problèmes concrets du monds réel.<br />
             Travaillons ensemble afin donner vie à vos idées 🤝.
