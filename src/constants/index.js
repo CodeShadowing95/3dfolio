@@ -243,19 +243,15 @@ import {
     {
       name: "NikeAir-merch",
       description:
-        "Landing page de chaussures Nike. Navigation fluide, sorties exclusives, festin de visuels de chaussures emblématiques. Style Nike en une page.",
+        "Landing page de chaussures Nike. Navigation fluide, sorties exclusives, festin de visuels de chaussures emblématiques. Style Nike en une page. (In process...)",
       tags: [
         {
-          name: "html",
-          color: "orange-text-gradient",
-        },
-        {
-          name: "css",
-          color: "blue-text-gradient",
-        },
-        {
           name: "react",
-          color: "pink-text-gradient",
+          color: "green-text-gradient",
+        },
+        {
+          name: "tailwindcss",
+          color: "blue-text-gradient",
         },
       ],
       image: nikemerch,
