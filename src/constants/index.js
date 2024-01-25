@@ -15,7 +15,7 @@ import {
     git,
     // figma,
     docker,
-    threejs,
+    // threejs,
     ub,
     hkdigitals,
     pristydelices,
@@ -258,9 +258,9 @@ import {
           color: "pink-text-gradient",
         },
       ],
-      image: gpt3,
-      source_code_link: "https://github.com/CodeShadowing95/GPT3-Webpage",
-      app_link: "https://gpt3-ui-ux-app.netlify.app/"
+      image: nikemerch,
+      source_code_link: "https://github.com/CodeShadowing95/nikemerch",
+      app_link: "https://nikemerch.netlify.app/"
     },
     {
       name: "Fit Guide",
@@ -272,13 +272,21 @@ import {
           color: "blue-text-gradient",
         },
         {
-          name: "tailwindcss",
+          name: "nodejs",
+          color: "green-text-gradient",
+        },
+        {
+          name: "restapi",
+          color: "orange-text-gradient",
+        },
+        {
+          name: "css",
           color: "pink-text-gradient",
         },
       ],
-      image: nikemerch,
-      source_code_link: "https://github.com/CodeShadowing95/nikemerch",
-      app_link: "https://nikemerch.netlify.app/"
+      image: exalta,
+      source_code_link: "https://github.com/CodeShadowing95/gym_tutorial",
+      app_link: "https://exalta.netlify.app/"
     },
     {
       name: "YouWatch",
