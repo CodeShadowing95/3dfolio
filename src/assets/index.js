@@ -39,6 +39,7 @@ import animevault from "./animevault.png";
 import carhub from "./carhub.png";
 import promptopia from "./promptopia.png";
 import pricesniffer from "./pricesniffer.png";
+import nikemerch from "./nikemerch.png";
 
 export {
   logo,
@@ -79,4 +80,5 @@ export {
   carhub,
   promptopia,
   pricesniffer,
+  nikemerch,
 };

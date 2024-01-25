@@ -31,6 +31,7 @@ import {
     carhub,
     promptopia,
     pricesniffer,
+    nikemerch,
   } from "../assets";
   
   export const navLinks = [
@@ -240,6 +241,28 @@ import {
       app_link: "https://gpt3-ui-ux-app.netlify.app/"
     },
     {
+      name: "NikeAir-merch",
+      description:
+        "Landing page de chaussures Nike. Navigation fluide, sorties exclusives, festin de visuels de chaussures emblématiques. Style Nike en une page.",
+      tags: [
+        {
+          name: "html",
+          color: "orange-text-gradient",
+        },
+        {
+          name: "css",
+          color: "blue-text-gradient",
+        },
+        {
+          name: "react",
+          color: "pink-text-gradient",
+        },
+      ],
+      image: gpt3,
+      source_code_link: "https://github.com/CodeShadowing95/GPT3-Webpage",
+      app_link: "https://gpt3-ui-ux-app.netlify.app/"
+    },
+    {
       name: "Fit Guide",
       description:
         "Explorez une collection complète d'exercices de gym classés par parties du corps et par équipement, garantissant une approche ciblée d'un programme d'entraînement.",
@@ -249,21 +272,13 @@ import {
           color: "blue-text-gradient",
         },
         {
-          name: "nodejs",
-          color: "green-text-gradient",
-        },
-        {
-          name: "restapi",
-          color: "orange-text-gradient",
-        },
-        {
-          name: "css",
+          name: "tailwindcss",
           color: "pink-text-gradient",
         },
       ],
-      image: exalta,
-      source_code_link: "https://github.com/CodeShadowing95/gym_tutorial",
-      app_link: "https://exalta.netlify.app/"
+      image: nikemerch,
+      source_code_link: "https://github.com/CodeShadowing95/nikemerch",
+      app_link: "https://nikemerch.netlify.app/"
     },
     {
       name: "YouWatch",
