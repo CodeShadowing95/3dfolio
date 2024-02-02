@@ -248,15 +248,15 @@ import {
       tags: [
         {
           name: "angular",
-          color: "pink-text-gradient",
+          color: "yellow-text-gradient",
         },
         {
           name: "typescript",
-          color: "blue-text-gradient",
+          color: "pink-text-gradient",
         },
         {
           name: "tailwindcss",
-          color: "orange-text-gradient",
+          color: "green-text-gradient",
         },
       ],
       image: pokedexhub,
