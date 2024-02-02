@@ -244,7 +244,7 @@ import {
     {
       name: "Pokedex Hub",
       description:
-        "Plongez dans une présentation visuelle époustouflante de chaque Pokémon, découvrez leurs caractéristiques uniques et les détails complexes qui font de chacun d'eux un être spécial.",
+        "Pour les amateurs de Pokemon, plongez dans une présentation époustouflante de chaque Pokémon, découvrez leurs caractéristiques uniques.",
       tags: [
         {
           name: "angular",
@@ -253,10 +253,6 @@ import {
         {
           name: "typescript",
           color: "blue-text-gradient",
-        },
-        {
-          name: "node.js",
-          color: "green-text-gradient",
         },
         {
           name: "tailwindcss",
