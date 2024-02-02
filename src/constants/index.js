@@ -32,6 +32,7 @@ import {
     promptopia,
     pricesniffer,
     nikemerch,
+    pokedexhub,
   } from "../assets";
   
   export const navLinks = [
@@ -241,6 +242,32 @@ import {
       app_link: "https://gpt3-ui-ux-app.netlify.app/"
     },
     {
+      name: "Pokedex Hub",
+      description:
+        "Plongez dans une présentation visuelle époustouflante de chaque Pokémon, découvrez leurs caractéristiques uniques et les détails complexes qui font de chacun d'eux un être spécial.",
+      tags: [
+        {
+          name: "angular",
+          color: "pink-text-gradient",
+        },
+        {
+          name: "typescript",
+          color: "blue-text-gradient",
+        },
+        {
+          name: "node.js",
+          color: "green-text-gradient",
+        },
+        {
+          name: "tailwindcss",
+          color: "orange-text-gradient",
+        },
+      ],
+      image: pokedexhub,
+      source_code_link: "https://github.com/CodeShadowing95/pokepokedex",
+      app_link: "https://pokecraftershub.netlify.app/"
+    },
+    {
       name: "NikeAir-merch",
       description:
         "Landing page de chaussures Nike. Navigation fluide, sorties exclusives, festin de visuels de chaussures emblématiques. Style Nike en une page. (In process...)",
@@ -310,32 +337,32 @@ import {
       source_code_link: "https://github.com/CodeShadowing95/yutubewatch",
       app_link: "https://yutubewatch.netlify.app/"
     },
-    {
-      name: "Lyriks",
-      description:
-        "Site web de streaming temporaire (limité par par l'API utilisé) de musiques, découvrir les nouveaux morceaux, les artistes du moment, etc... Assez conviviale",
-      tags: [
-        {
-          name: "react",
-          color: "blue-text-gradient",
-        },
-        {
-          name: "nodejs",
-          color: "green-text-gradient",
-        },
-        {
-          name: "redux",
-          color: "violet-text-gradient",
-        },
-        {
-          name: "restapi",
-          color: "pink-text-gradient",
-        },
-      ],
-      image: lyriks,
-      source_code_link: "https://github.com/CodeShadowing95/Lyriks",
-      app_link: "https://na-lyriks-app.netlify.app/"
-    },
+    // {
+    //   name: "Lyriks",
+    //   description:
+    //     "Site web de streaming temporaire (limité par par l'API utilisé) de musiques, découvrir les nouveaux morceaux, les artistes du moment, etc... Assez conviviale",
+    //   tags: [
+    //     {
+    //       name: "react",
+    //       color: "blue-text-gradient",
+    //     },
+    //     {
+    //       name: "nodejs",
+    //       color: "green-text-gradient",
+    //     },
+    //     {
+    //       name: "redux",
+    //       color: "violet-text-gradient",
+    //     },
+    //     {
+    //       name: "restapi",
+    //       color: "pink-text-gradient",
+    //     },
+    //   ],
+    //   image: lyriks,
+    //   source_code_link: "https://github.com/CodeShadowing95/Lyriks",
+    //   app_link: "https://na-lyriks-app.netlify.app/"
+    // },
     {
       name: "Memory Mingle",
       description:
