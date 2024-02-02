@@ -40,7 +40,7 @@ import carhub from "./carhub.png";
 import promptopia from "./promptopia.png";
 import pricesniffer from "./pricesniffer.png";
 import nikemerch from "./nikemerch.png";
-import pokedexhub from "./pokedexhub.png;"
+import pokedexhub from "./pokedexhub.png";
 
 export {
   logo,
