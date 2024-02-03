@@ -25,7 +25,7 @@ import {
     gpt3,
     exalta,
     youwatch,
-    lyriks,
+    // lyriks,
     lugia,
     animevault,
     carhub,
@@ -260,7 +260,7 @@ import {
         },
       ],
       image: pokedexhub,
-      source_code_link: "https://github.com/CodeShadowing95/pokepokedex",
+      source_code_link: "#",
       app_link: "https://pokecraftershub.netlify.app/"
     },
     {
