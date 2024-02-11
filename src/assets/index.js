@@ -9,11 +9,9 @@ import close from "./close.svg";
 import website from "./share.png";
 import world from "./world.png";
 
-import css from "./tech/css.png";
 import docker from "./tech/docker.png";
 import figma from "./tech/figma.png";
 import git from "./tech/git.png";
-import html from "./tech/html.png";
 import javascript from "./tech/javascript.png";
 import mongodb from "./tech/mongodb.png";
 import nodejs from "./tech/nodejs.png";
@@ -24,6 +22,7 @@ import typescript from "./tech/typescript.png";
 import threejs from "./tech/threejs.svg";
 import python from "./tech/python.png";
 import nextjs from "./tech/nextjs.png";
+import angular from "./tech/angular.png";
 
 import ub from "./company/ub.png";
 import hkdigitals from "./company/hkdigitals.png";
@@ -53,11 +52,9 @@ export {
   close,
   website,
   world,
-  css,
   docker,
   figma,
   git,
-  html,
   javascript,
   mongodb,
   nodejs,
@@ -68,6 +65,7 @@ export {
   threejs,
   python,
   nextjs,
+  angular,
   ub,
   hkdigitals,
   pristydelices,

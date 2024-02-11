@@ -5,8 +5,6 @@ import {
     web,
     javascript,
     typescript,
-    html,
-    css,
     reactjs,
     redux,
     tailwind,
@@ -33,6 +31,8 @@ import {
     pricesniffer,
     nikemerch,
     pokedexhub,
+    angular,
+    figma,
   } from "../assets";
   
   export const navLinks = [
@@ -75,14 +75,6 @@ import {
   
   const technologies = [
     {
-      name: "HTML 5",
-      icon: html,
-    },
-    {
-      name: "CSS 3",
-      icon: css,
-    },
-    {
       name: "JavaScript",
       icon: javascript,
     },
@@ -97,6 +89,10 @@ import {
     {
       name: "Next JS",
       icon: nextjs,
+    },
+    {
+      name: "Angular",
+      icon: angular,
     },
     {
       name: "Tailwind CSS",
@@ -126,10 +122,10 @@ import {
       name: "python",
       icon: python,
     },
-    // {
-    //   name: "figma",
-    //   icon: figma,
-    // },
+    {
+      name: "figma",
+      icon: figma,
+    },
     {
       name: "docker",
       icon: docker,
