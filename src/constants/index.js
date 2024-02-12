@@ -11,7 +11,6 @@ import {
     nodejs,
     mongodb,
     git,
-    // figma,
     docker,
     // threejs,
     ub,
@@ -23,7 +22,6 @@ import {
     gpt3,
     exalta,
     youwatch,
-    // lyriks,
     lugia,
     animevault,
     carhub,
@@ -33,6 +31,7 @@ import {
     pokedexhub,
     angular,
     figma,
+    campcompanion,
   } from "../assets";
   
   export const navLinks = [
@@ -500,6 +499,24 @@ import {
       image: pricesniffer,
       source_code_link: "https://github.com/CodeShadowing95/pricesniffer",
       app_link: "https://pricesniffer.vercel.app/"
+    },
+    {
+      name: "Hilink",
+      description:
+        "Landing page - Découvrez les sites de camping, les sentiers de randonnée et les terrains de camping parfaits grâce à des cartes détaillées.",
+      tags: [
+        {
+          name: "next",
+          color: "text-white-400",
+        },
+        {
+          name: "tailwindcss",
+          color: "orange-text-gradient",
+        },
+      ],
+      image: campcompanion,
+      source_code_link: "https://github.com/CodeShadowing95/campcompanion",
+      app_link: "https://campcompanion.netlify.app/"
     },
   ];
   

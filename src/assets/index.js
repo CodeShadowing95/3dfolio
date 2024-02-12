@@ -40,6 +40,7 @@ import promptopia from "./promptopia.png";
 import pricesniffer from "./pricesniffer.png";
 import nikemerch from "./nikemerch.png";
 import pokedexhub from "./pokedexhub.png";
+import campcompanion from "./campcompanion.png";
 
 export {
   logo,
@@ -81,4 +82,5 @@ export {
   pricesniffer,
   nikemerch,
   pokedexhub,
+  campcompanion,
 };
