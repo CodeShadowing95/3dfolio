@@ -41,6 +41,7 @@ import pricesniffer from "./pricesniffer.png";
 import nikemerch from "./nikemerch.png";
 import pokedexhub from "./pokedexhub.png";
 import campcompanion from "./campcompanion.png";
+import brainwave from "./brainwave.png";
 
 export {
   logo,
@@ -83,4 +84,5 @@ export {
   nikemerch,
   pokedexhub,
   campcompanion,
+  brainwave,
 };

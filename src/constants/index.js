@@ -32,6 +32,7 @@ import {
     angular,
     figma,
     campcompanion,
+    brainwave,
   } from "../assets";
   
   export const navLinks = [
@@ -212,6 +213,29 @@ import {
       image: "https://randomuser.me/api/portraits/women/6.jpg",
     },
   ];
+
+  const projectCategories = [
+    {
+      id: 1,
+      title: "Tout"
+    },
+    {
+      id: 2,
+      title: "UI/UX"
+    },
+    {
+      id: 3,
+      title: "Fullstack App"
+    },
+    {
+      id: 4,
+      title: "React"
+    },
+    {
+      id: 5,
+      title: "Next.js"
+    }
+];
   
   const projects = [
     {
@@ -275,6 +299,24 @@ import {
       image: nikemerch,
       source_code_link: "https://github.com/CodeShadowing95/nikemerch",
       app_link: "https://nikemerch.netlify.app/"
+    },
+    {
+      name: "Brainwave",
+      description:
+        "Landing Page avec des effets parallax élégants et des mises en page bento pour présenter la puissance de nos services alimentés par l'IA. (In process...)",
+      tags: [
+        {
+          name: "react",
+          color: "green-text-gradient",
+        },
+        {
+          name: "tailwindcss",
+          color: "blue-text-gradient",
+        },
+      ],
+      image: brainwave,
+      source_code_link: "https://github.com/CodeShadowing95/ai_is_coming",
+      app_link: "https://brainwave-tech.netlify.app/"
     },
     {
       name: "Fit Guide",
@@ -407,6 +449,24 @@ import {
       app_link: "https://anime237.vercel.app/"
     },
     {
+      name: "Hilink",
+      description:
+        "Landing page - Découvrez les sites de camping, les sentiers de randonnée et les terrains de camping parfaits grâce à des cartes détaillées.",
+      tags: [
+        {
+          name: "next",
+          color: "text-white-400",
+        },
+        {
+          name: "tailwindcss",
+          color: "orange-text-gradient",
+        },
+      ],
+      image: campcompanion,
+      source_code_link: "https://github.com/CodeShadowing95/campcompanion",
+      app_link: "https://campcompanion.netlify.app/"
+    },
+    {
       name: "Car Hub",
       description:
         "Application de location de voitures de manière rapide. Naviguez par modèle, nom, type de carburant ou année de fabrication. La voiture idéale est à portée de main.",
@@ -500,24 +560,6 @@ import {
       source_code_link: "https://github.com/CodeShadowing95/pricesniffer",
       app_link: "https://pricesniffer.vercel.app/"
     },
-    {
-      name: "Hilink",
-      description:
-        "Landing page - Découvrez les sites de camping, les sentiers de randonnée et les terrains de camping parfaits grâce à des cartes détaillées.",
-      tags: [
-        {
-          name: "next",
-          color: "text-white-400",
-        },
-        {
-          name: "tailwindcss",
-          color: "orange-text-gradient",
-        },
-      ],
-      image: campcompanion,
-      source_code_link: "https://github.com/CodeShadowing95/campcompanion",
-      app_link: "https://campcompanion.netlify.app/"
-    },
   ];
   
-  export { services, technologies, experiences, testimonials, projects };
+  export { services, technologies, experiences, testimonials, projects, projectCategories };
