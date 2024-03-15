@@ -217,7 +217,7 @@ import {
   const projectCategories = [
     {
       id: 1,
-      title: "Tout"
+      title: "Tous"
     },
     {
       id: 2,

@@ -63,7 +63,7 @@ const ProjectCard = ({ index, name, description, tags, image, source_code_link, 
 }
 
 const Works = () => {
-  const [activeFilter, setActiveFilter] = useState('Tout');
+  const [activeFilter, setActiveFilter] = useState('Tous');
   const [isAnimated, setIsAnimated] = useState(false);
   const [filterWork, setFilterWork] = useState([]);
 
@@ -77,7 +77,7 @@ const Works = () => {
     setIsAnimated(true);
 
     switch (title) {
-      case "Tout":
+      case "Tous":
         setFilterWork(projects);
         break;
       
@@ -130,7 +130,7 @@ const Works = () => {
                 key={item.id}
                 onClick={() => handleFilterWorks(item.title)}
                 className={`px-4 py-2 text-sm font-semibold rounded-lg cursor-pointer transition-all m-2 min-[2000px]:py-4 min-[2000px]:px-8 min-[2000px]:rounded-xl
-                  ${activeFilter === item.title ? "bg-slate-300 text-black hover:bg-white" : "bg-slate-900 text-white hover:bg-slate-700"}
+                  ${activeFilter === item.title ? "bg-slate-100 text-black hover:bg-white hover:shadow-lg hover:transition-shadow hover:shadow-slate-100" : "bg-slate-900 text-white hover:bg-slate-700"}
                 `}
               >
                 {item.title}
