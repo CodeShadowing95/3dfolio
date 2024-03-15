@@ -129,8 +129,8 @@ const Works = () => {
               <div
                 key={item.id}
                 onClick={() => handleFilterWorks(item.title)}
-                className={`px-4 py-2 text-sm bg-slate-900 text-white font-semibold rounded-lg cursor-pointer transition-all m-2 hover:bg-slate-700 min-[2000px]:py-4 min-[2000px]:px-8 min-[2000px]:rounded-xl
-                  ${activeFilter === item.title ? "bg-slate-300 text-black hover:bg-white" : ""}
+                className={`px-4 py-2 text-sm font-semibold rounded-lg cursor-pointer transition-all m-2 min-[2000px]:py-4 min-[2000px]:px-8 min-[2000px]:rounded-xl
+                  ${activeFilter === item.title ? "bg-slate-300 text-black hover:bg-white" : "bg-slate-900 text-white hover:bg-slate-700"}
                 `}
               >
                 {item.title}
