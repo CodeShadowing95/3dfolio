@@ -27,12 +27,12 @@ import {
     carhub,
     promptopia,
     pricesniffer,
-    nikemerch,
     pokedexhub,
     angular,
     figma,
     campcompanion,
     brainwave,
+    appleclone,
   } from "../assets";
   
   export const navLinks = [
@@ -283,9 +283,9 @@ import {
       app_link: "https://pokecraftershub.netlify.app/"
     },
     {
-      name: "NikeAir-merch",
+      name: "Apple 2.0",
       description:
-        "Landing page de chaussures Nike. Navigation fluide, sorties exclusives, festin de visuels de chaussures emblématiques. Style Nike en une page. (In process...)",
+        "Site vitrine clone de Apple. Navigation fluide, animations GSAP, festin de visuels 3D des dernières sorties de iPhone. Simplement beau.",
       tags: [
         {
           name: "react",
@@ -296,9 +296,9 @@ import {
           color: "blue-text-gradient",
         },
       ],
-      image: nikemerch,
-      source_code_link: "https://github.com/CodeShadowing95/nikemerch",
-      app_link: "https://nikemerch.netlify.app/"
+      image: appleclone,
+      source_code_link: "https://github.com/CodeShadowing95/apple_website_clone",
+      app_link: "https://mynewappleclone.netlify.app/"
     },
     {
       name: "Brainwave",

@@ -42,6 +42,7 @@ import nikemerch from "./nikemerch.png";
 import pokedexhub from "./pokedexhub.png";
 import campcompanion from "./campcompanion.png";
 import brainwave from "./brainwave.png";
+import appleclone from "./apple2.0.png";
 
 export {
   logo,
@@ -85,4 +86,5 @@ export {
   pokedexhub,
   campcompanion,
   brainwave,
+  appleclone,
 };
