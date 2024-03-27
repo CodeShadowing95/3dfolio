@@ -5,6 +5,7 @@ import { styles } from '../styles';
 import { services } from '../constants';
 import { fadeIn, textVariant } from '../utils/motion';
 import { SectionWrapper } from "../hoc";
+import ResumeUpload from "./ResumeUpload";
 
 const ServiceCard = ({ index, title, icon }) => {
     return (
@@ -37,12 +38,12 @@ const About = () => {
             variants={fadeIn("", "", 0.1, 1)}
             className="mt-4 text-secondary text-[17px] max-w-3xl leading-[30px]"
         >
-            Je suis un junior en développement d'applications avec de l'expérience en 
+            Je suis un junior en développement d{`'`}applications avec de l{`'`}expérience en 
             Python, Java, PHP, Typescript, JavaScript et une expertise dans des frameworks tels 
             que Node.js, React, Next.js et frameworks CSS. Je suis actuellement étudiant et poursuis 
-            une formation en Conception d'Applications & Analyse de Données. Durant mes 
-            différents stages, j'ai acquis des connaissances et développé des compétences sur le domaine. 
-            J'ai notamment collaboré avec des équipes pour créer des solutions efficaces et 
+            une formation en Conception d{`'`}Applications & Analyse de Données. Durant mes 
+            différents stages, j{`'`}ai acquis des connaissances et développé des compétences sur le domaine. 
+            J{`'`}ai notamment collaboré avec des équipes pour créer des solutions efficaces et 
             conviviales qui résolvent des problèmes concrets du monds réel.<br />
             Travaillons ensemble afin donner vie à vos idées 🤝.
         </motion.p>
