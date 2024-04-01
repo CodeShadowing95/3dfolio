@@ -86,7 +86,7 @@ const Works = () => {
         break;
       
       case "Fullstack App":
-        setFilterWork(projects.filter((work) => work.tags.some(tag => tag.name === "nodejs") || work.tags.some(tag => tag.name === "restapi") || work.tags.some(tag => tag.name === "mongodb") || work.tags.some(tag => tag.name === "brightdata") || work.tags.some(tag => tag.name === "cronjob")))
+        setFilterWork(projects.filter((work) => work.tags.some(tag => tag.name === "nodejs") || work.tags.some(tag => tag.name === "restapi") || work.tags.some(tag => tag.name === "mongodb") || work.tags.some(tag => tag.name === "springboot")))
         break;
       
       case "React":
@@ -95,6 +95,10 @@ const Works = () => {
       
       case "Next.js":
         setFilterWork(projects.filter((work) => work.tags.some(tag => tag.name === "next" || tag.name === "nextjs")))
+        break;
+      
+      case "Angular":
+        setFilterWork(projects.filter((work) => work.tags.some(tag =>tag.name === "angular")))
         break;
     
       default:

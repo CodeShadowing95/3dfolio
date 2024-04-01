@@ -26,13 +26,13 @@ import {
     animevault,
     carhub,
     promptopia,
-    pricesniffer,
     pokedexhub,
     angular,
     figma,
     campcompanion,
     brainwave,
     appleclone,
+    servermanagement
   } from "../assets";
   
   export const navLinks = [
@@ -234,6 +234,10 @@ import {
     {
       id: 5,
       title: "Next.js"
+    },
+    {
+      id: 6,
+      title: "Angular"
     }
 ];
   
@@ -527,38 +531,30 @@ import {
       app_link: "https://promptopia-mu-livid.vercel.app/"
     },
     {
-      name: "Price Sniffer",
+      name: "Server Management",
       description:
-        "Outil de webscraping de suivi des prix de produits depuis Amazon afin d'économiser de l'argent sur les achats en ligne. Intégration d'autres plateformes bientôt.",
+        "Ajoutez et supprimez des serveurs, activez et désactivez les serveurs inutilisés, gérez la connectivité avec vos différents serveurs,...",
       tags: [
         {
-          name: "nextjs",
-          color: "blue-text-gradient",
+          name: "angular",
+          color: "orange-text-gradient",
         },
         {
-          name: "typescript",
+          name: "springboot",
           color: "green-text-gradient",
         },
         {
           name: "restapi",
-          color: "yellow-text-gradient",
-        },
-        {
-          name: "tailwindcss",
           color: "pink-text-gradient",
         },
         {
-          name: "brightdata",
-          color: "text-white-100",
-        },
-        {
-          name: "cronjob",
-          color: "orange-text-gradient",
+          name: "tailwindcss",
+          color: "blue-text-gradient",
         },
       ],
-      image: pricesniffer,
-      source_code_link: "https://github.com/CodeShadowing95/pricesniffer",
-      app_link: "https://pricesniffer.vercel.app/"
+      image: servermanagement,
+      source_code_link: "https://github.com/CodeShadowing95/ServerManagement",
+      app_link: "https://github.com/CodeShadowing95/ServerManagement"
     },
   ];
   

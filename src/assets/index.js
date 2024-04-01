@@ -43,6 +43,7 @@ import pokedexhub from "./pokedexhub.png";
 import campcompanion from "./campcompanion.png";
 import brainwave from "./brainwave.png";
 import appleclone from "./apple2.0.png";
+import servermanagement from "./servermanagement.png";
 
 export {
   logo,
@@ -87,4 +88,5 @@ export {
   campcompanion,
   brainwave,
   appleclone,
+  servermanagement,
 };
