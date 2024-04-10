@@ -44,6 +44,7 @@ import campcompanion from "./campcompanion.png";
 import brainwave from "./brainwave.png";
 import appleclone from "./apple2.0.png";
 import servermanagement from "./servermanagement.png";
+import empmanagement from "./empmanagement.png";
 
 export {
   logo,
@@ -89,4 +90,5 @@ export {
   brainwave,
   appleclone,
   servermanagement,
+  empmanagement,
 };

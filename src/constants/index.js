@@ -32,7 +32,8 @@ import {
     campcompanion,
     brainwave,
     appleclone,
-    servermanagement
+    servermanagement,
+    empmanagement
   } from "../assets";
   
   export const navLinks = [
@@ -453,22 +454,29 @@ import {
       app_link: "https://anime237.vercel.app/"
     },
     {
-      name: "Hilink",
-      description:
-        "Landing page - Découvrez les sites de camping, les sentiers de randonnée et les terrains de camping parfaits grâce à des cartes détaillées.",
+      name: "Employee Management",
+      description: "Application de gestion des employés. Ajouter, modifier, supprimer des employés. Gérer les informations des employés.",
       tags: [
         {
-          name: "next",
-          color: "text-white-400",
+          name: "angular",
+          color: "orange-text-gradient",
+        },
+        {
+          name: "springboot",
+          color: "green-text-gradient",
+        },
+        {
+          name: "restapi",
+          color: "pink-text-gradient",
         },
         {
           name: "tailwindcss",
-          color: "orange-text-gradient",
+          color: "blue-text-gradient",
         },
       ],
-      image: campcompanion,
-      source_code_link: "https://github.com/CodeShadowing95/campcompanion",
-      app_link: "https://campcompanion.netlify.app/"
+      image: empmanagement,
+      source_code_link: "https://github.com/CodeShadowing95/employeeManagement",
+      app_link: "https://github.com/CodeShadowing95/employeeManagementt"
     },
     {
       name: "Car Hub",
