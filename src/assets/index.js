@@ -45,6 +45,7 @@ import brainwave from "./brainwave.png";
 import appleclone from "./apple2.0.png";
 import servermanagement from "./servermanagement.png";
 import empmanagement from "./empmanagement.png";
+import bikemapper from "./bikemapper.png";
 
 export {
   logo,
@@ -91,4 +92,5 @@ export {
   appleclone,
   servermanagement,
   empmanagement,
+  bikemapper,
 };

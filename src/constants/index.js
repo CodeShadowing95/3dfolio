@@ -33,7 +33,8 @@ import {
     brainwave,
     appleclone,
     servermanagement,
-    empmanagement
+    empmanagement,
+    bikemapper
   } from "../assets";
   
   export const navLinks = [
@@ -243,27 +244,53 @@ import {
 ];
   
   const projects = [
+    // {
+    //   name: "GPT3_Showcase",
+    //   description:
+    //     "Transformation d'un design Figma en site web fonctionnel, moderne et responsive. Amélioration de mes capacités actuelles en CSS.",
+    //   tags: [
+    //     {
+    //       name: "html",
+    //       color: "orange-text-gradient",
+    //     },
+    //     {
+    //       name: "css",
+    //       color: "blue-text-gradient",
+    //     },
+    //     {
+    //       name: "react",
+    //       color: "pink-text-gradient",
+    //     },
+    //   ],
+    //   image: gpt3,
+    //   source_code_link: "https://github.com/CodeShadowing95/GPT3-Webpage",
+    //   app_link: "https://gpt3-ui-ux-app.netlify.app/"
+    // },
     {
-      name: "GPT3_Showcase",
+      name: "BikeMapper",
       description:
-        "Transformation d'un design Figma en site web fonctionnel, moderne et responsive. Amélioration de mes capacités actuelles en CSS.",
+        "Application de géolocalisation de stations de vélos en libre-service en France et dans le monde. Vous pouvez découvrir la liste des services, les bornes de station, les détails de la station par ville.",
       tags: [
         {
-          name: "html",
-          color: "orange-text-gradient",
-        },
-        {
-          name: "css",
+          name: "react",
           color: "blue-text-gradient",
         },
         {
-          name: "react",
+          name: "nodejs",
+          color: "green-text-gradient",
+        },
+        {
+          name: "tailwindcss",
+          color: "orange-text-gradient",
+        },
+        {
+          name: "restapi",
           color: "pink-text-gradient",
         },
       ],
-      image: gpt3,
-      source_code_link: "https://github.com/CodeShadowing95/GPT3-Webpage",
-      app_link: "https://gpt3-ui-ux-app.netlify.app/"
+      image: bikemapper,
+      source_code_link: "https://github.com/CodeShadowing95/velolibreservice",
+      app_link: "https://bikemapper.netlify.app/"
     },
     {
       name: "Pokedex Hub",
