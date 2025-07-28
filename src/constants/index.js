@@ -34,7 +34,8 @@ import {
     appleclone,
     servermanagement,
     empmanagement,
-    bikemapper
+    bikemapper,
+    curriqulumai,
   } from "../assets";
   
   export const navLinks = [
@@ -240,7 +241,11 @@ import {
     {
       id: 6,
       title: "Angular"
-    }
+    },
+    {
+      id: 7,
+      title: "AI"
+    },
 ];
   
   const projects = [
@@ -313,6 +318,28 @@ import {
       image: pokedexhub,
       source_code_link: "#",
       app_link: "https://pokecraftershub.netlify.app/"
+    },
+    {
+      name: "Curriqulum.ai",
+      description:
+        "Application web sophistiquée qui utilise l'IA pour garantir une compatibilité 100% ATS de tout CV. Notre solution maximise ainsi vos chances d'obtenir un entretien.",
+      tags: [
+        {
+          name: "react-router v7",
+          color: "green-text-gradient",
+        },
+        {
+          name: "tailwindcss",
+          color: "orange-text-gradient",
+        },
+        {
+          name: "ai",
+          color: "blue-text-gradient",
+        },
+      ],
+      image: curriqulumai,
+      source_code_link: "https://github.com/CodeShadowing95/ai-resume-analyzer.git",
+      app_link: "https://curriqulum-ai.netlify.app/"
     },
     {
       name: "Apple 2.0",
@@ -535,36 +562,36 @@ import {
       source_code_link: "https://github.com/CodeShadowing95/carhub",
       app_link: "https://rentalcar237.vercel.app/"
     },
-    {
-      name: "Promptopia",
-      description:
-        "Promptopia est un outil open-source d'IA pour le monde moderne qui permet de découvrir, de créer et de partager des messages créatifs. (En développement)",
-      tags: [
-        {
-          name: "nextjs",
-          color: "orange-text-gradient",
-        },
-        {
-          name: "nodejs",
-          color: "green-text-gradient",
-        },
-        {
-          name: "typescript",
-          color: "blue-text-gradient",
-        },
-        {
-          name: "restapi",
-          color: "yellow-text-gradient",
-        },
-        {
-          name: "tailwindcss",
-          color: "pink-text-gradient",
-        },
-      ],
-      image: promptopia,
-      source_code_link: "https://github.com/CodeShadowing95/prompts",
-      app_link: "https://promptopia-mu-livid.vercel.app/"
-    },
+    // {
+    //   name: "Promptopia",
+    //   description:
+    //     "Promptopia est un outil open-source d'IA pour le monde moderne qui permet de découvrir, de créer et de partager des messages créatifs. (En développement)",
+    //   tags: [
+    //     {
+    //       name: "nextjs",
+    //       color: "orange-text-gradient",
+    //     },
+    //     {
+    //       name: "nodejs",
+    //       color: "green-text-gradient",
+    //     },
+    //     {
+    //       name: "typescript",
+    //       color: "blue-text-gradient",
+    //     },
+    //     {
+    //       name: "restapi",
+    //       color: "yellow-text-gradient",
+    //     },
+    //     {
+    //       name: "tailwindcss",
+    //       color: "pink-text-gradient",
+    //     },
+    //   ],
+    //   image: promptopia,
+    //   source_code_link: "https://github.com/CodeShadowing95/prompts",
+    //   app_link: "https://promptopia-mu-livid.vercel.app/"
+    // },
     {
       name: "Server Management",
       description:

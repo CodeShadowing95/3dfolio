@@ -100,6 +100,10 @@ const Works = () => {
       case "Angular":
         setFilterWork(projects.filter((work) => work.tags.some(tag =>tag.name === "angular")))
         break;
+
+      case "AI":
+        setFilterWork(projects.filter((work) => work.tags.some(tag =>tag.name === "ai")))
+        break;
     
       default:
         setFilterWork(projects);

@@ -46,6 +46,7 @@ import appleclone from "./apple2.0.png";
 import servermanagement from "./servermanagement.png";
 import empmanagement from "./empmanagement.png";
 import bikemapper from "./bikemapper.png";
+import curriqulumai from "./curriqulum-ai.png";
 
 export {
   logo,
@@ -93,4 +94,5 @@ export {
   servermanagement,
   empmanagement,
   bikemapper,
+  curriqulumai,
 };
