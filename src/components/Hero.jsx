@@ -14,11 +14,11 @@ const Hero = () => {
 
             <div className="">
                 <h1 className={`${styles.heroHeadText} text-white`}><span className="text-[#915eff]">Patrick NAMEGNI</span></h1>
-                <p className={`${styles.heroSubText} mt-2 text-white-100`}>
-                    Développeur web.<br className="sm:block hidden" />
-                    <span className="text-[18px]">
-                        Bienvenue sur mon portfolio. J'espère que vous apprécierez la visite.
-                        <br />(N'oubliez pas de jouer avec mon poste de travail 😉👇)
+                <p className={`${styles.heroSubText} mt-2 text-white-100 max-w-lg`}>
+                    Développeur web - Portfolio<br className="sm:block hidden" />
+                    <span className="text-lg">
+                        J{`'`}espère que vous profiterez la visite.<br />
+                        (N{`'`}oubliez pas de jouer avec mon poste de travail 😉👇)
                     </span>
                 </p>
                 {/* <p className="text-[16px] text-white-100 leading-8 mt-3 max-md:hidden visible">
@@ -36,7 +36,7 @@ const Hero = () => {
 
         <ComputersCanvas />
 
-        <div className="absolute xs:bottom-10 bottom-32 w-full flex justify-center items-center">
+        <div className="absolute hidden sm:flex xs:bottom-10 bottom-32 w-full justify-center items-center">
             <a href="#profil">
                 <div className="w-[35px] h-[64px] rounded-3xl border-4 border-secondary flex justify-center items-start p-2">
                     <motion.div

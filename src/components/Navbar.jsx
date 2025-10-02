@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 
 import { styles } from "../styles";
 import { navLinks } from "../constants";
-import { logo, menu, close, world } from "../assets";
+import { logo, menu, close } from "../assets";
 // import { Switch } from '@headlessui/react';
 
 const Navbar = () => {
@@ -61,7 +61,7 @@ const Navbar = () => {
               key={link.id}
               className={`${
                 active === link.title ? "text-white" : "text-secondary"
-              } hover:text-white text-[18px] font-medium cursor-pointer`}
+              } text-base hover:text-white text-[18px] font-medium cursor-pointer`}
               onClick={() => setActive(link.title)}
             >
               <a href={`#${link.id}`}>{link.title}</a>
@@ -72,12 +72,12 @@ const Navbar = () => {
           <li>
             <button
               onClick={handleDownloadCV}
-              className="flex items-center gap-2 px-4 py-2 bg-gradient-to-r from-violet-800 to-pink-900 hover:from-violet-700 hover:to-pink-800 text-white font-medium text-[16px] rounded-lg transition-all duration-300 hover:shadow-lg hover:scale-105"
+              className="flex items-center gap-2 px-4 py-2 border border-white/50 hover:border-white hover:bg-white/10 text-white font-medium text-[16px] rounded-lg transition-all duration-300 hover:shadow-lg hover:scale-105"
             >
-              <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24">
+              <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24">
                 <path fill="#ffffff" d="m12 16l-5-5l1.4-1.45l2.6 2.6V4h2v8.15l2.6-2.6L17 11zm-6 4q-.825 0-1.412-.587T4 18v-3h2v3h12v-3h2v3q0 .825-.587 1.413T18 20z"/>
               </svg>
-              <span className="hidden lg:inline">Télécharger mon CV</span>
+              <span className="text-sm hidden lg:inline">Télécharger mon CV</span>
               <span className="lg:hidden">CV</span>
             </button>
           </li>
