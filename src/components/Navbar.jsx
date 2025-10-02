@@ -9,6 +9,18 @@ import { logo, menu, close, world } from "../assets";
 const Navbar = () => {
   const [active, setActive] = useState("");
   const [toggle, setToggle] = useState(false);
+  const [isScrolled, setIsScrolled] = useState(false)
+
+  // Gérer l'effet de scroll pour le background
+  useEffect(() => {
+    const handleScroll = () => {
+      const scrollTop = window.scrollY
+      setIsScrolled(scrollTop > 10)
+    }
+
+    window.addEventListener('scroll', handleScroll)
+    return () => window.removeEventListener('scroll', handleScroll)
+  }, [])
 
   // const [lang, setLang] = useState("EN");
   // const [enabled, setEnabled] = useState(false);
@@ -18,9 +30,14 @@ const Navbar = () => {
   //     lang == 'EN' ? setLang('FR') : setLang('EN');
   // }
 
+  const handleDownloadCV = () => {
+    // Remplacez 'CV Patrick NAMEGNI.pdf' par le chemin réel de votre CV
+    window.location.href = 'CV Patrick NAMEGNI.pdf';
+  };
+
   return (
     <nav
-      className={`${styles.paddingX} w-full flex items-center py-5 fixed top-0 z-20 bg-primary`}
+      className={`${styles.paddingX} w-full flex items-center py-5 fixed top-0 z-20 ${isScrolled ? 'bg-primary/90' : ''} transition-all duration-300`}
     >
       <div className="w-full flex justify-between items-center max-w-7xl mx-auto">
         <Link
@@ -38,7 +55,7 @@ const Navbar = () => {
           </p>
         </Link>
 
-        <ul className="list-none hidden sm:flex flex-row items-center gap-10">
+        <ul className="list-none hidden md:flex flex-row items-center gap-10">
           {navLinks.map((link) => (
             <li
               key={link.id}
@@ -50,6 +67,21 @@ const Navbar = () => {
               <a href={`#${link.id}`}>{link.title}</a>
             </li>
           ))}
+          
+          {/* Bouton Télécharger CV pour desktop */}
+          <li>
+            <button
+              onClick={handleDownloadCV}
+              className="flex items-center gap-2 px-4 py-2 bg-gradient-to-r from-violet-800 to-pink-900 hover:from-violet-700 hover:to-pink-800 text-white font-medium text-[16px] rounded-lg transition-all duration-300 hover:shadow-lg hover:scale-105"
+            >
+              <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24">
+                <path fill="#ffffff" d="m12 16l-5-5l1.4-1.45l2.6 2.6V4h2v8.15l2.6-2.6L17 11zm-6 4q-.825 0-1.412-.587T4 18v-3h2v3h12v-3h2v3q0 .825-.587 1.413T18 20z"/>
+              </svg>
+              <span className="hidden lg:inline">Télécharger mon CV</span>
+              <span className="lg:hidden">CV</span>
+            </button>
+          </li>
+          
           {/* <li>
                     <div className="flex justify-center items-center gap-2">
                         <p className="text-secondary text-[18px] font-medium">EN</p>
@@ -72,7 +104,7 @@ const Navbar = () => {
                 </li> */}
         </ul>
 
-        <div className="sm:hidden flex flex-1 justify-end items-center">
+        <div className="md:hidden flex flex-1 justify-end items-center">
           <img
             src={toggle ? close : menu}
             alt="menu icon"
@@ -100,6 +132,22 @@ const Navbar = () => {
                   <a href={`#${link.id}`}>{link.title}</a>
                 </li>
               ))}
+              
+              {/* Bouton Télécharger CV pour mobile */}
+              <li className="w-full">
+                 <button
+                   onClick={() => {
+                     handleDownloadCV();
+                     setToggle(false);
+                   }}
+                   className="flex items-center justify-center gap-2 w-full px-3 py-2 bg-gradient-to-r from-gray-800 to-gray-900 hover:from-gray-700 hover:to-gray-800 text-white font-medium text-[14px] rounded-lg transition-all duration-300"
+                 >
+                  <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24">
+                    <path fill="#ffffff" d="m12 16l-5-5l1.4-1.45l2.6 2.6V4h2v8.15l2.6-2.6L17 11zm-6 4q-.825 0-1.412-.587T4 18v-3h2v3h12v-3h2v3q0 .825-.587 1.413T18 20z"/>
+                  </svg>
+                  Télécharger CV
+                </button>
+              </li>
             </ul>
           </div>
         </div>

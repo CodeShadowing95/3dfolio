@@ -28,6 +28,8 @@ import ub from "./company/ub.png";
 import hkdigitals from "./company/hkdigitals.png";
 import pristydelices from "./company/pristydelices.png";
 import estiam from "./company/estiam.png";
+import teepyjob from "./company/teepyjob.png";
+import indextv from "./company/indextv.jpg";
 
 import gpt3 from "./GPT3.png";
 import exalta from "./exalta.png";
@@ -47,6 +49,7 @@ import servermanagement from "./servermanagement.png";
 import empmanagement from "./empmanagement.png";
 import bikemapper from "./bikemapper.png";
 import curriqulumai from "./curriqulum-ai.png";
+import kamercare from "./kamercare.png"
 
 export {
   logo,
@@ -77,6 +80,8 @@ export {
   hkdigitals,
   pristydelices,
   estiam,
+  teepyjob,
+  indextv,
   gpt3,
   exalta,
   youwatch,
@@ -95,4 +100,5 @@ export {
   empmanagement,
   bikemapper,
   curriqulumai,
+  kamercare,
 };

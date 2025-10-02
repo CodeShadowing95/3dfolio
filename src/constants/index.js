@@ -17,6 +17,8 @@ import {
     hkdigitals,
     pristydelices,
     estiam,
+    teepyjob,
+    indextv,
     nextjs,
     python,
     gpt3,
@@ -36,6 +38,7 @@ import {
     empmanagement,
     bikemapper,
     curriqulumai,
+    kamercare
   } from "../assets";
   
   export const navLinks = [
@@ -137,29 +140,42 @@ import {
   
   const experiences = [
     {
-      title: "Développeur web Junior",
-      company_name: "Univers Binaire SARL",
-      icon: ub,
+      title: "Consultant développeur",
+      company_name: "Index.tv",
+      icon: indextv,
       iconBg: "#383E56",
-      date: "Octobre 2019 - Juillet 2021",
+      date: "Mai 2025 - Août 2025",
       points: [
-        "Participation au développement d'applications e-commerce en utilisant les langages de programmation et les frameworks pertinents.",
-        "Maintenance des applications existantes en corrigeant les bugs, en effectuant des mises à jour et en améliorant les fonctionnalités existantes.",
-        "Collaboration étroite avec d'autres membres de l'équipe de développement, ainsi qu'avec des équipes interfonctionnelles telles que le marketing.",
-        "Suivi des tendances et des nouvelles technologies liées au e-commerce et aux applications afin de rester à jour et d'apporter des solutions innovantes.",
+        "Développement d'une solution de vidéo-conférence intégrée pour service d'aide à domicile.",
+        "Conception et développement d'un plugin vidéo full-stack pour Twilio Flex.",
+        "Architecture responsive (mobile/desktop) avec gestion d'état avancée.",
+        "Optimisation des performances (bundle 522KB, code-splitting).",
+        "Gestion complète du cycle de vie des appels vidéo (connexion, contrôles, déconnexion).",
       ],
     },
     {
-      title: "Développeur Web en Freelance",
-      company_name: "PristyDelices",
-      icon: pristydelices,
+      title: "Développeur web en alternance",
+      company_name: "Teepy-Job",
+      icon: teepyjob,
       iconBg: "#383E56",
-      date: "Juin 2022 - Janvier 2023",
+      date: "Septembre 2024 - Avril 2025",
       points: [
-        "Conception d'une application web de commande de pâtisseries. S'assurer de la convivialité du site et de la conformité à l'image de la pâtisserie.",
-        "Intégration des fonctionnalités de personnalisation si nécessaire.",
-        "Veiller à ce que le site web soit rapide et performant en optimisant les images, en minimisant les requêtes et en adoptant d'autres bonnes pratiques.",
-        "Intégrer des liens vers les réseaux sociaux de la pâtisserie et, si nécessaire, intégrer des flux sociaux sur le site web.",
+        "Développement d’un système de récupération automatique de 2500+ offres d’emploi depuis divers ATS recruteurs via API et flux XML. Réduction du temps de traitement manuel de 80%.",
+        "Mise en place d’un pipeline d’analyse et pré-traitement des annonces, avec filtrage et enrichissement des données (catégorisation, géolocalisation) sur une base de 200000+ profils. Gain de 40% en rapidité sur la publication des offres.",
+        "Développement d’algorithmes de matching automatique basé sur géolocalisation et critères d’offres, suivi de mailing et gestion de priorités d’annonces. Augmentation de 30% du taux de mise en relation candidats/recruteurs et amélioration du délai de proposition des profils.",
+      ],
+    },
+    {
+      title: "Étudiant Développeur - Formation",
+      company_name: "ÉSTIAM",
+      icon: estiam,
+      iconBg: "#E6DEDD",
+      date: "Septembre 2023 - Juillet 2024",
+      points: [
+        "Acquisition des connaissances relatives à l'analyse de données et la BI avec les technos telles que Python, Pandas, Numpy, Power BI, etc...",
+        "Acquisition des connaissances sur le Cloud Computing notamment avec Amazon AWS et des technologies de conteneurisation d'applications telles que Docker, Kubernetes",
+        "Acquisition de connaissances sur le développement d'applications mobiles avec Androïd, Flutter, Dart",
+        "Apprentissage des fondamentaux de la robotique logicielle (RPA)",
       ],
     },
     {
@@ -176,16 +192,29 @@ import {
       ],
     },
     {
-      title: "Étudiant Développeur - Formation",
-      company_name: "ÉSTIAM",
-      icon: estiam,
-      iconBg: "#E6DEDD",
-      date: "Janvier 2024 - Actuellement",
+      title: "Développeur Web en Freelance",
+      company_name: "PristyDelices",
+      icon: pristydelices,
+      iconBg: "#383E56",
+      date: "Juin 2022 - Janvier 2023",
       points: [
-        "Acquisition des connaissances relatives à l'analyse de données et la BI avec les technos telles que Python, Pandas, Numpy, Power BI, etc...",
-        "Acquisition des connaissances sur le Cloud Computing notamment avec Amazon AWS et des technologies de conteneurisation d'applications telles que Docker, Kubernetes",
-        "Acquisition de connaissances sur le développement d'applications mobiles avec Androïd, Flutter, Dart",
-        "Apprentissage des fondamentaux de la robotique logicielle (RPA)",
+        "Conception d'une application web de commande de pâtisseries. S'assurer de la convivialité du site et de la conformité à l'image de la pâtisserie.",
+        "Intégration des fonctionnalités de personnalisation si nécessaire.",
+        "Veiller à ce que le site web soit rapide et performant en optimisant les images, en minimisant les requêtes et en adoptant d'autres bonnes pratiques.",
+        "Intégrer des liens vers les réseaux sociaux de la pâtisserie et, si nécessaire, intégrer des flux sociaux sur le site web.",
+      ],
+    },
+    {
+      title: "Développeur web Junior",
+      company_name: "Univers Binaire SARL",
+      icon: ub,
+      iconBg: "#383E56",
+      date: "Octobre 2019 - Juillet 2021",
+      points: [
+        "Participation au développement d'applications e-commerce en utilisant les langages de programmation et les frameworks pertinents.",
+        "Maintenance des applications existantes en corrigeant les bugs, en effectuant des mises à jour et en améliorant les fonctionnalités existantes.",
+        "Collaboration étroite avec d'autres membres de l'équipe de développement, ainsi qu'avec des équipes interfonctionnelles telles que le marketing.",
+        "Suivi des tendances et des nouvelles technologies liées au e-commerce et aux applications afin de rester à jour et d'apporter des solutions innovantes.",
       ],
     },
   ];
@@ -271,6 +300,31 @@ import {
     //   source_code_link: "https://github.com/CodeShadowing95/GPT3-Webpage",
     //   app_link: "https://gpt3-ui-ux-app.netlify.app/"
     // },
+    {
+      name: "KamerCare",
+      description: "Plateforme médicale moderne conçue pour le système de santé camerounais, facilitant la connexion entre patients et professionnels de santé.",
+      tags: [
+        {
+          name: "laravel",
+          color: "pink-text-gradient",
+        },
+        {
+          name: "nextjs",
+          color: "text-white",
+        },
+        {
+          name: "tailwindcss",
+          color: "green-text-gradient",
+        },
+        {
+          name: "restapi",
+          color: "orange-text-gradient"
+        }
+      ],
+      image: kamercare,
+      source_code_link: "https://github.com/CodeShadowing95/KamerCare",
+      app_link: "https://github.com/CodeShadowing95/KamerCare"
+    },
     {
       name: "BikeMapper",
       description:
@@ -507,31 +561,31 @@ import {
       source_code_link: "https://github.com/CodeShadowing95/anime237",
       app_link: "https://anime237.vercel.app/"
     },
-    {
-      name: "Employee Management",
-      description: "Application de gestion des employés. Ajouter, modifier, supprimer des employés. Gérer les informations des employés.",
-      tags: [
-        {
-          name: "angular",
-          color: "orange-text-gradient",
-        },
-        {
-          name: "springboot",
-          color: "green-text-gradient",
-        },
-        {
-          name: "restapi",
-          color: "pink-text-gradient",
-        },
-        {
-          name: "tailwindcss",
-          color: "blue-text-gradient",
-        },
-      ],
-      image: empmanagement,
-      source_code_link: "https://github.com/CodeShadowing95/employeeManagement",
-      app_link: "https://github.com/CodeShadowing95/employeeManagementt"
-    },
+    // {
+    //   name: "Employee Management",
+    //   description: "Application de gestion des employés. Ajouter, modifier, supprimer des employés. Gérer les informations des employés.",
+    //   tags: [
+    //     {
+    //       name: "angular",
+    //       color: "orange-text-gradient",
+    //     },
+    //     {
+    //       name: "springboot",
+    //       color: "green-text-gradient",
+    //     },
+    //     {
+    //       name: "restapi",
+    //       color: "pink-text-gradient",
+    //     },
+    //     {
+    //       name: "tailwindcss",
+    //       color: "blue-text-gradient",
+    //     },
+    //   ],
+    //   image: empmanagement,
+    //   source_code_link: "https://github.com/CodeShadowing95/employeeManagement",
+    //   app_link: "https://github.com/CodeShadowing95/employeeManagementt"
+    // },
     {
       name: "Car Hub",
       description:

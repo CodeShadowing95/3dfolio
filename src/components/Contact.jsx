@@ -32,7 +32,7 @@ const Contact = () => {
             'template_5x2zdpt',
             {
                 from_name: form.name,
-                to_name: 'vizardo',
+                to_name: 'Portfolio Patrick',
                 from_email: form.email,
                 to_email: 'patrick.namegni@gmail.com',
                 message: form.message,
@@ -41,7 +41,7 @@ const Contact = () => {
         )
         .then(() => {
             setLoading(false);
-            alert('Thank you for the message. I will get back to you as soon as possible.');
+            alert('Merci pour votre prise de contact. Je reviendrai vers vous dès que possible.');
 
             setForm({
                 name: '',
@@ -53,7 +53,7 @@ const Contact = () => {
 
             console.log(error);
 
-            alert("Message couldn't be sent: Something went wrong.");
+            alert("Problème technique: Le message n'a pas pu être délivré.");
         })
     }
 

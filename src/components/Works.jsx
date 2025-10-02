@@ -1,5 +1,5 @@
 import { Tilt } from "react-tilt";
-import { motion } from "framer-motion";
+import { motion, AnimatePresence } from "framer-motion";
 
 import { styles } from "../styles";
 import { github, website,  } from "../assets";
@@ -8,11 +8,42 @@ import { projects, projectCategories } from "../constants";
 import { fadeIn, textVariant } from "../utils/motion";
 import { useEffect, useState } from "react";
 
-const ProjectCard = ({ index, name, description, tags, image, source_code_link, app_link, isAnimated }) => {
+const ProjectCard = ({ index, name, description, tags, image, source_code_link, app_link, isAnimated, animationDelay = 0 }) => {
+    const cardVariants = {
+        hidden: { 
+            opacity: 0, 
+            y: 50,
+            scale: 0.8
+        },
+        visible: { 
+            opacity: 1, 
+            y: 0,
+            scale: 1,
+            transition: {
+                duration: 0.6,
+                delay: animationDelay,
+                ease: "easeOut"
+            }
+        },
+        exit: {
+            opacity: 0,
+            y: -20,
+            scale: 0.9,
+            transition: {
+                duration: 0.3,
+                ease: "easeIn"
+            }
+        }
+    };
+
     return (
         <motion.div
-            variants={fadeIn("up", "spring", index * 0.5, 0.75)}
-            animate={isAnimated ? { y: 0, opacity: 1 } : {}}
+            key={`project-${index}-${name}`}
+            variants={cardVariants}
+            initial="hidden"
+            animate="visible"
+            exit="exit"
+            layout
         >
             <Tilt
                 options={{
@@ -66,6 +97,7 @@ const Works = () => {
   const [activeFilter, setActiveFilter] = useState('Tous');
   const [isAnimated, setIsAnimated] = useState(false);
   const [filterWork, setFilterWork] = useState([]);
+  const [isFiltering, setIsFiltering] = useState(false);
 
   useEffect(() => {
     setFilterWork(projects);
@@ -73,42 +105,48 @@ const Works = () => {
   
 
   const handleFilterWorks = (title) => {
-    setActiveFilter(title);
-    setIsAnimated(true);
-
-    switch (title) {
-      case "Tous":
-        setFilterWork(projects);
-        break;
-      
-      case "UI/UX":
-        setFilterWork(projects.filter((work) => work.tags.some(tag => tag.name === "tailwindcss") || work.tags.some(tag => tag.name === "materialui")))
-        break;
-      
-      case "Fullstack App":
-        setFilterWork(projects.filter((work) => work.tags.some(tag => tag.name === "nodejs") || work.tags.some(tag => tag.name === "restapi") || work.tags.some(tag => tag.name === "mongodb") || work.tags.some(tag => tag.name === "springboot")))
-        break;
-      
-      case "React":
-        setFilterWork(projects.filter((work) => work.tags.some(tag => tag.name === "react")))
-        break;
-      
-      case "Next.js":
-        setFilterWork(projects.filter((work) => work.tags.some(tag => tag.name === "next" || tag.name === "nextjs")))
-        break;
-      
-      case "Angular":
-        setFilterWork(projects.filter((work) => work.tags.some(tag =>tag.name === "angular")))
-        break;
-
-      case "AI":
-        setFilterWork(projects.filter((work) => work.tags.some(tag =>tag.name === "ai")))
-        break;
+    if (activeFilter === title) return; // Éviter de refiltrer si c'est déjà le filtre actif
     
-      default:
-        setFilterWork(projects);
-        break;
-    }
+    setActiveFilter(title);
+    setIsFiltering(true);
+    
+    // Petit délai pour permettre l'animation de sortie
+    setTimeout(() => {
+      switch (title) {
+        case "Tous":
+          setFilterWork(projects);
+          break;
+        
+        case "UI/UX":
+          setFilterWork(projects.filter((work) => work.tags.some(tag => tag.name === "tailwindcss") || work.tags.some(tag => tag.name === "materialui")))
+          break;
+        
+        case "Fullstack App":
+          setFilterWork(projects.filter((work) => work.tags.some(tag => tag.name === "nodejs") || work.tags.some(tag => tag.name === "restapi") || work.tags.some(tag => tag.name === "mongodb") || work.tags.some(tag => tag.name === "springboot") || work.tags.some(tag => tag.name === "laravel")))
+          break;
+        
+        case "React":
+          setFilterWork(projects.filter((work) => work.tags.some(tag => tag.name === "react")))
+          break;
+        
+        case "Next.js":
+          setFilterWork(projects.filter((work) => work.tags.some(tag => tag.name === "next" || tag.name === "nextjs")))
+          break;
+        
+        case "Angular":
+          setFilterWork(projects.filter((work) => work.tags.some(tag =>tag.name === "angular")))
+          break;
+
+        case "AI":
+          setFilterWork(projects.filter((work) => work.tags.some(tag =>tag.name === "ai")))
+          break;
+      
+        default:
+          setFilterWork(projects);
+          break;
+      }
+      setIsFiltering(false);
+    }, 200);
   }
 
   return (
@@ -148,15 +186,18 @@ const Works = () => {
         </motion.div>
 
         <div className="mt-20 flex flex-wrap gap-7">
-          {filterWork.map((project, index) => (
-              <ProjectCard
-                  key={`project-${index}`}
-                  isAnimated={isAnimated}
-                  index={index}
-                  {...project}
-              />
-            ))
-          }
+          <AnimatePresence mode="wait">
+            {!isFiltering && filterWork.map((project, index) => (
+                <ProjectCard
+                    key={`project-${activeFilter}-${project.name || index}`}
+                    isAnimated={isAnimated}
+                    index={index}
+                    animationDelay={index * 0.1} // Délai progressif pour chaque carte
+                    {...project}
+                />
+              ))
+            }
+          </AnimatePresence>
         </div>
 
         <motion.div className="w-full flex mt-20 justify-center items-center md:gap-2 gap-4 md:flex-row flex-col" variants={fadeIn("up", "spring", 0.5, 0.75)}>
@@ -165,7 +206,7 @@ const Works = () => {
             <p className="text-base text-slate-900 font-semibold">Et bien d{`'`}autres</p>
           </div>
           <div className="flex justify-center items-center rounded-lg p-[2px] cursor-pointer transition-all max-w-[220px]" style={{ background: "linear-gradient(132deg, rgb(2, 106, 122) 0.00%, rgb(242, 78, 163) 100.00%)" }}>
-            <div className="flex justify-center items-center rounded-lg gap-2 py-2 px-4 bg-gray-800 w-full transition-all hover:bg-gradient-to-l from-fuchsia-500 to-cyan-500 hover:bg-transparent" onClick={() => window.location.href = 'CV Frank Patrick Namegni.pdf'}>
+            <div className="flex justify-center items-center rounded-lg gap-2 py-2 px-4 bg-gray-800 w-full transition-all hover:bg-gradient-to-l from-fuchsia-500 to-cyan-500 hover:bg-transparent" onClick={() => window.location.href = 'CV Patrick NAMEGNI.pdf'}>
               <svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" viewBox="0 0 24 24"><path fill="#ffffff" d="m12 16l-5-5l1.4-1.45l2.6 2.6V4h2v8.15l2.6-2.6L17 11zm-6 4q-.825 0-1.412-.587T4 18v-3h2v3h12v-3h2v3q0 .825-.587 1.413T18 20z"/></svg>
               <p className="text-sm text-white font-semibold">Téléchargez mon CV</p>
             </div>
