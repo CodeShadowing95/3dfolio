@@ -14,13 +14,18 @@ const Hero = () => {
 
             <div className="">
                 <h1 className={`${styles.heroHeadText} text-white`}><span className="text-[#915eff]">Patrick NAMEGNI</span></h1>
-                <p className={`${styles.heroSubText} mt-2 text-white-100 max-w-lg`}>
+                <div className={`${styles.heroSubText} text-white-100 max-w-xl`}>
+                    <p>Développeur web - Portfolio</p>
+                    <p className="font-light text-lg mt-3">J{`'`}espère que vous profiterez la visite.</p>
+                    <p className="font-light text-lg">(N{`'`}oubliez pas de jouer avec mon poste de travail 😉👇)</p>
+                </div>
+                {/* <p className={`${styles.heroSubText} mt-2 text-white-100 max-w-lg`}>
                     Développeur web - Portfolio<br className="sm:block hidden" />
                     <span className="text-lg">
                         J{`'`}espère que vous profiterez la visite.<br />
                         (N{`'`}oubliez pas de jouer avec mon poste de travail 😉👇)
                     </span>
-                </p>
+                </p> */}
                 {/* <p className="text-[16px] text-white-100 leading-8 mt-3 max-md:hidden visible">
                     Vous trouverez un certain nombre de projets qui illustrent mes compétences en matière<br />
                     de développement front-end et back-end. Chaque projet représente un défi unique et<br />

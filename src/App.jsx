@@ -12,7 +12,6 @@ import {
   StarsCanvas,
   FeedbackPrompt,
 } from "./components";
-import ResumeUpload from "./components/ResumeUpload";
 
 const App = () => {
   return (

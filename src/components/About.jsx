@@ -5,7 +5,6 @@ import { styles } from '../styles';
 import { services } from '../constants';
 import { fadeIn, textVariant } from '../utils/motion';
 import { SectionWrapper } from "../hoc";
-import ResumeUpload from "./ResumeUpload";
 
 const ServiceCard = ({ index, title, icon }) => {
     return (
@@ -36,15 +35,20 @@ const About = () => {
 
         <motion.p
             variants={fadeIn("", "", 0.1, 1)}
-            className="mt-4 text-secondary text-[17px] max-w-3xl leading-[30px]"
+            className="mt-4 text-secondary text-[17px] max-w-4xl leading-8"
         >
-            Je suis un junior en développement d{`'`}applications avec de l{`'`}expérience en 
-            Python, Java, PHP, Typescript, JavaScript et une expertise dans des frameworks tels 
-            que Node.js, React, Next.js et frameworks CSS. Je suis actuellement étudiant et poursuis 
-            une formation en Conception d{`'`}Applications & Analyse de Données. Durant mes 
-            différents stages, j{`'`}ai acquis des connaissances et développé des compétences sur le domaine. 
-            J{`'`}ai notamment collaboré avec des équipes pour créer des solutions efficaces et 
-            conviviales qui résolvent des problèmes concrets du monds réel.<br />
+            Je suis développeur web fullstack, avec de l’expérience sur plusieurs technologies :
+            <span className="bg-gradient-to-r from-orange-300 via-amber-200 to-yellow-200 bg-clip-text text-transparent font-bold"> JavaScript, TypeScript, PHP, Java, ainsi que des frameworks modernes comme React, Next.js, Node.js et des outils d’intégration API REST, solutions vidéo (Twilio), MongoDB, Laravel, Docker et bien d'autres.</span><br /><br/>
+            Au fil de stages, alternances et missions freelances, j’ai eu l’occasion de :
+            <ul className="list-disc list-inside text-secondary text-[17px] max-w-4xl leading-[30px] space-y-2">
+                <li>Concevoir et déployer des plateformes web (CRM, e-santé, e-commerce).</li>
+                <li>Intégrer des APIs et services externes pour enrichir des fonctionnalités dans mes projets personnels ou professionnels.</li>
+                <li>Améliorer l’ergonomie et la performance d’applications pour offrir une expérience utilisateur fluide.</li>
+                <li>Automatiser les tâches répétitives et optimiser les flux de travail.</li>
+            </ul><br/>
+            Je cherche à intégrer une <span className="bg-gradient-to-r from-green-300 via-lime-200 to-emerald-200 bg-clip-text text-transparent font-bold">alternance d’une durée de 1 an, à partir d’octobre à décembre 2025, avec un rythme 2 semaines entreprise / 1 semaine école</span>,
+            dans le cadre de mon Master 2 Expert Développement Web.<br/>
+            Mon objectif : <span className="bg-gradient-to-r from-blue-300 via-cyan-200 to-sky-200 bg-clip-text text-transparent font-bold">mettre mes compétences à profit dans un environnement structuré et contribuer activement à vos projets.</span><br/><br/>
             Travaillons ensemble afin donner vie à vos idées 🤝.
         </motion.p>
 

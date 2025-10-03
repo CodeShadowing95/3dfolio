@@ -8,14 +8,20 @@ import { experiences } from '../constants';
 import { SectionWrapper } from '../hoc';
 import { textVariant } from "../utils/motion";
 
-// eslint-disable-next-line react-refresh/only-export-components
-const ExperienceCard = ({ experience }) => (
-    <VerticalTimelineElement
-        contentStyle={{ background: "#1d1836", color: "#fff" }}
-        contentArrowStyle={{ borderRight: "7px solid #232631" }}
-        date={experience.date}
-        iconStyle={{ background: experience.iconBg }}
-        icon={
+// eslint-disable-next-line react-refresh/only-export-components, react/prop-types
+const ExperienceCard = ({ experience }) => {
+    // Basic runtime validation (optional but helpful)
+    if (!experience || typeof experience !== 'object') {
+        console.warn('ExperienceCard expects a valid experience object');
+        return null;
+    }
+    return (
+        <VerticalTimelineElement
+            contentStyle={{ background: "#1d1836", color: "#fff" }}
+            contentArrowStyle={{ borderRight: "7px solid #232631" }}
+            date={experience.date}
+            iconStyle={{ background: experience.iconBg }}
+            icon={
             <div className="flex justify-center items-center w-full h-full">
                 <img
                     src={experience.icon}
@@ -41,16 +47,23 @@ const ExperienceCard = ({ experience }) => (
             ))}
         </ul>
     </VerticalTimelineElement>
-)
+)}
 
 // eslint-disable-next-line react-refresh/only-export-components
 const Experience = () => {
   return (
     <>
-        <motion.div variants={textVariant()}>
+        <motion.div
+            variants={textVariant()}
+            initial="hidden"
+            whileInView="show"
+            viewport={{ once: true, amount: 0.15 }}
+            className="relative z-10"
+        >
             <p className={styles.sectionSubText}>Ce que j'ai fait jusque là</p>
             <h2 className={styles.sectionHeadText}>Expériences pro.</h2>
         </motion.div>
+
         <div className="mt-20 flex flex-col">
             <VerticalTimeline>
                 {experiences.map((experience, index) => (
