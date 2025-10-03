@@ -7,7 +7,9 @@ const FeedbackPrompt = () => {
 
   useEffect(() => {
     const handleScroll = () => {
-      setShowScrollTop(window.scrollY > 100);
+      const scrollable = (document.documentElement.scrollHeight - window.innerHeight);
+      const threshold = scrollable * 0.15; // quart de la page
+      setShowScrollTop(window.scrollY > threshold);
     };
 
     window.addEventListener('scroll', handleScroll);
