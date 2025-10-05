@@ -51,6 +51,13 @@ import bikemapper from "./bikemapper.png";
 import curriqulumai from "./curriqulum-ai.png";
 import kamercare from "./kamercare.png"
 
+import linkedin from "./socials/linkedin.svg"
+import twitter from "./socials/twitter.svg"
+import youtube from "./socials/youtube.svg"
+import dribbble from "./socials/dribbble.svg"
+
+
+
 export {
   logo,
   backend,
@@ -101,4 +108,8 @@ export {
   bikemapper,
   curriqulumai,
   kamercare,
+  linkedin,
+  twitter,
+  youtube,
+  dribbble,
 };

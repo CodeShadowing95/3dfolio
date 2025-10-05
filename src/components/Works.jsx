@@ -1,5 +1,6 @@
 import { Tilt } from "react-tilt";
-import { motion, AnimatePresence } from "framer-motion";
+import { motion } from "framer-motion";
+import { useNavigate } from "react-router-dom";
 
 import { styles } from "../styles";
 import { github, website, } from "../assets";
@@ -8,7 +9,13 @@ import { projects, projectCategories } from "../constants";
 import { fadeIn, textVariant } from "../utils/motion";
 import { useEffect, useState } from "react";
 
-const ProjectCard = ({ index, name, description, tags, image, source_code_link, app_link, isAnimated, animationDelay = 0 }) => {
+const ProjectCard = ({ index, id, name, description, tags, image, source_code_link, app_link, isAnimated, animationDelay = 0 }) => {
+  const navigate = useNavigate();
+
+  const handleClick = () => {
+    navigate(`/project/${id}`);
+  };
+
   const cardVariants = {
     hidden: {
       opacity: 0,
@@ -44,6 +51,8 @@ const ProjectCard = ({ index, name, description, tags, image, source_code_link, 
       animate="visible"
       exit="exit"
       layout
+      className="cursor-pointer"
+      onClick={handleClick}
     >
       <Tilt
         options={{
@@ -63,13 +72,19 @@ const ProjectCard = ({ index, name, description, tags, image, source_code_link, 
           <div className="absolute inset-0 flex justify-end m-3 card-img_hover gap-2">
             <div
               className="black-gradient w-10 h-10 rounded-full flex justify-center items-center cursor-pointer"
-              onClick={() => window.open(source_code_link, "_blank")}
+              onClick={(event) => {
+                event.stopPropagation();
+                window.open(source_code_link, "_blank");
+              }}
             >
               <img src={github} alt="github" className="w-1/2 h-1/2 object-contain" />
             </div>
             <div
               className="black-gradient w-10 h-10 rounded-full flex justify-center items-center cursor-pointer"
-              onClick={() => window.open(app_link, "_blank")}
+              onClick={(event) => {
+                event.stopPropagation();
+                window.open(app_link, "_blank");
+              }}
             >
               <img src={website} alt="website" className="w-1/2 h-1/2 object-contain" />
             </div>
@@ -170,18 +185,28 @@ const Works = () => {
       </div>
 
       <motion.div variants={textVariant()}>
-        <div className="w-full flex flex-wrap justify-center items-center mt-16 mb-8">
-          {projectCategories.map((item) => (
-            <div
-              key={item.id}
-              onClick={() => handleFilterWorks(item.title)}
-              className={`px-4 py-2 text-sm font-semibold rounded-lg cursor-pointer transition-all m-2 min-[2000px]:py-4 min-[2000px]:px-8 min-[2000px]:rounded-xl
-                  ${activeFilter === item.title ? "bg-slate-100 text-black hover:bg-white hover:shadow-lg hover:transition-shadow hover:shadow-slate-100" : "bg-slate-900 text-white hover:bg-slate-700"}
-                `}
-            >
-              {item.title}
-            </div>
-          ))}
+        <div className="w-full flex justify-center mt-16 mb-8">
+          <div className="flex flex-wrap justify-center items-center gap-2 p-2 rounded-2xl border border-white/10 bg-white/5 backdrop-blur-xl shadow-sm">
+            {projectCategories.map((item) => {
+              const isActive = activeFilter === item.title;
+              return (
+                <motion.button
+                  key={item.id}
+                  onClick={() => handleFilterWorks(item.title)}
+                  whileHover={{ scale: 1.05 }}
+                  whileTap={{ scale: 0.97 }}
+                  aria-pressed={isActive}
+                  className={`relative px-4 py-2 text-sm font-medium rounded-full cursor-pointer transition-all m-1 min-[2000px]:py-4 min-[2000px]:px-8 min-[2000px]:rounded-xl
+                    ${isActive
+                      ? "text-white bg-gradient-to-br from-white/10 via-white/5 to-transparent border border-white/30 shadow-lg"
+                      : "text-white/80 bg-black/40 hover:bg-black/50 border border-white/10 hover:border-white/20 hover:text-white shadow-sm"}
+                  `}
+                >
+                  {item.title}
+                </motion.button>
+              );
+            })}
+          </div>
         </div>
       </motion.div>
 

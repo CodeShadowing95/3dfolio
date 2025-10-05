@@ -151,7 +151,7 @@ const FeedbackPrompt = () => {
               </svg>
             ) : (
               <img 
-                src="https://raw.githubusercontent.com/Tarikul-Islam-Anik/Animated-Fluent-Emojis/master/Emojis/Smilies/Cowboy%20Hat%20Face.png" 
+                src="https://raw.githubusercontent.com/Tarikul-Islam-Anik/Animated-Fluent-Emojis/master/Emojis/Objects/E-Mail.png" 
                 alt="Feedback" 
                 className="w-7 h-7 drop-shadow-sm" 
               />
