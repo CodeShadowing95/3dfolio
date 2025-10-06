@@ -151,7 +151,7 @@ const FeedbackPrompt = () => {
               </svg>
             ) : (
               <img 
-                src="/src/assets/messages-icon.png" 
+                src="../assets/messages-icon.png"
                 alt="Feedback"
                 className="w-8 h-8 drop-shadow-sm" 
               />
