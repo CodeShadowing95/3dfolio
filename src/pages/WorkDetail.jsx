@@ -1,12 +1,20 @@
 
-import { useParams, useNavigate } from "react-router-dom";
+import { useParams, useNavigate, Link } from "react-router-dom";
 import { useState } from "react";
-import { motion } from "framer-motion";
+import { motion, useScroll, useTransform, useReducedMotion } from "framer-motion";
 import { projects, socials } from "../constants";
 
 const WorkDetail = () => {
   const navigate = useNavigate();
   const { id } = useParams();
+
+  // Effets de scroll (parallaxe et progression)
+  const prefersReduced = useReducedMotion();
+  const { scrollYProgress } = useScroll();
+  const yBg = useTransform(scrollYProgress, [0, 1], [0, -80]);
+  const overlayOpacity = useTransform(scrollYProgress, [0, 1], [0.85, 0.95]);
+  const [copied, setCopied] = useState(false);
+
 
   // Sélecteur de langue (UI uniquement)
   const [lang, setLang] = useState("FR");
@@ -39,6 +47,22 @@ const WorkDetail = () => {
     return simpleIconSlugs[key] || key.replace(/\s+/g, "");
   };
 
+  const handleShare = async () => {
+    try {
+      if (navigator.share) {
+        await navigator.share({ title: project.name, url: window.location.href });
+      } else {
+        await navigator.clipboard.writeText(window.location.href);
+        setCopied(true);
+        setTimeout(() => setCopied(false), 1500);
+      }
+    } catch (e) {
+      await navigator.clipboard.writeText(window.location.href);
+      setCopied(true);
+      setTimeout(() => setCopied(false), 1500);
+    }
+  };
+
   // Index du projet courant et navigation circulaire
   const currentIndex = projects.findIndex((p) => p.id === id);
   const handlePrev = () => {
@@ -60,68 +84,42 @@ const WorkDetail = () => {
     show: { opacity: 1, x: 0, transition: { duration: 0.45 } },
   };
 
+  const scrollToId = (sectionId) => {
+    const el = document.getElementById(sectionId);
+    if (el) el.scrollIntoView({ behavior: "smooth", block: "start" });
+  };
+
   return (
     <div className="bg-primary min-h-screen relative">
-      <img src={project.image} alt={project.title} className="absolute w-full h-screen object-cover z-0" />
+      <motion.img
+        src={project.image}
+        alt={project.title}
+        className="absolute w-full h-screen object-cover z-0"
+        style={{ y: prefersReduced ? 0 : yBg }}
+      />
       {/* Overlay dégradé transparent sombre */}
-      <div className="absolute inset-0 bg-gradient-to-b from-primary/80 via-primary/90 to-primary pointer-events-none z-10" />
+      <motion.div
+        className="absolute inset-0 bg-gradient-to-b from-primary/80 via-primary/90 to-primary pointer-events-none z-10"
+        style={{ opacity: overlayOpacity }}
+      />
 
-      {/* Navbar stylée */}
-      {/* <nav className="w-full px-4 sm:px-6 lg:px-10 py-3 sticky top-0 z-50 bg-white/5 backdrop-blur-xl border-b border-white/10 shadow-sm">
-        <div className="max-w-7xl mx-auto flex items-center justify-between gap-4">
-          <div className="flex items-center gap-3">
-            <img src={logo} alt="Logo" className="w-9 h-9 rounded-lg shadow-sm" />
-          </div>
-
-          <div className="flex items-center gap-2 sm:gap-3">
-            <div className="relative">
-              <input
-                type="text"
-                placeholder="Rechercher…"
-                className="w-36 sm:w-48 lg:w-64 pl-9 pr-3 py-2 rounded-full bg-tertiary text-white/90 placeholder-white/50 border border-white/10 focus:outline-none focus:border-white/30 transition"
-              />
-              <svg className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-white/70" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-                <circle cx="11" cy="11" r="8" />
-                <line x1="21" y1="21" x2="16.65" y2="16.65" />
-              </svg>
-            </div>
-
-            <div className="flex items-center gap-2">
-              <a href="https://github.com/CodeShadowing95" target="_blank" rel="noreferrer" className="p-2 rounded-full bg-tertiary border border-white/10 hover:border-white/30 hover:bg-tertiary/50 text-white transition">
-                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" className="w-5 h-5" fill="currentColor"><path d="M12 .5A11.5 11.5 0 0 0 .5 12c0 5.08 3.29 9.39 7.86 10.91.58.11.79-.25.79-.55v-2.14c-3.2.7-3.88-1.55-3.88-1.55-.53-1.36-1.29-1.72-1.29-1.72-1.06-.72.08-.71.08-.71 1.17.08 1.79 1.2 1.79 1.2 1.04 1.78 2.8 1.26 3.48 1 .1-.77.4-1.27.72-1.56-2.56-.28-5.26-1.28-5.26-5.68 0-1.25.43-2.26 1.14-3.06-.11-.28-.5-1.43.11-2.98 0 0 .95-.31 3.12 1.17.9-.25 1.87-.38 2.83-.38.96 0 1.93.13 2.83.38 2.17-1.47 3.12-1.17 3.12-1.17.62 1.55.22 2.71.11 2.98.71.8 1.14 1.81 1.14 3.06 0 4.41-2.7 5.39-5.26 5.67.41.35.77 1.04.77 2.11v3.13c0 .3.21.66.79.55A11.51 11.51 0 0 0 23.5 12 11.5 11.5 0 0 0 12 .5Z" /></svg>
-              </a>
-              <a href="https://www.youtube.com/" target="_blank" rel="noreferrer" className="p-2 rounded-full bg-tertiary border border-white/10 hover:border-white/30 hover:bg-tertiary/50 text-white transition">
-                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" className="w-5 h-5" fill="currentColor"><path d="M23.5 6.2a4.6 4.6 0 0 0-3.24-3.25C18.52 2.5 12 2.5 12 2.5s-6.52 0-8.26.45A4.6 4.6 0 0 0 .5 6.2C.05 7.94.05 12 .05 12s0 4.06.45 5.8a4.6 4.6 0 0 0 3.24 3.25c1.74.45 8.26.45 8.26.45s6.52 0 8.26-.45a4.6 4.6 0 0 0 3.24-3.25c.45-1.74.45-5.8.45-5.8s0-4.06-.45-5.8ZM9.75 15.5V8.5l6.5 3.5-6.5 3.5Z" /></svg>
-              </a>
-              <a href="https://www.behance.net/" target="_blank" rel="noreferrer" className="p-2 rounded-full bg-tertiary border border-white/10 hover:border-white/30 hover:bg-tertiary/50 text-white transition">
-                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" className="w-5 h-5" fill="currentColor"><path d="M14.5 8h5v-1.5h-5V8Zm7 3.25c-.34-1.8-1.72-3.05-3.69-3.05-2.22 0-3.93 1.61-3.93 4.02 0 2.36 1.67 4.02 4.06 4.02 1.96 0 3.35-1.09 3.74-2.79h-2.06c-.21.73-.83 1.2-1.68 1.2-1.1 0-1.84-.73-1.91-1.8h5.47c.02-.2.02-.42 0-.6ZM18.31 10c.96 0 1.64.55 1.79 1.43h-3.62c.16-.88.86-1.43 1.83-1.43Zm-9.03-2.3c-.55-.5-1.33-.7-2.39-.7H1.5V18h5.39c1.02 0 1.91-.3 2.55-.86.64-.57.98-1.34.98-2.28 0-1.05-.52-1.86-1.39-2.32.68-.43 1.07-1.16 1.07-2.06 0-.83-.27-1.53-.82-2ZM3.27 9.25H6.7c.49 0 .86.1 1.1.32.23.22.35.55.35.97 0 .45-.14.78-.41 1.01-.27.23-.66.35-1.16.35H3.27v-2.65ZM6.94 16.5H3.27v-3.2H6.9c.56 0 .99.12 1.27.37.28.25.43.63.43 1.15 0 .56-.16.96-.46 1.2-.31.26-.77.38-1.2.38Z" /></svg>
-              </a>
-              <a href="https://www.facebook.com/" target="_blank" rel="noreferrer" className="p-2 rounded-full bg-tertiary border border-white/10 hover:border-white/30 hover:bg-tertiary/50 text-white transition">
-                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" className="w-5 h-5" fill="currentColor"><path d="M22 12a10 10 0 1 0-11.5 9.95V14.9H7.9V12h2.6V9.9c0-2.57 1.52-3.99 3.84-3.99 1.11 0 2.27.2 2.27.2v2.5h-1.28c-1.26 0-1.65.78-1.65 1.58V12h2.81l-.45 2.9h-2.36v7.05A10 10 0 0 0 22 12Z" /></svg>
-              </a>
-            </div>
-
-            <a
-              href="/CV Patrick NAMEGNI.pdf"
-              download
-              className="px-3 py-2 rounded-full text-sm font-semibold bg-gradient-to-r from-fuchsia-500 to-cyan-500 text-white shadow-md hover:shadow-lg border border-white/20"
-            >
-              Télécharger mon CV
-            </a>
-          </div>
-        </div>
-      </nav> */}
+      {/* Barre de progression de lecture */}
+      <motion.div
+        className="fixed top-0 left-0 h-[3px] w-full z-30 origin-left"
+        style={{ scaleX: scrollYProgress }}
+      >
+        <div className="h-full w-full bg-gradient-to-r from-fuchsia-500 via-violet-500 to-cyan-500" />
+      </motion.div>
 
       {/* Contenu de la page */}
       <div className="relative z-20 max-w-7xl mx-auto px-4 sm:px-6 lg:px-10 py-8 text-white/90">
         {/* Bouton retour */}
         <div className="w-full flex justify-between items-center gap-4 mb-8">
-          <button
-            type="button"
+          <Link
+            to="/#projets"
             title="Retour aux projets"
             aria-label="Retour"
             className="group inline-flex items-center gap-3 pl-2 pr-4 py-2 rounded-full bg-white/5 backdrop-blur-xl border border-white/15 text-white shadow-lg shadow-black/30 hover:bg-white/10 hover:border-white/30 transition-all duration-300 focus:outline-none focus-visible:ring-2 focus-visible:ring-white/60 focus-visible:ring-offset-2 focus-visible:ring-offset-primary"
-            onClick={() => navigate("/#projets")}
           >
             <span className="flex items-center justify-center w-8 h-8 rounded-full bg-gradient-to-br from-fuchsia-500/70 to-cyan-500/70 ring-1 ring-white/20 shadow-md transition-transform duration-300 group-hover:-translate-x-0.5">
               <svg
@@ -139,7 +137,7 @@ const WorkDetail = () => {
             <span className="text-white/90 font-semibold text-sm tracking-wide transition-colors duration-300 group-hover:text-white">
               Accueil
             </span>
-          </button>
+          </Link>
 
           <div className="inline-flex items-center gap-2">
             <button
@@ -214,27 +212,68 @@ const WorkDetail = () => {
               </div>
             </div>
 
-            {/* Environnement technique */}
-            <div className="flex items-center gap-3 px-4 py-2 rounded-xl bg-white/5 text-white border border-white/10">
-              <svg xmlns="http://www.w3.org/2000/svg" className="w-5 h-5 text-[#915eff]" viewBox="0 0 24 24"><path fill="currentColor" d="M17 4v16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2m-4-2H4c-1.1 0-2 .9-2 2v16c0 1.1.9 2 2 2h9c1.1 0 2-.9 2-2V4c0-1.1-.9-2-2-2m0 18H4V4h9zm8-14v12c.83 0 1.5-.67 1.5-1.5v-9c0-.83-.67-1.5-1.5-1.5" /></svg>
-              <span className="text-sm font-medium">Environnement technique</span>
-            </div>
-
-            {/* Tech badges */}
-            <div className="flex justify-center md:justify-start flex-wrap gap-2 mt-2 text-xs">
-              {['React', 'Next.js', 'Tailwind CSS'].map((t) => (
-                <span key={t} className="px-3 py-1 rounded-full bg-black/40 text-white border border-white/10">
-                  {t}
-                </span>
-              ))}
-            </div>
-
             {/* Infos */}
             <div className="flex flex-col space-y-2 border border-white/10 rounded-xl p-4 bg-white/5">
-              <p className="text-white/90 text-sm">Raison: Test technique</p>
+              <p className="text-white/90 text-sm">Raison: {project.reason}</p>
               <p className="text-white/90 text-sm">Statut: {project.status}</p>
-              <p className="text-white/90 text-sm">Format: Application web, APIs, Minimum Viable Product (MVP)</p>
+              <p className="text-white/90 text-sm">Format: Application web</p>
             </div>
+
+            {/* Actions rapides */}
+            <div className="grid grid-cols-2 gap-3">
+              <a
+                href="/CV Patrick NAMEGNI.pdf"
+                target="_blank"
+                rel="noreferrer"
+                className="inline-flex items-center justify-center gap-2 px-3 py-2 rounded-xl bg-white/10 text-white text-sm font-medium shadow border border-white/20 hover:bg-white/15 transition"
+              >
+                <svg xmlns="http://www.w3.org/2000/svg" className="w-4 h-4" viewBox="0 0 24 24"><path fill="currentColor" d="M5 20h14v-2H5m14-9h-4V3H9v6H5l7 7z" /></svg>
+                Télécharger le CV
+              </a>
+              <button
+                type="button"
+                onClick={handleShare}
+                className="inline-flex items-center justify-center gap-2 px-3 py-2 rounded-xl bg-black/40 text-white text-sm font-medium shadow border border-white/20 hover:bg-black/50 transition"
+              >
+                <svg xmlns="http://www.w3.org/2000/svg" className="w-4 h-4" viewBox="0 0 24 24"><path fill="currentColor" d="M17 22q-1.25 0-2.125-.875T14 19q0-.15.075-.7L7.05 14.2q-.4.375-.925.588T5 15q-1.25 0-2.125-.875T2 12t.875-2.125T5 9q.6 0 1.125.213t.925.587l7.025-4.1q-.05-.175-.062-.337T14 5q0-1.25.875-2.125T17 2t2.125.875T20 5t-.875 2.125T17 8q-.6 0-1.125-.213T14.95 7.2l-7.025 4.1q.05.175.063.338T8 12t-.012.363t-.063.337l7.025 4.1q.4-.375.925-.587T17 16q1.25 0 2.125.875T20 19t-.875 2.125T17 22"/></svg>
+                {copied ? "Copié !" : "Partager"}
+              </button>
+            </div>
+
+            {/* Fonctionnalités en bref */}
+            {project.details?.functionalities?.length > 0 && (
+              <div className="border border-white/10 rounded-xl p-4 bg-white/5">
+                <h4 className="text-white font-semibold text-sm mb-2">Fonctionnalités en bref</h4>
+                <ul className="space-y-1">
+                  {project.details.functionalities.slice(0, 3).map((fn, idx) => (
+                    <li key={`left-fn-${idx}`} className="flex items-start gap-2 text-xs text-white/80">
+                      <svg xmlns="http://www.w3.org/2000/svg" className="w-3.5 h-3.5 text-fuchsia-300 mt-0.5 shrink-0" viewBox="0 0 24 24"><path fill="currentColor" d="M10.09 15.59L7.5 13l-1.41 1.41l4 4l8-8L16.68 9z" /></svg>
+                      <span>{fn}</span>
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            )}
+
+            {/* Stack visuelle */}
+            {project.tags?.length > 0 && (
+              <div className="border border-white/10 rounded-xl p-3 bg-white/5">
+                <h4 className="text-white font-semibold text-sm mb-2">Stack visuelle</h4>
+                <div className="flex flex-wrap items-center gap-2">
+                  {project.tags.map((tag, idx) => (
+                    <span key={`left-tag-${idx}`} className="inline-flex items-center gap-2 px-2.5 py-1 rounded-full bg-black/40 border border-white/10 text-[11px] text-white/90">
+                      <img
+                        src={`https://cdn.simpleicons.org/${getSimpleIconSlug(tag.name)}`}
+                        alt={`${tag.name} logo`}
+                        className="w-3.5 h-3.5 opacity-90"
+                        loading="lazy"
+                      />
+                      {tag.name}
+                    </span>
+                  ))}
+                </div>
+              </div>
+            )}
           </motion.div>
 
           {/* Colonne droite (plus grande) */}
@@ -248,7 +287,7 @@ const WorkDetail = () => {
           >
 
             {/* En-tête du projet */}
-            <div className="space-y-3">
+            <div className="space-y-3" id="description">
               <div className="flex justify-between items-center gap-4">
                 <h2 className="text-4xl font-bold bg-gradient-to-r from-white via-white/90 to-white/70 bg-clip-text text-transparent">
                   {project.name}
@@ -328,7 +367,7 @@ const WorkDetail = () => {
 
             {/* Détails */}
             <motion.div className="grid md:grid-cols-2 gap-6" variants={fadeInUp} initial="hidden" animate="show">
-              <motion.div className="rounded-xl border border-white/10 bg-white/5 p-4 space-y-3" variants={fadeInUp} initial="hidden" animate="show" transition={{ delay: 0.05 }}>
+              <motion.div id="objectifs" className="rounded-xl border border-white/10 bg-white/5 p-4 space-y-3" variants={fadeInUp} initial="hidden" animate="show" transition={{ delay: 0.05 }}>
                 <h3 className="text-white font-semibold">Objectifs</h3>
                 <ul className="space-y-2 text-sm text-white/80">
                   {project.details.keyObjectives.map((objective, idx) => (
@@ -351,7 +390,7 @@ const WorkDetail = () => {
                   </li>
                 </ul>
               </motion.div>
-              <motion.div className="rounded-xl border border-white/10 bg-white/5 p-4 space-y-3" variants={fadeInUp} initial="hidden" animate="show" transition={{ delay: 0.15 }}>
+              <motion.div id="fonctionnalites" className="rounded-xl border border-white/10 bg-white/5 p-4 space-y-3" variants={fadeInUp} initial="hidden" animate="show" transition={{ delay: 0.15 }}>
                 <h3 className="text-white font-semibold">Fonctionnalités clés</h3>
                 <ul className="space-y-2 text-sm text-white/80">
                   {project.details.functionalities.map((functionality, idx) => (
@@ -374,10 +413,10 @@ const WorkDetail = () => {
                   </li>
                 </ul>
               </motion.div>
-            </motion.div>
+          </motion.div>
 
             {/* Bandeau d’appel avec réseaux sociaux */}
-            <div className="rounded-xl border border-white/10 bg-gradient-to-r from-fuchsia-500/10 to-cyan-500/10 p-4 flex sm:flex-row flex-col items-center sm:justify-between justify-center gap-4">
+            <div id="reseaux" className="rounded-xl border border-white/10 bg-gradient-to-r from-fuchsia-500/10 to-cyan-500/10 p-4 flex sm:flex-row flex-col items-center sm:justify-between justify-center gap-4">
               <div>
                 <p className="text-white/90 text-sm font-medium">Envie d’en savoir plus sur moi ?</p>
                 <p className="text-white/70 text-xs">Consultez mes réseaux.</p>
@@ -390,6 +429,105 @@ const WorkDetail = () => {
                   </a>
                 ))}
               </div>
+            </div>
+
+            {/* Sections de contenu enrichi */}
+            <div className="grid md:grid-cols-3 gap-6 mt-6">
+              {/* Contexte et défis */}
+              <div id="contexte" className="rounded-xl border border-white/10 bg-white/5 p-4 space-y-2">
+                <h3 className="text-white font-semibold">Contexte et défis</h3>
+                <p className="text-white/80 text-sm leading-relaxed">
+                  {project.description ? (
+                    <> {project.description} </>
+                  ) : (
+                    <>Ce projet répond à des besoins identifiés et vise à proposer une solution moderne, performante et maintenable. Voir la description complète ci-dessus.</>
+                  )}
+                </p>
+                <ul className="space-y-1 text-xs text-white/70">
+                  {project.details?.keyObjectives?.slice(0, 3).map((objective, idx) => (
+                    <li key={`cx-${idx}`} className="flex items-start gap-2">
+                      <svg xmlns="http://www.w3.org/2000/svg" className="w-3.5 h-3.5 text-cyan-300 mt-0.5 shrink-0" viewBox="0 0 24 24"><path fill="currentColor" d="M10.09 15.59L7.5 13l-1.41 1.41l4 4l8-8L16.68 9z" /></svg>
+                      <span>{objective}</span>
+                    </li>
+                  ))}
+                </ul>
+              </div>
+
+              {/* Approche et solutions techniques */}
+              <div id="approche" className="rounded-xl border border-white/10 bg-white/5 p-4 space-y-2">
+                <h3 className="text-white font-semibold">Approche et solutions techniques</h3>
+                <p className="text-white/80 text-sm leading-relaxed">
+                  Stack principale: {project.tags?.map(t => t.name).join(', ') || 'technologies modernes'}.
+                </p>
+                <ul className="space-y-1 text-xs text-white/70">
+                  {project.details?.functionalities?.slice(0, 3).map((fn, idx) => (
+                    <li key={`ap-${idx}`} className="flex items-start gap-2">
+                      <svg xmlns="http://www.w3.org/2000/svg" className="w-3.5 h-3.5 text-fuchsia-300 mt-0.5 shrink-0" viewBox="0 0 24 24"><path fill="currentColor" d="M10.09 15.59L7.5 13l-1.41 1.41l4 4l8-8L16.68 9z" /></svg>
+                      <span>{fn}</span>
+                    </li>
+                  ))}
+                </ul>
+              </div>
+
+              {/* Résultats et impact */}
+              <div id="impact" className="rounded-xl border border-white/10 bg-white/5 p-4 space-y-2">
+                <h3 className="text-white font-semibold">Résultats et impact</h3>
+                <p className="text-white/80 text-sm leading-relaxed">
+                  Statut: {project.status}. Principaux bénéfices: expérience fluide, design responsive, intégration API fiable et performance optimisée.
+                </p>
+                <ul className="space-y-1 text-xs text-white/70">
+                  <li className="flex items-start gap-2">
+                    <svg xmlns="http://www.w3.org/2000/svg" className="w-3.5 h-3.5 text-green-300 mt-0.5 shrink-0" viewBox="0 0 24 24"><path fill="currentColor" d="M10.09 15.59L7.5 13l-1.41 1.41l4 4l8-8L16.68 9z" /></svg>
+                    <span>UX améliorée et navigation claire</span>
+                  </li>
+                  <li className="flex items-start gap-2">
+                    <svg xmlns="http://www.w3.org/2000/svg" className="w-3.5 h-3.5 text-green-300 mt-0.5 shrink-0" viewBox="0 0 24 24"><path fill="currentColor" d="M10.09 15.59L7.5 13l-1.41 1.41l4 4l8-8L16.68 9z" /></svg>
+                    <span>Maintenabilité et scalabilité renforcées</span>
+                  </li>
+                  <li className="flex items-start gap-2">
+                    <svg xmlns="http://www.w3.org/2000/svg" className="w-3.5 h-3.5 text-green-300 mt-0.5 shrink-0" viewBox="0 0 24 24"><path fill="currentColor" d="M10.09 15.59L7.5 13l-1.41 1.41l4 4l8-8L16.68 9z" /></svg>
+                    <span>Performances front optimisées (chargement, animations)</span>
+                  </li>
+                </ul>
+              </div>
+            </div>
+
+            {/* Liens utiles */}
+            <div id="liens" className="rounded-xl border border-white/10 bg-white/5 p-4 space-y-3 mt-6">
+              <h3 className="text-white font-semibold">Liens utiles</h3>
+              <div className="flex flex-wrap items-center gap-3">
+                {project.app_link && (
+                  <a href={project.app_link} target="_blank" rel="noreferrer" className="inline-flex items-center gap-2 px-3 py-2 rounded-lg bg-gradient-to-r from-fuchsia-500 to-cyan-500 text-white text-xs font-semibold shadow">
+                    <svg xmlns="http://www.w3.org/2000/svg" className="w-4 h-4" viewBox="0 0 24 24"><path fill="currentColor" d="M12 2L2 7l10 5l10-5zm0 7l-10 5l10 5l10-5z" /></svg>
+                    Démo
+                  </a>
+                )}
+                {project.source_code_link && (
+                  <a href={project.source_code_link} target="_blank" rel="noreferrer" className="inline-flex items-center gap-2 px-3 py-2 rounded-lg bg-white/10 text-white text-xs font-semibold border border-white/20 hover:bg-white/15">
+                    <svg xmlns="http://www.w3.org/2000/svg" className="w-4 h-4" viewBox="0 0 24 24"><path fill="currentColor" d="M12 2a10 10 0 0 0-3.16 19.49c.5.1.68-.22.68-.48v-1.71c-2.78.61-3.37-1.34-3.37-1.34c-.46-1.16-1.12-1.47-1.12-1.47c-.92-.63.07-.62.07-.62c1 .07 1.52 1.03 1.52 1.03c.9 1.55 2.41 1.1 2.99.84c.09-.66.35-1.1.63-1.35c-2.22-.25-4.56-1.11-4.56-4.95c0-1.1.39-2 1.03-2.71c-.1-.25-.45-1.29.1-2.68c0 0 .83-.27 2.75 1.03c.79-.22 1.64-.33 2.49-.33c.85 0 1.69.11 2.49.33c1.92-1.3 2.75-1.03 2.75-1.03c.55 1.39.2 2.43.1 2.68c.64.71 1.03 1.61 1.03 2.71c0 3.85-2.34 4.7-4.57 4.95c.36.31.68.91.68 1.84v2.72c0 .26.18.58.69.48A10 10 0 0 0 12 2z"/></svg>
+                    Code source
+                  </a>
+                )}
+              </div>
+            </div>
+
+            {/* Mini-nav d’ancres */}
+            <div className="flex flex-wrap items-center gap-2 mt-4">
+              {[
+                { id: "description", label: "Description" },
+                { id: "objectifs", label: "Objectifs" },
+                { id: "fonctionnalites", label: "Fonctionnalités" },
+                { id: "reseaux", label: "Réseaux" },
+              ].map((s) => (
+                <button
+                  key={s.id}
+                  type="button"
+                  onClick={() => scrollToId(s.id)}
+                  className="px-3 py-1 rounded-full text-xs font-medium bg-white/5 border border-white/10 text-white/80 hover:text-white hover:bg-white/10 transition"
+                >
+                  {s.label}
+                </button>
+              ))}
             </div>
           </motion.div>
         </div>

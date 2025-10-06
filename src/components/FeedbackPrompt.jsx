@@ -114,9 +114,9 @@ const FeedbackPrompt = () => {
             whileHover={{ scale: 1.1 }}
             whileTap={{ scale: 0.95 }}
             onClick={scrollToTop}
-            className="relative w-12 h-12 bg-white/10 backdrop-blur-xl rounded-full shadow-2xl border border-white/20 flex items-center justify-center group overflow-hidden mb-3 before:absolute before:inset-0 before:bg-gradient-to-br before:from-white/20 before:via-transparent before:to-purple-500/20 before:rounded-full before:-z-10 after:absolute after:inset-0 after:bg-gradient-to-tl after:from-blue-500/10 after:via-transparent after:to-purple-600/10 after:rounded-full after:-z-10"
+            className="relative w-14 h-14 bg-white/10 backdrop-blur-xl rounded-full shadow-2xl border border-white/20 flex items-center justify-center group overflow-hidden mb-3 before:absolute before:inset-0 before:bg-gradient-to-br before:from-white/20 before:via-transparent before:to-purple-500/20 before:rounded-full before:-z-10 after:absolute after:inset-0 after:bg-gradient-to-tl after:from-blue-500/10 after:via-transparent after:to-purple-600/10 after:rounded-full after:-z-10"
           >
-            <svg className="w-5 h-5 text-white drop-shadow-sm" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <svg className="w-6 h-6 text-white drop-shadow-sm" fill="none" stroke="currentColor" viewBox="0 0 24 24">
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 10l7-7m0 0l7 7m-7-7v18" />
             </svg>
             
@@ -151,9 +151,9 @@ const FeedbackPrompt = () => {
               </svg>
             ) : (
               <img 
-                src="https://raw.githubusercontent.com/Tarikul-Islam-Anik/Animated-Fluent-Emojis/master/Emojis/Objects/E-Mail.png" 
-                alt="Feedback" 
-                className="w-7 h-7 drop-shadow-sm" 
+                src="/src/assets/messages-icon.png" 
+                alt="Feedback"
+                className="w-8 h-8 drop-shadow-sm" 
               />
             )}
           </motion.div>

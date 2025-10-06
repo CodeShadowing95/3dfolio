@@ -304,6 +304,7 @@ const projects = [
     id: "kamercare",
     name: "KamerCare",
     description: "Plateforme médicale moderne conçue pour le système de santé camerounais, facilitant la connexion entre patients et professionnels de santé.",
+    reason: "Projet personnel",
     tags: [
       {
         name: "laravel",
@@ -346,8 +347,8 @@ const projects = [
   {
     id: "bikemapper",
     name: "BikeMapper",
-    description:
-      "Application de géolocalisation de stations de vélos en libre-service en France et dans le monde. Vous pouvez découvrir la liste des services, les bornes de station, les détails de la station par ville.",
+    description:"Application de géolocalisation de stations de vélos en libre-service en France et dans le monde. Vous pouvez découvrir la liste des services, les bornes de station, les détails de la station par ville.",
+    reason: "Test technique",
     tags: [
       {
         name: "react",
@@ -391,6 +392,7 @@ const projects = [
     name: "Pokedex Hub",
     description:
       "Pour les amateurs de Pokemon, plongez dans une présentation époustouflante de chaque Pokémon, découvrez leurs caractéristiques uniques.",
+    reason: "Test technique",
     tags: [
       {
         name: "angular",
@@ -429,6 +431,7 @@ const projects = [
     name: "Curriqulum.ai",
     description:
       "Application web sophistiquée qui utilise l'IA pour garantir une compatibilité 100% ATS de tout CV. Notre solution maximise ainsi vos chances d'obtenir un entretien.",
+    reason: "Projet personnel",
     tags: [
       {
         name: "react-router v7",
@@ -467,6 +470,7 @@ const projects = [
     name: "Apple 2.0",
     description:
       "Site vitrine clone de Apple. Navigation fluide, animations GSAP, festin de visuels 3D des dernières sorties de iPhone. Simplement beau.",
+    reason: "Projet personnel",
     tags: [
       {
         name: "react",
@@ -501,6 +505,7 @@ const projects = [
     name: "Brainwave",
     description:
       "Landing Page avec des effets parallax élégants et des mises en page bento pour présenter la puissance de nos services alimentés par l'IA. (In process...)",
+    reason: "Projet personnel",
     tags: [
       {
         name: "react",
@@ -535,6 +540,7 @@ const projects = [
     name: "Fit Guide",
     description:
       "Explorez une collection complète d'exercices de gym classés par parties du corps et par équipement, garantissant une approche ciblée d'un programme d'entraînement.",
+    reason: "Projet personnel",
     tags: [
       {
         name: "react",
@@ -577,6 +583,7 @@ const projects = [
     name: "YouWatch",
     description:
       "Pseudo-clone de la plateforme YouTube permettant de voir n'importe quelle vidéo, rechercher des vidéos précises, consulter des vidéos par catégorie et par chaîne, etc...",
+    reason: "Projet personnel",
     tags: [
       {
         name: "react",
@@ -645,6 +652,7 @@ const projects = [
     name: "Memory Mingle",
     description:
       "Application de création et de partage de photos (un peu comme Pinterest🙂), listing de photos et créations par catégorie et par utilisateur, recherche de photos,...",
+    reason: "Projet personnel",
     tags: [
       {
         name: "react",
@@ -688,6 +696,7 @@ const projects = [
     name: "Anime Vault",
     description:
       "Application web de diffusion en streaming d'Animés japonais en HD, explorer tout type d'Animés par catégorie, par nom, par nom d'auteur, par titre, etc...",
+    reason: "Projet personnel",
     tags: [
       {
         name: "nextjs",
@@ -755,6 +764,7 @@ const projects = [
     name: "Car Hub",
     description:
       "Application de location de voitures de manière rapide. Naviguez par modèle, nom, type de carburant ou année de fabrication. La voiture idéale est à portée de main.",
+    reason: "Projet personnel",
     tags: [
       {
         name: "nextjs",
@@ -831,6 +841,7 @@ const projects = [
     name: "Server Management",
     description:
       "Ajoutez et supprimez des serveurs, activez et désactivez les serveurs inutilisés, gérez la connectivité avec vos différents serveurs,...",
+    reason: "Projet personnel",
     tags: [
       {
         name: "angular",
