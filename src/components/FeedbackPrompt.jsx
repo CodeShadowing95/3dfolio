@@ -150,8 +150,9 @@ const FeedbackPrompt = () => {
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
               </svg>
             ) : (
+              
               <img 
-                src="../assets/messages-icon.png"
+                src="messages-icon.png"
                 alt="Feedback"
                 className="w-8 h-8 drop-shadow-sm" 
               />
