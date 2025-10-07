@@ -189,8 +189,8 @@ const Works = () => {
           Les projets suivants présentent mes compétences et mon expérience à travers des
           exemples concrets de mon travail. Chaque projet est brièvement décrit avec des
           liens vers des dépôts de code et des démonstrations en direct. Il reflète ma
-          capacité à résoudre des problèmes complexes, à travailler avec différentes
-          technologies et à gérer efficacement les projets développés.
+          <span className="bg-gradient-to-r from-violet-300 via-purple-200 to-fuchsia-200 bg-clip-text text-transparent font-bold"> capacité à résoudre des problèmes complexes, à travailler avec différentes
+          technologies et à gérer efficacement les projets développés.</span>
         </motion.p>
       </div>
 
