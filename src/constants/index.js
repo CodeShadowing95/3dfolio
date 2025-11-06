@@ -35,6 +35,7 @@ import {
   bikemapper,
   curriqulumai,
   kamercare,
+  rehobothnettoyage,
   linkedin,
   twitter,
   youtube,
@@ -300,6 +301,43 @@ const projects = [
   //   source_code_link: "https://github.com/CodeShadowing95/GPT3-Webpage",
   //   app_link: "https://gpt3-ui-ux-app.netlify.app/"
   // },
+    
+  {
+    id: "rehobothnettoyage",
+    name: "REHOBOTH Nettoyage",
+    description:
+      "Site vitrine pour une entreprise de nettoyage professionnel basée à Lyon. Besoin de nettoyer vos bureaux, nettoyage de fin de chantier,... Contactez les et obtenez un devis gratuitement. Coûts adaptés à vos budgets et qualité de service garantis.",
+    reason: "Projet client",
+    tags: [
+      {
+        name: "react",
+        color: "blue-text-gradient",
+      },
+      {
+        name: "tailwindcss",
+        color: "pink-text-gradient",
+      },
+    ],
+    image: rehobothnettoyage,
+    source_code_link: "#",
+    app_link: "https://rehobothnettoyage.com/",
+    status: "Terminé",
+    details: {
+      fullDescription:
+        "REHOBOTH Nettoyage est un site vitrine entreprise proposant des services de nettoyage pour particuliers et professionnels, basée à Lyon. Si vous avez besoin de nettoyer votre domicile, vos bureaux, nettoyage de fin de chantier,... Contactez les et obtenez un devis gratuitement. Coûts adaptés à vos budgets et qualité de service garantis.",
+      keyObjectives: [
+        "Présenter clairement les services et la valeur ajoutée",
+        "Permettre une demande de contact/devis rapide",
+        "Renforcer la crédibilité avec un design professionnel",
+      ],
+      functionalities: [
+        "Pages services (ménage, vitres, bureaux, etc.)",
+        "Formulaire de contact et demande de devis",
+        "Mise en avant des engagements qualité et écologie",
+        "Responsive design (mobile, tablette, desktop)",
+      ],
+    },
+  },
   {
     id: "kamercare",
     name: "KamerCare",
@@ -408,7 +446,7 @@ const projects = [
       },
     ],
     image: pokedexhub,
-    source_code_link: "#",
+    source_code_link: "https://github.com/CodeShadowing95/pokepokedex.git",
     app_link: "https://pokecraftershub.netlify.app/",
     status: "Terminé",
     details: {
@@ -647,50 +685,50 @@ const projects = [
   //   source_code_link: "https://github.com/CodeShadowing95/Lyriks",
   //   app_link: "https://na-lyriks-app.netlify.app/"
   // },
-  {
-    id: "memorymingle",
-    name: "Memory Mingle",
-    description:
-      "Application de création et de partage de photos (un peu comme Pinterest🙂), listing de photos et créations par catégorie et par utilisateur, recherche de photos,...",
-    reason: "Projet personnel",
-    tags: [
-      {
-        name: "react",
-        color: "blue-text-gradient",
-      },
-      {
-        name: "nodejs",
-        color: "green-text-gradient",
-      },
-      {
-        name: "mongodb",
-        color: "violet-text-gradient",
-      },
-      {
-        name: "tailwindcss",
-        color: "yellow-text-gradient",
-      },
-    ],
-    image: lugia,
-    source_code_link: "https://github.com/CodeShadowing95/lugia",
-    app_link: "https://lugia-app.netlify.app/",
-    status: "En cours",
-    details: {
-      fullDescription: "Memory Mingle est une application sociale orientée autour des images. Les utilisateurs créent, classent et partagent des photos par catégorie, explorent les créations d’autres utilisateurs et recherchent des contenus inspirants. L’objectif est de proposer une expérience simple et moderne pour la curation visuelle.",
-      keyObjectives: [
-        "Faciliter la création et le partage de visuels",
-        "Offrir une exploration par catégories et auteurs",
-        "Proposer une recherche rapide et pertinente",
-      ],
-      functionalities: [
-        "Publication et édition de photos",
-        "Catégorisation et tags",
-        "Recherche par mots-clés et catégories",
-        "Profils utilisateurs et listes de créations",
-        "Aimer/enregistrer des contenus",
-      ],
-    }
-  },
+  // {
+  //   id: "memorymingle",
+  //   name: "Memory Mingle",
+  //   description:
+  //     "Application de création et de partage de photos (un peu comme Pinterest🙂), listing de photos et créations par catégorie et par utilisateur, recherche de photos,...",
+  //   reason: "Projet personnel",
+  //   tags: [
+  //     {
+  //       name: "react",
+  //       color: "blue-text-gradient",
+  //     },
+  //     {
+  //       name: "nodejs",
+  //       color: "green-text-gradient",
+  //     },
+  //     {
+  //       name: "mongodb",
+  //       color: "violet-text-gradient",
+  //     },
+  //     {
+  //       name: "tailwindcss",
+  //       color: "yellow-text-gradient",
+  //     },
+  //   ],
+  //   image: lugia,
+  //   source_code_link: "https://github.com/CodeShadowing95/lugia",
+  //   app_link: "https://lugia-app.netlify.app/",
+  //   status: "En cours",
+  //   details: {
+  //     fullDescription: "Memory Mingle est une application sociale orientée autour des images. Les utilisateurs créent, classent et partagent des photos par catégorie, explorent les créations d’autres utilisateurs et recherchent des contenus inspirants. L’objectif est de proposer une expérience simple et moderne pour la curation visuelle.",
+  //     keyObjectives: [
+  //       "Faciliter la création et le partage de visuels",
+  //       "Offrir une exploration par catégories et auteurs",
+  //       "Proposer une recherche rapide et pertinente",
+  //     ],
+  //     functionalities: [
+  //       "Publication et édition de photos",
+  //       "Catégorisation et tags",
+  //       "Recherche par mots-clés et catégories",
+  //       "Profils utilisateurs et listes de créations",
+  //       "Aimer/enregistrer des contenus",
+  //     ],
+  //   }
+  // },
   {
     id: "animevault",
     name: "Anime Vault",

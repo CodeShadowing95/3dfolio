@@ -50,6 +50,7 @@ import empmanagement from "./empmanagement.png";
 import bikemapper from "./bikemapper.png";
 import curriqulumai from "./curriqulum-ai.png";
 import kamercare from "./kamercare.png"
+import rehobothnettoyage from "./rehobothnettoyage.png"
 
 import linkedin from "./socials/linkedin.svg"
 import twitter from "./socials/twitter.svg"
@@ -108,6 +109,7 @@ export {
   bikemapper,
   curriqulumai,
   kamercare,
+  rehobothnettoyage,
   linkedin,
   twitter,
   youtube,

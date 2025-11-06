@@ -80,15 +80,17 @@ const ProjectCard = ({ index, id, name, description, tags, image, source_code_li
           </div>
 
           <div className="absolute inset-0 z-20 flex justify-end m-3 card-img_hover gap-2">
-            <div
-              className="black-gradient w-10 h-10 rounded-full flex justify-center items-center cursor-pointer"
-              onClick={(event) => {
-                event.stopPropagation();
-                window.open(source_code_link, "_blank");
-              }}
-            >
-              <img src={github} alt="github" className="w-1/2 h-1/2 object-contain" />
-            </div>
+            {source_code_link !== "#" && (
+              <div
+                className="black-gradient w-10 h-10 rounded-full flex justify-center items-center cursor-pointer"
+                onClick={(event) => {
+                  event.stopPropagation();
+                  window.open(source_code_link, "_blank");
+                }}
+              >
+                <img src={github} alt="github" className="w-1/2 h-1/2 object-contain" />
+              </div>
+            )}
             <div
               className="black-gradient w-10 h-10 rounded-full flex justify-center items-center cursor-pointer"
               onClick={(event) => {
