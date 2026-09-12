@@ -87,7 +87,7 @@ const Preloader = ({ onLoadComplete }) => {
             </div>
 
             <div className="text-center">
-              <h2 className="text-white text-base sm:text-lg md:text-xl font-semibold tracking-wide">Patrick NAMEGNI</h2>
+              <h2 className="text-white text-base sm:text-lg md:text-xl font-semibold tracking-wide">Patrick NAMEGNI OK</h2>
               <p className="text-white/75 text-xs sm:text-sm md:text-base">Portfolio – Chargement des assets 3D</p>
             </div>
           </div>
