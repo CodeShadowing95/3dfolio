@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import { useProgress } from "@react-three/drei";
+import PropTypes from "prop-types";
 
 
 const Preloader = ({ onLoadComplete }) => {
@@ -127,6 +128,10 @@ const Preloader = ({ onLoadComplete }) => {
       </div>
     </div>
   );
+};
+
+Preloader.propTypes = {
+  onLoadComplete: PropTypes.func.isRequired,
 };
 
 export default Preloader;

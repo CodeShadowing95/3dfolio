@@ -1,4 +1,3 @@
-import { useState } from "react";
 import {
   About,
   Contact,
@@ -18,7 +17,7 @@ const Home = () => {
     return (
         <>
         <Preloader />
-        
+
         <div className="bg-primary">
             <div className="bg-hero-pattern bg-cover bg-no-repeat bg-center">
                 <Navbar />

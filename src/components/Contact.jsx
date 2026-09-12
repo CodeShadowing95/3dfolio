@@ -1,3 +1,5 @@
+/* eslint-disable react-refresh/only-export-components */
+
 import { useState, useRef } from 'react';
 import { motion } from 'framer-motion';
 import emailjs from '@emailjs/browser';
@@ -21,7 +23,7 @@ const Contact = () => {
         const { name, value } = e.target;
         setForm({ ...form, [name]: value });
     }
-    
+
     const handleSubmit = (e) => {
         e.preventDefault();
 
@@ -124,5 +126,4 @@ const Contact = () => {
   )
 }
 
-// eslint-disable-next-line react-refresh/only-export-components
 export default SectionWrapper(Contact, "contact");

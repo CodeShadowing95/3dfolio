@@ -23,7 +23,6 @@ import {
   python,
   exalta,
   youwatch,
-  lugia,
   animevault,
   carhub,
   pokedexhub,

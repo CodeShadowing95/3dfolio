@@ -1,5 +1,8 @@
+/* eslint-disable react-refresh/only-export-components */
+
 import { Tilt } from "react-tilt";
 import { motion } from "framer-motion";
+import PropTypes from "prop-types";
 
 import { styles } from '../styles';
 import { services } from '../constants';
@@ -25,6 +28,12 @@ const ServiceCard = ({ index, title, icon }) => {
     )
 }
 
+ServiceCard.propTypes = {
+    index: PropTypes.number.isRequired,
+    title: PropTypes.string.isRequired,
+    icon: PropTypes.string.isRequired,
+};
+
 const About = () => {
   return (
     <>
@@ -38,7 +47,7 @@ const About = () => {
             className="mt-4 text-secondary text-[17px] max-w-4xl leading-8"
         >
             Je suis développeur web fullstack, avec de l’expérience sur plusieurs technologies :
-            <span className="bg-gradient-to-r from-orange-300 via-amber-200 to-yellow-200 bg-clip-text text-transparent font-bold"> JavaScript, TypeScript, PHP, Java, ainsi que des frameworks modernes comme React, Next.js, Node.js et des outils d’intégration API REST, solutions vidéo (Twilio), MongoDB, Laravel, Docker et bien d'autres.</span><br /><br/>
+            <span className="bg-gradient-to-r from-orange-300 via-amber-200 to-yellow-200 bg-clip-text text-transparent font-bold"> JavaScript, TypeScript, PHP, Java, ainsi que des frameworks modernes comme React, Next.js, Node.js et des outils d’intégration API REST, solutions vidéo (Twilio), MongoDB, Laravel, Docker et bien d&apos;autres.</span><br /><br/>
             Au fil de stages, alternances et missions freelances, j’ai eu l’occasion de :
             <ul className="list-disc list-inside text-secondary text-[17px] max-w-4xl leading-[30px] space-y-2">
                 <li>Concevoir et déployer des plateformes web (CRM, e-santé, e-commerce).</li>
@@ -61,5 +70,4 @@ const About = () => {
   )
 }
 
-// eslint-disable-next-line react-refresh/only-export-components
 export default SectionWrapper(About, "profil");

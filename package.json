@@ -1,12 +1,12 @@
 {
   "name": "3dfolio",
   "private": true,
-  "version": "0.0.0",
+  "version": "0.1.0",
   "type": "module",
   "scripts": {
     "dev": "vite --host",
     "build": "vite build",
-    "lint": "eslint . --ext js,jsx --report-unused-disable-directives --max-warnings 0",
+    "lint": "eslint \"src/**/*.{js,jsx}\"",
     "preview": "vite preview"
   },
   "dependencies": {

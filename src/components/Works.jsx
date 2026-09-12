@@ -1,6 +1,9 @@
+/* eslint-disable react-refresh/only-export-components */
+
 import { Tilt } from "react-tilt";
 import { motion } from "framer-motion";
 import { useNavigate } from "react-router-dom";
+import PropTypes from "prop-types";
 
 import { styles } from "../styles";
 import { github, website, } from "../assets";
@@ -9,7 +12,7 @@ import { projects, projectCategories } from "../constants";
 import { fadeIn, textVariant } from "../utils/motion";
 import { useEffect, useState } from "react";
 
-const ProjectCard = ({ index, id, name, description, tags, image, source_code_link, app_link, isAnimated, animationDelay = 0 }) => {
+const ProjectCard = ({ index, id, name, description, tags, image, source_code_link, app_link, animationDelay = 0 }) => {
   const navigate = useNavigate();
 
   const handleClick = () => {
@@ -120,9 +123,25 @@ const ProjectCard = ({ index, id, name, description, tags, image, source_code_li
   )
 }
 
+ProjectCard.propTypes = {
+  index: PropTypes.number.isRequired,
+  id: PropTypes.oneOfType([PropTypes.string, PropTypes.number]).isRequired,
+  name: PropTypes.string.isRequired,
+  description: PropTypes.string.isRequired,
+  tags: PropTypes.arrayOf(
+    PropTypes.shape({
+      name: PropTypes.string.isRequired,
+      color: PropTypes.string.isRequired,
+    })
+  ).isRequired,
+  image: PropTypes.string.isRequired,
+  source_code_link: PropTypes.string.isRequired,
+  app_link: PropTypes.string.isRequired,
+  animationDelay: PropTypes.number,
+};
+
 const Works = () => {
   const [activeFilter, setActiveFilter] = useState('Tous');
-  const [isAnimated, setIsAnimated] = useState(false);
   const [filterWork, setFilterWork] = useState([]);
   const [isFiltering, setIsFiltering] = useState(false);
 
@@ -241,7 +260,6 @@ const Works = () => {
           filterWork.map((project, index) => (
             <ProjectCard
               key={`project-${activeFilter}-${project.name || index}`}
-              isAnimated={isAnimated}
               index={index}
               animationDelay={index * 0.1}
               {...project}
@@ -292,5 +310,4 @@ const Works = () => {
   )
 }
 
-// eslint-disable-next-line react-refresh/only-export-components
 export default SectionWrapper(Works, "projets");

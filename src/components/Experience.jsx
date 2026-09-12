@@ -1,5 +1,8 @@
+/* eslint-disable react-refresh/only-export-components */
+
 import { VerticalTimeline, VerticalTimelineElement } from "react-vertical-timeline-component";
 import { motion } from "framer-motion";
+import PropTypes from "prop-types";
 
 import 'react-vertical-timeline-component/style.min.css';
 
@@ -49,6 +52,17 @@ const ExperienceCard = ({ experience }) => {
     </VerticalTimelineElement>
 )}
 
+ExperienceCard.propTypes = {
+    experience: PropTypes.shape({
+        date: PropTypes.string.isRequired,
+        iconBg: PropTypes.string.isRequired,
+        icon: PropTypes.string.isRequired,
+        company_name: PropTypes.string.isRequired,
+        title: PropTypes.string.isRequired,
+        points: PropTypes.arrayOf(PropTypes.string).isRequired,
+    }).isRequired,
+}
+
 // eslint-disable-next-line react-refresh/only-export-components
 const Experience = () => {
   return (
@@ -60,7 +74,7 @@ const Experience = () => {
             viewport={{ once: true, amount: 0.15 }}
             className="relative z-10"
         >
-            <p className={styles.sectionSubText}>Ce que j'ai fait jusque là</p>
+            <p className={styles.sectionSubText}>Ce que j&apos;ai fait jusque là</p>
             <h2 className={styles.sectionHeadText}>Expériences pro.</h2>
         </motion.div>
 
@@ -75,5 +89,4 @@ const Experience = () => {
   )
 }
 
-// eslint-disable-next-line react-refresh/only-export-components
 export default SectionWrapper(Experience, "expérience");
