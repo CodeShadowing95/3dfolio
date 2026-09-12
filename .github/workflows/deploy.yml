@@ -22,6 +22,8 @@ jobs:
     steps:
       - name: Checkout code
         uses: actions/checkout@v4
+        with:
+          ref: ${{ github.event.workflow_run.head_sha }}
 
       - name: Setup Node.js
         uses: actions/setup-node@v4
@@ -35,13 +37,18 @@ jobs:
       - name: Build project
         run: npm run build
 
+      - name: Verify dist
+        run: |
+          test -f dist/index.html
+          find dist -maxdepth 2 -type f | head -30
+
       - name: Deploy dist folder to Hostinger
         uses: SamKirkland/FTP-Deploy-Action@v4.3.5
         with:
           server: ${{ secrets.FTP_SERVER }}
           username: ${{ secrets.FTP_USERNAME }}
           password: ${{ secrets.FTP_PASSWORD }}
-          server-dir: /public_html/
+          server-dir: public_html/
           local-dir: ./dist/
           protocol: ftp
           port: 21
