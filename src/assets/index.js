@@ -10,13 +10,13 @@ import website from "./share.png";
 import world from "./world.png";
 
 import docker from "./tech/docker.png";
-import figma from "./tech/figma.png";
+import aws from "./tech/aws.png";
 import git from "./tech/git.png";
 import javascript from "./tech/javascript.png";
 import mongodb from "./tech/mongodb.png";
 import nodejs from "./tech/nodejs.png";
 import reactjs from "./tech/reactjs.png";
-import redux from "./tech/redux.png";
+import kubernetes from "./tech/kubernetes.png";
 import tailwind from "./tech/tailwind.png";
 import typescript from "./tech/typescript.png";
 import threejs from "./tech/threejs.svg";
@@ -72,13 +72,13 @@ export {
   website,
   world,
   docker,
-  figma,
+  aws,
   git,
   javascript,
   mongodb,
   nodejs,
   reactjs,
-  redux,
+  kubernetes,
   tailwind,
   typescript,
   threejs,

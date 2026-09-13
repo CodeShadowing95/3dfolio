@@ -6,7 +6,7 @@ import {
   javascript,
   typescript,
   reactjs,
-  redux,
+  kubernetes,
   tailwind,
   nodejs,
   mongodb,
@@ -28,7 +28,7 @@ import {
   carhub,
   pokedexhub,
   nuxt,
-  figma,
+  aws,
   brainwave,
   appleclone,
   servermanagement,
@@ -118,8 +118,8 @@ const technologies = [
   //   icon: threejs,
   // },
   {
-    name: "Redux Toolkit",
-    icon: redux,
+    name: "Kubernetes",
+    icon: kubernetes,
   },
   {
     name: "git",
@@ -130,8 +130,8 @@ const technologies = [
     icon: python,
   },
   {
-    name: "figma",
-    icon: figma,
+    name: "AWS",
+    icon: aws,
   },
   {
     name: "docker",
