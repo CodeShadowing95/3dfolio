@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 
 import { styles } from "../styles";
 import { navLinks } from "../constants";
-import { logo, menu, close } from "../assets";
+import { logo, menu, close, linkedin, github } from "../assets";
 // import { Switch } from '@headlessui/react';
 
 const Navbar = () => {
@@ -50,7 +50,7 @@ const Navbar = () => {
         >
           <img src={logo} alt="logo" className="w-9 h-9 object-contain" />
           <p className="text-white text-[18px] font-bold cursor-pointer flex">
-            atrkTech
+            atrick
             {/* &nbsp; <span className="font-light sm:block hidden">| Fullstack Web Developer</span>*/}
           </p>
         </Link>
@@ -81,7 +81,29 @@ const Navbar = () => {
               <span className="lg:hidden">CV</span>
             </button>
           </li>
-          
+
+          {/* Liens réseaux professionnels */}
+          <li className="flex items-center gap-4">
+            <a
+              href="https://www.linkedin.com/in/patrick-namegni"
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-label="Profil LinkedIn de Patrick Namegni"
+              className="hover:opacity-70 transition-opacity duration-300"
+            >
+              <img src={linkedin} alt="LinkedIn" className="w-6 h-6 object-contain" />
+            </a>
+            <a
+              href="https://github.com/CodeShadowing95"
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-label="Profil GitHub de Patrick Namegni"
+              className="hover:opacity-70 transition-opacity duration-300"
+            >
+              <img src={github} alt="GitHub" className="w-6 h-6 object-contain" />
+            </a>
+          </li>
+
           {/* <li>
                     <div className="flex justify-center items-center gap-2">
                         <p className="text-secondary text-[18px] font-medium">EN</p>

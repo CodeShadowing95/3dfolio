@@ -22,7 +22,7 @@ import typescript from "./tech/typescript.png";
 import threejs from "./tech/threejs.svg";
 import python from "./tech/python.png";
 import nextjs from "./tech/nextjs.png";
-import angular from "./tech/angular.png";
+import nuxt from "./tech/nuxt.png";
 
 import ub from "./company/ub.png";
 import hkdigitals from "./company/hkdigitals.png";
@@ -30,6 +30,7 @@ import pristydelices from "./company/pristydelices.png";
 import estiam from "./company/estiam.png";
 import teepyjob from "./company/teepyjob.png";
 import indextv from "./company/indextv.jpg";
+import hapticmedia from "./company/hapticmedia.png";
 
 import gpt3 from "./GPT3.png";
 import exalta from "./exalta.png";
@@ -83,13 +84,14 @@ export {
   threejs,
   python,
   nextjs,
-  angular,
+  nuxt,
   ub,
   hkdigitals,
   pristydelices,
   estiam,
   teepyjob,
   indextv,
+  hapticmedia,
   gpt3,
   exalta,
   youwatch,

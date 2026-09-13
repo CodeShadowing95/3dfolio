@@ -19,6 +19,7 @@ import {
   estiam,
   teepyjob,
   indextv,
+  hapticmedia,
   nextjs,
   python,
   exalta,
@@ -26,7 +27,7 @@ import {
   animevault,
   carhub,
   pokedexhub,
-  angular,
+  nuxt,
   figma,
   brainwave,
   appleclone,
@@ -97,8 +98,8 @@ const technologies = [
     icon: nextjs,
   },
   {
-    name: "Angular",
-    icon: angular,
+    name: "Nuxt",
+    icon: nuxt,
   },
   {
     name: "Tailwind CSS",
@@ -139,6 +140,21 @@ const technologies = [
 ];
 
 const experiences = [
+  {
+    title: "Développeur Fullstack & DevOps en alternance",
+    company_name: "Hapticmedia",
+    icon: hapticmedia,
+    iconBg: "#383E56",
+    date: "Septembre 2025 - Août 2026",
+    points: [
+      "Migration de l'outil CLI interne (DevOps) d'une exécution synchrone vers une architecture asynchrone sécurisée, corrigeant une faille d'injection de commandes et améliorant la portabilité multi-OS.",
+      "Pilotage d'une campagne de mise à niveau (Node.js, dépendances) sur un parc multi-dépôts, réduisant la dette technique et fiabilisant la chaîne CI/CD.",
+      "Renforcement de la sécurité applicative via la refonte des politiques CSP (Content Security Policy) et le cloisonnement strict des environnements (sandbox/dev/prod) sur une infrastructure AWS.",
+      "Optimisation des performances du site (assets, pipeline CI) : temps de build réduit de 25-30 min à ~5 min ; audit et correction du SEO technique international (hreflang, sitemaps).",
+      "Migration du site vitrine vers Nuxt 4 et mise en place d'un mode preview Strapi/Nuxt pour l'équipe éditoriale.",
+      "Refactoring backend du CMS headless Strapi (clarification du modèle de données, mapping API) sans rupture de service.",
+    ],
+  },
   {
     title: "Consultant développeur",
     company_name: "Index.tv",
@@ -226,7 +242,6 @@ const testimonials = [
     name: "Hermann Kuaté",
     designation: "CEO",
     company: "HKDigitals",
-    image: "https://randomuser.me/api/portraits/women/4.jpg",
   },
   {
     testimonial:
@@ -234,7 +249,6 @@ const testimonials = [
     name: "Emmanuel G. G.",
     designation: "CTO",
     company: "HKDigitals",
-    image: "https://randomuser.me/api/portraits/men/5.jpg",
   },
   {
     testimonial:
@@ -242,7 +256,6 @@ const testimonials = [
     name: "N. Martial",
     designation: "CEO",
     company: "Univers Binaire",
-    image: "https://randomuser.me/api/portraits/women/6.jpg",
   },
 ];
 

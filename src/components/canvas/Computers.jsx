@@ -1,4 +1,4 @@
-import { Suspense, useEffect, useState } from "react";
+import { Suspense, useEffect, useRef, useState } from "react";
 import { Canvas } from "@react-three/fiber";
 import { OrbitControls, Preload, useGLTF } from "@react-three/drei";
 import PropTypes from "prop-types";
@@ -31,6 +31,8 @@ Computers.propTypes = {
 
 const ComputersCanvas = () => {
     const [isMobile, setIsMobile] = useState(false);
+    const [autoRotate, setAutoRotate] = useState(true);
+    const resumeTimeoutRef = useRef(null);
 
     useEffect(() => {
         // Add a listener for changes to the screen size
@@ -52,13 +54,36 @@ const ComputersCanvas = () => {
             mediaQuery.removeEventListener('change', handleMediaQueryChange);
         }
     }, []);
-    
+
+    // Nettoyage du timeout de reprise au démontage
+    useEffect(() => {
+        return () => {
+            if (resumeTimeoutRef.current) {
+                clearTimeout(resumeTimeoutRef.current);
+            }
+        };
+    }, []);
+
+    const handleInteractionStart = () => {
+        if (resumeTimeoutRef.current) {
+            clearTimeout(resumeTimeoutRef.current);
+        }
+        setAutoRotate(false);
+    };
+
+    const handleInteractionEnd = () => {
+        // Reprend l'auto-rotation après un court délai une fois l'interaction terminée
+        resumeTimeoutRef.current = setTimeout(() => {
+            setAutoRotate(true);
+        }, 2000);
+    };
+
 
     return (
         <Canvas
-            frameloop="demand"
+            frameloop="always"
             shadows
-            camera={{ position: [20, 3, 5], fov: 25 }}
+            camera={{ position: [20, 3, -5], fov: 25 }}
             gl={{ preserveDrawingBuffer: true }}
         >
             {/* CanvasLoader is useful because we don't need the canvas to break each time we reloading the page */}
@@ -67,6 +92,11 @@ const ComputersCanvas = () => {
                     enableZoom={false}
                     maxPolarAngle={Math.PI / 2}
                     minPolarAngle={Math.PI / 2}
+                    autoRotate={autoRotate}
+                    autoRotateSpeed={1.5}
+                    enableDamping
+                    onStart={handleInteractionStart}
+                    onEnd={handleInteractionEnd}
                 />
                 <Computers isMobile={isMobile} />
             </Suspense>
