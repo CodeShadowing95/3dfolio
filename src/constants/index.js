@@ -35,7 +35,6 @@ import {
   bikemapper,
   curriqulumai,
   kamercare,
-  rehobothnettoyage,
   linkedin,
   twitter,
   youtube,
@@ -313,43 +312,42 @@ const projects = [
   //   source_code_link: "https://github.com/CodeShadowing95/GPT3-Webpage",
   //   app_link: "https://gpt3-ui-ux-app.netlify.app/"
   // },
-    
-  {
-    id: "rehobothnettoyage",
-    name: "REHOBOTH Nettoyage",
-    description:
-      "Site vitrine pour une entreprise de nettoyage professionnel basée à Lyon. Besoin de nettoyer vos bureaux, nettoyage de fin de chantier,... Contactez les et obtenez un devis gratuitement. Coûts adaptés à vos budgets et qualité de service garantis.",
-    reason: "Projet client",
-    tags: [
-      {
-        name: "react",
-        color: "blue-text-gradient",
-      },
-      {
-        name: "tailwindcss",
-        color: "pink-text-gradient",
-      },
-    ],
-    image: rehobothnettoyage,
-    source_code_link: "#",
-    app_link: "https://rehobothnettoyage.com/",
-    status: "Terminé",
-    details: {
-      fullDescription:
-        "REHOBOTH Nettoyage est un site vitrine entreprise proposant des services de nettoyage pour particuliers et professionnels, basée à Lyon. Si vous avez besoin de nettoyer votre domicile, vos bureaux, nettoyage de fin de chantier,... Contactez les et obtenez un devis gratuitement. Coûts adaptés à vos budgets et qualité de service garantis.",
-      keyObjectives: [
-        "Présenter clairement les services et la valeur ajoutée",
-        "Permettre une demande de contact/devis rapide",
-        "Renforcer la crédibilité avec un design professionnel",
-      ],
-      functionalities: [
-        "Pages services (ménage, vitres, bureaux, etc.)",
-        "Formulaire de contact et demande de devis",
-        "Mise en avant des engagements qualité et écologie",
-        "Responsive design (mobile, tablette, desktop)",
-      ],
-    },
-  },
+  // {
+  //   id: "rehobothnettoyage",
+  //   name: "REHOBOTH Nettoyage",
+  //   description:
+  //     "Site vitrine pour une entreprise de nettoyage professionnel basée à Lyon. Besoin de nettoyer vos bureaux, nettoyage de fin de chantier,... Contactez les et obtenez un devis gratuitement. Coûts adaptés à vos budgets et qualité de service garantis.",
+  //   reason: "Projet client",
+  //   tags: [
+  //     {
+  //       name: "react",
+  //       color: "blue-text-gradient",
+  //     },
+  //     {
+  //       name: "tailwindcss",
+  //       color: "pink-text-gradient",
+  //     },
+  //   ],
+  //   image: rehobothnettoyage,
+  //   source_code_link: "#",
+  //   app_link: "https://rehobothnettoyage.com/",
+  //   status: "Terminé",
+  //   details: {
+  //     fullDescription:
+  //       "REHOBOTH Nettoyage est un site vitrine entreprise proposant des services de nettoyage pour particuliers et professionnels, basée à Lyon. Si vous avez besoin de nettoyer votre domicile, vos bureaux, nettoyage de fin de chantier,... Contactez les et obtenez un devis gratuitement. Coûts adaptés à vos budgets et qualité de service garantis.",
+  //     keyObjectives: [
+  //       "Présenter clairement les services et la valeur ajoutée",
+  //       "Permettre une demande de contact/devis rapide",
+  //       "Renforcer la crédibilité avec un design professionnel",
+  //     ],
+  //     functionalities: [
+  //       "Pages services (ménage, vitres, bureaux, etc.)",
+  //       "Formulaire de contact et demande de devis",
+  //       "Mise en avant des engagements qualité et écologie",
+  //       "Responsive design (mobile, tablette, desktop)",
+  //     ],
+  //   },
+  // },
   {
     id: "kamercare",
     name: "KamerCare",

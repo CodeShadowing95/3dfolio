@@ -131,7 +131,7 @@ const Preloader = ({ onLoadComplete }) => {
 };
 
 Preloader.propTypes = {
-  onLoadComplete: PropTypes.func.isRequired,
+  onLoadComplete: PropTypes.func,
 };
 
 export default Preloader;

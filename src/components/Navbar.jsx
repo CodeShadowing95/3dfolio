@@ -49,10 +49,15 @@ const Navbar = () => {
           }}
         >
           <img src={logo} alt="logo" className="w-9 h-9 object-contain" />
-          <p className="text-white text-[18px] font-bold cursor-pointer flex">
-            atrick
-            {/* &nbsp; <span className="font-light sm:block hidden">| Fullstack Web Developer</span>*/}
-          </p>
+          <div className="flex flex-col">
+            <p className="text-white text-[18px] font-bold cursor-pointer flex">
+              atrick
+              {/* &nbsp; <span className="font-light sm:block hidden">| Fullstack Web Developer</span>*/}
+            </p>
+            <p className="text-white text-xs cursor-pointer flex -ml-6">
+              ortfolio
+            </p>
+          </div>
         </Link>
 
         <ul className="list-none hidden md:flex flex-row items-center gap-10">
@@ -67,7 +72,7 @@ const Navbar = () => {
               <a href={`#${link.id}`}>{link.title}</a>
             </li>
           ))}
-          
+
           {/* Bouton Télécharger CV pour desktop */}
           <li>
             <button
@@ -85,7 +90,7 @@ const Navbar = () => {
           {/* Liens réseaux professionnels */}
           <li className="flex items-center gap-4">
             <a
-              href="https://www.linkedin.com/in/patrick-namegni"
+              href="https://www.linkedin.com/in/frank-patrick-namegni/"
               target="_blank"
               rel="noopener noreferrer"
               aria-label="Profil LinkedIn de Patrick Namegni"
