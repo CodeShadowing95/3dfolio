@@ -1,7 +1,7 @@
 import { motion } from 'framer-motion';
 
 import { styles } from '../styles';
-import { ComputersCanvas } from './';
+// import { ComputersCanvas } from './';
 
 const Hero = () => {
   return (
@@ -41,9 +41,9 @@ const Hero = () => {
             </div>
         </div>
 
-        <div className="w-full h-[450px] sm:h-[550px] lg:absolute lg:inset-y-0 lg:right-[3%] lg:h-full lg:w-[55%] z-0">
+        {/* <div className="w-full h-[450px] sm:h-[550px] lg:absolute lg:inset-y-0 lg:right-[3%] lg:h-full lg:w-[55%] z-0">
             <ComputersCanvas />
-        </div>
+        </div> */}
 
         <div className="hidden lg:flex absolute bottom-10 w-full justify-center items-center z-10">
             <a href="#profil">
