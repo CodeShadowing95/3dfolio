@@ -1,7 +1,9 @@
+import { Suspense, lazy } from 'react';
 import { motion } from 'framer-motion';
 
 import { styles } from '../styles';
-// import { ComputersCanvas } from './';
+
+const ComputersCanvas = lazy(() => import('./canvas/Computers'));
 
 const Hero = () => {
   return (
@@ -20,30 +22,15 @@ const Hero = () => {
                         <p className="font-light text-lg mt-3">Je conçois des applications web performantes et sécurisées, du front-end à l{`'`}infrastructure, et j{`'`}accompagne des équipes à concrétiser leurs projets.</p>
                         <p className="font-light text-lg mt-1">Actuellement disponible pour un poste en CDI/CDD 🚀</p>
                     </div>
-                    {/* <p className={`${styles.heroSubText} mt-2 text-white-100 max-w-lg`}>
-                        Développeur web - Portfolio<br className="sm:block hidden" />
-                        <span className="text-lg">
-                            J{`'`}espère que vous profiterez la visite.<br />
-                            (N{`'`}oubliez pas de jouer avec mon poste de travail 😉👇)
-                        </span>
-                    </p> */}
-                    {/* <p className="text-[16px] text-white-100 leading-8 mt-3 max-md:hidden visible">
-                        Vous trouverez un certain nombre de projets qui illustrent mes compétences en matière<br />
-                        de développement front-end et back-end. Chaque projet représente un défi unique et<br />
-                        une opportunité d'en apprendre plus et grandir en compétences. Profitez de la visite<br />
-                        et n'oubliez pas de jouer avec mon poste de travail 😉👇.
-                    </p> */}
-                    {/* <p className="text-[16px] text-white-100 leading-8 mt-2">
-                        Bienvenue sur mon portfolio. J'espère que vous apprécierez la visite<br />
-                        et n'oubliez pas de jouer avec mon poste de travail 😉👇.
-                    </p> */}
                 </div>
             </div>
         </div>
 
-        {/* <div className="w-full h-[450px] sm:h-[550px] lg:absolute lg:inset-y-0 lg:right-[3%] lg:h-full lg:w-[55%] z-0">
-            <ComputersCanvas />
-        </div> */}
+        <div className="w-full h-[450px] sm:h-[550px] lg:absolute lg:inset-y-0 lg:right-[3%] lg:h-full lg:w-[55%] z-0">
+            <Suspense fallback={<div className="w-full h-full" aria-hidden="true" />}>
+                <ComputersCanvas />
+            </Suspense>
+        </div>
 
         <div className="hidden lg:flex absolute bottom-10 w-full justify-center items-center z-10">
             <a href="#profil">

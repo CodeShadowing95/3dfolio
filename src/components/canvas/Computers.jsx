@@ -1,13 +1,12 @@
 import { Suspense, useEffect, useRef, useState } from "react";
 import { Canvas } from "@react-three/fiber";
-import { OrbitControls, Preload, useGLTF } from "@react-three/drei";
+import { OrbitControls, useGLTF } from "@react-three/drei";
 import PropTypes from "prop-types";
 // extend({ OrbitControls });
 
 import CanvasLoader from '../Loader';
 
 const Computers = ({ isMobile }) => {
-    // const computer = useGLTF("./desktop_pc/scene.glb");
     const { scene } = useGLTF("./desktop_pc/scene.glb");
 
     useEffect(() => {
@@ -56,20 +55,37 @@ Computers.propTypes = {
 };
 
 const ComputersCanvas = () => {
+    const containerRef = useRef(null);
     const [isMobile, setIsMobile] = useState(false);
+    const [isLowEndDevice, setIsLowEndDevice] = useState(false);
+    const [isInViewport, setIsInViewport] = useState(false);
     const [autoRotate, setAutoRotate] = useState(true);
     const resumeTimeoutRef = useRef(null);
 
     useEffect(() => {
+        // Detect low-end devices based on memory, cores, and user preferences
+        const detectLowEnd = () => {
+            const memory = navigator.deviceMemory ?? 8;
+            const cores = navigator.hardwareConcurrency ?? 8;
+            const saveData = navigator.connection?.saveData === true;
+            const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+            return saveData || reducedMotion || memory <= 4 || cores <= 4;
+        };
+
         // Add a listener for changes to the screen size
         const mediaQuery = window.matchMedia('(max-width: 700px)');
 
-        // Set the initial value of the `isMobile` state variable
+        // Set the initial value of the `isMobile`, `isLowEndDevice`, and `autoRotate` state variables
         setIsMobile(mediaQuery.matches);
+        setIsLowEndDevice(detectLowEnd());
+        setAutoRotate(!mediaQuery.matches);
 
         // Define a callback function to handle changes to the media query
         const handleMediaQueryChange = (event) => {
             setIsMobile(event.matches);
+            setAutoRotate(!event.matches);
+            setIsLowEndDevice(detectLowEnd());
         };
 
         // Add the callback function as a listener for the changes to the media query
@@ -79,6 +95,24 @@ const ComputersCanvas = () => {
         return () => {
             mediaQuery.removeEventListener('change', handleMediaQueryChange);
         }
+    }, []);
+
+    useEffect(() => {
+        if (!containerRef.current) return;
+
+        const observer = new IntersectionObserver(
+            ([entry]) => {
+                if (entry.isIntersecting) {
+                    setIsInViewport(true);
+                    observer.disconnect();
+                }
+            },
+            { rootMargin: '200px 0px' }
+        );
+
+        observer.observe(containerRef.current);
+
+        return () => observer.disconnect();
     }, []);
 
     // Nettoyage du timeout de reprise au démontage
@@ -99,18 +133,39 @@ const ComputersCanvas = () => {
 
     const handleInteractionEnd = () => {
         // Reprend l'auto-rotation après un court délai une fois l'interaction terminée
+        if (isMobile) return;
+
         resumeTimeoutRef.current = setTimeout(() => {
             setAutoRotate(true);
         }, 2000);
     };
 
+    const shouldDisable3D = isLowEndDevice;
+
+    if (shouldDisable3D) {
+        return (
+            <div ref={containerRef} className="w-full h-full rounded-2xl border border-white/10 bg-gradient-to-br from-[#10131f] via-[#0f172a] to-[#1a1b2e] flex items-center justify-center">
+                <div className="px-6 text-center">
+                    <p className="text-white/90 text-sm sm:text-base font-medium">Mode performance activé</p>
+                    <p className="mt-2 text-white/60 text-xs sm:text-sm">La scène 3D est désactivée sur cet appareil pour de meilleures performances.</p>
+                </div>
+            </div>
+        );
+    }
+
+    if (!isInViewport) {
+        return <div ref={containerRef} className="w-full h-full" aria-hidden="true" />;
+    }
+
 
     return (
         <Canvas
-            frameloop="always"
-            shadows
+            ref={containerRef}
+            frameloop={autoRotate ? "always" : "demand"}
+            dpr={isMobile ? [1, 1.25] : [1, 1.75]}
+            shadows={!isMobile}
             camera={{ position: [20, 3, -5], fov: 25 }}
-            gl={{ preserveDrawingBuffer: true }}
+            gl={{ preserveDrawingBuffer: false, antialias: !isMobile, powerPreference: "high-performance" }}
         >
             {/* CanvasLoader is useful because we don't need the canvas to break each time we reloading the page */}
             <Suspense fallback={<CanvasLoader/>}>
@@ -118,16 +173,14 @@ const ComputersCanvas = () => {
                     enableZoom={false}
                     maxPolarAngle={Math.PI / 2}
                     minPolarAngle={Math.PI / 2}
-                    autoRotate={autoRotate}
+                    autoRotate={!isMobile && autoRotate}
                     autoRotateSpeed={1.5}
-                    enableDamping
+                    enableDamping={!isMobile}
                     onStart={handleInteractionStart}
                     onEnd={handleInteractionEnd}
                 />
                 <Computers isMobile={isMobile} />
             </Suspense>
-
-            <Preload all />
         </Canvas>
     )
 }
