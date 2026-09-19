@@ -10,6 +10,32 @@ const Computers = ({ isMobile }) => {
     // const computer = useGLTF("./desktop_pc/scene.glb");
     const { scene } = useGLTF("./desktop_pc/scene.glb");
 
+    useEffect(() => {
+        scene.traverse((child) => {
+            if (!child.isMesh || !child.geometry?.attributes?.position) {
+                return;
+            }
+
+            const geometry = child.geometry;
+            const positions = geometry.attributes.position.array;
+            let hasInvalidValue = false;
+
+            for (let i = 0; i < positions.length; i += 1) {
+                if (!Number.isFinite(positions[i])) {
+                    positions[i] = 0;
+                    hasInvalidValue = true;
+                }
+            }
+
+            if (hasInvalidValue) {
+                geometry.attributes.position.needsUpdate = true;
+            }
+
+            geometry.computeBoundingBox();
+            geometry.computeBoundingSphere();
+        });
+    }, [scene]);
+
     return (
         <mesh>
             {/* eslint-disable-next-line react/no-unknown-property */}

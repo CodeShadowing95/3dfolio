@@ -298,7 +298,7 @@ const Works = () => {
           />
           <div
             className="relative z-10 flex items-center justify-center gap-2 rounded-[10px] py-2.5 px-4 bg-gray-900 text-white w-full transition-all duration-300"
-            onClick={() => window.location.href = 'CV Patrick NAMEGNI.pdf'}
+            onClick={() => window.location.href = 'Merge_CV_Patrick_NAMEGNI.pdf'}
           >
             <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24"><path fill="#ffffff" d="m12 16l-5-5l1.4-1.45l2.6 2.6V4h2v8.15l2.6-2.6L17 11zm-6 4q-.825 0-1.412-.587T4 18v-3h2v3h12v-3h2v3q0 .825-.587 1.413T18 20z"/></svg>
             <span className="text-sm font-semibold">Téléchargez mon CV</span>

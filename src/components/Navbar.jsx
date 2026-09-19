@@ -31,8 +31,8 @@ const Navbar = () => {
   // }
 
   const handleDownloadCV = () => {
-    // Remplacez 'CV Patrick NAMEGNI.pdf' par le chemin réel de votre CV
-    window.location.href = 'CV Patrick NAMEGNI.pdf';
+    // Remplacez 'Merge_CV_Patrick_NAMEGNI.pdf' par le chemin réel de votre CV
+    window.location.href = 'Merge_CV_Patrick_NAMEGNI.pdf';
   };
 
   return (
@@ -159,7 +159,7 @@ const Navbar = () => {
                   <a href={`#${link.id}`}>{link.title}</a>
                 </li>
               ))}
-              
+
               {/* Bouton Télécharger CV pour mobile */}
               <li className="w-full">
                  <button
