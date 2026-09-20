@@ -6,7 +6,7 @@ on:
       - main
   push:
     branches:
-      - main
+      - '**'
 
 concurrency:
   group: ci-${{ github.ref }}
