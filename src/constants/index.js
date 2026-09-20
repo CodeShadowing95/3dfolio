@@ -237,10 +237,19 @@ const experiences = [
 const testimonials = [
   {
     testimonial:
+      "Frank Patrick a participé aux entretiens pour le poste d'alternant développeur fullstack pour Sealocker. Même s'il n'a malheureusement pas été retenu pour cause de budget, il est allé loin dans le process. Je pense qu'il a un très bon profil technique, et son portfolio ne vient que valider mes remarques !",
+    name: "Nicolas Farolfi",
+    designation: "CEO",
+    company: "Sealocker",
+    linkedin: "https://www.linkedin.com/in/nicolas-farolfi/",
+  },
+  {
+    testimonial:
       "Son travail à HKDigitals est superbe, il est travailleur, motivé, et a le sens de l'initiative.",
     name: "Hermann Kuaté",
     designation: "CEO",
     company: "HKDigitals",
+    linkedin: "https://www.linkedin.com/",
   },
   {
     testimonial:
@@ -248,6 +257,7 @@ const testimonials = [
     name: "Emmanuel G. G.",
     designation: "CTO",
     company: "HKDigitals",
+    linkedin: "https://www.linkedin.com/",
   },
   {
     testimonial:
@@ -255,6 +265,7 @@ const testimonials = [
     name: "N. Martial",
     designation: "CEO",
     company: "Univers Binaire",
+    linkedin: "https://www.linkedin.com/",
   },
 ];
 
