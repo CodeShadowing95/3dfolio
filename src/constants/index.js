@@ -952,4 +952,23 @@ const socials = [
   },
 ]
 
-export { services, technologies, experiences, testimonials, projects, projectCategories, socials };
+const keyAchievements = [
+  {
+    value: "80%",
+    label: "de réduction du temps de traitement manuel",
+  },
+  {
+    value: "2500+",
+    label: "offres d’emploi agrégées automatiquement",
+  },
+  {
+    value: "200000+",
+    label: "profils analysés et enrichis",
+  },
+  {
+    value: "x5",
+    label: "d’accélération du pipeline CI (25-30 min → ~5 min)",
+  },
+];
+
+export { services, technologies, experiences, testimonials, projects, projectCategories, socials, keyAchievements };

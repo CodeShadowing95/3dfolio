@@ -11,6 +11,7 @@ import Works from './Works';
 import Feedbacks from './Feedbacks';
 import Contact from './Contact';
 import FeedbackPrompt from "./FeedbackPrompt";
+import KeyAchievements from "./KeyAchievements";
 
 export {
   Hero,
@@ -26,4 +27,5 @@ export {
   ComputersCanvas,
   StarsCanvas,
   FeedbackPrompt,
+  KeyAchievements,
 }

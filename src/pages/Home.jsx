@@ -9,6 +9,7 @@ import {
   Works,
   StarsCanvas,
   FeedbackPrompt,
+    KeyAchievements,
 } from "../components";
 import Preloader from "../components/Preloader";
 
@@ -23,6 +24,7 @@ const Home = () => {
                 <Navbar />
                 <Hero />
             </div>
+            <KeyAchievements />
             <About />
             <Experience />
             <Tech />
