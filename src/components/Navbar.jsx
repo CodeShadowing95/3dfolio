@@ -31,8 +31,8 @@ const Navbar = () => {
   // }
 
   const handleDownloadCV = () => {
-    // Remplacez 'Merge_CV_Patrick_NAMEGNI.pdf' par le chemin réel de votre CV
-    window.location.href = 'Merge_CV_Patrick_NAMEGNI.pdf';
+    // Remplacez 'CV.pdf' par le chemin réel de votre CV
+    window.location.href = 'CV.pdf';
   };
 
   return (

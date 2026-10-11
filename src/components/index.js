@@ -1,7 +1,3 @@
-import EarthCanvas from "./canvas/Earth";
-import BallCanvas from "./canvas/Ball";
-import ComputersCanvas from "./canvas/Computers";
-import StarsCanvas from "./canvas/Stars";
 import Hero from './Hero';
 import Navbar from './Navbar';
 import About from './About';
@@ -22,10 +18,6 @@ export {
   Works,
   Feedbacks,
   Contact,
-  EarthCanvas,
-  BallCanvas,
-  ComputersCanvas,
-  StarsCanvas,
   FeedbackPrompt,
   KeyAchievements,
 }

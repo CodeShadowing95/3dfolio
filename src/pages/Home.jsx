@@ -1,3 +1,4 @@
+import { useCallback, useState } from "react";
 import {
   About,
   Contact,
@@ -7,17 +8,20 @@ import {
   Navbar,
   Tech,
   Works,
-  StarsCanvas,
   FeedbackPrompt,
     KeyAchievements,
 } from "../components";
+import { StarsCanvas } from "../components/canvas";
+import LazyOnView from "../components/LazyOnView";
 import Preloader from "../components/Preloader";
 
 const Home = () => {
+    const [showPreloader, setShowPreloader] = useState(true);
+    const hidePreloader = useCallback(() => setShowPreloader(false), []);
 
     return (
         <>
-        <Preloader />
+        {showPreloader && <Preloader onLoadComplete={hidePreloader} />}
 
         <div className="bg-primary">
             <div className="bg-hero-pattern bg-cover bg-no-repeat bg-center">
@@ -32,7 +36,9 @@ const Home = () => {
             <Feedbacks />
             <div className="relative z-0">
                 <Contact />
-                <StarsCanvas />
+                <LazyOnView className="absolute inset-0 z-[-1]">
+                    <StarsCanvas />
+                </LazyOnView>
             </div>
 
             {/* Message de feedback en position fixe */}

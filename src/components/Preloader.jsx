@@ -1,18 +1,28 @@
-import { useEffect, useState } from "react";
-import { useProgress } from "@react-three/drei";
+import { Suspense, lazy, useEffect, useState } from "react";
 import PropTypes from "prop-types";
 
+const ProgressBridge = lazy(() => import("./ProgressBridge"));
+
+// Le site s'affiche au plus tard après ce délai, même si la 3D charge encore
+// (elle apparaît ensuite dans le hero avec son propre indicateur).
+const MAX_WAIT_MS = 2500;
 
 const Preloader = ({ onLoadComplete }) => {
-  // Read real loading progress from R3F canvas loaders
-  const { progress: canvasProgress } = useProgress();
-  const displayProgress = Math.round(canvasProgress || 0);
+  const [canvasProgress, setCanvasProgress] = useState(0);
+  const [timedOut, setTimedOut] = useState(false);
+  const isDone = canvasProgress >= 100 || timedOut;
+  const displayProgress = isDone ? 100 : Math.round(canvasProgress || 0);
   const [fadeOut, setFadeOut] = useState(false);
   const [portalOpen, setPortalOpen] = useState(false);
 
-  // Drive animations once real progress hits 100
   useEffect(() => {
-    if (displayProgress >= 100) {
+    const t = setTimeout(() => setTimedOut(true), MAX_WAIT_MS);
+    return () => clearTimeout(t);
+  }, []);
+
+  // Lance les animations de sortie dès que la 3D est prête ou que le délai est écoulé
+  useEffect(() => {
+    if (isDone) {
       const t1 = setTimeout(() => setFadeOut(true), 300);
       const t2 = setTimeout(() => setPortalOpen(true), 900);
       const t3 = setTimeout(() => {
@@ -25,10 +35,13 @@ const Preloader = ({ onLoadComplete }) => {
         clearTimeout(t3);
       };
     }
-  }, [displayProgress, onLoadComplete]);
+  }, [isDone, onLoadComplete]);
 
   return (
     <div className={`fixed inset-0 z-50 flex items-center justify-center overflow-hidden bg-background ${fadeOut ? "pointer-events-none" : ""}`}>
+      <Suspense fallback={null}>
+        <ProgressBridge onProgress={setCanvasProgress} />
+      </Suspense>
       {/* Elegant gradient backdrop with subtle glow accents */}
       <div className={`absolute inset-0 pointer-events-none ${fadeOut ? "animate-fade-out" : ""}`}>
         <div className="absolute inset-0 bg-gradient-to-br from-[#0b0c12] via-[#0e1120] to-[#0b0c12] opacity-90" />

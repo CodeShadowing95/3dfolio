@@ -1,9 +1,8 @@
-import { Suspense, lazy } from 'react';
+import { Suspense } from 'react';
 import { motion } from 'framer-motion';
 
 import { styles } from '../styles';
-
-const ComputersCanvas = lazy(() => import('./canvas/Computers'));
+import { ComputersCanvas } from './canvas';
 
 const Hero = () => {
   return (
