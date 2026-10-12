@@ -93,7 +93,7 @@ const Preloader = ({ onLoadComplete }) => {
               <div className="absolute -inset-2 rounded-full bg-white/10 blur-xl" />
               <div className="absolute inset-0 rounded-full bg-primary/25 blur-3xl" />
               <img
-                src="/avatar.jpg"
+                src="/avatar.webp"
                 alt="Patrick NAMEGNI avatar"
                 className="relative h-20 w-20 sm:h-24 sm:w-24 md:h-32 md:w-32 rounded-full object-cover ring-2 ring-white/20 shadow-lg"
               />

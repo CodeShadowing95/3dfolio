@@ -69,6 +69,8 @@ const ProjectCard = ({ index, id, name, description, tags, image, source_code_li
           <img
             src={image}
             alt={name}
+            loading="lazy"
+            decoding="async"
             className="w-full h-full object-cover rounded-2xl"
           />
 

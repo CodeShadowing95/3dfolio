@@ -40,7 +40,7 @@ export default function NotFound() {
         {/* Panneau de droite (image) */}
         <section className="relative">
           <img
-            src="/side-img.jpg"
+            src="/side-img.webp"
             alt="Starry night desert landscape"
             className="absolute inset-0 w-full h-full object-cover"
           />

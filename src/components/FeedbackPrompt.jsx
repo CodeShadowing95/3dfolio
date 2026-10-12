@@ -152,7 +152,7 @@ const FeedbackPrompt = () => {
             ) : (
               
               <img 
-                src="messages-icon.png"
+                src="/messages-icon.webp"
                 alt="Feedback"
                 className="w-8 h-8 drop-shadow-sm" 
               />
