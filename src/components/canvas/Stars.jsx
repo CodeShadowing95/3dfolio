@@ -2,8 +2,10 @@
 
 import { useState, useRef, Suspense } from 'react';
 import { Canvas, useFrame } from '@react-three/fiber';
-import { Points, PointMaterial, Preload } from '@react-three/drei';
+import { Points, PointMaterial } from '@react-three/drei';
 import * as random from 'maath/random/dist/maath-random.esm';
+
+import useInViewport from '../../hooks/useInViewport';
 
 const Stars = (props) => {
     const ref = useRef();
@@ -31,14 +33,16 @@ const Stars = (props) => {
 }
 
 const StarsCanvas = () => {
+    const containerRef = useRef(null);
+    const isVisible = useInViewport(containerRef);
+
     return (
-        <div className="w-full h-auto absolute inset-0 z-[-1]">
-            <Canvas camera={{ position: [0, 0, 1] }}>
+        <div ref={containerRef} className="w-full h-auto absolute inset-0 z-[-1]">
+            {/* Les étoiles tournent en continu : on coupe le rendu quand la section n'est plus à l'écran */}
+            <Canvas frameloop={isVisible ? 'always' : 'never'} dpr={[1, 1.5]} camera={{ position: [0, 0, 1] }}>
                 <Suspense fallback={null}>
                     <Stars />
                 </Suspense>
-
-                <Preload all />
             </Canvas>
         </div>
     )
