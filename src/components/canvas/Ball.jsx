@@ -1,11 +1,9 @@
 /* eslint-disable react/no-unknown-property */
 
-import { Suspense } from "react";
-import { Canvas } from "@react-three/fiber";
-import { Decal, Float, OrbitControls, Preload, useTexture } from "@react-three/drei";
+import { Suspense, useEffect, useRef, useState } from "react";
+import { Canvas, useFrame, useThree } from "@react-three/fiber";
+import { Decal, Float, OrbitControls, PerspectiveCamera, useTexture, View } from "@react-three/drei";
 import PropTypes from "prop-types";
-
-import CanvasLoader from '../Loader';
 
 const Ball = (props) => {
     const [decal] = useTexture([props.imgUrl]);
@@ -29,24 +27,85 @@ Ball.propTypes = {
     imgUrl: PropTypes.string.isRequired,
 };
 
-const BallCanvas = ({ icon }) => {
+// Une "vue" par technologie : elle suit la position de son <div> dans la page
+// mais dessine dans le canvas partagé, au lieu d'ouvrir son propre contexte WebGL.
+const BallView = ({ icon, name }) => {
+    const ref = useRef(null);
+    const [domElement, setDomElement] = useState(null);
+
+    useEffect(() => {
+        setDomElement(ref.current);
+    }, []);
+
     return (
-        <Canvas
-            frameloop="demand"
-            gl={{ preserveDrawingBuffer: true }}
-        >
-            {/* CanvasLoader is useful because we don't need the canvas to break each time we reloading the page */}
-            <Suspense fallback={<CanvasLoader />}>
-                <OrbitControls enableZoom={false} />
+        <View ref={ref} className="w-28 h-28 cursor-grab" aria-label={name}>
+            <PerspectiveCamera makeDefault position={[0, 0, 5]} fov={75} />
+            {domElement && <OrbitControls enableZoom={false} domElement={domElement} />}
+            <Suspense fallback={null}>
                 <Ball imgUrl={icon} />
             </Suspense>
-
-            <Preload all />
-        </Canvas>
+        </View>
     )
 }
-BallCanvas.propTypes = {
+
+BallView.propTypes = {
     icon: PropTypes.string.isRequired,
+    name: PropTypes.string.isRequired,
 };
 
-export default BallCanvas
+// Le canvas ne redessine qu'à la demande : on le relance quand la page défile,
+// pour que les boules suivent leur emplacement.
+const RedrawOnScroll = () => {
+    const invalidate = useThree((state) => state.invalidate);
+
+    useEffect(() => {
+        const handle = () => invalidate();
+        window.addEventListener("scroll", handle, { passive: true });
+        window.addEventListener("resize", handle);
+        return () => {
+            window.removeEventListener("scroll", handle);
+            window.removeEventListener("resize", handle);
+        };
+    }, [invalidate]);
+
+    // Efface tout le canvas avant que chaque vue ne se dessine,
+    // sinon une boule sortie de l'écran laisserait une trace.
+    useFrame((state) => {
+        state.gl.setScissorTest(false);
+        state.gl.clear(true, true);
+    }, 0);
+
+    return null;
+}
+
+const BallsCanvas = ({ technologies }) => {
+    return (
+        <>
+            <div className="flex flex-row flex-wrap justify-center gap-10">
+                {technologies.map((technology) => (
+                    <BallView key={technology.name} icon={technology.icon} name={technology.name} />
+                ))}
+            </div>
+
+            <Canvas
+                frameloop="demand"
+                dpr={[1, 1.75]}
+                style={{ position: "fixed", inset: 0, pointerEvents: "none", zIndex: 10 }}
+            >
+                <RedrawOnScroll />
+                <View.Port />
+            </Canvas>
+        </>
+    )
+}
+
+BallsCanvas.propTypes = {
+    technologies: PropTypes.arrayOf(
+        PropTypes.shape({
+            name: PropTypes.string.isRequired,
+            icon: PropTypes.string.isRequired,
+        })
+    ).isRequired,
+};
+
+export default BallsCanvas

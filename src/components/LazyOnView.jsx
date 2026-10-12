@@ -3,7 +3,7 @@ import PropTypes from "prop-types";
 
 // Monte ses enfants (et télécharge leur code / leurs assets) seulement
 // quand le bloc approche de l'écran.
-const LazyOnView = ({ children, className = "", rootMargin = "300px 0px" }) => {
+const LazyOnView = ({ children, className = "", rootMargin = "300px 0px", fallback = null }) => {
     const ref = useRef(null);
     const [isVisible, setIsVisible] = useState(false);
 
@@ -32,7 +32,7 @@ const LazyOnView = ({ children, className = "", rootMargin = "300px 0px" }) => {
 
     return (
         <div ref={ref} className={className}>
-            {isVisible && <Suspense fallback={null}>{children}</Suspense>}
+            {isVisible ? <Suspense fallback={fallback}>{children}</Suspense> : fallback}
         </div>
     );
 };
@@ -41,6 +41,7 @@ LazyOnView.propTypes = {
     children: PropTypes.node,
     className: PropTypes.string,
     rootMargin: PropTypes.string,
+    fallback: PropTypes.node,
 };
 
 export default LazyOnView;

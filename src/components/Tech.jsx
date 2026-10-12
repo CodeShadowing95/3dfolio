@@ -3,16 +3,21 @@ import LazyOnView from "./LazyOnView";
 import { SectionWrapper } from "../hoc";
 import { technologies } from "../constants";
 
+// Emplacements vides de la même taille, affichés tant que la 3D n'est pas chargée
+const placeholder = (
+  <div className="flex flex-row flex-wrap justify-center gap-10">
+    {technologies.map((technology) => (
+      <div className="w-28 h-28" key={technology.name} />
+    ))}
+  </div>
+);
+
 // eslint-disable-next-line react-refresh/only-export-components
 const Tech = () => {
   return (
-    <div className="flex flex-row flex-wrap justify-center gap-10">
-        {technologies.map((technology) => (
-            <LazyOnView className="w-28 h-28" key={technology.name}>
-                <BallCanvas icon={technology.icon} />
-            </LazyOnView>
-        ))}
-    </div>
+    <LazyOnView fallback={placeholder}>
+      <BallCanvas technologies={technologies} />
+    </LazyOnView>
   )
 }
 
