@@ -369,6 +369,7 @@ const projects = [
   // },
   {
     id: "kamercare",
+    featured: true,
     name: "KamerCare",
     description: "Plateforme médicale moderne conçue pour le système de santé camerounais, facilitant la connexion entre patients et professionnels de santé.",
     reason: "Projet personnel",
@@ -413,6 +414,7 @@ const projects = [
   },
   {
     id: "bikemapper",
+    featured: true,
     name: "BikeMapper",
     description:"Application de géolocalisation de stations de vélos en libre-service en France et dans le monde. Vous pouvez découvrir la liste des services, les bornes de station, les détails de la station par ville.",
     reason: "Test technique",
@@ -495,6 +497,7 @@ const projects = [
   },
   {
     id: "curriqulumai",
+    featured: true,
     name: "Curriqulum.ai",
     description:
       "Application web sophistiquée qui utilise l'IA pour garantir une compatibilité 100% ATS de tout CV. Notre solution maximise ainsi vos chances d'obtenir un entretien.",
@@ -648,6 +651,7 @@ const projects = [
   {
     id: "youwatch",
     name: "YouWatch",
+    featured: true,
     description:
       "Pseudo-clone de la plateforme YouTube permettant de voir n'importe quelle vidéo, rechercher des vidéos précises, consulter des vidéos par catégorie et par chaîne, etc...",
     reason: "Projet personnel",
