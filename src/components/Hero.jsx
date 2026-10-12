@@ -18,8 +18,23 @@ const Hero = () => {
                     <h1 className={`${styles.heroHeadText} text-white`}><span className="text-[#915eff]">Patrick NAMEGNI</span></h1>
                     <div className={`${styles.heroSubText} text-white-100 max-w-2xl`}>
                         <p>Développeur Web <span className="text-[#915eff]">Fullstack & DevOps</span></p>
-                        <p className="font-light text-lg mt-3">Je conçois des applications web performantes et sécurisées, du front-end à l{`'`}infrastructure, et j{`'`}accompagne des équipes à concrétiser leurs projets.</p>
-                        <p className="font-light text-lg mt-1">Actuellement disponible pour un poste en CDI/CDD 🚀</p>
+                        <p className="font-light text-[16px] sm:text-lg mt-3">Je conçois des applications web performantes et sécurisées, du front-end à l{`'`}infrastructure, et j{`'`}accompagne des équipes à concrétiser leurs projets.</p>
+                        <p className="font-light text-[16px] sm:text-lg mt-1">Actuellement disponible pour un poste en CDI/CDD 🚀</p>
+                    </div>
+
+                    <div className="mt-8 flex flex-wrap gap-4">
+                        <a
+                            href="#projets"
+                            className="px-6 py-3 rounded-xl bg-[#915eff] hover:bg-[#7c4dff] text-white font-semibold text-[15px] sm:text-[16px] shadow-lg shadow-[#915eff]/25 transition-colors duration-300"
+                        >
+                            Voir mes projets
+                        </a>
+                        <a
+                            href="#contact"
+                            className="px-6 py-3 rounded-xl border border-white/40 hover:border-white hover:bg-white/10 text-white font-semibold text-[15px] sm:text-[16px] transition-colors duration-300"
+                        >
+                            Me contacter
+                        </a>
                     </div>
                 </div>
             </div>

@@ -186,7 +186,7 @@ const Contact = () => {
                 <label className="flex flex-col">
                     <span className="text-white font-medium mb-4">Votre Message</span>
                     <textarea
-                        rows={7}
+                        rows={5}
                         name="message"
                         value={form.message}
                         onChange={handleChange}
@@ -202,11 +202,29 @@ const Contact = () => {
                 <button
                     type="submit"
                     disabled={loading}
-                    className="bg-tertiary py-3 px-8 outline-none w-fit text-white font-bold shadow-md shadow-primary rounded-xl disabled:opacity-60 disabled:cursor-not-allowed"
+                    className="bg-[#915eff] hover:bg-[#7c4dff] transition-colors py-3 px-8 outline-none w-fit text-white font-bold shadow-md shadow-primary rounded-xl disabled:opacity-60 disabled:cursor-not-allowed"
                 >
                     {loading ? 'Envoi...' : 'Envoyer'}
                 </button>
             </form>
+
+            <div className="mt-10 pt-8 border-t border-white/10 flex flex-col gap-3">
+                <p className="text-secondary text-[15px]">Ou écrivez-moi directement :</p>
+                <a
+                    href={`mailto:${CONTACT_EMAIL}`}
+                    className="text-white font-medium hover:text-[#915eff] transition-colors break-all"
+                >
+                    {CONTACT_EMAIL}
+                </a>
+                <a
+                    href="https://www.linkedin.com/in/frank-patrick-namegni/"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="text-white font-medium hover:text-[#915eff] transition-colors"
+                >
+                    LinkedIn : Frank Patrick Namegni
+                </a>
+            </div>
         </motion.div>
 
         <motion.div

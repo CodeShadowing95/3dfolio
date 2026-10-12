@@ -31,8 +31,7 @@ const Navbar = () => {
   // }
 
   const handleDownloadCV = () => {
-    // Remplacez 'CV.pdf' par le chemin réel de votre CV
-    window.location.href = 'CV.pdf';
+    window.location.href = '/CV.pdf';
   };
 
   return (
