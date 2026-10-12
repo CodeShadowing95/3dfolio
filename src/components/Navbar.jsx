@@ -47,16 +47,10 @@ const Navbar = () => {
             window.scrollTo(0, 0);
           }}
         >
-          <img src={logo} alt="logo" className="w-9 h-9 object-contain" />
-          <div className="flex flex-col">
-            <p className="text-white text-[18px] font-bold cursor-pointer flex">
-              atrick
-              {/* &nbsp; <span className="font-light sm:block hidden">| Fullstack Web Developer</span>*/}
-            </p>
-            <p className="text-white text-xs cursor-pointer flex -ml-6">
-              ortfolio
-            </p>
-          </div>
+          <img src={logo} alt="" className="w-9 h-9 object-contain" />
+          <p className="ml-2 text-white text-[18px] font-bold">
+            Patrick <span className="sm:inline hidden">Namegni</span>
+          </p>
         </Link>
 
         <ul className="list-none hidden md:flex flex-row items-center gap-10">

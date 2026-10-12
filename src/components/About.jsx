@@ -8,7 +8,7 @@ import { services } from '../constants';
 import { fadeIn, textVariant } from '../utils/motion';
 import { SectionWrapper } from "../hoc";
 
-const highlight = "text-[#b79cff] font-semibold";
+const highlight = "text-accent-light font-semibold";
 
 const ServiceCard = ({ index, title, icon, items }) => {
     return (

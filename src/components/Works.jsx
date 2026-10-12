@@ -93,7 +93,7 @@ const FeaturedCard = ({ id, name, description, tags, image, source_code_link, ap
       viewport={{ once: true, amount: 0.2 }}
       transition={{ duration: 0.6, delay: (index % 2) * 0.1, ease: "easeOut" }}
       onClick={() => navigate(`/project/${id}`)}
-      className="group cursor-pointer bg-tertiary rounded-2xl p-5 border border-white/10 hover:border-[#915eff]/60 transition-colors flex flex-col gap-5"
+      className="group cursor-pointer bg-tertiary rounded-2xl p-5 border border-white/10 hover:border-accent/60 transition-colors flex flex-col gap-5"
     >
       <div className="relative w-full aspect-[16/9] overflow-hidden rounded-xl">
         <img
@@ -110,7 +110,7 @@ const FeaturedCard = ({ id, name, description, tags, image, source_code_link, ap
         <div className="flex items-center justify-between gap-3">
           <h3 className="text-white font-bold text-[24px]">{name}</h3>
           {status && (
-            <span className="shrink-0 px-2.5 py-1 rounded-full text-[12px] font-medium bg-[#915eff]/15 text-[#c7b3ff] border border-[#915eff]/30">
+            <span className="shrink-0 px-2.5 py-1 rounded-full text-[12px] font-medium bg-accent/15 text-accent-light border border-accent/30">
               {status}
             </span>
           )}
@@ -127,7 +127,7 @@ const FeaturedCard = ({ id, name, description, tags, image, source_code_link, ap
 
         <div className="mt-auto pt-2 flex flex-wrap items-center justify-between gap-3">
           <Tags tags={tags} max={4} />
-          <span className="text-[#b79cff] text-[14px] font-semibold group-hover:underline">Voir le détail →</span>
+          <span className="text-accent-light text-[14px] font-semibold group-hover:underline">Voir le détail →</span>
         </div>
       </div>
     </motion.article>
@@ -351,42 +351,24 @@ const Works = () => {
       )}
 
       <motion.div className="w-full flex mt-20 justify-center items-center md:gap-3 gap-4 md:flex-row flex-col" variants={fadeIn("up", "spring", 0.5, 0.75)}>
-        {/* Bouton GitHub + stylé */}
-        <div
-          className="relative group cursor-pointer overflow-hidden rounded-xl p-[2px] w-[220px]"
-          style={{ background: "linear-gradient(135deg, rgba(255,255,255,0.25) 0%, rgba(255,255,255,0.05) 100%)" }}
-          onClick={() => window.open("https://github.com/CodeShadowing95", "_blank")}
+        <a
+          href="https://github.com/CodeShadowing95"
+          target="_blank"
+          rel="noopener noreferrer"
+          className="flex items-center justify-center gap-2 w-[240px] rounded-xl py-3 px-4 bg-white text-slate-900 font-semibold text-sm shadow-md hover:shadow-lg transition-shadow"
         >
-          <div className="flex items-center justify-center gap-2 rounded-[10px] py-2.5 px-4 bg-white text-slate-900 shadow-md transition-all duration-300 group-hover:shadow-lg">
-            <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24"><path fill="#0f172a" d="M12 2A10 10 0 0 0 2 12c0 4.42 2.87 8.17 6.84 9.5c.5.08.66-.23.66-.5v-1.69c-2.77.6-3.36-1.34-3.36-1.34c-.46-1.16-1.11-1.47-1.11-1.47c-.91-.62.07-.6.07-.6c1 .07 1.53 1.03 1.53 1.03c.87 1.52 2.34 1.07 2.91.83c.09-.65.35-1.09.63-1.34c-2.22-.25-4.55-1.11-4.55-4.92c0-1.11.38-2 1.03-2.71c-.1-.25-.45-1.29.1-2.64c0 0 .84-.27 2.75 1.02c.79-.22 1.65-.33 2.5-.33c.85 0 1.71.11 2.5.33c1.91-1.29 2.75-1.02 2.75-1.02c.55 1.35.2 2.39.1 2.64c.65.71 1.03 1.6 1.03 2.71c0 3.82-2.34 4.66-4.57 4.91c.36.31.69.92.69 1.85V21c0 .27.16.59.67.5C19.14 20.16 22 16.42 22 12A10 10 0 0 0 12 2"/></svg>
-            <span className="text-sm font-semibold">Voir d’autres projets</span>
-          </div>
-          <div className="absolute inset-0 rounded-xl opacity-0 group-hover:opacity-100 transition-opacity duration-300" style={{ boxShadow: "0 0 80px rgba(248, 113, 113, 0.15), 0 0 80px rgba(56, 189, 248, 0.15)" }} />
-        </div>
+          <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" aria-hidden="true"><path fill="#0f172a" d="M12 2A10 10 0 0 0 2 12c0 4.42 2.87 8.17 6.84 9.5c.5.08.66-.23.66-.5v-1.69c-2.77.6-3.36-1.34-3.36-1.34c-.46-1.16-1.11-1.47-1.11-1.47c-.91-.62.07-.6.07-.6c1 .07 1.53 1.03 1.53 1.03c.87 1.52 2.34 1.07 2.91.83c.09-.65.35-1.09.63-1.34c-2.22-.25-4.55-1.11-4.55-4.92c0-1.11.38-2 1.03-2.71c-.1-.25-.45-1.29.1-2.64c0 0 .84-.27 2.75 1.02c.79-.22 1.65-.33 2.5-.33c.85 0 1.71.11 2.5.33c1.91-1.29 2.75-1.02 2.75-1.02c.55 1.35.2 2.39.1 2.64c.65.71 1.03 1.6 1.03 2.71c0 3.82-2.34 4.66-4.57 4.91c.36.31.69.92.69 1.85V21c0 .27.16.59.67.5C19.14 20.16 22 16.42 22 12A10 10 0 0 0 12 2"/></svg>
+          Voir d’autres projets
+        </a>
 
-        {/* Bouton Télécharger CV + stylé */}
-        <div
-          className="relative group cursor-pointer overflow-hidden rounded-xl p-[2px] w-[240px]"
+        <a
+          href="/CV.pdf"
+          download
+          className="flex items-center justify-center gap-2 w-[240px] rounded-xl py-3 px-4 bg-accent hover:bg-accent-hover text-white font-semibold text-sm shadow-lg shadow-accent/25 transition-colors"
         >
-          {/* Gradient rotatif en arrière-plan */}
-          <div
-            className="absolute inset-0 z-0 rounded-xl pointer-events-none"
-            style={{
-              background: "conic-gradient(from 0deg, rgb(6, 182, 212), rgb(217, 70, 239), rgb(6, 182, 212))",
-              animation: "spin 6s linear infinite",
-              willChange: "transform",
-            }}
-            aria-hidden="true"
-          />
-          <div
-            className="relative z-10 flex items-center justify-center gap-2 rounded-[10px] py-2.5 px-4 bg-gray-900 text-white w-full transition-all duration-300"
-            onClick={() => window.location.href = '/CV.pdf'}
-          >
-            <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24"><path fill="#ffffff" d="m12 16l-5-5l1.4-1.45l2.6 2.6V4h2v8.15l2.6-2.6L17 11zm-6 4q-.825 0-1.412-.587T4 18v-3h2v3h12v-3h2v3q0 .825-.587 1.413T18 20z"/></svg>
-            <span className="text-sm font-semibold">Téléchargez mon CV</span>
-          </div>
-          <div className="absolute inset-0 z-20 rounded-xl opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none" style={{ boxShadow: "0 0 80px rgba(248, 113, 113, 0.15), 0 0 80px rgba(56, 189, 248, 0.15)" }} />
-        </div>
+          <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" aria-hidden="true"><path fill="#ffffff" d="m12 16l-5-5l1.4-1.45l2.6 2.6V4h2v8.15l2.6-2.6L17 11zm-6 4q-.825 0-1.412-.587T4 18v-3h2v3h12v-3h2v3q0 .825-.587 1.413T18 20z"/></svg>
+          Télécharger mon CV
+        </a>
       </motion.div>
     </>
   )

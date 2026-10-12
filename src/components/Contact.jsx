@@ -202,7 +202,7 @@ const Contact = () => {
                 <button
                     type="submit"
                     disabled={loading}
-                    className="bg-[#915eff] hover:bg-[#7c4dff] transition-colors py-3 px-8 outline-none w-fit text-white font-bold shadow-md shadow-primary rounded-xl disabled:opacity-60 disabled:cursor-not-allowed"
+                    className="bg-accent hover:bg-accent-hover transition-colors py-3 px-8 outline-none w-fit text-white font-bold shadow-md shadow-primary rounded-xl disabled:opacity-60 disabled:cursor-not-allowed"
                 >
                     {loading ? 'Envoi...' : 'Envoyer'}
                 </button>
@@ -212,7 +212,7 @@ const Contact = () => {
                 <p className="text-secondary text-[15px]">Ou écrivez-moi directement :</p>
                 <a
                     href={`mailto:${CONTACT_EMAIL}`}
-                    className="text-white font-medium hover:text-[#915eff] transition-colors break-all"
+                    className="text-white font-medium hover:text-accent transition-colors break-all"
                 >
                     {CONTACT_EMAIL}
                 </a>
@@ -220,7 +220,7 @@ const Contact = () => {
                     href="https://www.linkedin.com/in/frank-patrick-namegni/"
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="text-white font-medium hover:text-[#915eff] transition-colors"
+                    className="text-white font-medium hover:text-accent transition-colors"
                 >
                     LinkedIn : Frank Patrick Namegni
                 </a>

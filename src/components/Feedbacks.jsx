@@ -28,15 +28,15 @@ const FeedbackCard = ({ index, testimonial, name, designation, company }) => {
                 <div className="mt-7 flex justify-between items-center gap-1">
                     <div className="flex-1 flex flex-col">
                         <p className="text-white font-medium text-[16px]">
-                            <span className="blue-text-gradient">@</span> {name}
+                            {name}
                         </p>
                         <p className="mt-1 text-secondary text-[12px]">
-                            {designation} of {company}
+                            {designation} chez {company}
                         </p>
                     </div>
 
                     <div
-                        className="w-10 h-10 rounded-full bg-gradient-to-br from-[#915eff] to-[#4d3dff] flex items-center justify-center text-white text-[13px] font-bold"
+                        className="w-10 h-10 rounded-full bg-gradient-to-br from-accent to-[#4d3dff] flex items-center justify-center text-white text-[13px] font-bold"
                         aria-hidden="true"
                     >
                         {initials}

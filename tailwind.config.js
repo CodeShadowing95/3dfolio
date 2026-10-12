@@ -10,6 +10,11 @@ export const theme = {
             "black-100": "#100d25",
             "black-200": "#090325",
             "white-100": "#f3f3f3",
+            accent: {
+                DEFAULT: "#915eff",
+                hover: "#7c4dff",
+                light: "#b79cff",
+            },
         },
         boxShadow: {
             card: "0px 35px 120px -15px #211e35",

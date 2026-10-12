@@ -10,14 +10,14 @@ const Hero = () => {
         <div className={`${styles.paddingX} relative z-10 max-w-7xl mx-auto flex flex-col lg:flex-row lg:items-start gap-5 pt-[100px] lg:pt-[110px] pointer-events-none`}>
             <div className="flex flex-row items-start gap-5 lg:w-[55%] pointer-events-auto">
                 <div className="flex flex-col justify-center items-center mt-5">
-                    <div className="w-5 h-5 rounded-full bg-[#915eff]" />
+                    <div className="w-5 h-5 rounded-full bg-accent" />
                     <div className="w-1 sm:h-80 h-40 violet-gradient" />
                 </div>
 
                 <div className="">
-                    <h1 className={`${styles.heroHeadText} text-white`}><span className="text-[#915eff]">Patrick NAMEGNI</span></h1>
+                    <h1 className={`${styles.heroHeadText} text-white`}><span className="text-accent">Patrick NAMEGNI</span></h1>
                     <div className={`${styles.heroSubText} text-white-100 max-w-2xl`}>
-                        <p>Développeur Web <span className="text-[#915eff]">Fullstack & DevOps</span></p>
+                        <p>Développeur Web <span className="text-accent">Fullstack & DevOps</span></p>
                         <p className="font-light text-[16px] sm:text-lg mt-3">Je conçois des applications web performantes et sécurisées, du front-end à l{`'`}infrastructure, et j{`'`}accompagne des équipes à concrétiser leurs projets.</p>
                         <p className="font-light text-[16px] sm:text-lg mt-1">Actuellement disponible pour un poste en CDI/CDD 🚀</p>
                     </div>
@@ -25,7 +25,7 @@ const Hero = () => {
                     <div className="mt-8 flex flex-wrap gap-4">
                         <a
                             href="#projets"
-                            className="px-6 py-3 rounded-xl bg-[#915eff] hover:bg-[#7c4dff] text-white font-semibold text-[15px] sm:text-[16px] shadow-lg shadow-[#915eff]/25 transition-colors duration-300"
+                            className="px-6 py-3 rounded-xl bg-accent hover:bg-accent-hover text-white font-semibold text-[15px] sm:text-[16px] shadow-lg shadow-accent/25 transition-colors duration-300"
                         >
                             Voir mes projets
                         </a>

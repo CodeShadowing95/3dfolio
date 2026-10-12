@@ -165,12 +165,10 @@ const experiences = [
     iconBg: "#383E56",
     date: "Septembre 2025 - Août 2026",
     points: [
-      "Migration de l'outil CLI interne (DevOps) d'une exécution synchrone vers une architecture asynchrone sécurisée, corrigeant une faille d'injection de commandes et améliorant la portabilité multi-OS.",
-      "Pilotage d'une campagne de mise à niveau (Node.js, dépendances) sur un parc multi-dépôts, réduisant la dette technique et fiabilisant la chaîne CI/CD.",
-      "Renforcement de la sécurité applicative via la refonte des politiques CSP (Content Security Policy) et le cloisonnement strict des environnements (sandbox/dev/prod) sur une infrastructure AWS.",
-      "Optimisation des performances du site (assets, pipeline CI) : temps de build réduit de 25-30 min à ~5 min ; audit et correction du SEO technique international (hreflang, sitemaps).",
-      "Migration du site vitrine vers Nuxt 4 et mise en place d'un mode preview Strapi/Nuxt pour l'équipe éditoriale.",
-      "Refactoring backend du CMS headless Strapi (clarification du modèle de données, mapping API) sans rupture de service.",
+      "Optimisation du site et de la CI : build réduit de 25-30 min à ~5 min, audit et correction du SEO technique international (hreflang, sitemaps).",
+      "Sécurisation de l'outil CLI interne (passage en asynchrone, faille d'injection de commandes corrigée) et refonte des politiques CSP avec cloisonnement sandbox/dev/prod sur AWS.",
+      "Mise à niveau Node.js et des dépendances sur un parc multi-dépôts pour réduire la dette technique et fiabiliser la CI/CD.",
+      "Migration du site vitrine vers Nuxt 4, mode preview Strapi/Nuxt pour l'équipe éditoriale et refactoring du backend Strapi sans rupture de service.",
     ],
   },
   {
@@ -180,11 +178,9 @@ const experiences = [
     iconBg: "#383E56",
     date: "Mai 2025 - Août 2025",
     points: [
-      "Développement d'une solution de vidéo-conférence intégrée pour service d'aide à domicile.",
-      "Conception et développement d'un plugin vidéo full-stack pour Twilio Flex.",
-      "Architecture responsive (mobile/desktop) avec gestion d'état avancée.",
-      "Optimisation des performances (bundle 522KB, code-splitting).",
-      "Gestion complète du cycle de vie des appels vidéo (connexion, contrôles, déconnexion).",
+      "Conception et développement d'un plugin vidéo full-stack pour Twilio Flex, intégré au service d'aide à domicile.",
+      "Gestion complète du cycle de vie des appels vidéo (connexion, contrôles, déconnexion) avec une interface responsive mobile/desktop.",
+      "Optimisation des performances : bundle ramené à 522 Ko grâce au code-splitting.",
     ],
   },
   {
@@ -206,10 +202,7 @@ const experiences = [
     iconBg: "#E6DEDD",
     date: "Septembre 2023 - Juillet 2024",
     points: [
-      "Acquisition des connaissances relatives à l'analyse de données et la BI avec les technos telles que Python, Pandas, Numpy, Power BI, etc...",
-      "Acquisition des connaissances sur le Cloud Computing notamment avec Amazon AWS et des technologies de conteneurisation d'applications telles que Docker, Kubernetes",
-      "Acquisition de connaissances sur le développement d'applications mobiles avec Androïd, Flutter, Dart",
-      "Apprentissage des fondamentaux de la robotique logicielle (RPA)",
+      "Formation en data/BI (Python, Pandas, Power BI), cloud et conteneurs (AWS, Docker, Kubernetes), développement mobile (Android, Flutter) et RPA.",
     ],
   },
   {
@@ -219,10 +212,8 @@ const experiences = [
     iconBg: "#E6DEDD",
     date: "Juillet 2023 - Décembre 2023",
     points: [
-      "Développement d'une application de scraping de données à partir de sources telles que LinkedIn, Google Maps, Pages Jaunes afin d'optimiser la stratégie marketing de l'entreprise.",
-      "Mise en place des mécanismes pour collecter efficacement des données pertinentes à partir de ces sources de données, en respectant les règles d'utilisation.",
-      "Collaboration avec d'autres équipes, telles que le marketing ou l'analyse des données, pour intégrer les résultats du webscraping dans d'autres outils utilisés par l'entreprise.",
-      "Documentation du code pour faciliter la compréhension et la collaboration au sein de l'équipe.",
+      "Scraping de données (LinkedIn, Google Maps, Pages Jaunes) pour alimenter la stratégie marketing, en respectant les règles d'utilisation des sources.",
+      "Intégration des données collectées dans les outils des équipes marketing et data.",
     ],
   },
   {
@@ -232,10 +223,8 @@ const experiences = [
     iconBg: "#383E56",
     date: "Juin 2022 - Janvier 2023",
     points: [
-      "Conception d'une application web de commande de pâtisseries. S'assurer de la convivialité du site et de la conformité à l'image de la pâtisserie.",
-      "Intégration des fonctionnalités de personnalisation si nécessaire.",
-      "Veiller à ce que le site web soit rapide et performant en optimisant les images, en minimisant les requêtes et en adoptant d'autres bonnes pratiques.",
-      "Intégrer des liens vers les réseaux sociaux de la pâtisserie et, si nécessaire, intégrer des flux sociaux sur le site web.",
+      "Conception d'une application web de commande de pâtisseries, fidèle à l'image de la marque, avec options de personnalisation et intégration des réseaux sociaux.",
+      "Optimisation des performances (images, nombre de requêtes).",
     ],
   },
   {
@@ -245,10 +234,7 @@ const experiences = [
     iconBg: "#383E56",
     date: "Octobre 2019 - Juillet 2021",
     points: [
-      "Participation au développement d'applications e-commerce en utilisant les langages de programmation et les frameworks pertinents.",
-      "Maintenance des applications existantes en corrigeant les bugs, en effectuant des mises à jour et en améliorant les fonctionnalités existantes.",
-      "Collaboration étroite avec d'autres membres de l'équipe de développement, ainsi qu'avec des équipes interfonctionnelles telles que le marketing.",
-      "Suivi des tendances et des nouvelles technologies liées au e-commerce et aux applications afin de rester à jour et d'apporter des solutions innovantes.",
+      "Développement et maintenance d'applications e-commerce : nouvelles fonctionnalités, corrections de bugs et mises à jour, en lien avec l'équipe marketing.",
     ],
   },
 ];
@@ -316,15 +302,12 @@ const projects = [
   //   tags: [
   //     {
   //       name: "html",
-  //       color: "orange-text-gradient",
   //     },
   //     {
   //       name: "css",
-  //       color: "blue-text-gradient",
   //     },
   //     {
   //       name: "react",
-  //       color: "pink-text-gradient",
   //     },
   //   ],
   //   image: gpt3,
@@ -340,11 +323,9 @@ const projects = [
   //   tags: [
   //     {
   //       name: "react",
-  //       color: "blue-text-gradient",
   //     },
   //     {
   //       name: "tailwindcss",
-  //       color: "pink-text-gradient",
   //     },
   //   ],
   //   image: rehobothnettoyage,
@@ -376,19 +357,15 @@ const projects = [
     tags: [
       {
         name: "laravel",
-        color: "pink-text-gradient",
       },
       {
         name: "nextjs",
-        color: "text-white",
       },
       {
         name: "tailwindcss",
-        color: "green-text-gradient",
       },
       {
         name: "restapi",
-        color: "orange-text-gradient"
       }
     ],
     image: kamercare,
@@ -421,19 +398,15 @@ const projects = [
     tags: [
       {
         name: "react",
-        color: "blue-text-gradient",
       },
       {
         name: "nodejs",
-        color: "green-text-gradient",
       },
       {
         name: "tailwindcss",
-        color: "orange-text-gradient",
       },
       {
         name: "restapi",
-        color: "pink-text-gradient",
       },
     ],
     image: bikemapper,
@@ -465,15 +438,12 @@ const projects = [
     tags: [
       {
         name: "angular",
-        color: "yellow-text-gradient",
       },
       {
         name: "typescript",
-        color: "pink-text-gradient",
       },
       {
         name: "tailwindcss",
-        color: "green-text-gradient",
       },
     ],
     image: pokedexhub,
@@ -505,15 +475,12 @@ const projects = [
     tags: [
       {
         name: "react-router v7",
-        color: "green-text-gradient",
       },
       {
         name: "tailwindcss",
-        color: "orange-text-gradient",
       },
       {
         name: "ai",
-        color: "blue-text-gradient",
       },
     ],
     image: curriqulumai,
@@ -544,11 +511,9 @@ const projects = [
     tags: [
       {
         name: "react",
-        color: "green-text-gradient",
       },
       {
         name: "tailwindcss",
-        color: "blue-text-gradient",
       },
     ],
     image: appleclone,
@@ -579,11 +544,9 @@ const projects = [
     tags: [
       {
         name: "react",
-        color: "green-text-gradient",
       },
       {
         name: "tailwindcss",
-        color: "blue-text-gradient",
       },
     ],
     image: brainwave,
@@ -614,19 +577,15 @@ const projects = [
     tags: [
       {
         name: "react",
-        color: "blue-text-gradient",
       },
       {
         name: "nodejs",
-        color: "green-text-gradient",
       },
       {
         name: "restapi",
-        color: "orange-text-gradient",
       },
       {
         name: "css",
-        color: "pink-text-gradient",
       },
     ],
     image: exalta,
@@ -658,19 +617,15 @@ const projects = [
     tags: [
       {
         name: "react",
-        color: "blue-text-gradient",
       },
       {
         name: "nodejs",
-        color: "green-text-gradient",
       },
       {
         name: "restapi",
-        color: "pink-text-gradient",
       },
       {
         name: "materialui",
-        color: "orange-text-gradient",
       },
     ],
     image: youwatch,
@@ -699,19 +654,15 @@ const projects = [
   //   tags: [
   //     {
   //       name: "react",
-  //       color: "blue-text-gradient",
   //     },
   //     {
   //       name: "nodejs",
-  //       color: "green-text-gradient",
   //     },
   //     {
   //       name: "redux",
-  //       color: "violet-text-gradient",
   //     },
   //     {
   //       name: "restapi",
-  //       color: "pink-text-gradient",
   //     },
   //   ],
   //   image: lyriks,
@@ -727,19 +678,15 @@ const projects = [
   //   tags: [
   //     {
   //       name: "react",
-  //       color: "blue-text-gradient",
   //     },
   //     {
   //       name: "nodejs",
-  //       color: "green-text-gradient",
   //     },
   //     {
   //       name: "mongodb",
-  //       color: "violet-text-gradient",
   //     },
   //     {
   //       name: "tailwindcss",
-  //       color: "yellow-text-gradient",
   //     },
   //   ],
   //   image: lugia,
@@ -771,19 +718,15 @@ const projects = [
     tags: [
       {
         name: "nextjs",
-        color: "orange-text-gradient",
       },
       {
         name: "nodejs",
-        color: "green-text-gradient",
       },
       {
         name: "restapi",
-        color: "yellow-text-gradient",
       },
       {
         name: "tailwindcss",
-        color: "pink-text-gradient",
       },
     ],
     image: animevault,
@@ -811,19 +754,15 @@ const projects = [
   //   tags: [
   //     {
   //       name: "angular",
-  //       color: "orange-text-gradient",
   //     },
   //     {
   //       name: "springboot",
-  //       color: "green-text-gradient",
   //     },
   //     {
   //       name: "restapi",
-  //       color: "pink-text-gradient",
   //     },
   //     {
   //       name: "tailwindcss",
-  //       color: "blue-text-gradient",
   //     },
   //   ],
   //   image: empmanagement,
@@ -839,23 +778,18 @@ const projects = [
     tags: [
       {
         name: "nextjs",
-        color: "orange-text-gradient",
       },
       {
         name: "nodejs",
-        color: "green-text-gradient",
       },
       {
         name: "typescript",
-        color: "blue-text-gradient",
       },
       {
         name: "restapi",
-        color: "yellow-text-gradient",
       },
       {
         name: "tailwindcss",
-        color: "pink-text-gradient",
       },
     ],
     image: carhub,
@@ -884,23 +818,18 @@ const projects = [
   //   tags: [
   //     {
   //       name: "nextjs",
-  //       color: "orange-text-gradient",
   //     },
   //     {
   //       name: "nodejs",
-  //       color: "green-text-gradient",
   //     },
   //     {
   //       name: "typescript",
-  //       color: "blue-text-gradient",
   //     },
   //     {
   //       name: "restapi",
-  //       color: "yellow-text-gradient",
   //     },
   //     {
   //       name: "tailwindcss",
-  //       color: "pink-text-gradient",
   //     },
   //   ],
   //   image: promptopia,
@@ -916,19 +845,15 @@ const projects = [
     tags: [
       {
         name: "angular",
-        color: "orange-text-gradient",
       },
       {
         name: "springboot",
-        color: "green-text-gradient",
       },
       {
         name: "restapi",
-        color: "pink-text-gradient",
       },
       {
         name: "tailwindcss",
-        color: "blue-text-gradient",
       },
     ],
     image: servermanagement,
