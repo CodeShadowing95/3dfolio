@@ -23,6 +23,10 @@ import threejs from "./tech/threejs.svg";
 import python from "./tech/python.webp";
 import nextjs from "./tech/nextjs.webp";
 import nuxt from "./tech/nuxt.webp";
+import vue from "./tech/Vue.js.webp";
+import angular from "./tech/angular.webp";
+import java from "./tech/java.webp";
+import spring from "./tech/spring.webp";
 
 import ub from "./company/ub.webp";
 import hkdigitals from "./company/hkdigitals.webp";
@@ -85,6 +89,10 @@ export {
   python,
   nextjs,
   nuxt,
+  vue,
+  angular,
+  java,
+  spring,
   ub,
   hkdigitals,
   pristydelices,

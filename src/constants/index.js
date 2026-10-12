@@ -27,7 +27,10 @@ import {
   animevault,
   carhub,
   pokedexhub,
-  nuxt,
+  vue,
+  angular,
+  java,
+  spring,
   aws,
   brainwave,
   appleclone,
@@ -47,12 +50,12 @@ export const navLinks = [
     title: "Profil",
   },
   {
-    id: "expérience",
-    title: "Expérience",
-  },
-  {
     id: "projets",
     title: "Projets",
+  },
+  {
+    id: "expérience",
+    title: "Expérience",
   },
   {
     id: "contact",
@@ -62,20 +65,24 @@ export const navLinks = [
 
 const services = [
   {
-    title: "Développeur Fullstack",
+    title: "Frontend",
     icon: web,
+    items: ["React", "Next.js", "Vue / Nuxt", "TypeScript", "Tailwind CSS"],
   },
   {
-    title: "Rigueur & Autonomie",
-    icon: mobile,
-  },
-  {
-    title: "Professionnalisme",
+    title: "Backend & API",
     icon: backend,
+    items: ["Node.js", "PHP / Laravel", "Java", "API REST", "MongoDB"],
   },
   {
-    title: "Amélioration continue",
+    title: "DevOps & Cloud",
     icon: creator,
+    items: ["AWS", "Docker", "Kubernetes", "CI/CD GitHub Actions"],
+  },
+  {
+    title: "Sécurité & Qualité",
+    icon: mobile,
+    items: ["Politiques CSP", "Gouvernance des dépendances", "Performance", "SEO technique"],
   },
 ];
 
@@ -97,8 +104,12 @@ const technologies = [
     icon: nextjs,
   },
   {
-    name: "Nuxt",
-    icon: nuxt,
+    name: "Vue.js",
+    icon: vue,
+  },
+  {
+    name: "Angular",
+    icon: angular,
   },
   {
     name: "Tailwind CSS",
@@ -107,6 +118,14 @@ const technologies = [
   {
     name: "Node JS",
     icon: nodejs,
+  },
+  {
+    name: "Java",
+    icon: java,
+  },
+  {
+    name: "Spring",
+    icon: spring,
   },
   {
     name: "MongoDB",
@@ -121,11 +140,11 @@ const technologies = [
     icon: kubernetes,
   },
   {
-    name: "git",
+    name: "Git",
     icon: git,
   },
   {
-    name: "python",
+    name: "Python",
     icon: python,
   },
   {
@@ -133,7 +152,7 @@ const technologies = [
     icon: aws,
   },
   {
-    name: "docker",
+    name: "Docker",
     icon: docker,
   },
 ];

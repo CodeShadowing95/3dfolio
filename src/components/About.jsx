@@ -1,6 +1,5 @@
 /* eslint-disable react-refresh/only-export-components */
 
-import { Tilt } from "react-tilt";
 import { motion } from "framer-motion";
 import PropTypes from "prop-types";
 
@@ -9,22 +8,31 @@ import { services } from '../constants';
 import { fadeIn, textVariant } from '../utils/motion';
 import { SectionWrapper } from "../hoc";
 
-const ServiceCard = ({ index, title, icon }) => {
+const highlight = "text-[#b79cff] font-semibold";
+
+const ServiceCard = ({ index, title, icon, items }) => {
     return (
-        <Tilt className="xs:w-[250px] w-full">
-            <motion.div
-                variants={fadeIn("right", "spring", 0.5 * index, 0.75)}
-                className="w-full green-pink-gradient p-[1px] rounded-[20px] shadow-card"
-            >
-                {/* eslint-disable-next-line react/no-unknown-property */}
-                <div options={{ max: 45, scale: 1, speed: 450 }}
-                    className="bg-tertiary rounded-[20px] py-5 px-12 min-h-[280px] flex justify-evenly items-center flex-col"
-                >
-                    <img src={icon} alt={title} className="w-16 h-16 object-contain"/>
-                    <h3 className="text-white text-[20px] font-bold text-center">{title}</h3>
+        <motion.div
+            variants={fadeIn("up", "spring", 0.2 * index, 0.75)}
+            className="green-pink-gradient p-[1px] rounded-[20px] shadow-card"
+        >
+            <div className="bg-tertiary rounded-[20px] h-full p-6 flex flex-col gap-4">
+                <div className="flex items-center gap-3">
+                    <img src={icon} alt="" className="w-10 h-10 object-contain" />
+                    <h3 className="text-white text-[18px] font-bold">{title}</h3>
                 </div>
-            </motion.div>
-        </Tilt>
+                <ul className="flex flex-wrap gap-2">
+                    {items.map((item) => (
+                        <li
+                            key={item}
+                            className="px-2.5 py-1 rounded-full bg-white/5 border border-white/10 text-white-100 text-[13px]"
+                        >
+                            {item}
+                        </li>
+                    ))}
+                </ul>
+            </div>
+        </motion.div>
     )
 }
 
@@ -32,6 +40,7 @@ ServiceCard.propTypes = {
     index: PropTypes.number.isRequired,
     title: PropTypes.string.isRequired,
     icon: PropTypes.string.isRequired,
+    items: PropTypes.arrayOf(PropTypes.string).isRequired,
 };
 
 const About = () => {
@@ -42,27 +51,26 @@ const About = () => {
             <h2 className={styles.sectionHeadText}>Mon Profil.</h2>
         </motion.div>
 
-        <motion.p
+        <motion.div
             variants={fadeIn("", "", 0.1, 1)}
-            className="mt-4 text-secondary text-[17px] max-w-4xl leading-8"
+            className="mt-4 text-secondary text-[17px] max-w-3xl leading-8 space-y-5"
         >
-            Je suis développeur web fullstack, fort de plusieurs années d’expérience en entreprise, en alternance et en freelance, sur des technologies telles que :
-            <span className="bg-gradient-to-r from-orange-300 via-amber-200 to-yellow-200 bg-clip-text text-transparent font-bold"> JavaScript, TypeScript, PHP, Java, ainsi que des frameworks modernes comme React, Next.js, Vue/Nuxt, Node.js et des outils d’intégration API REST, solutions vidéo (Twilio), MongoDB, Laravel, Docker et bien d&apos;autres.</span><br /><br/>
-            Mon profil s&apos;étend également au <span className="bg-gradient-to-r from-orange-300 via-amber-200 to-yellow-200 bg-clip-text text-transparent font-bold">DevOps et au cloud (AWS, CI/CD GitHub Actions, sécurité applicative CSP)</span>, ce qui me permet d&apos;intervenir sur l&apos;ensemble de la chaîne, du code jusqu&apos;au déploiement.<br/><br/>
-            Au fil de mes missions, j’ai eu l’occasion de :
-            <ul className="list-disc list-inside text-secondary text-[17px] max-w-4xl leading-[30px] space-y-2">
-                <li>Concevoir et déployer des plateformes web à fort enjeu métier (CRM, e-santé, e-commerce, vidéo-conférence).</li>
-                <li>Intégrer des APIs et services externes pour enrichir des fonctionnalités dans des projets personnels et professionnels.</li>
-                <li>Améliorer l’ergonomie et la performance d’applications pour offrir une expérience utilisateur fluide.</li>
-                <li>Sécuriser et industrialiser des chaînes de livraison (CI/CD, gouvernance des dépendances, politiques de sécurité CSP) à l&apos;échelle de plusieurs dépôts.</li>
-                <li>Automatiser des tâches répétitives et optimiser des flux de travail, avec des gains mesurables (jusqu&apos;à -80% de temps de traitement manuel, build CI divisé par 5).</li>
-            </ul><br/>
-            Aujourd&apos;hui, je recherche <span className="bg-gradient-to-r from-green-300 via-lime-200 to-emerald-200 bg-clip-text text-transparent font-bold">un poste en CDI de développeur fullstack</span>, où je pourrai mettre à profit mon expérience terrain et mon autonomie pour contribuer durablement à des projets ambitieux.<br/><br/>
-            Mon objectif : <span className="bg-gradient-to-r from-blue-300 via-cyan-200 to-sky-200 bg-clip-text text-transparent font-bold">m&apos;investir sur le long terme dans une équipe où je pourrai continuer à apprendre, monter en compétences et créer de la valeur.</span><br/><br/>
-            Travaillons ensemble afin de donner vie à vos idées 🤝.
-        </motion.p>
+            <p>
+                Développeur web fullstack, j&apos;ai plusieurs années d&apos;expérience en entreprise, en alternance et en freelance.
+                J&apos;interviens sur toute la chaîne : du front-end au back-end, jusqu&apos;au déploiement dans le cloud.
+            </p>
+            <ul className="list-disc list-inside space-y-2">
+                <li>Conception et déploiement de plateformes à fort enjeu métier : CRM, e-santé, e-commerce, vidéo-conférence.</li>
+                <li>Industrialisation et sécurisation des livraisons : CI/CD, gouvernance des dépendances, politiques CSP sur plusieurs dépôts.</li>
+                <li>Des gains mesurables : jusqu&apos;à <span className={highlight}>-80 % de traitement manuel</span> et un <span className={highlight}>build CI divisé par 5</span>.</li>
+            </ul>
+            <p>
+                Je recherche aujourd&apos;hui <span className={highlight}>un poste en CDI de développeur fullstack</span>,
+                dans une équipe où m&apos;investir sur le long terme, continuer à apprendre et créer de la valeur.
+            </p>
+        </motion.div>
 
-        <div className="mt-20 flex flex-wrap gap-10">
+        <div className="mt-14 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5">
             {services.map((service, index) => (
                 <ServiceCard key={service.title} index={index} {...service} />
             ))}
