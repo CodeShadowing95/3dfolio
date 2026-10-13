@@ -3,7 +3,7 @@ import PropTypes from "prop-types";
 // Icônes SVG partagées utilisées dans la page de détail d'un projet.
 // Centralisées ici pour éviter la duplication de balises <svg> dans WorkDetail.jsx
 
-export const CheckIcon = ({ className = "w-4 h-4 text-fuchsia-300 mt-0.5 shrink-0" }) => (
+export const CheckIcon = ({ className = "w-4 h-4 text-accent-light mt-0.5 shrink-0" }) => (
   <svg xmlns="http://www.w3.org/2000/svg" className={className} viewBox="0 0 24 24">
     <path fill="currentColor" d="M10.09 15.59L7.5 13l-1.41 1.41l4 4l8-8L16.68 9z" />
   </svg>

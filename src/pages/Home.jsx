@@ -15,9 +15,15 @@ import { StarsCanvas } from "../components/canvas";
 import LazyOnView from "../components/LazyOnView";
 import Preloader from "../components/Preloader";
 
+// Le preloader ne s'affiche qu'au premier chargement, pas en revenant d'une page projet
+let preloaderDone = false;
+
 const Home = () => {
-    const [showPreloader, setShowPreloader] = useState(true);
-    const hidePreloader = useCallback(() => setShowPreloader(false), []);
+    const [showPreloader, setShowPreloader] = useState(!preloaderDone);
+    const hidePreloader = useCallback(() => {
+        preloaderDone = true;
+        setShowPreloader(false);
+    }, []);
 
     return (
         <>

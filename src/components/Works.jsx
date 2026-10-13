@@ -201,16 +201,40 @@ ProjectCard.propTypes = {
 const featuredProjects = projects.filter((project) => project.featured);
 const otherProjects = projects.filter((project) => !project.featured);
 
+const hasTag = (work, ...names) => work.tags.some((tag) => names.includes(tag.name));
+
+const filterProjects = (title) => {
+  switch (title) {
+    case "UI/UX":
+      return projects.filter((work) => hasTag(work, "tailwindcss", "materialui"));
+    case "Fullstack App":
+      return projects.filter((work) => hasTag(work, "nodejs", "restapi", "mongodb", "springboot", "laravel"));
+    case "React":
+      return projects.filter((work) => hasTag(work, "react"));
+    case "Next.js":
+      return projects.filter((work) => hasTag(work, "next", "nextjs"));
+    case "Angular":
+      return projects.filter((work) => hasTag(work, "angular"));
+    case "AI":
+      return projects.filter((work) => hasTag(work, "ai"));
+    default:
+      return projects;
+  }
+};
+
+// Filtre et liste dépliée conservés en mémoire pour les retrouver en revenant d'une page projet
+const savedView = { filter: "Tous", showOthers: false };
+
 const Works = () => {
-  const [activeFilter, setActiveFilter] = useState('Tous');
-  const [filterWork, setFilterWork] = useState([]);
+  const [activeFilter, setActiveFilter] = useState(savedView.filter);
+  const [filterWork, setFilterWork] = useState(() => filterProjects(savedView.filter));
   const [isFiltering, setIsFiltering] = useState(false);
-  const [showOthers, setShowOthers] = useState(false);
+  const [showOthers, setShowOthers] = useState(savedView.showOthers);
 
   useEffect(() => {
-    setFilterWork(projects);
-  }, [])
-
+    savedView.filter = activeFilter;
+    savedView.showOthers = showOthers;
+  }, [activeFilter, showOthers]);
 
   const handleFilterWorks = (title) => {
     if (activeFilter === title) return; // Éviter de refiltrer si c'est déjà le filtre actif
@@ -220,39 +244,7 @@ const Works = () => {
 
     // Petit délai pour permettre l'animation de sortie
     setTimeout(() => {
-      switch (title) {
-        case "Tous":
-          setFilterWork(projects);
-          break;
-
-        case "UI/UX":
-          setFilterWork(projects.filter((work) => work.tags.some(tag => tag.name === "tailwindcss") || work.tags.some(tag => tag.name === "materialui")))
-          break;
-
-        case "Fullstack App":
-          setFilterWork(projects.filter((work) => work.tags.some(tag => tag.name === "nodejs") || work.tags.some(tag => tag.name === "restapi") || work.tags.some(tag => tag.name === "mongodb") || work.tags.some(tag => tag.name === "springboot") || work.tags.some(tag => tag.name === "laravel")))
-          break;
-
-        case "React":
-          setFilterWork(projects.filter((work) => work.tags.some(tag => tag.name === "react")))
-          break;
-
-        case "Next.js":
-          setFilterWork(projects.filter((work) => work.tags.some(tag => tag.name === "next" || tag.name === "nextjs")))
-          break;
-
-        case "Angular":
-          setFilterWork(projects.filter((work) => work.tags.some(tag => tag.name === "angular")))
-          break;
-
-        case "AI":
-          setFilterWork(projects.filter((work) => work.tags.some(tag => tag.name === "ai")))
-          break;
-
-        default:
-          setFilterWork(projects);
-          break;
-      }
+      setFilterWork(filterProjects(title));
       setIsFiltering(false);
     }, 200);
   }

@@ -52,7 +52,7 @@ export const SectionCard = ({ id, title, children, className = "" }) => (
   </div>
 );
 SectionCard.propTypes = {
-  id: PropTypes.string.isRequired,
+  id: PropTypes.string,
   title: PropTypes.string.isRequired,
   children: PropTypes.node.isRequired,
   className: PropTypes.string,

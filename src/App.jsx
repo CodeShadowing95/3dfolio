@@ -1,6 +1,7 @@
 import { Suspense, lazy } from "react";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Home from "./pages/Home";
+import ScrollToTop from "./components/ScrollToTop";
 
 const WorkDetail = lazy(() => import("./pages/WorkDetail"));
 const NotFound = lazy(() => import("./pages/not-found"));
@@ -8,6 +9,7 @@ const NotFound = lazy(() => import("./pages/not-found"));
 const App = () => {
   return (
     <BrowserRouter>
+      <ScrollToTop />
       <Suspense fallback={<div className="min-h-screen bg-primary" />}>
         <Routes>
           <Route path="/" element={<Home />} />

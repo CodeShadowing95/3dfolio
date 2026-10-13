@@ -1,5 +1,5 @@
 import { useParams, useNavigate, Link } from "react-router-dom";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { motion, useScroll, useTransform, useReducedMotion } from "framer-motion";
 import { projects, socials } from "../constants";
 import { ArrowLeftIcon, ChevronIcon, ShareIcon, DemoIcon, GithubIcon } from "../components/workdetail/icons";
@@ -23,6 +23,10 @@ const SIMPLE_ICON_SLUGS = {
   "react native": "react",
   restapi: "postman",
 };
+
+// Une démo n'existe que si le lien mène ailleurs que le dépôt de code
+const hasDemo = ({ app_link, source_code_link }) => Boolean(app_link) && app_link !== "#" && app_link !== source_code_link;
+const hasSource = ({ source_code_link }) => Boolean(source_code_link) && source_code_link !== "#";
 
 const getSimpleIconSlug = (name) => {
   const key = String(name || "").toLowerCase().trim();
@@ -51,6 +55,16 @@ const WorkDetail = () => {
 
   const project = projects.find((p) => p.id === id);
   const currentIndex = projects.findIndex((p) => p.id === id);
+
+  // Titre d'onglet propre à chaque projet
+  useEffect(() => {
+    if (!project) return undefined;
+    const previousTitle = document.title;
+    document.title = `${project.name} | Patrick Namegni`;
+    return () => {
+      document.title = previousTitle;
+    };
+  }, [project]);
 
   const handleShare = async () => {
     try {
@@ -108,7 +122,7 @@ const WorkDetail = () => {
 
       {/* Barre de progression de lecture */}
       <motion.div className="fixed top-0 left-0 h-[3px] w-full z-30 origin-left" style={{ scaleX: scrollYProgress }}>
-        <div className="h-full w-full bg-gradient-to-r from-fuchsia-500 via-violet-500 to-cyan-500" />
+        <div className="h-full w-full bg-accent" />
       </motion.div>
 
       <div className="relative z-20 max-w-7xl mx-auto px-4 sm:px-6 lg:px-10 py-8 text-white/90">
@@ -116,15 +130,13 @@ const WorkDetail = () => {
         <div className="w-full flex justify-between items-center gap-4 mb-8">
           <Link
             to="/#projets"
-            title="Retour aux projets"
-            aria-label="Retour"
             className="group inline-flex items-center gap-3 pl-2 pr-4 py-2 rounded-full bg-white/5 backdrop-blur-xl border border-white/15 text-white shadow-lg shadow-black/30 hover:bg-white/10 hover:border-white/30 transition-all duration-300 focus:outline-none focus-visible:ring-2 focus-visible:ring-white/60 focus-visible:ring-offset-2 focus-visible:ring-offset-primary"
           >
-            <span className="flex items-center justify-center w-8 h-8 rounded-full bg-gradient-to-br from-fuchsia-500/70 to-cyan-500/70 ring-1 ring-white/20 shadow-md transition-transform duration-300 group-hover:-translate-x-0.5">
+            <span className="flex items-center justify-center w-8 h-8 rounded-full bg-accent ring-1 ring-white/20 shadow-md transition-transform duration-300 group-hover:-translate-x-0.5">
               <ArrowLeftIcon />
             </span>
             <span className="text-white/90 font-semibold text-sm tracking-wide transition-colors duration-300 group-hover:text-white">
-              Accueil
+              Retour aux projets
             </span>
           </Link>
 
@@ -172,29 +184,6 @@ const WorkDetail = () => {
               </div>
             </div>
 
-            {/* Actions rapides */}
-            <div className="grid grid-cols-2 gap-3">
-              {project.app_link && (
-                <a
-                  href={project.app_link}
-                  target="_blank"
-                  rel="noreferrer"
-                  className="inline-flex items-center justify-center gap-2 px-3 py-2 rounded-xl bg-gradient-to-r from-fuchsia-500 to-cyan-500 text-white text-sm font-semibold shadow border border-white/20 hover:opacity-95 transition"
-                >
-                  <DemoIcon className="w-4 h-4" />
-                  Démo
-                </a>
-              )}
-              <button
-                type="button"
-                onClick={handleShare}
-                className="inline-flex items-center justify-center gap-2 px-3 py-2 rounded-xl bg-black/40 text-white text-sm font-medium shadow border border-white/20 hover:bg-black/50 transition"
-              >
-                <ShareIcon />
-                {copied ? "Copié !" : "Partager"}
-              </button>
-            </div>
-
             {/* Stack technique (unique source d'affichage des tags) */}
             {project.tags?.length > 0 && (
               <SectionCard title="Stack technique" className="bg-white/5">
@@ -225,9 +214,9 @@ const WorkDetail = () => {
           >
             {/* En-tête + description */}
             <div className="space-y-3" id="description">
-              <h2 className="text-4xl font-bold bg-gradient-to-r from-white via-white/90 to-white/70 bg-clip-text text-transparent">
+              <h1 className="text-4xl font-bold bg-gradient-to-r from-white via-white/90 to-white/70 bg-clip-text text-transparent">
                 {project.name}
-              </h2>
+              </h1>
               <h3 className="text-white font-semibold tracking-tight">Description complète</h3>
               <p className="text-white/80 text-base leading-relaxed">{project.details?.fullDescription}</p>
               <span className="inline-block px-3 py-1 rounded-full bg-black/40 border border-white/10 text-xs text-white/90">
@@ -236,47 +225,55 @@ const WorkDetail = () => {
             </div>
 
             {/* Boutons d'action principaux */}
-            <div className="grid sm:grid-cols-2 gap-4">
-              {project.app_link && (
+            <div className="flex flex-wrap gap-3">
+              {hasDemo(project) && (
                 <a
                   href={project.app_link}
                   target="_blank"
                   rel="noreferrer"
-                  className="inline-flex items-center justify-center gap-2 px-4 py-3 rounded-xl bg-gradient-to-r from-fuchsia-500 to-cyan-500 text-white font-semibold shadow-lg border border-white/20 hover:opacity-95 transition"
+                  className="inline-flex items-center justify-center gap-2 px-5 py-3 rounded-xl bg-accent hover:bg-accent-hover text-white font-semibold shadow-lg shadow-accent/25 transition-colors"
                 >
                   <DemoIcon />
                   Voir la démo
                 </a>
               )}
-              {project.source_code_link && (
+              {hasSource(project) && (
                 <a
                   href={project.source_code_link}
                   target="_blank"
                   rel="noreferrer"
-                  className="inline-flex items-center justify-center gap-2 px-4 py-3 rounded-xl bg-white/10 text-white font-semibold shadow-lg border border-white/20 hover:bg-white/15 transition"
+                  className="inline-flex items-center justify-center gap-2 px-5 py-3 rounded-xl bg-white/10 text-white font-semibold shadow-lg border border-white/20 hover:bg-white/15 transition"
                 >
                   <GithubIcon />
                   Code source
                 </a>
               )}
+              <button
+                type="button"
+                onClick={handleShare}
+                className="inline-flex items-center justify-center gap-2 px-5 py-3 rounded-xl bg-black/40 text-white font-medium shadow border border-white/20 hover:bg-black/50 transition"
+              >
+                <ShareIcon />
+                {copied ? "Lien copié !" : "Partager"}
+              </button>
             </div>
 
             {/* Objectifs & Fonctionnalités */}
             <div className="grid md:grid-cols-2 gap-6">
               {project.details?.keyObjectives?.length > 0 && (
                 <SectionCard id="objectifs" title="Objectifs">
-                  <InfoList items={project.details.keyObjectives} iconClassName="w-4 h-4 text-cyan-300 mt-0.5 shrink-0" />
+                  <InfoList items={project.details.keyObjectives} iconClassName="w-4 h-4 text-accent-light mt-0.5 shrink-0" />
                 </SectionCard>
               )}
               {project.details?.functionalities?.length > 0 && (
                 <SectionCard id="fonctionnalites" title="Fonctionnalités clés">
-                  <InfoList items={project.details.functionalities} iconClassName="w-4 h-4 text-fuchsia-300 mt-0.5 shrink-0" />
+                  <InfoList items={project.details.functionalities} iconClassName="w-4 h-4 text-accent-light mt-0.5 shrink-0" />
                 </SectionCard>
               )}
             </div>
 
             {/* Bandeau réseaux sociaux */}
-            <div id="reseaux" className="rounded-xl border border-white/10 bg-gradient-to-r from-fuchsia-500/10 to-cyan-500/10 p-4 flex sm:flex-row flex-col items-center sm:justify-between justify-center gap-4">
+            <div id="reseaux" className="rounded-xl border border-white/10 bg-accent/10 p-4 flex sm:flex-row flex-col items-center sm:justify-between justify-center gap-4">
               <div>
                 <p className="text-white/90 text-sm font-medium">Envie d&apos;en savoir plus sur moi ?</p>
                 <p className="text-white/70 text-xs">Consultez mes réseaux.</p>
