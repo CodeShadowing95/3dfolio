@@ -55,6 +55,7 @@ import empmanagement from "./empmanagement.webp";
 import bikemapper from "./bikemapper.webp";
 import curriqulumai from "./curriqulum-ai.webp";
 import kamercare from "./kamercare.webp"
+import batipilote from "./batipilote.webp";
 import rehobothnettoyage from "./rehobothnettoyage.webp"
 
 import linkedin from "./socials/linkedin.svg"
@@ -119,6 +120,7 @@ export {
   bikemapper,
   curriqulumai,
   kamercare,
+  batipilote,
   rehobothnettoyage,
   linkedin,
   twitter,

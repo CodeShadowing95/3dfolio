@@ -35,7 +35,7 @@ const hasDemo = (app_link, source_code_link) => app_link && app_link !== "#" && 
 
 const ProjectLinks = ({ name, source_code_link, app_link }) => (
   <div className="absolute inset-0 z-20 flex justify-end items-start m-3 gap-2 pointer-events-none">
-    {source_code_link !== "#" && (
+    {source_code_link && source_code_link !== "#" && (
       <a
         href={source_code_link}
         target="_blank"

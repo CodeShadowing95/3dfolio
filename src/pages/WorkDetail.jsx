@@ -20,6 +20,7 @@ const SIMPLE_ICON_SLUGS = {
   "react-router v7": "reactrouter",
   laravel: "laravel",
   ai: "openai",
+  "react native": "react",
   restapi: "postman",
 };
 

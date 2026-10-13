@@ -38,6 +38,7 @@ import {
   bikemapper,
   curriqulumai,
   kamercare,
+  batipilote,
   linkedin,
   twitter,
   youtube,
@@ -349,6 +350,54 @@ const projects = [
   //   },
   // },
   {
+    id: "batipilote",
+    featured: true,
+    name: "BatiPilote",
+    description:
+      "Copilote IA pour les artisans du bâtiment : devis générés à partir d'une dictée vocale, facturation électronique et analyse de photos de chantier.",
+    reason: "Projet de fin d'études, mené avec des associés tels que artisans du bâtiment",
+    tags: [
+      {
+        name: "react native",
+      },
+      {
+        name: "nextjs",
+      },
+      {
+        name: "nodejs",
+      },
+      {
+        name: "ai",
+      },
+      {
+        name: "python",
+      },
+      {
+        name: "postgresql",
+      },
+    ],
+    image: batipilote,
+    source_code_link: "",
+    app_link: "",
+    status: "Prototype",
+    details: {
+      fullDescription: "Les artisans du bâtiment perdent un temps précieux sur les devis, la facturation et la réglementation. BatiPilote est un copilote IA qui génère des devis à partir d'une dictée vocale, gère la facturation électronique Factur-X, répond aux questions réglementaires et analyse des photos de chantier. J'ai conçu l'architecture du produit et assuré le développement full-stack : une application mobile React Native, un site Next.js, une API Node.js et un service IA en Python, développé avec un associé développeur Python et en collaboration avec les artisans du bâtiment, ceci connecté à OpenAI et LangChain, le tout avec une intégration continue.",
+      keyObjectives: [
+        "Générer un devis complet à partir d'une simple dictée vocale",
+        "Automatiser la facturation électronique au format Factur-X",
+        "Aider l'artisan sur chantier : réglementation et diagnostic photo",
+      ],
+      functionalities: [
+        "Dictée vocale transcrite (Whisper) et transformée en devis (GPT-4o)",
+        "Facturation électronique Factur-X",
+        "Assistant réglementaire (LangChain, PostgreSQL + pgvector)",
+        "Analyse de photos de chantier",
+        "Application mobile React Native / Expo et site Next.js",
+        "Monorepo Turborepo, CI GitHub Actions, Docker, Sentry",
+      ],
+    }
+  },
+  {
     id: "kamercare",
     featured: true,
     name: "KamerCare",
@@ -467,7 +516,6 @@ const projects = [
   },
   {
     id: "curriqulumai",
-    featured: true,
     name: "Curriqulum.ai",
     description:
       "Application web sophistiquée qui utilise l'IA pour garantir une compatibilité 100% ATS de tout CV. Notre solution maximise ainsi vos chances d'obtenir un entretien.",
