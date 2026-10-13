@@ -45,6 +45,17 @@ import {
   github,
 } from "../assets";
 
+// Galeries de captures par projet
+import batipiloteLogo from "../assets/ProjectAssets/batipilote/logo.webp";
+import batipiloteScreen1 from "../assets/ProjectAssets/batipilote/gallery/1.webp";
+import batipiloteScreen2 from "../assets/ProjectAssets/batipilote/gallery/2.webp";
+import batipiloteScreen3 from "../assets/ProjectAssets/batipilote/gallery/3.webp";
+import batipiloteScreen4 from "../assets/ProjectAssets/batipilote/gallery/4.webp";
+import batipiloteScreen5 from "../assets/ProjectAssets/batipilote/gallery/5.webp";
+import batipiloteScreen6 from "../assets/ProjectAssets/batipilote/gallery/6.webp";
+import batipiloteScreen7 from "../assets/ProjectAssets/batipilote/gallery/7.webp";
+import batipiloteScreen8 from "../assets/ProjectAssets/batipilote/gallery/8.webp";
+
 export const navLinks = [
   {
     id: "profil",
@@ -382,6 +393,17 @@ const projects = [
     source_code_link: "",
     app_link: "",
     private_repo: true,
+    logo: batipiloteLogo,
+    gallery: [
+      { src: batipiloteScreen1, caption: "Onboarding : dicter un devis à voix haute" },
+      { src: batipiloteScreen2, caption: "Onboarding : analyse IA d'une photo de chantier" },
+      { src: batipiloteScreen3, caption: "Onboarding : facturation électronique via les plateformes agréées" },
+      { src: batipiloteScreen4, caption: "Onboarding : suivi des factures et relances" },
+      { src: batipiloteScreen5, caption: "Connexion et inscription" },
+      { src: batipiloteScreen6, caption: "Nouveau devis par dictée vocale, transcrit en direct" },
+      { src: batipiloteScreen7, caption: "Aperçu PDF du devis généré" },
+      { src: batipiloteScreen8, caption: "Facture au format Factur-X (PDF + XML)" },
+    ],
     status: "Prototype",
     details: {
       context: "Projet de fin d'études mené avec un associé développeur Python, en collaboration avec des artisans du bâtiment.",
@@ -535,13 +557,38 @@ const projects = [
     reason: "Projet personnel",
     tags: [
       {
+        name: "react",
+      },
+      {
         name: "react-router v7",
+      },
+      {
+        name: "typescript",
+      },
+      {
+        name: "ai",
+        label: "Puter.js (IA)",
       },
       {
         name: "tailwindcss",
       },
       {
-        name: "ai",
+        name: "vite",
+      },
+      {
+        name: "pdfjs",
+      },
+      {
+        name: "zustand",
+      },
+      {
+        name: "docker",
+      },
+      {
+        name: "vercel",
+      },
+      {
+        name: "git",
       },
     ],
     image: curriqulumai,

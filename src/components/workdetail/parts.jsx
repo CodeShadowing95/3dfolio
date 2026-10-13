@@ -22,25 +22,20 @@ InfoList.propTypes = {
   textClassName: PropTypes.string,
 };
 
-/** Badge de technologie avec logo SimpleIcons */
-export const TechBadge = ({ name, getSlug, size = "md" }) => {
+/** Badge de technologie, avec son logo local quand il existe */
+export const TechBadge = ({ label, logo, size = "md" }) => {
   const dims = size === "sm" ? "w-3.5 h-3.5" : "w-4 h-4";
   const padding = size === "sm" ? "px-2.5 py-1 text-[11px]" : "px-3 py-1 text-xs";
   return (
     <span className={`inline-flex items-center gap-2 rounded-full bg-black/40 border border-white/10 text-white/90 ${padding}`}>
-      <img
-        src={`https://cdn.simpleicons.org/${getSlug(name)}`}
-        alt={`${name} logo`}
-        className={`${dims} opacity-90`}
-        loading="lazy"
-      />
-      {name}
+      {logo && <img src={logo} alt="" className={`${dims} object-contain`} loading="lazy" />}
+      {label}
     </span>
   );
 };
 TechBadge.propTypes = {
-  name: PropTypes.string.isRequired,
-  getSlug: PropTypes.func.isRequired,
+  label: PropTypes.string.isRequired,
+  logo: PropTypes.string,
   size: PropTypes.oneOf(["sm", "md"]),
 };
 

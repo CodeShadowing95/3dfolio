@@ -3,36 +3,45 @@ import { useEffect, useState } from "react";
 import PropTypes from "prop-types";
 import { motion, useScroll, useTransform, useReducedMotion } from "framer-motion";
 import { projects, socials } from "../constants";
+import { reactjs, nextjs, nodejs, angular, typescript, tailwind, css, spring, mongodb, python, openai, docker, git } from "../assets";
 import { ArrowLeftIcon, ChevronIcon, ShareIcon, DemoIcon, GithubIcon } from "../components/workdetail/icons";
 import { InfoList, TechBadge, SectionCard } from "../components/workdetail/parts";
+import Gallery from "../components/workdetail/Gallery";
 
-// Mapping des slugs SimpleIcons pour afficher les logos des technologies
-const SIMPLE_ICON_SLUGS = {
-  react: "react",
-  nodejs: "nodedotjs",
-  nextjs: "nextdotjs",
-  angular: "angular",
-  typescript: "typescript",
-  tailwindcss: "tailwindcss",
-  materialui: "mui",
-  springboot: "springboot",
-  mongodb: "mongodb",
-  css: "css3",
-  "react-router v7": "reactrouter",
-  laravel: "laravel",
-  ai: "openai",
-  "react native": "react",
-  restapi: "postman",
+// Nom affiché et logo local de chaque techno (sans logo : badge texte seul)
+const TECH_INFO = {
+  react: { label: "React", logo: reactjs },
+  "react native": { label: "React Native", logo: reactjs },
+  "react-router v7": { label: "React Router 7" },
+  nextjs: { label: "Next.js", logo: nextjs },
+  nodejs: { label: "Node.js", logo: nodejs },
+  angular: { label: "Angular", logo: angular },
+  typescript: { label: "TypeScript", logo: typescript },
+  tailwindcss: { label: "Tailwind CSS", logo: tailwind },
+  css: { label: "CSS", logo: css },
+  materialui: { label: "Material UI" },
+  springboot: { label: "Spring Boot", logo: spring },
+  mongodb: { label: "MongoDB", logo: mongodb },
+  laravel: { label: "Laravel" },
+  python: { label: "Python", logo: python },
+  postgresql: { label: "PostgreSQL" },
+  ai: { label: "IA (OpenAI)", logo: openai },
+  restapi: { label: "API REST" },
+  vite: { label: "Vite" },
+  pdfjs: { label: "PDF.js" },
+  zustand: { label: "Zustand" },
+  docker: { label: "Docker", logo: docker },
+  vercel: { label: "Vercel" },
+  git: { label: "Git", logo: git },
 };
+
+// Un tag peut imposer son propre libellé (ex. "ai" réalisé avec Puter.js et non OpenAI) : badge texte seul
+const getTechInfo = ({ name, label }) =>
+  label ? { label } : TECH_INFO[String(name || "").toLowerCase().trim()] || { label: name };
 
 // Une démo n'existe que si le lien mène ailleurs que le dépôt de code
 const hasDemo = ({ app_link, source_code_link }) => Boolean(app_link) && app_link !== "#" && app_link !== source_code_link;
 const hasSource = ({ source_code_link }) => Boolean(source_code_link) && source_code_link !== "#";
-
-const getSimpleIconSlug = (name) => {
-  const key = String(name || "").toLowerCase().trim();
-  return SIMPLE_ICON_SLUGS[key] || key.replace(/\s+/g, "");
-};
 
 // Même ordre que sur l'accueil : projets mis en avant d'abord, puis les autres
 const orderedProjects = [...projects.filter((p) => p.featured), ...projects.filter((p) => !p.featured)];
@@ -186,7 +195,16 @@ const WorkDetail = () => {
 
         {/* En-tête : titre, accroche, infos clés, actions */}
         <motion.header key={`header-${id}`} variants={fadeInUp} initial="hidden" animate="show" className="max-w-3xl space-y-5">
-          <h1 className="text-4xl sm:text-5xl font-bold text-white">{project.name}</h1>
+          <div className="flex items-center gap-4">
+            {project.logo && (
+              <img
+                src={project.logo}
+                alt={`Logo ${project.name}`}
+                className="w-16 h-16 sm:w-20 sm:h-20 shrink-0 rounded-2xl bg-white/5 border border-white/10 p-1.5 object-contain"
+              />
+            )}
+            <h1 className="text-4xl sm:text-5xl font-bold text-white">{project.name}</h1>
+          </div>
           {project.description && <p className="text-white/80 text-lg leading-relaxed">{project.description}</p>}
 
           <ul className="flex flex-wrap gap-2 text-xs">
@@ -258,6 +276,9 @@ const WorkDetail = () => {
           <img src={project.image} alt={`Capture d'écran de ${project.name}`} className="w-full h-auto max-h-[70vh] object-cover object-top" />
         </motion.figure>
 
+        {/* Galerie de captures (si le projet en a) */}
+        {project.gallery?.length > 0 && <Gallery key={`gallery-${id}`} images={project.gallery} projectName={project.name} />}
+
         {/* Corps : récit à gauche, infos fixes à droite */}
         <div className="mt-12 grid grid-cols-1 lg:grid-cols-3 gap-8 lg:gap-12">
           <article className="lg:col-span-2 space-y-8">
@@ -306,7 +327,7 @@ const WorkDetail = () => {
               <SectionCard title="Stack technique">
                 <div className="flex flex-wrap items-center gap-2">
                   {project.tags.map((tag, idx) => (
-                    <TechBadge key={`tag-${idx}`} name={tag.name} getSlug={getSimpleIconSlug} size="sm" />
+                    <TechBadge key={`tag-${idx}`} {...getTechInfo(tag)} size="sm" />
                   ))}
                 </div>
               </SectionCard>

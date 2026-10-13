@@ -27,6 +27,8 @@ import vue from "./tech/Vue.js.webp";
 import angular from "./tech/angular.webp";
 import java from "./tech/java.webp";
 import spring from "./tech/spring.webp";
+import openai from "./tech/openai.webp";
+import css from "./tech/css.webp";
 
 import ub from "./company/ub.webp";
 import hkdigitals from "./company/hkdigitals.webp";
@@ -94,6 +96,8 @@ export {
   angular,
   java,
   spring,
+  openai,
+  css,
   ub,
   hkdigitals,
   pristydelices,
