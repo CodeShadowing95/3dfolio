@@ -355,7 +355,9 @@ const projects = [
     name: "BatiPilote",
     description:
       "Copilote IA pour les artisans du bâtiment : devis générés à partir d'une dictée vocale, facturation électronique et analyse de photos de chantier.",
-    reason: "Projet de fin d'études, mené avec des associés tels que artisans du bâtiment",
+    reason: "Projet de fin d'études",
+    period: "2025 – 2026",
+    role: "Architecture et développement full-stack",
     tags: [
       {
         name: "react native",
@@ -379,8 +381,10 @@ const projects = [
     image: batipilote,
     source_code_link: "",
     app_link: "",
+    private_repo: true,
     status: "Prototype",
     details: {
+      context: "Projet de fin d'études mené avec un associé développeur Python, en collaboration avec des artisans du bâtiment.",
       fullDescription: "Les artisans du bâtiment perdent un temps précieux sur les devis, la facturation et la réglementation. BatiPilote est un copilote IA qui génère des devis à partir d'une dictée vocale, gère la facturation électronique Factur-X, répond aux questions réglementaires et analyse des photos de chantier. J'ai conçu l'architecture du produit et assuré le développement full-stack : une application mobile React Native, un site Next.js, une API Node.js et un service IA en Python, développé avec un associé développeur Python et en collaboration avec les artisans du bâtiment, ceci connecté à OpenAI et LangChain, le tout avec une intégration continue.",
       keyObjectives: [
         "Générer un devis complet à partir d'une simple dictée vocale",
@@ -463,6 +467,10 @@ const projects = [
     app_link: "https://bikemapper.netlify.app/",
     status: "Terminé",
     details: {
+      context: "Test technique réalisé dans le cadre d'une recherche d'alternance.",
+      results: [
+        "Test technique validé",
+      ],
       fullDescription: "BikeMapper est une application de cartographie des services de vélos en libre-service. Elle agrège les données des réseaux disponibles (France et international), affiche les stations sur une carte interactive, expose les disponibilités en temps réel et permet de consulter des détails par ville et par opérateur. L'interface est optimisée pour la découverte et la planification rapide.",
       keyObjectives: [
         "Centraliser les réseaux de vélos en libre-service",
@@ -500,6 +508,11 @@ const projects = [
     app_link: "https://pokecraftershub.netlify.app/",
     status: "Terminé",
     details: {
+      context: "Test technique réalisé dans le cadre d'une recherche d'alternance.",
+      results: [
+        "Test technique validé",
+        "Rendu très apprécié par l'entreprise",
+      ],
       fullDescription: "Pokedex Hub est une expérience immersive pour les fans de Pokémon. L'application présente chaque Pokémon avec des visuels soignés, des statistiques détaillées, des types et faiblesses, ainsi que des informations complémentaires. La navigation est pensée pour une exploration rapide et agréable.",
       keyObjectives: [
         "Proposer une encyclopédie Pokémon ergonomique",
