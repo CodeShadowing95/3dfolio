@@ -17,9 +17,9 @@ const Hero = () => {
                 <div className="">
                     <h1 className={`${styles.heroHeadText} text-white`}><span className="text-accent">Patrick NAMEGNI</span></h1>
                     <div className={`${styles.heroSubText} text-white-100 max-w-2xl`}>
-                        <p>Développeur Web <span className="text-accent">Fullstack & DevOps</span></p>
+                        <p>Développeur <span className="text-accent">Full-Stack</span></p>
                         <p className="font-light text-[16px] sm:text-lg mt-3">Je conçois des applications web performantes et sécurisées, du front-end à l{`'`}infrastructure, et j{`'`}accompagne des équipes à concrétiser leurs projets.</p>
-                        <p className="font-light text-[16px] sm:text-lg mt-1">Actuellement disponible pour un poste en CDI/CDD 🚀</p>
+                        <p className="font-light text-[16px] sm:text-lg mt-1">Disponible immédiatement · CDI</p>
                     </div>
 
                     <div className="mt-8 flex flex-wrap gap-4">

@@ -94,13 +94,13 @@ const Preloader = ({ onLoadComplete }) => {
               <div className="absolute inset-0 rounded-full bg-primary/25 blur-3xl" />
               <img
                 src="/avatar.webp"
-                alt="Patrick NAMEGNI avatar"
+                alt="Patrick Namegni avatar"
                 className="relative h-20 w-20 sm:h-24 sm:w-24 md:h-32 md:w-32 rounded-full object-cover ring-2 ring-white/20 shadow-lg"
               />
             </div>
 
             <div className="text-center">
-              <h2 className="text-white text-base sm:text-lg md:text-xl font-semibold tracking-wide">Patrick NAMEGNI</h2>
+              <h2 className="text-white text-base sm:text-lg md:text-xl font-semibold tracking-wide">Patrick Namegni</h2>
               <p className="text-white/75 text-xs sm:text-sm md:text-base">Portfolio – Chargement des assets 3D</p>
             </div>
           </div>

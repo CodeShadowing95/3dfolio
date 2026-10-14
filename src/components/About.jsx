@@ -56,7 +56,7 @@ const About = () => {
             className="mt-4 text-secondary text-[17px] max-w-3xl leading-8 space-y-5"
         >
             <p>
-                Développeur web fullstack, j&apos;ai plusieurs années d&apos;expérience en entreprise, en alternance et en freelance.
+                Développeur full-stack depuis 2019, j&apos;ai travaillé en entreprise puis en alternance, en parallèle de mes études.
                 J&apos;interviens sur toute la chaîne : du front-end au back-end, jusqu&apos;au déploiement dans le cloud.
             </p>
             <ul className="list-disc list-inside space-y-2">

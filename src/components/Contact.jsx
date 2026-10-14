@@ -175,7 +175,7 @@ const Contact = () => {
                         name="subject"
                         value={form.subject}
                         onChange={handleChange}
-                        placeholder="Ex : Opportunité CDI - Développeur Fullstack"
+                        placeholder="Ex : Opportunité CDI - Développeur Full-Stack"
                         aria-invalid={Boolean(errors.subject)}
                         className={`bg-tertiary py-4 px-6 placeholder:text-secondary text-white rounded-lg outline-none font-medium border ${errors.subject ? 'border-red-400' : 'border-transparent'}`}
                     />
@@ -222,7 +222,7 @@ const Contact = () => {
                     rel="noopener noreferrer"
                     className="text-white font-medium hover:text-accent transition-colors"
                 >
-                    LinkedIn : Frank Patrick Namegni
+                    LinkedIn : Patrick Namegni
                 </a>
             </div>
         </motion.div>

@@ -14,11 +14,7 @@ import {
   docker,
   // threejs,
   ub,
-  hkdigitals,
-  pristydelices,
-  estiam,
   teepyjob,
-  indextv,
   hapticmedia,
   nextjs,
   python,
@@ -40,8 +36,6 @@ import {
   kamercare,
   batipilote,
   linkedin,
-  twitter,
-  youtube,
   github,
 } from "../assets";
 
@@ -171,11 +165,11 @@ const technologies = [
 
 const experiences = [
   {
-    title: "Développeur Fullstack & DevOps en alternance",
+    title: "Développeur Full-Stack & DevOps",
     company_name: "Hapticmedia",
     icon: hapticmedia,
     iconBg: "#383E56",
-    date: "Septembre 2025 - Août 2026",
+    date: "Janvier 2026 - Septembre 2026",
     points: [
       "Optimisation du site et de la CI : build réduit de 25-30 min à ~5 min, audit et correction du SEO technique international (hreflang, sitemaps).",
       "Sécurisation de l'outil CLI interne (passage en asynchrone, faille d'injection de commandes corrigée) et refonte des politiques CSP avec cloisonnement sandbox/dev/prod sur AWS.",
@@ -184,59 +178,15 @@ const experiences = [
     ],
   },
   {
-    title: "Consultant développeur",
-    company_name: "Index.tv",
-    icon: indextv,
-    iconBg: "#383E56",
-    date: "Mai 2025 - Août 2025",
-    points: [
-      "Conception et développement d'un plugin vidéo full-stack pour Twilio Flex, intégré au service d'aide à domicile.",
-      "Gestion complète du cycle de vie des appels vidéo (connexion, contrôles, déconnexion) avec une interface responsive mobile/desktop.",
-      "Optimisation des performances : bundle ramené à 522 Ko grâce au code-splitting.",
-    ],
-  },
-  {
-    title: "Développeur web en alternance",
-    company_name: "Teepy-Job",
+    title: "Développeur Web Full-Stack",
+    company_name: "TeePy Job",
     icon: teepyjob,
     iconBg: "#383E56",
-    date: "Septembre 2024 - Avril 2025",
+    date: "Juin 2024 - Juillet 2025",
     points: [
       "Développement d’un système de récupération automatique de 2500+ offres d’emploi depuis divers ATS recruteurs via API et flux XML. Réduction du temps de traitement manuel de 80%.",
       "Mise en place d’un pipeline d’analyse et pré-traitement des annonces, avec filtrage et enrichissement des données (catégorisation, géolocalisation) sur une base de 200000+ profils. Gain de 40% en rapidité sur la publication des offres.",
       "Développement d’algorithmes de matching automatique basé sur géolocalisation et critères d’offres, suivi de mailing et gestion de priorités d’annonces. Augmentation de 30% du taux de mise en relation candidats/recruteurs et amélioration du délai de proposition des profils.",
-    ],
-  },
-  {
-    title: "Étudiant Développeur - Formation",
-    company_name: "ÉSTIAM",
-    icon: estiam,
-    iconBg: "#E6DEDD",
-    date: "Septembre 2023 - Juillet 2024",
-    points: [
-      "Formation en data/BI (Python, Pandas, Power BI), cloud et conteneurs (AWS, Docker, Kubernetes), développement mobile (Android, Flutter) et RPA.",
-    ],
-  },
-  {
-    title: "Développeur Web Fullstack",
-    company_name: "HKDigitals",
-    icon: hkdigitals,
-    iconBg: "#E6DEDD",
-    date: "Juillet 2023 - Décembre 2023",
-    points: [
-      "Scraping de données (LinkedIn, Google Maps, Pages Jaunes) pour alimenter la stratégie marketing, en respectant les règles d'utilisation des sources.",
-      "Intégration des données collectées dans les outils des équipes marketing et data.",
-    ],
-  },
-  {
-    title: "Développeur Web en Freelance",
-    company_name: "PristyDelices",
-    icon: pristydelices,
-    iconBg: "#383E56",
-    date: "Juin 2022 - Janvier 2023",
-    points: [
-      "Conception d'une application web de commande de pâtisseries, fidèle à l'image de la marque, avec options de personnalisation et intégration des réseaux sociaux.",
-      "Optimisation des performances (images, nombre de requêtes).",
     ],
   },
   {
@@ -246,7 +196,9 @@ const experiences = [
     iconBg: "#383E56",
     date: "Octobre 2019 - Juillet 2021",
     points: [
-      "Développement et maintenance d'applications e-commerce : nouvelles fonctionnalités, corrections de bugs et mises à jour, en lien avec l'équipe marketing.",
+      "Conception et développement de 10+ applications web métier pour des clients professionnels (banques, établissements scolaires, agences de voyages), en Java / Spring Boot, Laravel, Angular ou React selon les projets.",
+      "Développement et maintenance d'API REST (utilisateurs, transactions, réservations, données métier) et conception des bases PostgreSQL / MySQL associées.",
+      "Collaboration avec les équipes techniques et fonctionnelles : analyse des besoins, estimation, documentation et évolution des solutions livrées.",
     ],
   },
 ];
@@ -995,16 +947,6 @@ const socials = [
     name: "Github",
     logo: github,
     link: "https://github.com/CodeShadowing95",
-  },
-  {
-    name: "Twitter",
-    logo: twitter,
-    link: "https://twitter.com/",
-  },
-  {
-    name: "Youtube",
-    logo: youtube,
-    link: "https://www.youtube.com/",
   },
 ]
 
