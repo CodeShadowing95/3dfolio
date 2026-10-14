@@ -9,7 +9,8 @@ import {
   Tech,
   Works,
   FeedbackPrompt,
-    KeyAchievements,
+  KeyAchievements,
+  Education,
 } from "../components";
 import { StarsCanvas } from "../components/canvas";
 import LazyOnView from "../components/LazyOnView";
@@ -38,6 +39,7 @@ const Home = () => {
             <About />
             <Works />
             <Experience />
+            <Education />
             <Tech />
             <Feedbacks />
             <div className="relative z-0">

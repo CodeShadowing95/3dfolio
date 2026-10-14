@@ -3,6 +3,8 @@ import {
   backend,
   creator,
   web,
+  world,
+  openai,
   javascript,
   typescript,
   reactjs,
@@ -71,24 +73,34 @@ export const navLinks = [
 
 const services = [
   {
-    title: "Frontend",
+    title: "Front-end",
     icon: web,
-    items: ["React", "Next.js", "Vue / Nuxt", "TypeScript", "Tailwind CSS"],
+    items: ["React", "Next.js", "Vue.js / Nuxt", "Angular", "React Native", "TypeScript", "Tailwind CSS"],
   },
   {
-    title: "Backend & API",
+    title: "Back-end & API",
     icon: backend,
-    items: ["Node.js", "PHP / Laravel", "Java", "API REST", "MongoDB"],
+    items: ["Node.js / Express", "NestJS", "Java / Spring Boot", "PHP / Laravel", "Strapi", "API REST"],
+  },
+  {
+    title: "Données",
+    icon: world,
+    items: ["PostgreSQL", "MySQL", "MongoDB", "Redis", "Elasticsearch"],
   },
   {
     title: "DevOps & Cloud",
     icon: creator,
-    items: ["AWS", "Docker", "Kubernetes", "CI/CD GitHub Actions"],
+    items: ["GitHub Actions", "Azure DevOps", "AWS", "Linux", "Docker, Kubernetes, Terraform (projets perso)"],
   },
   {
     title: "Sécurité & Qualité",
     icon: mobile,
-    items: ["Politiques CSP", "Gouvernance des dépendances", "Performance", "SEO technique"],
+    items: ["Sécurité applicative", "Politiques CSP", "Tests unitaires / Jest", "SonarQube"],
+  },
+  {
+    title: "IA",
+    icon: openai,
+    items: ["IA générative", "OpenAI API", "LangChain", "Python"],
   },
 ];
 
@@ -167,19 +179,23 @@ const experiences = [
   {
     title: "Développeur Full-Stack & DevOps",
     company_name: "Hapticmedia",
+    location: "Strasbourg · Alternance",
+    stack: "Nuxt / Vue.js, TypeScript, Node.js, Strapi, AWS (S3, CloudFront), GitHub Actions",
     icon: hapticmedia,
     iconBg: "#383E56",
     date: "Janvier 2026 - Septembre 2026",
     points: [
-      "Optimisation du site et de la CI : build réduit de 25-30 min à ~5 min, audit et correction du SEO technique international (hreflang, sitemaps).",
-      "Sécurisation de l'outil CLI interne (passage en asynchrone, faille d'injection de commandes corrigée) et refonte des politiques CSP avec cloisonnement sandbox/dev/prod sur AWS.",
-      "Mise à niveau Node.js et des dépendances sur un parc multi-dépôts pour réduire la dette technique et fiabiliser la CI/CD.",
-      "Migration du site vitrine vers Nuxt 4, mode preview Strapi/Nuxt pour l'équipe éditoriale et refactoring du backend Strapi sans rupture de service.",
+      "Optimisation de la CI du site corporate : build ramené de 25-30 min à environ 5 min (cache des requêtes Strapi, compression automatique des images).",
+      "Mise à niveau Node.js / npm de 130+ applications (30+ web, 100+ 3D) : plusieurs milliers de vulnérabilités corrigées, chaque mise à jour validée par tests, build et Pull Request.",
+      "Sécurisation de 4 environnements (sandbox, développement, test, production) par des Content Security Policies centralisées, et évolution de la CLI interne de livraison (S3 / CloudFront, npm).",
+      "Migration du site de Nuxt 3 à Nuxt 4 (158 fichiers) avec un démarrage serveur 3 fois plus rapide, et prévisualisation sécurisée Strapi ↔ Nuxt pour l'équipe éditoriale.",
     ],
   },
   {
     title: "Développeur Web Full-Stack",
     company_name: "TeePy Job",
+    location: "Lyon · Alternance à partir de septembre 2024",
+    stack: "PHP, jQuery, AJAX, WordPress, Elasticsearch, MySQL",
     icon: teepyjob,
     iconBg: "#383E56",
     date: "Juin 2024 - Juillet 2025",
@@ -192,6 +208,8 @@ const experiences = [
   {
     title: "Développeur web Junior",
     company_name: "Univers Binaire SARL",
+    location: "Yaoundé, Cameroun",
+    stack: "Java / Spring Boot, Laravel, Angular, React, TypeScript, PostgreSQL, MySQL",
     icon: ub,
     iconBg: "#383E56",
     date: "Octobre 2019 - Juillet 2021",
@@ -669,8 +687,8 @@ const projects = [
   },
   {
     id: "youwatch",
-    name: "YouWatch",
     featured: true,
+    name: "YouWatch",
     description:
       "Pseudo-clone de la plateforme YouTube permettant de voir n'importe quelle vidéo, rechercher des vidéos précises, consulter des vidéos par catégorie et par chaîne, etc...",
     reason: "Projet personnel",
@@ -952,21 +970,51 @@ const socials = [
 
 const keyAchievements = [
   {
-    value: "80%",
-    label: "de réduction du temps de traitement manuel",
+    value: "~5 min",
+    label: "de build CI au lieu de 25-30 min",
   },
   {
-    value: "2500+",
-    label: "offres d’emploi agrégées automatiquement",
+    value: "130+",
+    label: "applications mises à jour et sécurisées",
   },
   {
-    value: "200000+",
-    label: "profils analysés et enrichis",
+    value: "2 500+",
+    label: "offres d’emploi collectées automatiquement (-80 % de traitement manuel)",
   },
   {
-    value: "x5",
-    label: "d’accélération du pipeline CI (25-30 min → ~5 min)",
+    value: "2019",
+    label: "premier poste de développeur, 10+ applications métier livrées",
   },
 ];
 
-export { services, technologies, experiences, testimonials, projects, projectCategories, socials, keyAchievements };
+const education = [
+  {
+    years: "2024 – 2026",
+    degree: "Mastère Expert développement full stack",
+    level: "Bac+5",
+    school: "Ynov Campus, Lyon puis Strasbourg",
+    note: "En alternance",
+  },
+  {
+    years: "2022 – 2024",
+    degree: "Bachelor Analyste en Informatique Appliquée, spécialité Data & Application Design",
+    level: "Bac+3",
+    school: "ESTIAM, Lyon",
+    note: "Major de promotion",
+  },
+  {
+    years: "2015 – 2018",
+    degree: "Licence professionnelle Informatique",
+    level: "Bac+3",
+    school: "IAI-Cameroun, Yaoundé",
+  },
+];
+
+const languages = [
+  { name: "Français", level: "Courant" },
+  { name: "Allemand", level: "C1" },
+  { name: "Anglais", level: "B2" },
+];
+
+
+export { services, technologies, experiences, testimonials, projects, projectCategories, socials, keyAchievements, education, languages };

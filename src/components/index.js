@@ -8,6 +8,7 @@ import Feedbacks from './Feedbacks';
 import Contact from './Contact';
 import FeedbackPrompt from "./FeedbackPrompt";
 import KeyAchievements from "./KeyAchievements";
+import Education from "./Education";
 
 export {
   Hero,
@@ -20,4 +21,5 @@ export {
   Contact,
   FeedbackPrompt,
   KeyAchievements,
+  Education,
 }

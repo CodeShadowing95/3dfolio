@@ -56,21 +56,22 @@ const About = () => {
             className="mt-4 text-secondary text-[17px] max-w-3xl leading-8 space-y-5"
         >
             <p>
-                Développeur full-stack depuis 2019, j&apos;ai travaillé en entreprise puis en alternance, en parallèle de mes études.
-                J&apos;interviens sur toute la chaîne : du front-end au back-end, jusqu&apos;au déploiement dans le cloud.
+                Développeur full-stack, je viens de terminer mon <span className={highlight}>Mastère Expert développement full stack</span> à Ynov, en alternance.
+                Mon parcours a commencé en 2019 au Cameroun, où j&apos;ai conçu plus de dix applications web métier, avant de poursuivre mes études à Lyon puis à Strasbourg.
             </p>
             <ul className="list-disc list-inside space-y-2">
-                <li>Conception et déploiement de plateformes à fort enjeu métier : CRM, e-santé, e-commerce, vidéo-conférence.</li>
-                <li>Industrialisation et sécurisation des livraisons : CI/CD, gouvernance des dépendances, politiques CSP sur plusieurs dépôts.</li>
-                <li>Des gains mesurables : jusqu&apos;à <span className={highlight}>-80 % de traitement manuel</span> et un <span className={highlight}>build CI divisé par 5</span>.</li>
+                <li>De la polyvalence : du front-end au déploiement, en Java/Spring Boot, Node.js, React ou Vue.js selon le projet.</li>
+                <li>Un réflexe qualité et sécurité acquis en production : CI/CD, mises à jour de dépendances, politiques CSP.</li>
+                <li>Des résultats mesurables : un <span className={highlight}>build CI divisé par 5 à 6</span> et <span className={highlight}>-80 % de traitement manuel</span>.</li>
+                <li>Un goût pour l&apos;IA générative appliquée : BatiPilote, mon projet de fin d&apos;études, est un copilote IA pour les artisans du bâtiment.</li>
             </ul>
             <p>
-                Je recherche aujourd&apos;hui <span className={highlight}>un poste en CDI de développeur fullstack</span>,
-                dans une équipe où m&apos;investir sur le long terme, continuer à apprendre et créer de la valeur.
+                Je recherche <span className={highlight}>un CDI</span> dans une équipe où m&apos;investir sur la durée, avec une vision d&apos;ensemble du produit.
+                Basé à Strasbourg, ouvert à toute la France, disponible immédiatement.
             </p>
         </motion.div>
 
-        <div className="mt-14 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5">
+        <div className="mt-14 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5">
             {services.map((service, index) => (
                 <ServiceCard key={service.title} index={index} {...service} />
             ))}

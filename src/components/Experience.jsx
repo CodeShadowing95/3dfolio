@@ -38,6 +38,9 @@ const ExperienceCard = ({ experience }) => {
         <div>
             <h3 className="text-white text-[24px] font-bold">{experience.title}</h3>
             <p className="text-secondary text-[16px] font-semibold" style={{ margin: 0 }}>{experience.company_name}</p>
+            {experience.location && (
+                <p className="text-secondary text-[14px]" style={{ margin: 0 }}>{experience.location}</p>
+            )}
         </div>
 
         <ul className="mt-5 list-disc ml-5 space-y-2">
@@ -50,6 +53,12 @@ const ExperienceCard = ({ experience }) => {
                 </li>
             ))}
         </ul>
+
+        {experience.stack && (
+            <p className="mt-4 text-[13px] text-secondary" style={{ margin: "16px 0 0" }}>
+                <span className="font-semibold text-white-100">Stack : </span>{experience.stack}
+            </p>
+        )}
     </VerticalTimelineElement>
 )}
 
@@ -61,6 +70,8 @@ ExperienceCard.propTypes = {
         company_name: PropTypes.string.isRequired,
         title: PropTypes.string.isRequired,
         points: PropTypes.arrayOf(PropTypes.string).isRequired,
+        location: PropTypes.string,
+        stack: PropTypes.string,
     }).isRequired,
 }
 
