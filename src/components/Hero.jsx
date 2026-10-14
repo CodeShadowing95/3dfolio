@@ -3,7 +3,6 @@ import { motion } from 'framer-motion';
 
 import { styles } from '../styles';
 import { ComputersCanvas } from './canvas';
-import { github, linkedin } from '../assets';
 
 const Hero = () => {
   return (
@@ -38,26 +37,6 @@ const Hero = () => {
                         >
                             Me contacter
                         </a>
-                        <div className="flex items-center gap-3">
-                            <a
-                                href="https://www.linkedin.com/in/frank-patrick-namegni/"
-                                target="_blank"
-                                rel="noopener noreferrer"
-                                aria-label="Mon profil LinkedIn"
-                                className="w-12 h-12 rounded-xl border border-white/40 hover:border-white hover:bg-white/10 flex justify-center items-center transition-colors duration-300"
-                            >
-                                <img src={linkedin} alt="" className="w-5 h-5" />
-                            </a>
-                            <a
-                                href="https://github.com/CodeShadowing95"
-                                target="_blank"
-                                rel="noopener noreferrer"
-                                aria-label="Mon GitHub"
-                                className="w-12 h-12 rounded-xl border border-white/40 hover:border-white hover:bg-white/10 flex justify-center items-center transition-colors duration-300"
-                            >
-                                <img src={github} alt="" className="w-5 h-5" />
-                            </a>
-                        </div>
                     </div>
                 </div>
             </div>
