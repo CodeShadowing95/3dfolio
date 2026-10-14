@@ -36,7 +36,7 @@ const FeedbackCard = ({ index, testimonial, name, designation, company }) => {
                     </div>
 
                     <div
-                        className="w-10 h-10 rounded-full bg-gradient-to-br from-accent to-[#4d3dff] flex items-center justify-center text-white text-[13px] font-bold"
+                        className="w-10 h-10 rounded-full bg-gradient-to-br from-cyan to-accent flex items-center justify-center text-white text-[13px] font-bold"
                         aria-hidden="true"
                     >
                         {initials}

@@ -4,20 +4,21 @@ export const mode = "jit";
 export const theme = {
     extend: {
         colors: {
-            primary: "#050816",
+            primary: "#0b1020",
             secondary: "#aaa6c3",
-            tertiary: "#151030",
-            "black-100": "#100d25",
-            "black-200": "#090325",
-            "white-100": "#f3f3f3",
+            tertiary: "#111827",
+            "black-100": "#0e1424",
+            "black-200": "#080c18",
+            "white-100": "#f8fafc",
             accent: {
-                DEFAULT: "#915eff",
-                hover: "#7c4dff",
-                light: "#b79cff",
+                DEFAULT: "#804dee",
+                hover: "#6d3bdb",
+                light: "#a98bf3",
             },
+            cyan: "#22d3ee",
         },
         boxShadow: {
-            card: "0px 35px 120px -15px #211e35",
+            card: "0px 35px 120px -15px #1a2036",
         },
         screens: {
             xs: "450px",

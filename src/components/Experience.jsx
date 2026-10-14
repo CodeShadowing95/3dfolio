@@ -2,6 +2,7 @@
 
 import { VerticalTimeline, VerticalTimelineElement } from "react-vertical-timeline-component";
 import { motion } from "framer-motion";
+import { Link } from "react-router-dom";
 import PropTypes from "prop-types";
 
 import 'react-vertical-timeline-component/style.min.css';
@@ -20,7 +21,7 @@ const ExperienceCard = ({ experience }) => {
     }
     return (
         <VerticalTimelineElement
-            contentStyle={{ background: "#1d1836", color: "#fff" }}
+            contentStyle={{ background: "#111827", color: "#fff" }}
             contentArrowStyle={{ borderRight: "7px solid #232631" }}
             date={experience.date}
             iconStyle={{ background: experience.iconBg }}
@@ -54,6 +55,15 @@ const ExperienceCard = ({ experience }) => {
             ))}
         </ul>
 
+        {experience.caseStudy && (
+            <Link
+                to={experience.caseStudy.to}
+                className="inline-block mt-4 text-accent-light text-[14px] font-semibold hover:underline"
+            >
+                {experience.caseStudy.label} →
+            </Link>
+        )}
+
         {experience.stack && (
             <p className="mt-4 text-[13px] text-secondary" style={{ margin: "16px 0 0" }}>
                 <span className="font-semibold text-white-100">Stack : </span>{experience.stack}
@@ -72,6 +82,7 @@ ExperienceCard.propTypes = {
         points: PropTypes.arrayOf(PropTypes.string).isRequired,
         location: PropTypes.string,
         stack: PropTypes.string,
+        caseStudy: PropTypes.shape({ to: PropTypes.string, label: PropTypes.string }),
     }).isRequired,
 }
 

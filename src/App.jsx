@@ -5,6 +5,7 @@ import ScrollToTop from "./components/ScrollToTop";
 
 const WorkDetail = lazy(() => import("./pages/WorkDetail"));
 const NotFound = lazy(() => import("./pages/not-found"));
+const CaseStudyCI = lazy(() => import("./pages/CaseStudyCI"));
 
 const App = () => {
   return (
@@ -14,6 +15,7 @@ const App = () => {
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/project/:id" element={<WorkDetail />} />
+          <Route path="/etude-de-cas/build-ci" element={<CaseStudyCI />} />
           <Route path="*" element={<NotFound />} />
         </Routes>
       </Suspense>

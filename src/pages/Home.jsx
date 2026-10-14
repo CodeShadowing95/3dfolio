@@ -3,7 +3,6 @@ import {
   About,
   Contact,
   Experience,
-  Feedbacks,
   Hero,
   Navbar,
   Tech,
@@ -41,7 +40,7 @@ const Home = () => {
             <Experience />
             <Education />
             <Tech />
-            <Feedbacks />
+            {/* Section Feedback masquée en attendant des recommandations LinkedIn */}
             <div className="relative z-0">
                 <Contact />
                 <LazyOnView className="absolute inset-0 z-[-1]">

@@ -41,10 +41,10 @@
   );
 }
 
+/* Dégradé de la bannière LinkedIn : cyan vers violet à 135° */
 .green-pink-gradient {
-  background: #00cea8;
-  background: linear-gradient(90.13deg, #00cea8 1.9%, #bf61ff 97.5%);
-  background: -webkit-linear-gradient(-90.13deg, #00cea8 1.9%, #bf61ff 97.5%);
+  background: #22d3ee;
+  background: linear-gradient(135deg, #22d3ee 0%, #804dee 100%);
 }
 
 /* canvas- styles */

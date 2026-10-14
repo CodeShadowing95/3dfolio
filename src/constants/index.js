@@ -181,6 +181,7 @@ const experiences = [
     company_name: "Hapticmedia",
     location: "Strasbourg · Alternance",
     stack: "Nuxt / Vue.js, TypeScript, Node.js, Strapi, AWS (S3, CloudFront), GitHub Actions",
+    caseStudy: { to: "/etude-de-cas/build-ci", label: "Lire l'étude de cas : un build CI divisé par 5" },
     icon: hapticmedia,
     iconBg: "#383E56",
     date: "Janvier 2026 - Septembre 2026",
@@ -222,20 +223,6 @@ const experiences = [
 ];
 
 const testimonials = [
-  {
-    testimonial:
-      "Son travail à HKDigitals est superbe, il est travailleur, motivé, et a le sens de l'initiative.",
-    name: "Hermann Kuaté",
-    designation: "CEO",
-    company: "HKDigitals",
-  },
-  {
-    testimonial:
-      "Il est très autonome, en 2 mois il a développé notre app sans nécessiter mon intervention. Bon profil.",
-    name: "Emmanuel G. G.",
-    designation: "CTO",
-    company: "HKDigitals",
-  },
   {
     testimonial:
       "Son investissement et son apport dans nos projets e-commerce sont très louables. Je recommande.",
