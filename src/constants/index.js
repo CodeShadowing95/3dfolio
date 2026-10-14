@@ -199,7 +199,7 @@ const experiences = [
   {
     title: "Développeur Web Full-Stack",
     company_name: "TeePy Job",
-    location: "Lyon · Alternance à partir de septembre 2024",
+    location: "Lyon · Alternance",
     stack: "PHP, jQuery, AJAX, WordPress, Elasticsearch, MySQL",
     icon: teepyjob,
     iconBg: "#383E56",

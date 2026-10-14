@@ -15,13 +15,31 @@ import { StarsCanvas } from "../components/canvas";
 import LazyOnView from "../components/LazyOnView";
 import Preloader from "../components/Preloader";
 
-// Le preloader ne s'affiche qu'au premier chargement, pas en revenant d'une page projet
+// L'intro ne joue qu'une fois par visite (pas en revenant d'une page projet ni en rechargeant),
+// et jamais si le visiteur a demandé moins d'animations
+const INTRO_KEY = "introSeen";
 let preloaderDone = false;
 
+const shouldPlayIntro = () => {
+    if (preloaderDone) return false;
+    try {
+        if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) return false;
+        if (sessionStorage.getItem(INTRO_KEY)) return false;
+    } catch {
+        // Stockage indisponible (navigation privée stricte) : on joue l'intro
+    }
+    return true;
+};
+
 const Home = () => {
-    const [showPreloader, setShowPreloader] = useState(!preloaderDone);
+    const [showPreloader, setShowPreloader] = useState(shouldPlayIntro);
     const hidePreloader = useCallback(() => {
         preloaderDone = true;
+        try {
+            sessionStorage.setItem(INTRO_KEY, "1");
+        } catch {
+            // Rien à faire : l'intro rejouera simplement au prochain chargement
+        }
         setShowPreloader(false);
     }, []);
 

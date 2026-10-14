@@ -1,144 +1,141 @@
-import { Suspense, lazy, useEffect, useState } from "react";
+import { useCallback, useEffect, useState } from "react";
+import { motion } from "framer-motion";
 import PropTypes from "prop-types";
 
-const ProgressBridge = lazy(() => import("./ProgressBridge"));
+// Intro « carte de visite » : ne dépend plus du chargement de la 3D,
+// le hero s'affiche derrière les portes et la 3D y apparaît quand elle est prête.
+const NAME = "Patrick NAMEGNI";
+const OPEN_AT_MS = 1100;
+const DOORS_DURATION_S = 0.6;
 
-// Le site s'affiche au plus tard après ce délai, même si la 3D charge encore
-// (elle apparaît ensuite dans le hero avec son propre indicateur).
-const MAX_WAIT_MS = 2500;
+const doorEase = [0.76, 0, 0.24, 1];
+
+const letters = {
+  hidden: {},
+  show: { transition: { delayChildren: 0.15, staggerChildren: 0.035 } },
+};
+
+const letter = {
+  hidden: { opacity: 0, y: 10 },
+  show: { opacity: 1, y: 0, transition: { duration: 0.25, ease: "easeOut" } },
+};
+
+const fadeUp = (delay) => ({
+  initial: { opacity: 0, y: 8 },
+  animate: { opacity: 1, y: 0 },
+  transition: { delay, duration: 0.35, ease: "easeOut" },
+});
 
 const Preloader = ({ onLoadComplete }) => {
-  const [canvasProgress, setCanvasProgress] = useState(0);
-  const [timedOut, setTimedOut] = useState(false);
-  const isDone = canvasProgress >= 100 || timedOut;
-  const displayProgress = isDone ? 100 : Math.round(canvasProgress || 0);
-  const [fadeOut, setFadeOut] = useState(false);
-  const [portalOpen, setPortalOpen] = useState(false);
+  const [opening, setOpening] = useState(false);
+  const open = useCallback(() => setOpening(true), []);
+
+  // Ouverture automatique, ou dès un clic / une touche
+  useEffect(() => {
+    const timer = setTimeout(open, OPEN_AT_MS);
+    window.addEventListener("pointerdown", open);
+    window.addEventListener("keydown", open);
+
+    const previousOverflow = document.body.style.overflow;
+    document.body.style.overflow = "hidden";
+
+    return () => {
+      clearTimeout(timer);
+      window.removeEventListener("pointerdown", open);
+      window.removeEventListener("keydown", open);
+      document.body.style.overflow = previousOverflow;
+    };
+  }, [open]);
 
   useEffect(() => {
-    const t = setTimeout(() => setTimedOut(true), MAX_WAIT_MS);
-    return () => clearTimeout(t);
-  }, []);
+    if (!opening) return undefined;
+    const timer = setTimeout(() => {
+      if (typeof onLoadComplete === "function") onLoadComplete();
+    }, DOORS_DURATION_S * 1000 + 50);
+    return () => clearTimeout(timer);
+  }, [opening, onLoadComplete]);
 
-  // Lance les animations de sortie dès que la 3D est prête ou que le délai est écoulé
-  useEffect(() => {
-    if (isDone) {
-      const t1 = setTimeout(() => setFadeOut(true), 300);
-      const t2 = setTimeout(() => setPortalOpen(true), 900);
-      const t3 = setTimeout(() => {
-        if (typeof onLoadComplete === "function") onLoadComplete();
-      }, 1700);
-
-      return () => {
-        clearTimeout(t1);
-        clearTimeout(t2);
-        clearTimeout(t3);
-      };
-    }
-  }, [isDone, onLoadComplete]);
+  const doorTransition = { duration: DOORS_DURATION_S, ease: doorEase };
 
   return (
-    <div className={`fixed inset-0 z-50 flex items-center justify-center overflow-hidden bg-background ${fadeOut ? "pointer-events-none" : ""}`}>
-      <Suspense fallback={null}>
-        <ProgressBridge onProgress={setCanvasProgress} />
-      </Suspense>
-      {/* Elegant gradient backdrop with subtle glow accents */}
-      <div className={`absolute inset-0 pointer-events-none ${fadeOut ? "animate-fade-out" : ""}`}>
-        <div className="absolute inset-0 bg-gradient-to-br from-[#0b0c12] via-[#0e1120] to-[#0b0c12] opacity-90" />
-        <div
-          className="absolute inset-0"
-          style={{
-            backgroundImage:
-              "radial-gradient(40vmin 40vmin at 20% 20%, rgba(167,139,250,0.08) 0%, transparent 60%), radial-gradient(36vmin 36vmin at 80% 30%, rgba(56,189,248,0.10) 0%, transparent 60%), radial-gradient(44vmin 44vmin at 40% 80%, rgba(248,113,113,0.08) 0%, transparent 60%)",
-          }}
-        />
-      </div>
-      {/* Portal Left Panel */}
-      <div
-        className={`absolute inset-y-0 left-0 w-1/2 transition-transform duration-800 ease-in-out ${portalOpen ? "animate-portal-left" : ""
-          }`}
-      >
-        <div className="h-full w-full bg-gradient-to-br from-neutral-900 via-neutral-800 to-neutral-900 border-r border-white/10 shadow-[0_0_30px_rgba(0,0,0,0.45)]" />
-      </div>
+    <div
+      className={`fixed inset-0 z-50 overflow-hidden ${opening ? "pointer-events-none" : "cursor-pointer"}`}
+      aria-hidden="true"
+    >
+      {/* Portes */}
+      <motion.div
+        className="absolute inset-y-0 left-0 w-1/2 bg-gradient-to-br from-primary to-tertiary"
+        animate={{ x: opening ? "-100%" : 0 }}
+        transition={doorTransition}
+      />
+      <motion.div
+        className="absolute inset-y-0 right-0 w-1/2 bg-gradient-to-bl from-primary to-tertiary"
+        animate={{ x: opening ? "100%" : 0 }}
+        transition={doorTransition}
+      />
 
-      {/* Portal Right Panel */}
-      <div
-        className={`absolute inset-y-0 right-0 w-1/2 transition-transform duration-800 ease-in-out ${portalOpen ? "animate-portal-right" : ""
-          }`}
-      >
-        <div className="h-full w-full bg-gradient-to-bl from-neutral-900 via-neutral-800 to-neutral-900 border-l border-white/10 shadow-[0_0_30px_rgba(0,0,0,0.45)]" />
-      </div>
+      {/* Ligne lumineuse au centre, là où les portes s'ouvrent */}
+      <motion.div
+        className="absolute left-1/2 top-0 h-full w-px -translate-x-1/2 bg-gradient-to-b from-transparent via-cyan to-transparent shadow-[0_0_24px_rgba(34,211,238,0.6)]"
+        initial={{ scaleY: 0, opacity: 0.35 }}
+        animate={opening ? { scaleY: 1, opacity: 0 } : { scaleY: 1, opacity: 0.35 }}
+        transition={{ duration: opening ? 0.2 : 0.6, ease: "easeOut" }}
+      />
 
-      {/* Content */}
-      <div
-        className={`relative z-10 transition-opacity duration-600 ${fadeOut ? "animate-fade-out" : ""}`}
+      {/* Carte de visite */}
+      <motion.div
+        className="absolute inset-0 flex flex-col items-center justify-center px-6 text-center"
+        animate={{ opacity: opening ? 0 : 1, scale: opening ? 0.96 : 1 }}
+        transition={{ duration: 0.2 }}
       >
-        {/* Glass card contenant l’avatar, le titre et la progression */}
-        <div className="relative mx-auto w-[92vw] max-w-[760px] sm:w-[86vw] md:w-[64vw] rounded-2xl border border-white/15 bg-white/5 px-5 py-6 sm:px-6 sm:py-8 md:px-8 md:py-10 shadow-xl backdrop-blur-md">
-          {/* Anneau gradient subtil */}
-          <div
-            className="pointer-events-none absolute -inset-px rounded-2xl opacity-60"
-            style={{
-              background:
-                "linear-gradient(135deg, rgba(167,139,250,0.15), rgba(56,189,248,0.15))",
-              filter: "blur(0.5px)",
-            }}
+        <motion.div
+          className="rounded-full p-[2px] bg-gradient-to-br from-cyan to-accent"
+          initial={{ opacity: 0, scale: 0.8 }}
+          animate={{ opacity: 1, scale: 1 }}
+          transition={{ duration: 0.35, ease: "easeOut" }}
+        >
+          <img
+            src="/avatar.webp"
+            alt=""
+            className="h-16 w-16 sm:h-20 sm:w-20 rounded-full object-cover"
           />
+        </motion.div>
 
-          {/* En-tête */}
-          <div className="flex flex-col items-center gap-5">
-            <div className="relative">
-              {/* multi-layer glow */}
-              <div className="absolute -inset-8 rounded-full bg-gradient-to-r from-fuchsia-500/12 via-sky-500/12 to-emerald-500/12 blur-2xl" />
-              <div className="absolute -inset-2 rounded-full bg-white/10 blur-xl" />
-              <div className="absolute inset-0 rounded-full bg-primary/25 blur-3xl" />
-              <img
-                src="/avatar.webp"
-                alt="Patrick Namegni avatar"
-                className="relative h-20 w-20 sm:h-24 sm:w-24 md:h-32 md:w-32 rounded-full object-cover ring-2 ring-white/20 shadow-lg"
-              />
-            </div>
+        <motion.h2
+          className="mt-6 text-white font-black text-[34px] xs:text-[42px] sm:text-[56px] leading-tight"
+          variants={letters}
+          initial="hidden"
+          animate="show"
+        >
+          {NAME.split("").map((char, i) => (
+            <motion.span key={i} variants={letter} className="inline-block whitespace-pre">
+              {char}
+            </motion.span>
+          ))}
+        </motion.h2>
 
-            <div className="text-center">
-              <h2 className="text-white text-base sm:text-lg md:text-xl font-semibold tracking-wide">Patrick Namegni</h2>
-              <p className="text-white/75 text-xs sm:text-sm md:text-base">Portfolio – Chargement des assets 3D</p>
-            </div>
-          </div>
+        <motion.p className="mt-2 text-white-100 font-medium text-[18px] sm:text-[24px]" {...fadeUp(0.6)}>
+          Développeur <span className="text-accent-light">Full-Stack</span>
+        </motion.p>
 
-          {/* Progression */}
-          <div className="mt-8">
-            <div className="mb-3 flex items-center justify-center gap-3">
-              <span className="text-xs sm:text-sm font-medium text-white/85">Chargement</span>
-              <span className="text-xs sm:text-sm font-semibold text-white/95 tabular-nums">{displayProgress}%</span>
-            </div>
+        <motion.p
+          className="mt-5 inline-flex items-center gap-2 px-3 py-1 rounded-full border border-cyan/30 bg-cyan/10 text-[13px] sm:text-[14px] text-white-100"
+          {...fadeUp(0.75)}
+        >
+          <span className="w-2 h-2 rounded-full bg-cyan" />
+          Disponible immédiatement · CDI
+        </motion.p>
+      </motion.div>
 
-            <div
-              className="relative h-2.5 sm:h-3 md:h-4 overflow-hidden rounded-full bg-white/10 border border-white/20 backdrop-blur-sm"
-              role="progressbar"
-              aria-valuenow={displayProgress}
-              aria-valuemin={0}
-              aria-valuemax={100}
-            >
-              <div
-                className="absolute left-0 top-0 h-full bg-gradient-to-r from-purple-400 via-violet-400 to-fuchsia-400 transition-[width] duration-300 ease-out shadow-[0_0_20px_rgba(124,58,237,0.35)]"
-                style={{ width: `${displayProgress}%` }}
-              >
-                {/* shimmer */}
-                <div
-                  className="absolute inset-0 opacity-25"
-                  style={{
-                    backgroundImage:
-                      "repeating-linear-gradient(45deg, rgba(255,255,255,0.35) 0px, rgba(255,255,255,0.35) 6px, transparent 6px, transparent 12px)",
-                    mixBlendMode: "overlay",
-                  }}
-                />
-                {/* spark */}
-                <div className="absolute right-1 top-1/2 -translate-y-1/2 w-2 h-2 rounded-full bg-white/90 shadow-[0_0_10px_rgba(255,255,255,0.85)]" />
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
+      {/* Indication discrète pour passer */}
+      <motion.p
+        className="absolute bottom-6 inset-x-0 text-center text-[12px] text-secondary/70"
+        initial={{ opacity: 0 }}
+        animate={{ opacity: opening ? 0 : 1 }}
+        transition={{ delay: opening ? 0 : 0.5, duration: 0.3 }}
+      >
+        Cliquez ou appuyez sur une touche pour passer
+      </motion.p>
     </div>
   );
 };
