@@ -8,7 +8,7 @@ import { styles } from '../styles';
 import { EarthCanvas } from './canvas';
 import LazyOnView from './LazyOnView';
 import { SectionWrapper } from '../hoc';
-import { slideIn } from '../utils/motion';
+import { fadeIn } from '../utils/motion';
 import { track } from '../utils/analytics';
 import { BOOKING_URL } from '../constants';
 import Toast from './Toast';
@@ -121,86 +121,134 @@ const Contact = () => {
     }
 
   return (
-    <div className="xl:mt-12 xl:flex-row flex-col-reverse flex gap-10 overflow-hidden">
-        <Toast
-            message={toast.message}
-            type={toast.type}
-            onClose={() => setToast((prev) => ({ ...prev, message: '' }))}
-        />
+    <>
+    {/* Hors du bloc animé : une transformation CSS casserait la position fixe du toast */}
+    <Toast
+        message={toast.message}
+        type={toast.type}
+        onClose={() => setToast((prev) => ({ ...prev, message: '' }))}
+    />
+    <motion.div
+        variants={fadeIn('up', 'tween', 0.2, 0.8)}
+        className="xl:mt-12 green-pink-gradient p-[1px] rounded-[24px] shadow-card"
+    >
 
-        <motion.div
-            variants={slideIn('left', 'tween', 0.2, 1)}
-            className="flex-[0.75] bg-black-100 p-8 rounded-2xl"
-        >
-            <p className={styles.sectionSubText}>Contactez-moi de n{`'`}importe où</p>
-            <h3 className={styles.sectionHeadText}>Contact.</h3>
+        <div className="grid lg:grid-cols-2 lg:grid-rows-[auto_1fr] bg-black-100 rounded-[23px] overflow-hidden">
+            {/* Présentation et contacts directs */}
+            <div className="p-6 sm:p-10 lg:pb-0">
+                <p className={styles.sectionSubText}>Contactez-moi de n{`'`}importe où</p>
+                <h3 className={styles.sectionHeadText}>Contact.</h3>
 
+                <p className="mt-4 text-secondary text-[16px] leading-7 max-w-md">
+                    Un poste en CDI, une question sur un projet ou simplement un échange : je réponds rapidement.
+                </p>
+
+                <p className="mt-5 inline-flex items-center gap-2 px-3 py-1.5 rounded-full border border-cyan/40 bg-cyan/10 text-white text-[14px]">
+                    <span className="w-2 h-2 rounded-full bg-cyan animate-pulse" aria-hidden="true" />
+                    Disponible immédiatement · CDI
+                </p>
+
+                <div className="mt-8 flex flex-col gap-3">
+                    {BOOKING_URL && (
+                        <a
+                            href={BOOKING_URL}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            data-umami-event="rdv-clic"
+                            data-umami-event-emplacement="contact"
+                            className="mb-2 w-fit px-5 py-3 rounded-xl border border-cyan/50 hover:bg-cyan/10 text-white font-semibold text-[15px] transition-colors"
+                        >
+                            Réserver un appel de 15 min
+                        </a>
+                    )}
+                    <a
+                        href={`mailto:${CONTACT_EMAIL}`}
+                        data-umami-event="email-clic"
+                        className="w-fit text-white font-medium hover:text-accent transition-colors break-all"
+                    >
+                        <span className="text-secondary font-normal">Email · </span>{CONTACT_EMAIL}
+                    </a>
+                    <a
+                        href="https://www.linkedin.com/in/frank-patrick-namegni/"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        data-umami-event="linkedin-clic"
+                        data-umami-event-emplacement="contact"
+                        className="w-fit text-white font-medium hover:text-accent transition-colors"
+                    >
+                        <span className="text-secondary font-normal">LinkedIn · </span>Patrick Namegni
+                    </a>
+                </div>
+            </div>
+
+            {/* Formulaire : à droite sur ordinateur, juste après la présentation sur mobile */}
             <form
                 ref={formRef}
                 onSubmit={handleSubmit}
                 noValidate
-                className="mt-12 flex flex-col gap-8"
+                className="lg:col-start-2 lg:row-start-1 lg:row-span-2 flex flex-col gap-6 p-6 sm:p-10 border-t lg:border-t-0 lg:border-l border-white/10 bg-black-200/40"
             >
-                <label className="flex flex-col">
-                    <span className="text-white font-medium mb-4">Votre Nom</span>
-                    <input
-                        type="text"
-                        name="name"
-                        value={form.name}
-                        onChange={handleChange}
-                        placeholder="Nom ou entreprise"
-                        aria-invalid={Boolean(errors.name)}
-                        className={`bg-tertiary py-4 px-6 placeholder:text-secondary text-white rounded-lg outline-none font-medium border ${errors.name ? 'border-red-400' : 'border-transparent'}`}
-                    />
-                    {errors.name && (
-                        <span className="text-red-400 text-sm mt-2">{errors.name}</span>
-                    )}
-                </label>
-                <label className="flex flex-col">
-                    <span className="text-white font-medium mb-4">Votre Email</span>
-                    <input
-                        type="email"
-                        name="email"
-                        value={form.email}
-                        onChange={handleChange}
-                        placeholder="Adresse mail"
-                        aria-invalid={Boolean(errors.email)}
-                        className={`bg-tertiary py-4 px-6 placeholder:text-secondary text-white rounded-lg outline-none font-medium border ${errors.email ? 'border-red-400' : 'border-transparent'}`}
-                    />
-                    {errors.email && (
-                        <span className="text-red-400 text-sm mt-2">{errors.email}</span>
-                    )}
-                </label>
-                <label className="flex flex-col">
-                    <span className="text-white font-medium mb-4">Objet</span>
-                    <input
-                        type="text"
-                        name="subject"
-                        value={form.subject}
-                        onChange={handleChange}
-                        placeholder="Ex : Opportunité CDI - Développeur Full-Stack"
-                        aria-invalid={Boolean(errors.subject)}
-                        className={`bg-tertiary py-4 px-6 placeholder:text-secondary text-white rounded-lg outline-none font-medium border ${errors.subject ? 'border-red-400' : 'border-transparent'}`}
-                    />
-                    {errors.subject && (
-                        <span className="text-red-400 text-sm mt-2">{errors.subject}</span>
-                    )}
-                </label>
-                <label className="flex flex-col">
-                    <span className="text-white font-medium mb-4">Votre Message</span>
-                    <textarea
-                        rows={5}
-                        name="message"
-                        value={form.message}
-                        onChange={handleChange}
-                        placeholder="Entrez votre message"
-                        aria-invalid={Boolean(errors.message)}
-                        className={`bg-tertiary py-4 px-6 placeholder:text-secondary text-white rounded-lg outline-none font-medium border ${errors.message ? 'border-red-400' : 'border-transparent'}`}
-                    />
-                    {errors.message && (
-                        <span className="text-red-400 text-sm mt-2">{errors.message}</span>
-                    )}
-                </label>
+                <p className="text-white font-semibold text-[20px]">Écrivez-moi</p>
+                    <label className="flex flex-col">
+                        <span className="text-white font-medium mb-3">Votre Nom</span>
+                        <input
+                            type="text"
+                            name="name"
+                            value={form.name}
+                            onChange={handleChange}
+                            placeholder="Nom ou entreprise"
+                            aria-invalid={Boolean(errors.name)}
+                            className={`bg-tertiary py-3.5 px-5 placeholder:text-secondary text-white rounded-lg outline-none font-medium border focus:border-accent/70 transition-colors ${errors.name ? 'border-red-400' : 'border-transparent'}`}
+                        />
+                        {errors.name && (
+                            <span className="text-red-400 text-sm mt-2">{errors.name}</span>
+                        )}
+                    </label>
+                    <label className="flex flex-col">
+                        <span className="text-white font-medium mb-3">Votre Email</span>
+                        <input
+                            type="email"
+                            name="email"
+                            value={form.email}
+                            onChange={handleChange}
+                            placeholder="Adresse mail"
+                            aria-invalid={Boolean(errors.email)}
+                            className={`bg-tertiary py-3.5 px-5 placeholder:text-secondary text-white rounded-lg outline-none font-medium border focus:border-accent/70 transition-colors ${errors.email ? 'border-red-400' : 'border-transparent'}`}
+                        />
+                        {errors.email && (
+                            <span className="text-red-400 text-sm mt-2">{errors.email}</span>
+                        )}
+                    </label>
+                    <label className="flex flex-col">
+                        <span className="text-white font-medium mb-3">Objet</span>
+                        <input
+                            type="text"
+                            name="subject"
+                            value={form.subject}
+                            onChange={handleChange}
+                            placeholder="Ex : Opportunité CDI - Développeur Full-Stack"
+                            aria-invalid={Boolean(errors.subject)}
+                            className={`bg-tertiary py-3.5 px-5 placeholder:text-secondary text-white rounded-lg outline-none font-medium border focus:border-accent/70 transition-colors ${errors.subject ? 'border-red-400' : 'border-transparent'}`}
+                        />
+                        {errors.subject && (
+                            <span className="text-red-400 text-sm mt-2">{errors.subject}</span>
+                        )}
+                    </label>
+                    <label className="flex flex-col">
+                        <span className="text-white font-medium mb-3">Votre Message</span>
+                        <textarea
+                            rows={5}
+                            name="message"
+                            value={form.message}
+                            onChange={handleChange}
+                            placeholder="Entrez votre message"
+                            aria-invalid={Boolean(errors.message)}
+                            className={`bg-tertiary py-3.5 px-5 placeholder:text-secondary text-white rounded-lg outline-none font-medium border focus:border-accent/70 transition-colors ${errors.message ? 'border-red-400' : 'border-transparent'}`}
+                        />
+                        {errors.message && (
+                            <span className="text-red-400 text-sm mt-2">{errors.message}</span>
+                        )}
+                    </label>
 
                 <button
                     type="submit"
@@ -211,49 +259,15 @@ const Contact = () => {
                 </button>
             </form>
 
-            <div className="mt-10 pt-8 border-t border-white/10 flex flex-col gap-3">
-                {BOOKING_URL && (
-                    <a
-                        href={BOOKING_URL}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        data-umami-event="rdv-clic"
-                        data-umami-event-emplacement="contact"
-                        className="mb-4 w-fit px-5 py-3 rounded-xl border border-cyan/50 hover:bg-cyan/10 text-white font-semibold text-[15px] transition-colors"
-                    >
-                        Réserver un appel de 15 min
-                    </a>
-                )}
-                <p className="text-secondary text-[15px]">Ou écrivez-moi directement :</p>
-                <a
-                    href={`mailto:${CONTACT_EMAIL}`}
-                    data-umami-event="email-clic"
-                    className="text-white font-medium hover:text-accent transition-colors break-all"
-                >
-                    {CONTACT_EMAIL}
-                </a>
-                <a
-                    href="https://www.linkedin.com/in/frank-patrick-namegni/"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    data-umami-event="linkedin-clic"
-                    data-umami-event-emplacement="contact"
-                    className="text-white font-medium hover:text-accent transition-colors"
-                >
-                    LinkedIn : Patrick Namegni
-                </a>
+            {/* Globe du parcours, toujours carré pour ne jamais être rogné */}
+            <div className="lg:col-start-1 lg:row-start-2 flex items-end justify-center px-4 pb-4 sm:px-10 sm:pb-6">
+                <LazyOnView className="w-full max-w-[460px] aspect-square">
+                    <EarthCanvas />
+                </LazyOnView>
             </div>
-        </motion.div>
-
-        <motion.div
-            variants={slideIn('right', 'tween', 0.2, 1)}
-            className="xl:flex-1 xl:h-auto md:h-[550px] h-[350px]"
-        >
-            <LazyOnView className="w-full h-full">
-                <EarthCanvas />
-            </LazyOnView>
-        </motion.div>
-    </div>
+        </div>
+    </motion.div>
+    </>
   )
 }
 

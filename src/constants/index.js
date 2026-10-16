@@ -974,6 +974,7 @@ const keyAchievements = [
   {
     value: "~5 min",
     label: "de build CI au lieu de 25-30 min",
+    link: { to: "/etude-de-cas/build-ci", label: "Lire l'étude de cas" },
   },
   {
     value: "130+",
@@ -986,6 +987,34 @@ const keyAchievements = [
   {
     value: "2019",
     label: "premier poste de développeur, 10+ applications métier livrées",
+  },
+];
+
+// Parcours affiché sur le globe de la section Contact (du plus ancien au plus récent)
+const journey = [
+  {
+    city: "Yaoundé, Cameroun",
+    period: "2015 – 2021",
+    detail: "Licence IAI, 1er poste chez Univers Binaire, Pristy Délices",
+    lat: 3.87,
+    lon: 11.52,
+    labelClassName: "ml-3 -translate-y-1/2",
+  },
+  {
+    city: "Lyon",
+    period: "2022 – 2025",
+    detail: "Bachelor ESTIAM, TeePy Job, Index.tv",
+    lat: 45.76,
+    lon: 4.84,
+    labelClassName: "-ml-3 -translate-x-full -translate-y-1/2",
+  },
+  {
+    city: "Strasbourg",
+    period: "Depuis 2025",
+    detail: "Mastère Ynov, Hapticmedia",
+    lat: 48.57,
+    lon: 7.75,
+    labelClassName: "ml-3 -translate-y-full",
   },
 ];
 
@@ -1019,4 +1048,4 @@ const languages = [
 ];
 
 
-export { services, technologies, experiences, testimonials, projects, projectCategories, socials, keyAchievements, education, languages };
+export { services, technologies, experiences, testimonials, projects, projectCategories, socials, keyAchievements, education, languages, journey };

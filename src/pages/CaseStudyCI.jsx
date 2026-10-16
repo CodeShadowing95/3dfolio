@@ -13,10 +13,20 @@ const steps = [
   },
 ];
 
+// Chaque goulot d'étranglement et l'action qui l'a levé
 const actions = [
-  "Mise en cache des requêtes Strapi pendant le build, pour ne plus interroger l'API plusieurs fois pour les mêmes données.",
-  "Optimisation automatique des images avec SVGO, Sharp et gifsicle, jusqu'à -80 % de poids.",
-  "Téléchargements parallélisés au lieu d'être exécutés un par un.",
+  {
+    before: "Les mêmes données Strapi redemandées à l'API pendant la génération des pages.",
+    after: "Mise en cache des requêtes Strapi pendant le build : chaque donnée n'est demandée qu'une fois.",
+  },
+  {
+    before: "Les images retraitées à chaque build, sans optimisation.",
+    after: "Optimisation automatique des images avec SVGO, Sharp et gifsicle, jusqu'à -80 % de poids.",
+  },
+  {
+    before: "Les téléchargements de ressources exécutés un par un.",
+    after: "Téléchargements parallélisés.",
+  },
 ];
 
 const stack = ["Nuxt", "Strapi", "Node.js", "GitHub Actions", "SVGO", "Sharp", "gifsicle"];
@@ -44,11 +54,17 @@ const CaseStudyCI = () => {
           <div className="bg-tertiary rounded-2xl p-6 border border-white/10">
             <p className="text-secondary text-[14px]">Avant</p>
             <p className="mt-1 text-[32px] font-black">25-30 min</p>
+            <div className="mt-4 h-2 rounded-full bg-white/10" aria-hidden="true">
+              <div className="h-full w-full rounded-full bg-secondary/60" />
+            </div>
           </div>
           <div className="green-pink-gradient p-[1px] rounded-2xl">
             <div className="bg-tertiary rounded-2xl p-6 h-full">
               <p className="text-secondary text-[14px]">Après</p>
               <p className="mt-1 text-[32px] font-black text-cyan">~5 min</p>
+              <div className="mt-4 h-2 rounded-full bg-white/10" aria-hidden="true">
+                <div className="h-full w-[18%] rounded-full bg-cyan" />
+              </div>
             </div>
           </div>
         </div>
@@ -62,13 +78,21 @@ const CaseStudyCI = () => {
 
         <section className="mt-12">
           <h2 className="text-[24px] font-bold">Actions</h2>
-          <ol className="mt-4 space-y-3">
+          <ol className="mt-5 space-y-4">
             {actions.map((action, index) => (
-              <li key={action} className="flex gap-4 text-white-100/90 text-[17px] leading-7">
-                <span className="shrink-0 w-8 h-8 rounded-full bg-accent/20 text-accent-light font-bold flex items-center justify-center text-[14px]">
-                  {index + 1}
-                </span>
-                <span>{action}</span>
+              <li key={action.after} className="grid grid-cols-1 sm:grid-cols-[1fr_auto_1fr] items-stretch gap-2 sm:gap-3">
+                <div className="rounded-xl border border-white/10 bg-white/5 p-4">
+                  <p className="text-[12px] uppercase tracking-wider text-secondary">Avant</p>
+                  <p className="mt-1 text-white-100/90 text-[15px] leading-6">{action.before}</p>
+                </div>
+                <div className="flex items-center justify-center text-cyan" aria-hidden="true">
+                  <span className="sm:hidden">↓</span>
+                  <span className="hidden sm:inline">→</span>
+                </div>
+                <div className="rounded-xl border border-cyan/30 bg-cyan/5 p-4">
+                  <p className="text-[12px] uppercase tracking-wider text-cyan">Action {index + 1}</p>
+                  <p className="mt-1 text-white text-[15px] leading-6">{action.after}</p>
+                </div>
               </li>
             ))}
           </ol>
