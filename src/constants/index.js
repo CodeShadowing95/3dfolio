@@ -43,6 +43,10 @@ import {
 
 // Galeries de captures par projet
 import batipiloteLogo from "../assets/ProjectAssets/batipilote/logo.webp";
+import bikemapperPreview from "../assets/ProjectAssets/bikemapper/demo/bikemapper-preview.mp4";
+import youwatchPreview from "../assets/ProjectAssets/youwatch/demo/youwatch-preview.mp4";
+import curriqulumPreview from "../assets/ProjectAssets/curriqulum.ai/demo/curriqulum-preview.mp4";
+import pokedexhubPreview from "../assets/ProjectAssets/pokedexhub/demo/pokedexhub-preview.mp4";
 import batipiloteScreen1 from "../assets/ProjectAssets/batipilote/gallery/1.webp";
 import batipiloteScreen2 from "../assets/ProjectAssets/batipilote/gallery/2.webp";
 import batipiloteScreen3 from "../assets/ProjectAssets/batipilote/gallery/3.webp";
@@ -51,6 +55,9 @@ import batipiloteScreen5 from "../assets/ProjectAssets/batipilote/gallery/5.webp
 import batipiloteScreen6 from "../assets/ProjectAssets/batipilote/gallery/6.webp";
 import batipiloteScreen7 from "../assets/ProjectAssets/batipilote/gallery/7.webp";
 import batipiloteScreen8 from "../assets/ProjectAssets/batipilote/gallery/8.webp";
+
+// Lien de prise de rendez-vous (Calendly, Cal.com, Google Agenda...). Laisser vide pour masquer les boutons.
+export const BOOKING_URL = "";
 
 export const navLinks = [
   {
@@ -446,6 +453,7 @@ const projects = [
       },
     ],
     image: bikemapper,
+    video: bikemapperPreview,
     source_code_link: "https://github.com/CodeShadowing95/velolibreservice",
     app_link: "https://bikemapper.netlify.app/",
     status: "Terminé",
@@ -487,6 +495,7 @@ const projects = [
       },
     ],
     image: pokedexhub,
+    video: pokedexhubPreview,
     source_code_link: "https://github.com/CodeShadowing95/pokepokedex.git",
     app_link: "https://pokecraftershub.netlify.app/",
     status: "Terminé",
@@ -553,6 +562,7 @@ const projects = [
       },
     ],
     image: curriqulumai,
+    video: curriqulumPreview,
     source_code_link: "https://github.com/CodeShadowing95/ai-resume-analyzer.git",
     app_link: "https://curriqulum-ai.netlify.app/",
     status: "Terminé",
@@ -698,6 +708,7 @@ const projects = [
       },
     ],
     image: youwatch,
+    video: youwatchPreview,
     source_code_link: "https://github.com/CodeShadowing95/yutubewatch",
     app_link: "https://yutubewatch.netlify.app/",
     status: "En cours",
