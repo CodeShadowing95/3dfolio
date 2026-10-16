@@ -4,11 +4,13 @@ import { motion } from 'framer-motion';
 import { styles } from '../styles';
 import { BOOKING_URL } from '../constants';
 import { track } from '../utils/analytics';
+import { getVisitorCompany } from '../utils/visitor';
 import { ComputersCanvas } from './canvas';
 import RecruiterPanel from './RecruiterPanel';
 
 const Hero = () => {
   const [panelOpen, setPanelOpen] = useState(false);
+  const [company] = useState(getVisitorCompany);
   const closePanel = useCallback(() => setPanelOpen(false), []);
   const openPanel = () => {
     setPanelOpen(true);
@@ -25,6 +27,16 @@ const Hero = () => {
                 </div>
 
                 <div className="">
+                    {company && (
+                        <motion.p
+                            initial={{ opacity: 0, y: -8 }}
+                            animate={{ opacity: 1, y: 0 }}
+                            transition={{ duration: 0.5, delay: 0.3 }}
+                            className="mb-3 w-fit px-3 py-1.5 rounded-full border border-cyan/40 bg-cyan/10 text-white text-[14px] sm:text-[15px]"
+                        >
+                            Bonjour l{`'`}équipe <span className="font-semibold text-cyan">{company}</span> 👋 Merci de votre visite.
+                        </motion.p>
+                    )}
                     <h1 className={`${styles.heroHeadText} text-white`}><span className="text-accent">Patrick NAMEGNI</span></h1>
                     <div className={`${styles.heroSubText} text-white-100 max-w-2xl`}>
                         <p>Développeur <span className="text-accent">Full-Stack</span></p>

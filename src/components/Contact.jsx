@@ -10,6 +10,7 @@ import LazyOnView from './LazyOnView';
 import { SectionWrapper } from '../hoc';
 import { fadeIn } from '../utils/motion';
 import { track } from '../utils/analytics';
+import { getVisitorCompany } from '../utils/visitor';
 import { BOOKING_URL } from '../constants';
 import Toast from './Toast';
 
@@ -19,6 +20,7 @@ const EMAIL_REGEX = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 
 const Contact = () => {
     const formRef = useRef();
+    const [company] = useState(getVisitorCompany);
     const [form, setForm] = useState({
         name: '',
         email: '',
@@ -226,7 +228,7 @@ const Contact = () => {
                             name="subject"
                             value={form.subject}
                             onChange={handleChange}
-                            placeholder="Ex : Opportunité CDI - Développeur Full-Stack"
+                            placeholder={company ? `Ex : Opportunité CDI chez ${company}` : 'Ex : Opportunité CDI - Développeur Full-Stack'}
                             aria-invalid={Boolean(errors.subject)}
                             className={`bg-tertiary py-3.5 px-5 placeholder:text-secondary text-white rounded-lg outline-none font-medium border focus:border-accent/70 transition-colors ${errors.subject ? 'border-red-400' : 'border-transparent'}`}
                         />
