@@ -907,7 +907,8 @@ const keyAchievements = [
   },
   {
     value: "2 500+",
-    label: "offres d’emploi collectées automatiquement (-80 % de traitement manuel)",
+    // label: "offres d’emploi collectées automatiquement (-80 % de traitement manuel)",
+    label: "offres d’emploi collectées traitées",
   },
   {
     value: "2019",

@@ -1,6 +1,5 @@
 import { useEffect, useRef } from "react";
 import { createPortal } from "react-dom";
-import { Link } from "react-router-dom";
 import { AnimatePresence, motion } from "framer-motion";
 import PropTypes from "prop-types";
 
@@ -119,13 +118,13 @@ const RecruiterPanel = ({ open, onClose }) => {
                   </li>
                 ))}
               </ul>
-              <Link
+              {/* <Link
                 to="/etude-de-cas/build-ci"
                 onClick={onClose}
                 className="mt-3 inline-block text-[14px] font-semibold text-cyan hover:underline"
               >
                 Étude de cas : un build CI divisé par 5 →
-              </Link>
+              </Link> */}
             </div>
 
             {/* Formation et langues */}
