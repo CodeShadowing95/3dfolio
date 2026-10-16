@@ -273,7 +273,22 @@ const WorkDetail = () => {
           animate="show"
           className="mt-10 rounded-3xl overflow-hidden border border-white/10 bg-white/5 shadow-xl"
         >
-          <img src={project.image} alt={`Capture d'écran de ${project.name}`} className="w-full h-auto max-h-[70vh] object-cover object-top" />
+          {project.showcase ? (
+            <video
+              src={project.showcase}
+              poster={project.image}
+              autoPlay={!prefersReduced}
+              muted
+              loop
+              playsInline
+              controls
+              preload="metadata"
+              aria-label={`Vidéo de présentation de ${project.name}`}
+              className="w-full h-auto aspect-video bg-black"
+            />
+          ) : (
+            <img src={project.image} alt={`Capture d'écran de ${project.name}`} className="w-full h-auto max-h-[70vh] object-cover object-top" />
+          )}
         </motion.figure>
 
         {/* Galerie de captures (si le projet en a) */}

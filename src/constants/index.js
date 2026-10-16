@@ -47,6 +47,9 @@ import bikemapperPreview from "../assets/ProjectAssets/bikemapper/demo/bikemappe
 import youwatchPreview from "../assets/ProjectAssets/youwatch/demo/youwatch-preview.mp4";
 import curriqulumPreview from "../assets/ProjectAssets/curriqulum.ai/demo/curriqulum-preview.mp4";
 import pokedexhubPreview from "../assets/ProjectAssets/pokedexhub/demo/pokedexhub-preview.mp4";
+import batipiloteShowcase from "../assets/ProjectAssets/batipilote/demo/batipilote-showcase.mp4";
+import applePreview from "../assets/ProjectAssets/apple/demo/apple-preview.mp4";
+import brainwavePreview from "../assets/ProjectAssets/brainwave/demo/brainwave-preview.mp4";
 import batipiloteScreen1 from "../assets/ProjectAssets/batipilote/gallery/1.webp";
 import batipiloteScreen2 from "../assets/ProjectAssets/batipilote/gallery/2.webp";
 import batipiloteScreen3 from "../assets/ProjectAssets/batipilote/gallery/3.webp";
@@ -358,6 +361,9 @@ const projects = [
       },
     ],
     image: batipilote,
+    video: batipiloteShowcase,
+    // Vidéo de présentation complète, affichée en tête de la fiche projet
+    showcase: batipiloteShowcase,
     source_code_link: "",
     app_link: "",
     private_repo: true,
@@ -596,6 +602,7 @@ const projects = [
       },
     ],
     image: appleclone,
+    video: applePreview,
     source_code_link: "https://github.com/CodeShadowing95/apple_website_clone",
     app_link: "https://mynewappleclone.netlify.app/",
     status: "Terminé",
@@ -629,6 +636,7 @@ const projects = [
       },
     ],
     image: brainwave,
+    video: brainwavePreview,
     source_code_link: "https://github.com/CodeShadowing95/ai_is_coming",
     app_link: "https://brainwave-tech.netlify.app/",
     status: "Terminé",
@@ -644,45 +652,6 @@ const projects = [
         "Parallax et micro-interactions",
         "CTA dynamiques et suivi",
         "FAQ et témoignages",
-      ],
-    }
-  },
-  {
-    id: "fitguide",
-    name: "Fit Guide",
-    description:
-      "Explorez une collection complète d'exercices de gym classés par parties du corps et par équipement, garantissant une approche ciblée d'un programme d'entraînement.",
-    reason: "Projet personnel",
-    tags: [
-      {
-        name: "react",
-      },
-      {
-        name: "nodejs",
-      },
-      {
-        name: "restapi",
-      },
-      {
-        name: "css",
-      },
-    ],
-    image: exalta,
-    source_code_link: "https://github.com/CodeShadowing95/gym_tutorial",
-    app_link: "https://exalta.netlify.app/",
-    status: "Terminé",
-    details: {
-      fullDescription: "Fit Guide aide les utilisateurs à construire un programme d’entraînement ciblé grâce à un catalogue d’exercices classés par groupe musculaire et par équipement. L’interface facilite la recherche et la création de routines.",
-      keyObjectives: [
-        "Permettre une recherche d’exercices efficace",
-        "Structurer des routines personnalisées",
-        "Offrir des fiches claires et illustrées",
-      ],
-      functionalities: [
-        "Catalogue d’exercices par muscle/équipement",
-        "Recherche et filtres avancés",
-        "Fiches détaillées (instructions, vidéos)",
-        "Création et sauvegarde de routines",
       ],
     }
   },
@@ -849,48 +818,6 @@ const projects = [
   //   source_code_link: "https://github.com/CodeShadowing95/employeeManagement",
   //   app_link: "https://github.com/CodeShadowing95/employeeManagementt"
   // },
-  {
-    id: "carhub",
-    name: "Car Hub",
-    description:
-      "Application de location de voitures de manière rapide. Naviguez par modèle, nom, type de carburant ou année de fabrication. La voiture idéale est à portée de main.",
-    reason: "Projet personnel",
-    tags: [
-      {
-        name: "nextjs",
-      },
-      {
-        name: "nodejs",
-      },
-      {
-        name: "typescript",
-      },
-      {
-        name: "restapi",
-      },
-      {
-        name: "tailwindcss",
-      },
-    ],
-    image: carhub,
-    source_code_link: "https://github.com/CodeShadowing95/carhub",
-    app_link: "https://rentalcar237.vercel.app/",
-    status: "En cours",
-    details: {
-      fullDescription: "Car Hub simplifie la location de voitures. Les utilisateurs filtrent par modèle, carburant, année et caractéristiques pour trouver le véhicule idéal. L’application met en avant la rapidité et la clarté des informations.",
-      keyObjectives: [
-        "Accélérer la recherche de véhicules",
-        "Offrir des filtres pertinents et rapides",
-        "Afficher des fiches véhicules complètes",
-      ],
-      functionalities: [
-        "Filtrage par modèle, carburant et année",
-        "Fiches détaillées (prix, specs, photos)",
-        "Favoris et comparaisons (selon implémentation)",
-        "Processus de contact/réservation",
-      ],
-    }
-  },
   // {
   //   name: "Promptopia",
   //   description:
