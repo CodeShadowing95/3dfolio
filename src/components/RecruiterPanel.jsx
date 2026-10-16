@@ -7,7 +7,7 @@ import PropTypes from "prop-types";
 import { BOOKING_URL, keyAchievements, education, languages } from "../constants";
 import { track } from "../utils/analytics";
 
-const mainStack = ["Java / Spring Boot", "Node.js / TypeScript", "React / Next.js", "Vue.js / Nuxt"];
+const mainStack = ["Java / Spring Boot", "Node.js / TypeScript", "React / Next.js / Vue.js"];
 
 const sectionTitle = "text-[12px] uppercase tracking-wider text-secondary";
 const chip = "px-2.5 py-1 rounded-full bg-white/5 border border-white/10 text-white-100 text-[13px]";
@@ -94,7 +94,7 @@ const RecruiterPanel = ({ open, onClose }) => {
                 Disponible immédiatement · CDI
               </span>
               <span className="px-3 py-1 rounded-full border border-white/10 bg-white/5 text-[13px] text-white-100">
-                Strasbourg · ouvert à toute la France
+                Ouvert à toute la France
               </span>
             </div>
 

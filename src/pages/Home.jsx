@@ -66,7 +66,7 @@ const Home = () => {
                 </LazyOnView>
             </div>
 
-            {/* Message de feedback en position fixe */}
+            {/* Bouton « remonter en haut » en position fixe */}
             <FeedbackPrompt />
         </div>
         </>

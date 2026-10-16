@@ -87,12 +87,12 @@ const services = [
   {
     title: "Front-end",
     icon: web,
-    items: ["React", "Next.js", "Vue.js / Nuxt", "Angular", "React Native", "TypeScript", "Tailwind CSS"],
+    items: ["React", "Next.js", "Vue.js / Nuxt", "shadcn", "React Native", "TypeScript", "Tailwind CSS"],
   },
   {
     title: "Back-end & API",
     icon: backend,
-    items: ["Node.js / Express", "NestJS", "Java / Spring Boot", "PHP / Laravel", "Strapi", "API REST"],
+    items: ["Node.js / Express / Hono", "PHP / Laravel", "Java / Spring Boot", "Strapi", "API REST"],
   },
   {
     title: "Données",
@@ -102,7 +102,7 @@ const services = [
   {
     title: "DevOps & Cloud",
     icon: creator,
-    items: ["GitHub Actions", "Azure DevOps", "AWS", "Linux", "Docker, Kubernetes, Terraform (projets perso)"],
+    items: ["GitHub Actions", "Azure DevOps", "AWS", "Linux", "Docker, Kubernetes, Terraform"],
   },
   {
     title: "Sécurité & Qualité",
