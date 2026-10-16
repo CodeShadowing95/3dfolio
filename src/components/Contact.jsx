@@ -9,6 +9,8 @@ import { EarthCanvas } from './canvas';
 import LazyOnView from './LazyOnView';
 import { SectionWrapper } from '../hoc';
 import { slideIn } from '../utils/motion';
+import { track } from '../utils/analytics';
+import { BOOKING_URL } from '../constants';
 import Toast from './Toast';
 
 const CONTACT_EMAIL = 'patrick.namegni@gmail.com';
@@ -99,6 +101,7 @@ const Contact = () => {
         )
         .then(() => {
             setLoading(false);
+            track('formulaire-envoye');
             showToast('Merci pour votre prise de contact. Je reviendrai vers vous dès que possible.', 'success');
 
             setForm({
@@ -209,9 +212,22 @@ const Contact = () => {
             </form>
 
             <div className="mt-10 pt-8 border-t border-white/10 flex flex-col gap-3">
+                {BOOKING_URL && (
+                    <a
+                        href={BOOKING_URL}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        data-umami-event="rdv-clic"
+                        data-umami-event-emplacement="contact"
+                        className="mb-4 w-fit px-5 py-3 rounded-xl border border-cyan/50 hover:bg-cyan/10 text-white font-semibold text-[15px] transition-colors"
+                    >
+                        Réserver un appel de 15 min
+                    </a>
+                )}
                 <p className="text-secondary text-[15px]">Ou écrivez-moi directement :</p>
                 <a
                     href={`mailto:${CONTACT_EMAIL}`}
+                    data-umami-event="email-clic"
                     className="text-white font-medium hover:text-accent transition-colors break-all"
                 >
                     {CONTACT_EMAIL}
@@ -220,6 +236,8 @@ const Contact = () => {
                     href="https://www.linkedin.com/in/frank-patrick-namegni/"
                     target="_blank"
                     rel="noopener noreferrer"
+                    data-umami-event="linkedin-clic"
+                    data-umami-event-emplacement="contact"
                     className="text-white font-medium hover:text-accent transition-colors"
                 >
                     LinkedIn : Patrick Namegni

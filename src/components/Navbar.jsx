@@ -5,6 +5,7 @@ import { AnimatePresence, motion } from "framer-motion";
 import { styles } from "../styles";
 import { navLinks } from "../constants";
 import { logo, menu, close, linkedin, github } from "../assets";
+import { track } from "../utils/analytics";
 
 const socialLinks = [
   {
@@ -12,12 +13,14 @@ const socialLinks = [
     label: "Profil LinkedIn de Patrick Namegni",
     icon: linkedin,
     name: "LinkedIn",
+    event: "linkedin-clic",
   },
   {
     href: "https://github.com/CodeShadowing95",
     label: "Profil GitHub de Patrick Namegni",
     icon: github,
     name: "GitHub",
+    event: "github-clic",
   },
 ];
 
@@ -133,17 +136,18 @@ const Navbar = () => {
             </li>
           ))}
 
-          <li>
+          {/* <li>
             <a
               href="/CV.pdf"
               download
+              onClick={() => track("cv-telecharge", { emplacement: "navbar" })}
               className="flex items-center gap-2 px-4 py-2 border border-white/50 hover:border-white hover:bg-white/10 text-white font-medium text-[15px] rounded-lg transition-colors duration-300 whitespace-nowrap"
             >
               <DownloadIcon />
               <span className="hidden xl:inline">Télécharger mon CV</span>
               <span className="xl:hidden">CV</span>
             </a>
-          </li>
+          </li> */}
 
           <li className="flex items-center gap-4">
             {socialLinks.map((social) => (
@@ -153,6 +157,8 @@ const Navbar = () => {
                 target="_blank"
                 rel="noopener noreferrer"
                 aria-label={social.label}
+                data-umami-event={social.event}
+                data-umami-event-emplacement="navbar"
                 className="hover:opacity-70 transition-opacity duration-300"
               >
                 <img src={social.icon} alt="" className="w-6 h-6 object-contain" />
@@ -231,7 +237,10 @@ const Navbar = () => {
                   <a
                     href="/CV.pdf"
                     download
-                    onClick={() => setToggle(false)}
+                    onClick={() => {
+                      track("cv-telecharge", { emplacement: "menu-mobile" });
+                      setToggle(false);
+                    }}
                     className="flex flex-1 items-center justify-center gap-2 px-4 py-3 rounded-xl bg-accent hover:bg-accent-hover text-white font-semibold text-[15px] transition-colors duration-300"
                   >
                     <DownloadIcon />
@@ -244,6 +253,8 @@ const Navbar = () => {
                       target="_blank"
                       rel="noopener noreferrer"
                       aria-label={social.label}
+                      data-umami-event={social.event}
+                      data-umami-event-emplacement="menu-mobile"
                       className="flex items-center justify-center w-12 h-12 rounded-xl border border-white/15 hover:bg-white/10 transition-colors duration-300"
                     >
                       <img src={social.icon} alt="" className="w-6 h-6 object-contain" />

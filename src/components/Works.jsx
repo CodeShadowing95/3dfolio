@@ -10,7 +10,9 @@ import { github, website, } from "../assets";
 import { SectionWrapper } from "../hoc";
 import { projects, projectCategories } from "../constants";
 import { fadeIn, textVariant } from "../utils/motion";
+import { track } from "../utils/analytics";
 import { useEffect, useState } from "react";
+import ProjectPreview from "./ProjectPreview";
 
 const tagClass = "px-2.5 py-1 rounded-full bg-white/5 border border-white/10 text-white-100 text-[12px]";
 
@@ -40,7 +42,11 @@ const ProjectLinks = ({ name, source_code_link, app_link }) => (
         href={source_code_link}
         target="_blank"
         rel="noopener noreferrer"
-        onClick={(event) => event.stopPropagation()}
+        onClick={(event) => {
+          // Le clic ne doit pas ouvrir la fiche projet (la carte entière est cliquable)
+          event.stopPropagation();
+          track("projet-lien", { projet: name, type: "code" });
+        }}
         aria-label={`Code source de ${name} sur GitHub`}
         className="pointer-events-auto black-gradient w-10 h-10 rounded-full flex justify-center items-center"
       >
@@ -52,7 +58,11 @@ const ProjectLinks = ({ name, source_code_link, app_link }) => (
         href={app_link}
         target="_blank"
         rel="noopener noreferrer"
-        onClick={(event) => event.stopPropagation()}
+        onClick={(event) => {
+          // Le clic ne doit pas ouvrir la fiche projet (la carte entière est cliquable)
+          event.stopPropagation();
+          track("projet-lien", { projet: name, type: "demo" });
+        }}
         aria-label={`Voir ${name} en ligne`}
         className="pointer-events-auto black-gradient w-10 h-10 rounded-full flex justify-center items-center"
       >
@@ -82,8 +92,9 @@ Tags.propTypes = {
 };
 
 // Grande carte pour les projets mis en avant
-const FeaturedCard = ({ id, name, description, tags, image, source_code_link, app_link, status, details, index }) => {
+const FeaturedCard = ({ id, name, description, tags, image, video, source_code_link, app_link, status, details, index }) => {
   const navigate = useNavigate();
+  const [hovered, setHovered] = useState(false);
   const objectives = details?.keyObjectives?.slice(0, 3) ?? [];
 
   return (
@@ -92,17 +103,16 @@ const FeaturedCard = ({ id, name, description, tags, image, source_code_link, ap
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true, amount: 0.2 }}
       transition={{ duration: 0.6, delay: (index % 2) * 0.1, ease: "easeOut" }}
-      onClick={() => navigate(`/project/${id}`)}
+      onClick={() => {
+        track("projet-ouvert", { projet: id, carte: "vedette" });
+        navigate(`/project/${id}`);
+      }}
+      onMouseEnter={() => setHovered(true)}
+      onMouseLeave={() => setHovered(false)}
       className="group cursor-pointer bg-tertiary rounded-2xl p-5 border border-white/10 hover:border-accent/60 transition-colors flex flex-col gap-5"
     >
       <div className="relative w-full aspect-[16/9] overflow-hidden rounded-xl">
-        <img
-          src={image}
-          alt={`Aperçu de ${name}`}
-          loading="lazy"
-          decoding="async"
-          className="absolute inset-0 w-full h-full object-cover object-top"
-        />
+        <ProjectPreview name={name} image={image} video={video} hovered={hovered} />
         <ProjectLinks name={name} source_code_link={source_code_link} app_link={app_link} />
       </div>
 
@@ -141,14 +151,16 @@ FeaturedCard.propTypes = {
   description: PropTypes.string.isRequired,
   tags: PropTypes.array.isRequired,
   image: PropTypes.string.isRequired,
+  video: PropTypes.string,
   source_code_link: PropTypes.string.isRequired,
   app_link: PropTypes.string.isRequired,
   status: PropTypes.string,
   details: PropTypes.shape({ keyObjectives: PropTypes.arrayOf(PropTypes.string) }),
 };
 
-const ProjectCard = ({ id, name, description, tags, image, source_code_link, app_link, animationDelay = 0 }) => {
+const ProjectCard = ({ id, name, description, tags, image, video, source_code_link, app_link, animationDelay = 0 }) => {
   const navigate = useNavigate();
+  const [hovered, setHovered] = useState(false);
 
   return (
     <motion.div
@@ -156,17 +168,16 @@ const ProjectCard = ({ id, name, description, tags, image, source_code_link, app
       animate={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.5, delay: animationDelay, ease: "easeOut" }}
       className="cursor-pointer"
-      onClick={() => navigate(`/project/${id}`)}
+      onClick={() => {
+        track("projet-ouvert", { projet: id, carte: "grille" });
+        navigate(`/project/${id}`);
+      }}
+      onMouseEnter={() => setHovered(true)}
+      onMouseLeave={() => setHovered(false)}
     >
       <TiltWrapper className="bg-tertiary p-5 rounded-2xl sm:w-[360px] w-full h-full group border border-transparent hover:border-white/10">
-        <div className="relative w-full h-[200px]">
-          <img
-            src={image}
-            alt={`Aperçu de ${name}`}
-            loading="lazy"
-            decoding="async"
-            className="w-full h-full object-cover object-top rounded-xl"
-          />
+        <div className="relative w-full h-[200px] overflow-hidden rounded-xl">
+          <ProjectPreview name={name} image={image} video={video} hovered={hovered} />
           <ProjectLinks name={name} source_code_link={source_code_link} app_link={app_link} />
         </div>
 
@@ -193,6 +204,7 @@ ProjectCard.propTypes = {
     })
   ).isRequired,
   image: PropTypes.string.isRequired,
+  video: PropTypes.string,
   source_code_link: PropTypes.string.isRequired,
   app_link: PropTypes.string.isRequired,
   animationDelay: PropTypes.number,
@@ -347,6 +359,8 @@ const Works = () => {
           href="https://github.com/CodeShadowing95"
           target="_blank"
           rel="noopener noreferrer"
+          data-umami-event="github-clic"
+          data-umami-event-emplacement="projets"
           className="flex items-center justify-center gap-2 w-[240px] rounded-xl py-3 px-4 bg-white text-slate-900 font-semibold text-sm shadow-md hover:shadow-lg transition-shadow"
         >
           <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" aria-hidden="true"><path fill="#0f172a" d="M12 2A10 10 0 0 0 2 12c0 4.42 2.87 8.17 6.84 9.5c.5.08.66-.23.66-.5v-1.69c-2.77.6-3.36-1.34-3.36-1.34c-.46-1.16-1.11-1.47-1.11-1.47c-.91-.62.07-.6.07-.6c1 .07 1.53 1.03 1.53 1.03c.87 1.52 2.34 1.07 2.91.83c.09-.65.35-1.09.63-1.34c-2.22-.25-4.55-1.11-4.55-4.92c0-1.11.38-2 1.03-2.71c-.1-.25-.45-1.29.1-2.64c0 0 .84-.27 2.75 1.02c.79-.22 1.65-.33 2.5-.33c.85 0 1.71.11 2.5.33c1.91-1.29 2.75-1.02 2.75-1.02c.55 1.35.2 2.39.1 2.64c.65.71 1.03 1.6 1.03 2.71c0 3.82-2.34 4.66-4.57 4.91c.36.31.69.92.69 1.85V21c0 .27.16.59.67.5C19.14 20.16 22 16.42 22 12A10 10 0 0 0 12 2"/></svg>
@@ -356,6 +370,7 @@ const Works = () => {
         <a
           href="/CV.pdf"
           download
+          onClick={() => track("cv-telecharge", { emplacement: "projets" })}
           className="flex items-center justify-center gap-2 w-[240px] rounded-xl py-3 px-4 bg-accent hover:bg-accent-hover text-white font-semibold text-sm shadow-lg shadow-accent/25 transition-colors"
         >
           <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" aria-hidden="true"><path fill="#ffffff" d="m12 16l-5-5l1.4-1.45l2.6 2.6V4h2v8.15l2.6-2.6L17 11zm-6 4q-.825 0-1.412-.587T4 18v-3h2v3h12v-3h2v3q0 .825-.587 1.413T18 20z"/></svg>
