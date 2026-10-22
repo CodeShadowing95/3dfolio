@@ -34,28 +34,28 @@ import {
   bikemapper,
   curriqulumai,
   kamercare,
-  batipilote,
+  // batipilote,
   linkedin,
   github,
 } from "../assets";
 
 // Galeries de captures par projet
-import batipiloteLogo from "../assets/ProjectAssets/batipilote/logo.webp";
+// import batipiloteLogo from "../assets/ProjectAssets/batipilote/logo.webp";
 import bikemapperPreview from "../assets/ProjectAssets/bikemapper/demo/bikemapper-preview.mp4";
 import youwatchPreview from "../assets/ProjectAssets/youwatch/demo/youwatch-preview.mp4";
 import curriqulumPreview from "../assets/ProjectAssets/curriqulum.ai/demo/curriqulum-preview.mp4";
 import pokedexhubPreview from "../assets/ProjectAssets/pokedexhub/demo/pokedexhub-preview.mp4";
-import batipiloteShowcase from "../assets/ProjectAssets/batipilote/demo/batipilote-showcase.mp4";
+// import batipiloteShowcase from "../assets/ProjectAssets/batipilote/demo/batipilote-showcase.mp4";
 import applePreview from "../assets/ProjectAssets/apple/demo/apple-preview.mp4";
 import brainwavePreview from "../assets/ProjectAssets/brainwave/demo/brainwave-preview.mp4";
-import batipiloteScreen1 from "../assets/ProjectAssets/batipilote/gallery/1.webp";
-import batipiloteScreen2 from "../assets/ProjectAssets/batipilote/gallery/2.webp";
-import batipiloteScreen3 from "../assets/ProjectAssets/batipilote/gallery/3.webp";
-import batipiloteScreen4 from "../assets/ProjectAssets/batipilote/gallery/4.webp";
-import batipiloteScreen5 from "../assets/ProjectAssets/batipilote/gallery/5.webp";
-import batipiloteScreen6 from "../assets/ProjectAssets/batipilote/gallery/6.webp";
-import batipiloteScreen7 from "../assets/ProjectAssets/batipilote/gallery/7.webp";
-import batipiloteScreen8 from "../assets/ProjectAssets/batipilote/gallery/8.webp";
+// import batipiloteScreen1 from "../assets/ProjectAssets/batipilote/gallery/1.webp";
+// import batipiloteScreen2 from "../assets/ProjectAssets/batipilote/gallery/2.webp";
+// import batipiloteScreen3 from "../assets/ProjectAssets/batipilote/gallery/3.webp";
+// import batipiloteScreen4 from "../assets/ProjectAssets/batipilote/gallery/4.webp";
+// import batipiloteScreen5 from "../assets/ProjectAssets/batipilote/gallery/5.webp";
+// import batipiloteScreen6 from "../assets/ProjectAssets/batipilote/gallery/6.webp";
+// import batipiloteScreen7 from "../assets/ProjectAssets/batipilote/gallery/7.webp";
+// import batipiloteScreen8 from "../assets/ProjectAssets/batipilote/gallery/8.webp";
 
 // Lien de prise de rendez-vous (Calendly, Cal.com, Google Agenda...). Laisser vide pour masquer les boutons.
 export const BOOKING_URL = "";
