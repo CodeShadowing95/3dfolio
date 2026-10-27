@@ -34,28 +34,28 @@ import {
   bikemapper,
   curriqulumai,
   kamercare,
-  // batipilote,
+  batipilote,
   linkedin,
   github,
 } from "../assets";
 
 // Galeries de captures par projet
-// import batipiloteLogo from "../assets/ProjectAssets/batipilote/logo.webp";
+import batipiloteLogo from "../assets/ProjectAssets/batipilote/logo.webp";
 import bikemapperPreview from "../assets/ProjectAssets/bikemapper/demo/bikemapper-preview.mp4";
 import youwatchPreview from "../assets/ProjectAssets/youwatch/demo/youwatch-preview.mp4";
 import curriqulumPreview from "../assets/ProjectAssets/curriqulum.ai/demo/curriqulum-preview.mp4";
 import pokedexhubPreview from "../assets/ProjectAssets/pokedexhub/demo/pokedexhub-preview.mp4";
-// import batipiloteShowcase from "../assets/ProjectAssets/batipilote/demo/batipilote-showcase.mp4";
+import batipiloteShowcase from "../assets/ProjectAssets/batipilote/demo/batipilote-showcase.mp4";
 import applePreview from "../assets/ProjectAssets/apple/demo/apple-preview.mp4";
 import brainwavePreview from "../assets/ProjectAssets/brainwave/demo/brainwave-preview.mp4";
-// import batipiloteScreen1 from "../assets/ProjectAssets/batipilote/gallery/1.webp";
-// import batipiloteScreen2 from "../assets/ProjectAssets/batipilote/gallery/2.webp";
-// import batipiloteScreen3 from "../assets/ProjectAssets/batipilote/gallery/3.webp";
-// import batipiloteScreen4 from "../assets/ProjectAssets/batipilote/gallery/4.webp";
-// import batipiloteScreen5 from "../assets/ProjectAssets/batipilote/gallery/5.webp";
-// import batipiloteScreen6 from "../assets/ProjectAssets/batipilote/gallery/6.webp";
-// import batipiloteScreen7 from "../assets/ProjectAssets/batipilote/gallery/7.webp";
-// import batipiloteScreen8 from "../assets/ProjectAssets/batipilote/gallery/8.webp";
+import batipiloteScreen1 from "../assets/ProjectAssets/batipilote/gallery/1.webp";
+import batipiloteScreen2 from "../assets/ProjectAssets/batipilote/gallery/2.webp";
+import batipiloteScreen3 from "../assets/ProjectAssets/batipilote/gallery/3.webp";
+import batipiloteScreen4 from "../assets/ProjectAssets/batipilote/gallery/4.webp";
+import batipiloteScreen5 from "../assets/ProjectAssets/batipilote/gallery/5.webp";
+import batipiloteScreen6 from "../assets/ProjectAssets/batipilote/gallery/6.webp";
+import batipiloteScreen7 from "../assets/ProjectAssets/batipilote/gallery/7.webp";
+import batipiloteScreen8 from "../assets/ProjectAssets/batipilote/gallery/8.webp";
 
 // Lien de prise de rendez-vous (Calendly, Cal.com, Google Agenda...). Laisser vide pour masquer les boutons.
 export const BOOKING_URL = "";
@@ -329,72 +329,72 @@ const projects = [
   //     ],
   //   },
   // },
-  // {
-  //   id: "batipilote",
-  //   featured: true,
-  //   name: "BatiPilote",
-  //   description:
-  //     "Copilote IA pour les artisans du bâtiment : devis générés à partir d'une dictée vocale, facturation électronique et analyse de photos de chantier.",
-  //   reason: "Projet de fin d'études",
-  //   period: "2025 – 2026",
-  //   role: "Architecture et développement full-stack",
-  //   tags: [
-  //     {
-  //       name: "react native",
-  //     },
-  //     {
-  //       name: "nextjs",
-  //     },
-  //     {
-  //       name: "nodejs",
-  //     },
-  //     {
-  //       name: "ai",
-  //     },
-  //     {
-  //       name: "python",
-  //     },
-  //     {
-  //       name: "postgresql",
-  //     },
-  //   ],
-  //   image: batipilote,
-  //   video: batipiloteShowcase,
-  //   // Vidéo de présentation complète, affichée en tête de la fiche projet
-  //   showcase: batipiloteShowcase,
-  //   source_code_link: "",
-  //   app_link: "",
-  //   private_repo: true,
-  //   logo: batipiloteLogo,
-  //   gallery: [
-  //     { src: batipiloteScreen1, caption: "Onboarding : dicter un devis à voix haute" },
-  //     { src: batipiloteScreen2, caption: "Onboarding : analyse IA d'une photo de chantier" },
-  //     { src: batipiloteScreen3, caption: "Onboarding : facturation électronique via les plateformes agréées" },
-  //     { src: batipiloteScreen4, caption: "Onboarding : suivi des factures et relances" },
-  //     { src: batipiloteScreen5, caption: "Connexion et inscription" },
-  //     { src: batipiloteScreen6, caption: "Nouveau devis par dictée vocale, transcrit en direct" },
-  //     { src: batipiloteScreen7, caption: "Aperçu PDF du devis généré" },
-  //     { src: batipiloteScreen8, caption: "Facture au format Factur-X (PDF + XML)" },
-  //   ],
-  //   status: "Prototype",
-  //   details: {
-  //     context: "Projet de fin d'études mené avec un associé développeur Python, en collaboration avec des artisans du bâtiment.",
-  //     fullDescription: "Les artisans du bâtiment perdent un temps précieux sur les devis, la facturation et la réglementation. BatiPilote est un copilote IA qui génère des devis à partir d'une dictée vocale, gère la facturation électronique Factur-X, répond aux questions réglementaires et analyse des photos de chantier. J'ai conçu l'architecture du produit et assuré le développement full-stack : une application mobile React Native, un site Next.js, une API Node.js et un service IA en Python, développé avec un associé développeur Python et en collaboration avec les artisans du bâtiment, ceci connecté à OpenAI et LangChain, le tout avec une intégration continue.",
-  //     keyObjectives: [
-  //       "Générer un devis complet à partir d'une simple dictée vocale",
-  //       "Automatiser la facturation électronique au format Factur-X",
-  //       "Aider l'artisan sur chantier : réglementation et diagnostic photo",
-  //     ],
-  //     functionalities: [
-  //       "Dictée vocale transcrite (Whisper) et transformée en devis (GPT-4o)",
-  //       "Facturation électronique Factur-X",
-  //       "Assistant réglementaire (LangChain, PostgreSQL + pgvector)",
-  //       "Analyse de photos de chantier",
-  //       "Application mobile React Native / Expo et site Next.js",
-  //       "Monorepo Turborepo, CI GitHub Actions, Docker, Sentry",
-  //     ],
-  //   }
-  // },
+  {
+    id: "batipilote",
+    featured: true,
+    name: "BatiPilote",
+    description:
+      "Copilote IA pour les artisans du bâtiment : devis générés à partir d'une dictée vocale, facturation électronique et analyse de photos de chantier.",
+    reason: "Projet de fin d'études",
+    period: "2025 – 2026",
+    role: "Architecture et développement full-stack",
+    tags: [
+      {
+        name: "react native",
+      },
+      {
+        name: "nextjs",
+      },
+      {
+        name: "nodejs",
+      },
+      {
+        name: "ai",
+      },
+      {
+        name: "python",
+      },
+      {
+        name: "postgresql",
+      },
+    ],
+    image: batipilote,
+    video: batipiloteShowcase,
+    // Vidéo de présentation complète, affichée en tête de la fiche projet
+    showcase: batipiloteShowcase,
+    source_code_link: "",
+    app_link: "",
+    private_repo: true,
+    logo: batipiloteLogo,
+    gallery: [
+      { src: batipiloteScreen1, caption: "Onboarding : dicter un devis à voix haute" },
+      { src: batipiloteScreen2, caption: "Onboarding : analyse IA d'une photo de chantier" },
+      { src: batipiloteScreen3, caption: "Onboarding : facturation électronique via les plateformes agréées" },
+      { src: batipiloteScreen4, caption: "Onboarding : suivi des factures et relances" },
+      { src: batipiloteScreen5, caption: "Connexion et inscription" },
+      { src: batipiloteScreen6, caption: "Nouveau devis par dictée vocale, transcrit en direct" },
+      { src: batipiloteScreen7, caption: "Aperçu PDF du devis généré" },
+      { src: batipiloteScreen8, caption: "Facture au format Factur-X (PDF + XML)" },
+    ],
+    status: "Prototype",
+    details: {
+      context: "Projet de fin d'études mené avec un associé développeur Python, en collaboration avec des artisans du bâtiment.",
+      fullDescription: "Les artisans du bâtiment perdent un temps précieux sur les devis, la facturation et la réglementation. BatiPilote est un copilote IA qui génère des devis à partir d'une dictée vocale, gère la facturation électronique Factur-X, répond aux questions réglementaires et analyse des photos de chantier. J'ai conçu l'architecture du produit et assuré le développement full-stack : une application mobile React Native, un site Next.js, une API Node.js et un service IA en Python, développé avec un associé développeur Python et en collaboration avec les artisans du bâtiment, ceci connecté à OpenAI et LangChain, le tout avec une intégration continue.",
+      keyObjectives: [
+        "Générer un devis complet à partir d'une simple dictée vocale",
+        "Automatiser la facturation électronique au format Factur-X",
+        "Aider l'artisan sur chantier : réglementation et diagnostic photo",
+      ],
+      functionalities: [
+        "Dictée vocale transcrite (Whisper) et transformée en devis (GPT-4o)",
+        "Facturation électronique Factur-X",
+        "Assistant réglementaire (LangChain, PostgreSQL + pgvector)",
+        "Analyse de photos de chantier",
+        "Application mobile React Native / Expo et site Next.js",
+        "Monorepo Turborepo, CI GitHub Actions, Docker, Sentry",
+      ],
+    }
+  },
   {
     id: "kamercare",
     featured: true,
@@ -587,7 +587,6 @@ const projects = [
   },
   {
     id: "appleclone",
-    featured: true,
     name: "Apple 2.0",
     description:
       "Site vitrine clone de Apple. Navigation fluide, animations GSAP, festin de visuels 3D des dernières sorties de iPhone. Simplement beau.",
