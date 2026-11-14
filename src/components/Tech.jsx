@@ -1,63 +1,78 @@
-import { useEffect, useState } from "react";
 import { motion } from "framer-motion";
 
-import { BallCanvas } from "./canvas";
+import { StackCanvas } from "./canvas";
 import LazyOnView from "./LazyOnView";
 import { styles } from "../styles";
 import { SectionWrapper } from "../hoc";
-import { technologies } from "../constants";
+import { stackLayers } from "../constants/stack";
 import { textVariant } from "../utils/motion";
 
-const MOBILE_QUERY = "(max-width: 767px)";
+// Couches affichées du haut (Front-end) vers le bas (Infra), comme dans la pile 3D
+const layersTopDown = [...stackLayers].reverse();
+const techsOf = (layer) => (layer.nodes ? layer.nodes.flatMap((node) => node.techs) : layer.techs);
 
-// Logos à plat : affichés sur mobile, et sur desktop tant que la 3D n'est pas chargée
-const FlatLogos = () => (
-  <ul className="flex flex-row flex-wrap justify-center gap-6 md:gap-10">
-    {technologies.map((technology) => (
-      <li key={technology.name} className="w-20 md:w-28 flex flex-col items-center gap-2">
-        <div className="w-20 h-20 md:w-28 md:h-28 rounded-full bg-[#fff8eb] flex items-center justify-center">
-          <img src={technology.icon} alt="" loading="lazy" className="w-1/2 h-1/2 object-contain" />
-        </div>
-        <span className="text-secondary text-[13px] text-center md:hidden">{technology.name}</span>
-      </li>
+// Affiché tant que la scène 3D (three.js + logos) n'est pas chargée : même hauteur, pas de saut de mise en page
+const StackFallback = () => (
+  <div className="w-full h-[460px] sm:h-[560px] lg:h-[620px] flex flex-col justify-center gap-5" aria-hidden="true">
+    {layersTopDown.map((layer) => (
+      <div key={layer.id} className="flex flex-wrap items-center justify-center gap-2">
+        <span className="w-28 text-right text-[11px] uppercase tracking-widest" style={{ color: layer.color }}>
+          {layer.name}
+        </span>
+        {techsOf(layer).map((tech) => (
+          <span
+            key={tech.name}
+            className="rounded-lg bg-tertiary px-2.5 py-1 text-[12px] text-secondary ring-1 ring-white/10"
+          >
+            {tech.name}
+          </span>
+        ))}
+      </div>
     ))}
-  </ul>
+  </div>
 );
 
-const useIsMobile = () => {
-  const [isMobile, setIsMobile] = useState(() => window.matchMedia(MOBILE_QUERY).matches);
-
-  useEffect(() => {
-    const media = window.matchMedia(MOBILE_QUERY);
-    const handle = (event) => setIsMobile(event.matches);
-    media.addEventListener("change", handle);
-    return () => media.removeEventListener("change", handle);
-  }, []);
-
-  return isMobile;
-};
+// Liste texte pour les lecteurs d'écran, le SEO et les ATS (toujours dans le DOM)
+const StackTextList = () => (
+  <div className="sr-only">
+    <h3>Technologies par couche</h3>
+    {layersTopDown.map((layer) => (
+      <section key={layer.id}>
+        <h4>{layer.name}</h4>
+        <ul>
+          {techsOf(layer).map((tech) => (
+            <li key={tech.name}>
+              {tech.name}
+              {tech.usageNote && ` : ${tech.usageNote.toLowerCase()}`}
+              {tech.usedIn.length > 0 &&
+                ` ${tech.usageNote ? "(notamment" : ": utilisé dans"} ${tech.usedIn.map((usage) => usage.label).join(", ")}${tech.usageNote ? ")" : ""}`}
+            </li>
+          ))}
+        </ul>
+      </section>
+    ))}
+  </div>
+);
 
 // eslint-disable-next-line react-refresh/only-export-components
-const Tech = () => {
-  const isMobile = useIsMobile();
+const Tech = () => (
+  <>
+    <motion.div variants={textVariant()} className="mb-6">
+      <p className={styles.sectionSubText}>Technologies</p>
+      <h2 className={styles.sectionHeadText}>Stack technique.</h2>
+      <p className="mt-3 max-w-2xl text-secondary text-[16px] leading-[28px]">
+        Du navigateur jusqu&apos;au cluster : les technologies que j&apos;utilise à chaque couche d&apos;une
+        application, de l&apos;interface au déploiement.
+      </p>
+    </motion.div>
 
-  return (
-    <>
-      <motion.div variants={textVariant()} className="mb-12">
-        <p className={styles.sectionSubText}>Technologies</p>
-        <h2 className={styles.sectionHeadText}>Stack technique.</h2>
-      </motion.div>
+    <StackTextList />
 
-      {isMobile ? (
-        <FlatLogos />
-      ) : (
-        <LazyOnView fallback={<FlatLogos />}>
-          <BallCanvas technologies={technologies} />
-        </LazyOnView>
-      )}
-    </>
-  )
-}
+    <LazyOnView fallback={<StackFallback />}>
+      <StackCanvas />
+    </LazyOnView>
+  </>
+);
 
 // eslint-disable-next-line react-refresh/only-export-components
 export default SectionWrapper(Tech, "stack");

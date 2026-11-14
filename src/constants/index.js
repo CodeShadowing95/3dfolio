@@ -56,6 +56,20 @@ import batipiloteScreen5 from "../assets/ProjectAssets/batipilote/gallery/5.webp
 import batipiloteScreen6 from "../assets/ProjectAssets/batipilote/gallery/6.webp";
 import batipiloteScreen7 from "../assets/ProjectAssets/batipilote/gallery/7.webp";
 import batipiloteScreen8 from "../assets/ProjectAssets/batipilote/gallery/8.webp";
+import merkod from "../assets/ProjectAssets/merkod/gallery/merkod-cover.webp";
+import merkodLogo from "../assets/ProjectAssets/merkod/merkod-logo.webp";
+import merkodPreview from "../assets/ProjectAssets/merkod/demo/merkod-card.mp4";
+import merkodShowcase from "../assets/ProjectAssets/merkod/demo/merkod-showcase.mp4";
+import merkodExplorer from "../assets/ProjectAssets/merkod/gallery/merkod-01-explorer.webp";
+import merkodRecherche from "../assets/ProjectAssets/merkod/gallery/merkod-02-recherche.webp";
+import merkodFiche from "../assets/ProjectAssets/merkod/gallery/merkod-03-fiche-outil.webp";
+import merkodCoupon from "../assets/ProjectAssets/merkod/gallery/merkod-04-coupon-copie.webp";
+import merkodVote from "../assets/ProjectAssets/merkod/gallery/merkod-05-vote.webp";
+import merkodCreateur from "../assets/ProjectAssets/merkod/gallery/merkod-06-page-createur.webp";
+import merkodSombre from "../assets/ProjectAssets/merkod/gallery/merkod-07-mode-sombre.webp";
+import merkodEspaceCreateur from "../assets/ProjectAssets/merkod/gallery/merkod-08-espace-createur.webp";
+import merkodAdminStats from "../assets/ProjectAssets/merkod/gallery/merkod-09-admin-stats.webp";
+import merkodAdminAccueil from "../assets/ProjectAssets/merkod/gallery/merkod-10-admin-accueil.webp";
 
 // Lien de prise de rendez-vous (Calendly, Cal.com, Google Agenda...). Laisser vide pour masquer les boutons.
 export const BOOKING_URL = "";
@@ -394,6 +408,79 @@ const projects = [
         "Monorepo Turborepo, CI GitHub Actions, Docker, Sentry",
       ],
     }
+  },
+  {
+    id: "merkod",
+    featured: true,
+    name: "Merkod",
+    description:
+      "Le comptoir des codes promo de créateurs : chaque code donné en vidéo ou en podcast est relié à sa source, crédité à son créateur et vérifié, sans compte ni publicité.",
+    reason: "Projet personnel",
+    period: "2026",
+    role: "Conception produit, design, développement full-stack et mise en production (projet solo)",
+    tags: [
+      { name: "nextjs", label: "Next.js 15" },
+      { name: "react", label: "React 19" },
+      { name: "typescript", label: "TypeScript" },
+      { name: "postgresql", label: "PostgreSQL (Neon)" },
+      { name: "drizzle", label: "Drizzle ORM" },
+      { name: "ai", label: "IA Claude" },
+      { name: "gsap", label: "GSAP" },
+      { name: "vercel", label: "Vercel" },
+    ],
+    image: merkod,
+    video: merkodPreview,
+    showcase: merkodShowcase,
+    logo: merkodLogo,
+    source_code_link: "https://github.com/CodeShadowing95/koupi",
+    app_link: "https://merkod.com",
+    status: "En cours",
+    gallery: [
+      { src: merkodExplorer, caption: "Explorer : tous les codes de créateurs sur un seul comptoir" },
+      { src: merkodRecherche, caption: "Recherche instantanée par outil, créateur ou code" },
+      { src: merkodFiche, caption: "Fiche outil : le code, sa source et son taux de réussite" },
+      { src: merkodCoupon, caption: "Le coupon se détache : code copié, créateur crédité" },
+      { src: merkodVote, caption: "Au retour, un pouce anonyme pour dire si le code a marché" },
+      { src: merkodCreateur, caption: "Page créateur : ses codes, ses réseaux, ses votes" },
+      { src: merkodSombre, caption: "Thème sombre, design accessible" },
+      { src: merkodEspaceCreateur, caption: "Espace créateur : connexion par lien, sans mot de passe" },
+      { src: merkodAdminStats, caption: "Back-office : statistiques du catalogue et de l'audience" },
+      { src: merkodAdminAccueil, caption: "Back-office : les actions du jour, classées par impact" },
+    ],
+    details: {
+      context:
+        "Projet personnel lancé en 2026 pour répondre à un vrai irritant : retrouver le code promo donné par un créateur et savoir s'il marche encore. Je l'ai construit seul, de la recherche du nom et du logo au déploiement sur merkod.com, en m'imposant les règles d'une équipe : une PR par étape, Conventional Commits, CI obligatoire et décisions d'architecture documentées.",
+      results: [
+        "Site en ligne sur merkod.com, plus de 500 codes publiés",
+        "Plus de 300 pull requests relues et fusionnées, versions publiées en continu (v0.23)",
+        "50 décisions d'architecture (ADR) documentées",
+        "Plus de 150 fichiers de tests (Vitest), base testée sur PGlite avec les vraies migrations",
+        "CI/CD : typecheck, tests, build et audit des dépendances sur chaque PR, releases automatisées",
+        "Zéro traceur tiers : mesure d'audience anonyme maison",
+      ],
+      fullDescription:
+        "Avant de payer un abonnement à un outil en ligne (VPN, hébergement, IA, logiciels pour freelances), beaucoup de gens cherchent le code promo qu'un créateur a donné dans une vidéo. Ces codes sont éparpillés, souvent expirés, et les sites de coupons classiques ne disent ni d'où ils viennent ni s'ils marchent. Merkod part de la source : chaque code est rattaché à la vidéo ou à l'épisode qui l'a donné, crédite le créateur qui l'a négocié et affiche son taux de réussite selon les votes des visiteurs. Côté coulisses, un back-office complet permet de trouver de nouveaux codes (YouTube Data API, podcasts Apple), de les faire relire par l'IA Claude, de les modérer et de suivre le catalogue avec des statistiques mesurées sans aucun traceur tiers. J'ai mené le projet seul, de l'idée et du nom jusqu'au déploiement, avec une méthode d'équipe : petites PR relues, CI, décisions d'architecture écrites et releases versionnées.",
+      keyObjectives: [
+        "Relier chaque code promo à sa source et au créateur qui l'a négocié",
+        "Montrer aux visiteurs les codes qui marchent vraiment, grâce aux votes",
+        "Donner aux créateurs un espace pour gérer et suivre leurs codes",
+        "Livrer une application fiable et maintenable : tests, CI et déploiements maîtrisés",
+      ],
+      functionalities: [
+        "Explorer : catalogue de codes classés par familles et catégories, cartes détaillées ou simples",
+        "Recherche instantanée par outil, créateur ou code, avec suggestions",
+        "Coupon détachable animé (GSAP) qui copie le code et ouvre le lien du créateur",
+        "Votes anonymes « ça marche / ça ne marche plus » et taux de réussite par code",
+        "Pages créateur à l'adresse merkod.com/@nom, avec réseaux et statistiques",
+        "Espace créateur : connexion par lien e-mail, preuve de la chaîne par la bio",
+        "Formulaire « Proposer un code » protégé par Cloudflare Turnstile et une limite de débit",
+        "Thème clair et sombre accessible, interface pensée pour le mobile",
+        "Back-office : modération, gestion des codes, outils, créateurs et catégories, export CSV",
+        "Recherche de codes sur YouTube et les podcasts, relecture assistée par l'IA Claude avec budget plafonné",
+        "Statistiques (Chart.js) et mesure d'audience anonyme stockée dans sa propre base",
+        "Retests automatiques des codes et mode maintenance pilotable depuis l'admin",
+      ],
+    },
   },
   {
     id: "kamercare",
