@@ -1,6 +1,11 @@
+"use client";
+
 import { useCallback, useEffect, useState } from "react";
 import { motion } from "framer-motion";
 import PropTypes from "prop-types";
+
+import { useI18n } from "../i18n/I18nProvider";
+import RoleTitle from "./RoleTitle";
 
 // Intro « carte de visite » : ne dépend plus du chargement de la 3D,
 // le hero s'affiche derrière les portes et la 3D y apparaît quand elle est prête.
@@ -27,6 +32,7 @@ const fadeUp = (delay) => ({
 });
 
 const Preloader = ({ onLoadComplete }) => {
+  const { t } = useI18n();
   const [opening, setOpening] = useState(false);
   const open = useCallback(() => setOpening(true), []);
 
@@ -60,23 +66,24 @@ const Preloader = ({ onLoadComplete }) => {
   return (
     <div
       className={`fixed inset-0 z-50 overflow-hidden ${opening ? "pointer-events-none" : "cursor-pointer"}`}
+      data-preloader=""
       aria-hidden="true"
     >
       {/* Portes */}
       <motion.div
-        className="absolute inset-y-0 left-0 w-1/2 bg-gradient-to-br from-primary to-tertiary"
+        className="absolute inset-y-0 left-0 w-1/2 bg-linear-to-br from-primary to-tertiary"
         animate={{ x: opening ? "-100%" : 0 }}
         transition={doorTransition}
       />
       <motion.div
-        className="absolute inset-y-0 right-0 w-1/2 bg-gradient-to-bl from-primary to-tertiary"
+        className="absolute inset-y-0 right-0 w-1/2 bg-linear-to-bl from-primary to-tertiary"
         animate={{ x: opening ? "100%" : 0 }}
         transition={doorTransition}
       />
 
       {/* Ligne lumineuse au centre, là où les portes s'ouvrent */}
       <motion.div
-        className="absolute left-1/2 top-0 h-full w-px -translate-x-1/2 bg-gradient-to-b from-transparent via-cyan to-transparent shadow-[0_0_24px_rgba(34,211,238,0.6)]"
+        className="absolute left-1/2 top-0 h-full w-px -translate-x-1/2 bg-linear-to-b from-transparent via-cyan to-transparent shadow-[0_0_24px_rgba(34,211,238,0.6)]"
         initial={{ scaleY: 0, opacity: 0.35 }}
         animate={opening ? { scaleY: 1, opacity: 0 } : { scaleY: 1, opacity: 0.35 }}
         transition={{ duration: opening ? 0.2 : 0.6, ease: "easeOut" }}
@@ -89,7 +96,7 @@ const Preloader = ({ onLoadComplete }) => {
         transition={{ duration: 0.2 }}
       >
         <motion.div
-          className="rounded-full p-[2px] bg-gradient-to-br from-cyan to-accent"
+          className="rounded-full p-[2px] bg-linear-to-br from-cyan to-accent"
           initial={{ opacity: 0, scale: 0.8 }}
           animate={{ opacity: 1, scale: 1 }}
           transition={{ duration: 0.35, ease: "easeOut" }}
@@ -115,7 +122,7 @@ const Preloader = ({ onLoadComplete }) => {
         </motion.h2>
 
         <motion.p className="mt-2 text-white-100 font-medium text-[18px] sm:text-[24px]" {...fadeUp(0.6)}>
-          Développeur <span className="text-accent-light">Full-Stack</span>
+          <RoleTitle accentClassName="text-accent-light" />
         </motion.p>
 
         <motion.p
@@ -123,7 +130,7 @@ const Preloader = ({ onLoadComplete }) => {
           {...fadeUp(0.75)}
         >
           <span className="w-2 h-2 rounded-full bg-cyan" />
-          Disponible immédiatement · CDI
+          {t.common.available}
         </motion.p>
       </motion.div>
 
@@ -134,7 +141,7 @@ const Preloader = ({ onLoadComplete }) => {
         animate={{ opacity: opening ? 0 : 1 }}
         transition={{ delay: opening ? 0 : 0.5, duration: 0.3 }}
       >
-        Cliquez ou appuyez sur une touche pour passer
+        {t.preloader.skip}
       </motion.p>
     </div>
   );

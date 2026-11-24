@@ -1,0 +1,190 @@
+@import 'tailwindcss';
+/* La formation est ignorée par git, donc aussi par la détection automatique de Tailwind : on la déclare */
+@source "./(fr)/formation";
+
+@theme {
+  --font-sans: var(--font-poppins), "Poppins", sans-serif;
+  --font-mono: var(--font-jetbrains-mono), ui-monospace, monospace;
+
+  --color-primary: #050816;
+  --color-secondary: #aaa6c3;
+  --color-tertiary: #151030;
+  --color-black-100: #100d25;
+  --color-black-200: #090325;
+  --color-white-100: #f3f3f3;
+  --color-accent: #915eff;
+  --color-accent-hover: #7c4dff;
+  --color-accent-light: #b79cff;
+  --color-cyan: #22d3ee;
+
+  --shadow-card: 0px 35px 120px -15px #211e35;
+
+  --breakpoint-xs: 450px;
+
+  --animate-slide-up: slide-up 0.6s ease-out forwards;
+
+  @keyframes slide-up {
+    from {
+      transform: translateY(20px);
+      opacity: 0;
+    }
+    to {
+      transform: translateY(0);
+      opacity: 1;
+    }
+  }
+}
+
+/*
+  The default border color has changed to `currentcolor` in Tailwind CSS v4,
+  so we've added these compatibility styles to make sure everything still
+  looks the same as it did with Tailwind CSS v3.
+
+  If we ever want to remove these styles, we need to add an explicit border
+  color utility to any element that depends on these defaults.
+*/
+@layer base {
+  *,
+  ::after,
+  ::before,
+  ::backdrop,
+  ::file-selector-button {
+    border-color: var(--color-gray-200, currentcolor);
+  }
+}
+
+/* Dans une @layer pour que les utilitaires (p-4, m-2…) gardent la priorité, comme en v3 */
+@layer base {
+  * {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    scroll-behavior: smooth;
+    color-scheme: dark;
+  }
+
+  html {
+    font-family: var(--font-sans);
+  }
+
+  /* Tailwind v4 ne met plus de curseur main sur les boutons : on garde le comportement v3 */
+  button:not(:disabled),
+  [role="button"]:not(:disabled) {
+    cursor: pointer;
+  }
+}
+
+.hash-span {
+  margin-top: -100px;
+  padding-bottom: 100px;
+  display: block;
+}
+
+.black-gradient {
+  background: #000000; /* fallback for old browsers */
+  background: -webkit-linear-gradient(
+    to right,
+    #434343,
+    #000000
+  ); /* Chrome 10-25, Safari 5.1-6 */
+  background: linear-gradient(
+    to right,
+    #434343,
+    #000000
+  ); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+}
+
+.violet-gradient {
+  background: #804dee;
+  background: linear-gradient(-90deg, #804dee 0%, rgba(60, 51, 80, 0) 100%);
+  background: -webkit-linear-gradient(
+    -90deg,
+    #804dee 0%,
+    rgba(60, 51, 80, 0) 100%
+  );
+}
+
+/* Dégradé de la bannière LinkedIn : cyan vers violet à 135° */
+.green-pink-gradient {
+  background: #22d3ee;
+  background: linear-gradient(135deg, #22d3ee 0%, #804dee 100%);
+}
+
+/* Preloader exit animations */
+@keyframes portalLeft {
+  0% { transform: translateX(0); }
+  100% { transform: translateX(-100%); }
+}
+
+@keyframes portalRight {
+  0% { transform: translateX(0); }
+  100% { transform: translateX(100%); }
+}
+
+@keyframes fadeOut {
+  0% { opacity: 1; }
+  100% { opacity: 0; }
+}
+
+.animate-portal-left {
+  animation: portalLeft 0.8s ease-in-out forwards;
+  will-change: transform;
+}
+
+.animate-portal-right {
+  animation: portalRight 0.8s ease-in-out forwards;
+  will-change: transform;
+}
+
+.animate-fade-out {
+  animation: fadeOut 0.6s ease forwards;
+  will-change: opacity;
+}
+/* Intro déjà vue (ou animations réduites) : masquée avant même le premier affichage */
+html[data-intro="skip"] [data-preloader] {
+  display: none;
+}
+
+/* Ciel du hero : deux trames de points décalées (blanc et lavande), sans image à charger */
+.hero-sky {
+  background:
+    radial-gradient(circle, rgba(255, 255, 255, 0.6) 1px, transparent 1.6px) 0 0 / 58px 58px,
+    radial-gradient(circle, rgba(183, 156, 255, 0.5) 1px, transparent 1.5px) 29px 21px / 97px 97px;
+  opacity: 0.22;
+}
+
+/* Constellation « Stack technique » : chaque domaine glisse selon la souris (variables --px/--py
+   posées en JavaScript), d'autant plus qu'il est « proche » (--depth). Les étoiles scintillent. */
+.constellation-layer {
+  transform: translate3d(calc(var(--px, 0) * var(--depth, 1) * 16px), calc(var(--py, 0) * var(--depth, 1) * 12px), 0);
+  will-change: transform;
+}
+.star-dot {
+  animation: star-twinkle 3.2s ease-in-out infinite;
+}
+@keyframes star-twinkle {
+  0%, 100% { filter: brightness(1); }
+  50% { filter: brightness(1.35); }
+}
+@media (prefers-reduced-motion: reduce) {
+  .star-dot { animation: none; }
+}
+
+/* Page projet : la vidéo inclinée en perspective et l'écran mobile qui flotte (grand écran seulement) */
+@media (min-width: 1024px) {
+  .project-stage { perspective: 1600px; }
+  .project-stage .stage-screen {
+    transform: rotateY(-14deg) rotateX(5deg) translateX(-6%);
+    transition: transform 0.6s ease;
+  }
+  .project-stage:hover .stage-screen { transform: rotateY(-4deg) rotateX(2deg) translateX(-6%); }
+  .project-stage .stage-phone { transform: rotateY(18deg); animation: stage-bob 7s ease-in-out infinite; }
+}
+@keyframes stage-bob {
+  0%, 100% { transform: translateY(0) rotateY(18deg); }
+  50% { transform: translateY(-12px) rotateY(18deg); }
+}
+@media (prefers-reduced-motion: reduce) {
+  .project-stage .stage-phone { animation: none; }
+  .project-stage .stage-screen { transition: none; }
+}

@@ -1,3 +1,5 @@
+"use client";
+
 import PropTypes from "prop-types";
 
 // Icônes SVG partagées utilisées dans la page de détail d'un projet.

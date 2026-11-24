@@ -40,8 +40,8 @@ RUN npm install
 # copy the rest of the files to the working directory
 COPY . .
 
-# expose port 5173 to tell Docker that the container listens on the specified network ports at runtime
-EXPOSE 5173
+# expose port 3000 to tell Docker that the container listens on the specified network ports at runtime
+EXPOSE 3000
 
 # command to run the app
-CMD npm run dev
+CMD ["npm", "run", "dev", "--", "--hostname", "0.0.0.0"]

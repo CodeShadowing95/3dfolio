@@ -1,3 +1,5 @@
+"use client";
+
 /* eslint-disable react/no-unknown-property */
 
 import { Suspense, useEffect, useMemo, useRef } from 'react';
@@ -6,11 +8,11 @@ import { Html, OrbitControls, useTexture } from '@react-three/drei';
 import * as THREE from 'three';
 import PropTypes from 'prop-types';
 
-import CanvasLoader from '../Loader';
 import useInViewport from '../../hooks/useInViewport';
 import { journey } from '../../constants';
+import { useI18n } from '../../i18n/I18nProvider';
 // Carte en points générée à partir des terres de Natural Earth (domaine public)
-import earthDots from '../../assets/globe/earth-dots.webp';
+const earthDots = "/assets/globe/earth-dots.webp";
 
 const RADIUS = 2;
 const ARC_POINTS = 64;
@@ -116,9 +118,10 @@ const Marker = ({ step, index, current, occluder }) => {
                 zIndexRange={[20, 0]}
                 className="hidden sm:block pointer-events-none select-none"
             >
-                <div className={`whitespace-nowrap rounded-lg border border-white/15 bg-primary/85 backdrop-blur px-2.5 py-1.5 text-[12px] leading-4 shadow-card ${step.labelClassName ?? ''}`}>
-                    <p className="font-semibold text-white">{step.city}</p>
-                    <p className="text-secondary min-w-[180px] whitespace-normal">{step.detail}</p>
+                {/* Texte déjà traduit : le contexte de langue ne traverse pas le rendu séparé de <Html> */}
+                <div className={`whitespace-nowrap rounded-lg bg-primary/80 px-2 py-1 text-[12px] leading-[1.3] ${step.labelClassName ?? ''}`}>
+                    <p className="text-white">{step.label.city}</p>
+                    <p className="text-secondary">{step.label.period}</p>
                 </div>
             </Html>
         </group>
@@ -127,8 +130,8 @@ const Marker = ({ step, index, current, occluder }) => {
 
 Marker.propTypes = {
     step: PropTypes.shape({
-        city: PropTypes.string.isRequired,
-        detail: PropTypes.string.isRequired,
+        city: PropTypes.object.isRequired,
+        label: PropTypes.shape({ city: PropTypes.string, period: PropTypes.string }).isRequired,
         lat: PropTypes.number.isRequired,
         lon: PropTypes.number.isRequired,
         labelClassName: PropTypes.string,
@@ -138,7 +141,7 @@ Marker.propTypes = {
     occluder: PropTypes.shape({ current: PropTypes.object }).isRequired,
 };
 
-const Globe = () => {
+const Globe = ({ steps }) => {
     const sphere = useRef(null);
     const texture = useTexture(earthDots);
     texture.colorSpace = THREE.SRGBColorSpace;
@@ -158,20 +161,29 @@ const Globe = () => {
                     <meshBasicMaterial color="#22d3ee" transparent opacity={0.07} side={THREE.BackSide} />
                 </mesh>
 
-                {journey.map((step, index) => (
-                    <Marker key={step.city} step={step} index={index} current={index === journey.length - 1} occluder={sphere} />
+                {steps.map((step, index) => (
+                    <Marker key={step.label.city} step={step} index={index} current={index === steps.length - 1} occluder={sphere} />
                 ))}
 
-                {journey.slice(1).map((step, index) => (
-                    <Arc key={step.city} from={journey[index]} to={step} delay={0.4 + index * (ARC_DURATION + 0.2)} />
+                {steps.slice(1).map((step, index) => (
+                    <Arc key={step.label.city} from={steps[index]} to={step} delay={0.4 + index * (ARC_DURATION + 0.2)} />
                 ))}
             </group>
         </group>
     );
 };
 
+Globe.propTypes = {
+    steps: PropTypes.arrayOf(PropTypes.object).isRequired,
+};
+
 const EarthCanvas = () => {
     const containerRef = useRef(null);
+    const { pick } = useI18n();
+    const steps = useMemo(
+        () => journey.map((step) => ({ ...step, label: { city: pick(step.city), period: pick(step.period) } })),
+        [pick]
+    );
     const isVisible = useInViewport(containerRef);
 
     return (
@@ -183,22 +195,11 @@ const EarthCanvas = () => {
                 camera={{ fov: 40, near: 0.1, far: 100, position: [0, 0, 7] }}
             >
                 <CameraFit />
-                <Suspense fallback={<CanvasLoader />}>
+                <Suspense fallback={null}>
                     <OrbitControls enableZoom={false} enablePan={false} rotateSpeed={0.5} />
-                    <Globe />
+                    <Globe steps={steps} />
                 </Suspense>
             </Canvas>
-
-            {/* Légende lisible sur tous les écrans, y compris quand les étiquettes 3D sont masquées */}
-            {/* <ol className="absolute -bottom-2 left-0 right-0 mx-auto w-fit max-w-full flex flex-wrap justify-center gap-x-4 gap-y-1 px-3 py-2 rounded-xl bg-primary/70 backdrop-blur text-[12px] sm:text-[13px]">
-                {journey.map((step, index) => (
-                    <li key={step.city} className="flex items-center gap-1.5 text-white-100">
-                        <span className={`w-2 h-2 rounded-full ${index === journey.length - 1 ? 'bg-cyan' : 'bg-accent-light'}`} aria-hidden="true" />
-                        <span className="font-semibold">{step.city}</span>
-                        <span className="text-secondary">{step.period}</span>
-                    </li>
-                ))}
-            </ol> */}
         </div>
     );
 };

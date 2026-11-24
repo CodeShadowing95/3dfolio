@@ -1,4 +1,6 @@
-import { useEffect, useState } from "react";
+"use client";
+
+import useMediaQuery from "../hooks/useMediaQuery";
 import { motion } from "framer-motion";
 
 import { BallCanvas } from "./canvas";
@@ -24,20 +26,8 @@ const FlatLogos = () => (
   </ul>
 );
 
-const useIsMobile = () => {
-  const [isMobile, setIsMobile] = useState(() => window.matchMedia(MOBILE_QUERY).matches);
+const useIsMobile = () => useMediaQuery(MOBILE_QUERY);
 
-  useEffect(() => {
-    const media = window.matchMedia(MOBILE_QUERY);
-    const handle = (event) => setIsMobile(event.matches);
-    media.addEventListener("change", handle);
-    return () => media.removeEventListener("change", handle);
-  }, []);
-
-  return isMobile;
-};
-
-// eslint-disable-next-line react-refresh/only-export-components
 const Tech = () => {
   const isMobile = useIsMobile();
 
@@ -61,5 +51,4 @@ const Tech = () => {
 
 // Ancienne version (icosaèdres + logos en décalque), conservée pour revenir en arrière :
 // remplacer l'import de Tech par celui-ci dans src/components/index.js.
-// eslint-disable-next-line react-refresh/only-export-components
 export default SectionWrapper(Tech, "stack");

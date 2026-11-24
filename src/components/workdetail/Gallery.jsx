@@ -1,6 +1,9 @@
+"use client";
+
 import { useCallback, useEffect, useRef, useState } from "react";
 import PropTypes from "prop-types";
 
+import { useI18n } from "../../i18n/I18nProvider";
 import { ChevronIcon } from "./icons";
 
 const arrowClass =
@@ -8,6 +11,8 @@ const arrowClass =
 
 /** Galerie de captures : bande avec flèches aux extrémités + visionneuse plein écran (clavier : ← → Échap) */
 const Gallery = ({ images, projectName }) => {
+  const { locale } = useI18n();
+  const en = locale === "en";
   const [openIndex, setOpenIndex] = useState(null);
   const [canScroll, setCanScroll] = useState({ prev: false, next: false });
   const closeButtonRef = useRef(null);
@@ -65,33 +70,33 @@ const Gallery = ({ images, projectName }) => {
   const current = isOpen ? images[openIndex] : null;
 
   return (
-    <section id="galerie" className="mt-12 space-y-4">
+    <section id="galerie" className="mt-7 space-y-4">
       <div className="flex items-baseline justify-between gap-4">
-        <h2 className="text-white text-xl font-semibold">Aperçu de l&apos;application</h2>
-        <p className="text-white/60 text-sm">{images.length} captures</p>
+        <h2 className="text-white text-xl font-semibold">{en ? "App preview" : "Aperçu de l'application"}</h2>
+        <p className="text-white/60 text-sm">{images.length} {en ? "screenshots" : "captures"}</p>
       </div>
 
       <div className="relative">
         <ul
           ref={stripRef}
           onScroll={updateArrows}
-          className="flex gap-4 overflow-x-auto snap-x snap-mandatory scroll-px-4 sm:scroll-px-0 -mx-4 px-4 sm:mx-0 sm:px-0 [scrollbar-width:none] [&::-webkit-scrollbar]:hidden"
+          className="flex gap-4 overflow-x-auto snap-x snap-mandatory scroll-px-4 sm:scroll-px-0 -mx-4 px-4 sm:mx-0 sm:px-0 scrollbar-none [&::-webkit-scrollbar]:hidden"
         >
           {images.map((image, index) => (
             <li key={image.src} className="snap-start shrink-0 w-40 sm:w-48">
               <button
                 type="button"
                 onClick={() => setOpenIndex(index)}
-                aria-label={`Agrandir : ${image.caption}`}
-                className="group block w-full text-left focus:outline-none"
+                aria-label={`${en ? "Enlarge" : "Agrandir"} : ${image.caption}`}
+                className="group block w-full text-left focus:outline-hidden"
               >
                 <img
                   src={image.src}
                   alt={image.caption}
                   loading="lazy"
-                  className="w-full aspect-[1/2] object-cover object-top rounded-2xl border border-white/10 shadow-lg transition group-hover:border-accent/60 group-focus-visible:ring-2 group-focus-visible:ring-accent"
+                  className="w-full aspect-1/2 object-cover object-top rounded-[26px] border-[6px] border-[#1c1640] shadow-[0_30px_60px_-20px_rgba(0,0,0,0.8)] transition group-hover:border-accent/60 group-focus-visible:ring-2 group-focus-visible:ring-accent"
                 />
-                <span className="mt-2 block text-xs text-white/70 leading-snug">{image.caption}</span>
+                <span className="mt-2.5 block text-[13px] text-secondary leading-[1.4]">{image.caption}</span>
               </button>
             </li>
           ))}
@@ -101,7 +106,7 @@ const Gallery = ({ images, projectName }) => {
         {canScroll.prev && (
           <button
             type="button"
-            aria-label="Captures précédentes"
+            aria-label={en ? "Previous screenshots" : "Captures précédentes"}
             onClick={() => scrollStrip(-1)}
             className={`${arrowClass} -left-2 sm:-left-5 -mt-4 z-10`}
           >
@@ -111,7 +116,7 @@ const Gallery = ({ images, projectName }) => {
         {canScroll.next && (
           <button
             type="button"
-            aria-label="Captures suivantes"
+            aria-label={en ? "Next screenshots" : "Captures suivantes"}
             onClick={() => scrollStrip(1)}
             className={`${arrowClass} -right-2 sm:-right-5 -mt-4 z-10`}
           >
@@ -124,15 +129,15 @@ const Gallery = ({ images, projectName }) => {
         <div
           role="dialog"
           aria-modal="true"
-          aria-label={`Captures de ${projectName}`}
-          className="fixed inset-0 z-50 bg-black/90 backdrop-blur-sm flex flex-col items-center justify-center p-4"
+          aria-label={en ? `${projectName} screenshots` : `Captures de ${projectName}`}
+          className="fixed inset-0 z-50 bg-black/90 backdrop-blur-xs flex flex-col items-center justify-center p-4"
           onClick={close}
         >
           <button
             ref={closeButtonRef}
             type="button"
             onClick={close}
-            aria-label="Fermer"
+            aria-label={en ? "Close" : "Fermer"}
             className="absolute top-4 right-4 inline-flex items-center justify-center w-11 h-11 rounded-full bg-white/10 border border-white/20 text-white text-2xl leading-none hover:bg-white/20 transition"
           >
             ×
@@ -152,7 +157,7 @@ const Gallery = ({ images, projectName }) => {
             <>
               <button
                 type="button"
-                aria-label="Capture précédente"
+                aria-label={en ? "Previous screenshot" : "Capture précédente"}
                 onClick={(event) => {
                   event.stopPropagation();
                   show(-1);
@@ -163,7 +168,7 @@ const Gallery = ({ images, projectName }) => {
               </button>
               <button
                 type="button"
-                aria-label="Capture suivante"
+                aria-label={en ? "Next screenshot" : "Capture suivante"}
                 onClick={(event) => {
                   event.stopPropagation();
                   show(1);

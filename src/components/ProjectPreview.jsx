@@ -1,16 +1,20 @@
+"use client";
+
 import { useEffect, useRef, useState } from "react";
 import PropTypes from "prop-types";
 
-const canHover = typeof window !== "undefined" && window.matchMedia("(hover: hover)").matches;
-const prefersReducedMotion =
-  typeof window !== "undefined" && window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+import { useCanHover, usePrefersReducedMotion } from "../hooks/useMediaQuery";
+import { useI18n } from "../i18n/I18nProvider";
 
 // Image du projet, remplacée par une courte vidéo muette quand elle existe :
 // au survol sur ordinateur, quand la carte est bien visible sur téléphone.
 const ProjectPreview = ({ name, image, video, hovered }) => {
   const containerRef = useRef(null);
   const videoRef = useRef(null);
+  const { locale } = useI18n();
   const [inView, setInView] = useState(false);
+  const canHover = useCanHover();
+  const prefersReducedMotion = usePrefersReducedMotion();
   const autoplay = Boolean(video) && !prefersReducedMotion;
   const playing = autoplay && (canHover ? hovered : inView);
 
@@ -21,7 +25,7 @@ const ProjectPreview = ({ name, image, video, hovered }) => {
     });
     observer.observe(containerRef.current);
     return () => observer.disconnect();
-  }, [autoplay]);
+  }, [autoplay, canHover]);
 
   useEffect(() => {
     const el = videoRef.current;
@@ -37,7 +41,7 @@ const ProjectPreview = ({ name, image, video, hovered }) => {
     <div ref={containerRef} className="absolute inset-0">
       <img
         src={image}
-        alt={`Aperçu de ${name}`}
+        alt={locale === "en" ? `${name} preview` : `Aperçu de ${name}`}
         loading="lazy"
         decoding="async"
         className="absolute inset-0 w-full h-full object-cover object-top"
@@ -65,7 +69,7 @@ const ProjectPreview = ({ name, image, video, hovered }) => {
             <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24" aria-hidden="true">
               <path fill="currentColor" d="M8 5v14l11-7z" />
             </svg>
-            Démo vidéo
+            {locale === "en" ? "Video demo" : "Démo vidéo"}
           </span>
         </>
       )}
