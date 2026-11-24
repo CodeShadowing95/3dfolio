@@ -1,3 +1,5 @@
+"use client";
+
 import { AnimatePresence, motion } from "framer-motion";
 import PropTypes from "prop-types";
 
@@ -26,7 +28,7 @@ const Toast = ({ message, type = "success", onClose }) => {
           animate={{ opacity: 1, y: 60, x: "-50%" }}
           exit={{ opacity: 0, y: -30, x: "-50%" }}
           transition={{ duration: 0.3, ease: "easeOut" }}
-          className="fixed top-6 left-1/2 z-[9999] flex items-center gap-3 px-6 py-4 rounded-xl bg-black-100 border border-white/10 shadow-2xl max-w-md w-[90%] sm:w-auto"
+          className="fixed top-6 left-1/2 z-9999 flex items-center gap-3 px-6 py-4 rounded-xl bg-black-100 border border-white/10 shadow-2xl max-w-md w-[90%] sm:w-auto"
           role="alert"
         >
           {ICONS[type]}

@@ -1,20 +1,20 @@
 # Guide Docker (Développement et Exécution)
 
-Ce projet est une application React (Vite) livrée avec une configuration Docker prête pour le développement local.
+Ce projet est une application React (Next.js) livrée avec une configuration Docker prête pour le développement local.
 
 ## Prérequis
 - Docker Desktop installé et en cours d’exécution.
-- Ports `5173` disponibles sur la machine.
+- Ports `3000` disponibles sur la machine.
 
 ## Démarrage rapide (mode développement)
-La configuration actuelle lance le serveur de développement Vite dans un conteneur avec rechargement à chaud.
+La configuration actuelle lance le serveur de développement Next.js dans un conteneur avec rechargement à chaud.
 
 1) Construire et démarrer avec Compose:
    ```bash
    docker compose up --build
    ```
 2) Ouvrir l’application:
-   - http://localhost:5173
+   - http://localhost:3000
 
 Grâce aux volumes déclarés dans `compose.yaml`, les modifications locales sont automatiquement reflétées dans le conteneur.
 
@@ -31,11 +31,11 @@ Vous pouvez aussi utiliser Docker directement:
 docker build -t 3dfolio:dev .
 
 # Lancer le conteneur
-docker run --rm -p 5173:5173 3dfolio:dev
+docker run --rm -p 3000:3000 3dfolio:dev
 ```
 
 ## Déploiement (production)
-Le `Dockerfile` actuel lance Vite en mode développement. Pour un déploiement de production, vous pouvez:
+Le `Dockerfile` actuel lance Next.js en mode développement. Pour un déploiement de production, vous pouvez:
 
 1) Construire les fichiers statiques dans une étape build (`npm run build`).
 2) Les servir via un serveur statique (Nginx ou `serve`).
@@ -52,7 +52,7 @@ RUN npm run build
 
 # Étape de runtime (Nginx)
 FROM nginx:alpine
-COPY --from=build /app/dist /usr/share/nginx/html
+COPY --from=build /app/out /usr/share/nginx/html
 EXPOSE 80
 CMD ["nginx", "-g", "daemon off;"]
 ```

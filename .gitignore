@@ -10,6 +10,11 @@ lerna-debug.log*
 # Modules
 node_modules
 dist
+
+# Next.js
+.next
+out
+next-env.d.ts
 dist-ssr
 *.local
 
@@ -29,6 +34,10 @@ dist-ssr
 
 # env variables
 .env
+.env*.local
 
 # vscode config
 .vs
+
+# Formation privée (cours sur la refonte du site) : consultable en local, jamais publiée
+src/app/(fr)/formation/

@@ -1,28 +1,34 @@
+"use client";
+
 import { useState, useEffect } from "react";
-import { Link } from "react-router-dom";
+import Link from "next/link";
 import { AnimatePresence, motion } from "framer-motion";
 
-import { styles } from "../styles";
 import { navLinks } from "../constants";
-import { logo, menu, close, linkedin, github } from "../assets";
+import { linkedin, github } from "../assets";
 import { track } from "../utils/analytics";
+import { useI18n } from "../i18n/I18nProvider";
+import LanguageSwitcher from "./LanguageSwitcher";
 
 const socialLinks = [
   {
     href: "https://www.linkedin.com/in/frank-patrick-namegni/",
-    label: "Profil LinkedIn de Patrick Namegni",
+    labelKey: "linkedinLabel",
     icon: linkedin,
     name: "LinkedIn",
     event: "linkedin-clic",
   },
   {
     href: "https://github.com/CodeShadowing95",
-    label: "Profil GitHub de Patrick Namegni",
+    labelKey: "githubLabel",
     icon: github,
     name: "GitHub",
     event: "github-clic",
   },
 ];
+
+// Lien vers la formation locale, seulement quand son dossier existe (jamais en ligne)
+const hasFormation = process.env.NEXT_PUBLIC_FORMATION === "1";
 
 const DownloadIcon = () => (
   <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" aria-hidden="true">
@@ -31,6 +37,7 @@ const DownloadIcon = () => (
 );
 
 const Navbar = () => {
+  const { t, href } = useI18n();
   const [active, setActive] = useState("");
   const [toggle, setToggle] = useState(false);
   const [isScrolled, setIsScrolled] = useState(false);
@@ -58,9 +65,9 @@ const Navbar = () => {
           );
           if (!link) return;
           if (entry.isIntersecting) {
-            setActive(link.title);
+            setActive(link.id);
           } else {
-            setActive((current) => (current === link.title ? "" : current));
+            setActive((current) => (current === link.id ? "" : current));
           }
         });
       },
@@ -95,175 +102,184 @@ const Navbar = () => {
 
   return (
     <nav
-      className={`${styles.paddingX} w-full flex items-center py-5 fixed top-0 z-20 transition-colors duration-300 ${
-        isScrolled || toggle ? "bg-primary/90 backdrop-blur-md" : ""
+      aria-label={t.nav.label}
+      className={`w-full fixed top-0 z-20 transition-colors duration-300 ${
+        isScrolled && !toggle ? "bg-primary/85 backdrop-blur-md border-b border-white/[0.06]" : "border-b border-transparent"
       }`}
     >
-      <div className="w-full flex justify-between items-center max-w-7xl mx-auto">
+      <div className="relative z-10 w-full max-w-7xl mx-auto px-6 sm:px-12 py-4 lg:py-5 flex justify-between items-center gap-6">
         <Link
-          to="/"
-          className="flex items-center"
+          href={href("/")}
+          className="flex items-center gap-3"
           onClick={() => {
             setActive("");
             setToggle(false);
             window.scrollTo(0, 0);
           }}
         >
-          <img src={logo} alt="" className="w-9 h-9 object-contain" />
-          <p className="ml-2 text-white text-[18px] font-bold whitespace-nowrap">
-            Patrick <span className="sm:inline hidden">Namegni</span>
-          </p>
+          {/* Monogramme aux couleurs du dégradé de la charte */}
+          <span
+            className="w-10 h-10 rounded-xl bg-[linear-gradient(135deg,#22d3ee,#804dee)] flex items-center justify-center font-black text-[15px] text-primary"
+            aria-hidden="true"
+          >
+            PN
+          </span>
+          <span className="text-white text-[17px] font-bold whitespace-nowrap">Patrick Namegni</span>
         </Link>
 
         {/* Barre complète à partir de 1024 px */}
-        <ul className="list-none hidden lg:flex flex-row items-center gap-7 xl:gap-8">
+        <ul className="list-none hidden lg:flex flex-row items-center gap-7">
           {navLinks.map((link) => (
             <li key={link.id}>
               <a
                 href={`#${link.id}`}
-                onClick={() => setActive(link.title)}
-                className={`relative py-1 text-[16px] font-medium transition-colors duration-300 hover:text-white ${
-                  active === link.title ? "text-white" : "text-secondary"
+                onClick={() => setActive(link.id)}
+                aria-current={active === link.id ? "true" : undefined}
+                className={`relative py-2.5 px-1 text-[15px] font-medium transition-colors duration-300 hover:text-white ${
+                  active === link.id ? "text-white" : "text-[#dfd9ff]"
                 }`}
               >
-                {link.title}
+                {t.nav.links[link.id]}
                 <span
-                  className={`absolute left-0 -bottom-0.5 h-0.5 w-full rounded-full bg-accent transition-transform duration-300 origin-left ${
-                    active === link.title ? "scale-x-100" : "scale-x-0"
+                  className={`absolute left-1 right-1 bottom-1 h-0.5 rounded-full bg-cyan transition-transform duration-300 origin-left ${
+                    active === link.id ? "scale-x-100" : "scale-x-0"
                   }`}
                 />
               </a>
             </li>
           ))}
-
-          {/* <li>
-            <a
-              href="/CV.pdf"
-              download
-              onClick={() => track("cv-telecharge", { emplacement: "navbar" })}
-              className="flex items-center gap-2 px-4 py-2 border border-white/50 hover:border-white hover:bg-white/10 text-white font-medium text-[15px] rounded-lg transition-colors duration-300 whitespace-nowrap"
-            >
-              <DownloadIcon />
-              <span className="hidden xl:inline">Télécharger mon CV</span>
-              <span className="xl:hidden">CV</span>
-            </a>
-          </li> */}
-
-          <li className="flex items-center gap-4">
-            {socialLinks.map((social) => (
-              <a
-                key={social.name}
-                href={social.href}
-                target="_blank"
-                rel="noopener noreferrer"
-                aria-label={social.label}
-                data-umami-event={social.event}
-                data-umami-event-emplacement="navbar"
-                className="hover:opacity-70 transition-opacity duration-300"
-              >
-                <img src={social.icon} alt="" className="w-6 h-6 object-contain" />
-              </a>
-            ))}
-          </li>
+          {hasFormation && (
+            <li>
+              <Link href="/formation/" className="py-2.5 px-1 text-[15px] font-medium text-cyan hover:text-white transition-colors">
+                Cours
+              </Link>
+            </li>
+          )}
         </ul>
+
+        <div className="hidden lg:flex items-center gap-3">
+        <LanguageSwitcher />
+        <a
+          href="/CV.pdf"
+          download
+          onClick={() => track("cv-telecharge", { emplacement: "navbar" })}
+          className="inline-flex items-center gap-2 min-h-[44px] px-5 rounded-[14px] bg-accent-hover hover:bg-[#6a3cf0] text-white font-semibold text-[15px] transition-colors duration-300"
+        >
+          <DownloadIcon />
+          CV
+        </a>
+        </div>
 
         {/* Bouton du menu sous 1024 px */}
         <button
           type="button"
-          className="lg:hidden p-1 -mr-1"
-          aria-label={toggle ? "Fermer le menu" : "Ouvrir le menu"}
+          className={`lg:hidden w-11 h-11 rounded-xl border flex items-center justify-center text-white transition-colors ${
+            toggle ? "border-cyan/50" : "border-white/15"
+          }`}
+          aria-label={toggle ? t.nav.closeMenu : t.nav.openMenu}
           aria-expanded={toggle}
           aria-controls="mobile-menu"
           onClick={() => setToggle((open) => !open)}
         >
-          <img src={toggle ? close : menu} alt="" className="w-[28px] h-[28px] object-contain" />
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" aria-hidden="true">
+            {toggle ? <path d="M18 6 6 18M6 6l12 12" /> : <path d="M4 7h16M4 12h16M4 17h16" />}
+          </svg>
         </button>
       </div>
 
       <AnimatePresence>
         {toggle && (
-          <>
-            {/* Voile : un tap à côté ferme le menu */}
-            <motion.div
-              key="backdrop"
-              className="lg:hidden fixed inset-0 top-[76px] -z-10 bg-black/60"
-              initial={{ opacity: 0 }}
-              animate={{ opacity: 1 }}
-              exit={{ opacity: 0 }}
-              transition={{ duration: 0.2 }}
-              onClick={() => setToggle(false)}
-              aria-hidden="true"
-            />
-
-            <motion.div
-              key="panel"
-              id="mobile-menu"
-              className={`lg:hidden absolute top-full inset-x-0 ${styles.paddingX} pb-8 pt-4 bg-primary/95 backdrop-blur-md border-b border-white/10 shadow-card`}
-              initial={{ opacity: 0, y: -16 }}
-              animate={{ opacity: 1, y: 0 }}
-              exit={{ opacity: 0, y: -16 }}
-              transition={{ duration: 0.25, ease: "easeOut" }}
-            >
-              <div className="max-w-7xl mx-auto flex flex-col gap-6">
-                <p className="inline-flex items-center gap-2 self-start px-3 py-1 rounded-full border border-cyan/30 bg-cyan/10 text-[13px] text-white-100">
-                  <span className="w-2 h-2 rounded-full bg-cyan" aria-hidden="true" />
-                  Disponible immédiatement · CDI
-                </p>
-
-                <ul className="list-none flex flex-col gap-1">
-                  {navLinks.map((link) => (
-                    <li key={link.id}>
-                      <a
-                        href={`#${link.id}`}
-                        onClick={() => {
-                          setActive(link.title);
-                          setToggle(false);
-                        }}
-                        className={`flex items-center gap-3 py-2.5 text-[20px] font-semibold transition-colors duration-300 ${
-                          active === link.title ? "text-white" : "text-secondary hover:text-white"
-                        }`}
-                      >
-                        <span
-                          className={`h-5 w-1 rounded-full ${active === link.title ? "bg-accent" : "bg-white/10"}`}
-                          aria-hidden="true"
-                        />
-                        {link.title}
-                      </a>
-                    </li>
-                  ))}
-                </ul>
-
-                <div className="flex items-center gap-4">
-                  <a
-                    href="/CV.pdf"
-                    download
-                    onClick={() => {
-                      track("cv-telecharge", { emplacement: "menu-mobile" });
-                      setToggle(false);
-                    }}
-                    className="flex flex-1 items-center justify-center gap-2 px-4 py-3 rounded-xl bg-accent hover:bg-accent-hover text-white font-semibold text-[15px] transition-colors duration-300"
+          // Menu mobile plein écran : grands liens numérotés, section en cours en cyan
+          <motion.div
+            key="panel"
+            id="mobile-menu"
+            className="lg:hidden fixed inset-0 bg-[#0a0b20] flex flex-col"
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            transition={{ duration: 0.2, ease: "easeOut" }}
+          >
+            <ul className="list-none flex flex-col gap-1 px-6 sm:px-12 pt-[96px]">
+              {navLinks.map((link, index) => {
+                const isActive = active === link.id;
+                return (
+                  <motion.li
+                    key={link.id}
+                    initial={{ opacity: 0, y: 12 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    transition={{ delay: 0.04 * index + 0.05, duration: 0.25 }}
                   >
-                    <DownloadIcon />
-                    Télécharger mon CV
-                  </a>
-                  {socialLinks.map((social) => (
                     <a
-                      key={social.name}
-                      href={social.href}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      aria-label={social.label}
-                      data-umami-event={social.event}
-                      data-umami-event-emplacement="menu-mobile"
-                      className="flex items-center justify-center w-12 h-12 rounded-xl border border-white/15 hover:bg-white/10 transition-colors duration-300"
+                      href={`#${link.id}`}
+                      aria-current={isActive ? "true" : undefined}
+                      onClick={() => {
+                        setActive(link.id);
+                        setToggle(false);
+                      }}
+                      className={`flex justify-between items-center min-h-[60px] border-b border-white/[0.08] text-[26px] font-bold transition-colors ${
+                        isActive ? "text-cyan" : "text-white hover:text-cyan"
+                      }`}
                     >
-                      <img src={social.icon} alt="" className="w-6 h-6 object-contain" />
+                      {t.nav.links[link.id]}
+                      <span className={`font-mono text-[13px] ${isActive ? "text-cyan" : "text-secondary"}`}>
+                        {String(index + 1).padStart(2, "0")}
+                      </span>
                     </a>
-                  ))}
-                </div>
+                  </motion.li>
+                );
+              })}
+              {hasFormation && (
+                <li>
+                  <Link
+                    href="/formation/"
+                    className="flex justify-between items-center min-h-[60px] border-b border-white/[0.08] text-[26px] font-bold text-cyan"
+                  >
+                    Cours
+                    <span className="font-mono text-[13px] text-secondary">local</span>
+                  </Link>
+                </li>
+              )}
+            </ul>
+
+            <div className="mt-auto px-6 sm:px-12 pb-7 flex flex-col gap-3">
+              <div className="flex flex-wrap items-center justify-between gap-3">
+                <p className="inline-flex items-center gap-2 w-fit px-3 py-1.5 rounded-full border border-cyan/40 bg-cyan/10 text-[12px] text-white whitespace-nowrap">
+                  <span className="w-[7px] h-[7px] rounded-full bg-cyan" aria-hidden="true" />
+                  {t.common.available}
+                </p>
+                <LanguageSwitcher large />
               </div>
-            </motion.div>
-          </>
+              <a
+                href="/CV.pdf"
+                download
+                onClick={() => {
+                  track("cv-telecharge", { emplacement: "menu-mobile" });
+                  setToggle(false);
+                }}
+                className="flex items-center justify-center gap-2 min-h-[50px] rounded-[14px] bg-accent-hover hover:bg-[#6a3cf0] text-white font-semibold transition-colors"
+              >
+                <DownloadIcon />
+                {t.common.downloadCv}
+              </a>
+              <div className="flex gap-2.5">
+                {socialLinks.map((social) => (
+                  <a
+                    key={social.name}
+                    href={social.href}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    aria-label={t.nav[social.labelKey]}
+                    data-umami-event={social.event}
+                    data-umami-event-emplacement="menu-mobile"
+                    className="flex-1 flex items-center justify-center gap-2 min-h-[46px] rounded-xl border border-white/15 text-white text-[14px] hover:bg-white/10 transition-colors"
+                  >
+                    <img src={social.icon} alt="" className="w-5 h-5 object-contain" />
+                    {social.name}
+                  </a>
+                ))}
+              </div>
+            </div>
+          </motion.div>
         )}
       </AnimatePresence>
     </nav>
