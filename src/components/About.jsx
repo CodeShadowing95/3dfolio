@@ -1,5 +1,6 @@
 "use client";
 
+import Link from "next/link";
 import { motion } from "framer-motion";
 import PropTypes from "prop-types";
 
@@ -8,6 +9,7 @@ import { services } from "../constants";
 import { fadeIn, textVariant } from "../utils/motion";
 import { SectionWrapper } from "../hoc";
 import { useI18n } from "../i18n/I18nProvider";
+import { track } from "../utils/analytics";
 
 const Accent = ({ children, tone = "violet" }) => (
   <span className={tone === "cyan" ? "text-cyan font-medium" : "text-accent-light font-medium"}>{children}</span>
@@ -49,6 +51,7 @@ const copy = {
       </>
     ),
     skills: "Compétences par domaine",
+    lab: "Labo IA : mes agents IA au travail",
   },
   en: {
     eyebrow: "Introduction",
@@ -79,11 +82,12 @@ const copy = {
       </>
     ),
     skills: "Skills by area",
+    lab: "AI lab: my AI agents at work",
   },
 };
 
 const About = () => {
-  const { locale, pick } = useI18n();
+  const { locale, pick, href } = useI18n();
   const text = copy[locale];
 
   return (
@@ -105,6 +109,15 @@ const About = () => {
             ))}
           </ul>
           <p className="mt-5 text-white-100 text-[15px] sm:text-[16px] leading-[1.65]">{text.goal}</p>
+          <Link
+            href={href("/labo-ia/")}
+            onClick={() => track("labo-ia-clic", { emplacement: "profil" })}
+            className="group mt-6 inline-flex items-center gap-2.5 min-h-[44px] px-4 rounded-full border border-[#e879f9]/45 bg-[#e879f9]/10 hover:bg-[#e879f9]/20 text-white text-[15px] font-semibold transition-colors"
+          >
+            <span aria-hidden="true" className="w-2 h-2 rounded-full bg-[#e879f9] shadow-[0_0_8px_#e879f9]" />
+            {text.lab}
+            <span aria-hidden="true" className="text-[#e879f9] transition-transform group-hover:translate-x-1">→</span>
+          </Link>
         </motion.div>
       </div>
 

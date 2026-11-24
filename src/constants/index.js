@@ -157,7 +157,7 @@ const services = [
   {
     title: { fr: "IA", en: "AI" },
     icon: openai,
-    items: [{ fr: "IA générative", en: "Generative AI" }, "OpenAI API", "LangChain", "Python"],
+    items: [{ fr: "IA générative", en: "Generative AI" }, "OpenAI API", "Claude API", "LangChain", { fr: "Agents IA (n8n)", en: "AI agents (n8n)" }, "Python"],
   },
 ];
 

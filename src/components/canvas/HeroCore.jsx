@@ -47,9 +47,11 @@ const Core = ({ count }) => {
     const color = new THREE.Color();
     for (let i = 0; i < count; i += 1) {
       // Rayon tiré vers le centre (puissance) pour un cœur lumineux et un bord diffus
+      /* eslint-disable react-hooks/purity -- nuage aléatoire calculé une seule fois (useMemo) */
       const r = Math.pow(Math.random(), 1.6) * 1.3;
       const theta = Math.random() * Math.PI * 2;
       const phi = Math.acos(2 * Math.random() - 1);
+      /* eslint-enable react-hooks/purity */
       positions[i * 3] = r * Math.sin(phi) * Math.cos(theta);
       positions[i * 3 + 1] = r * Math.sin(phi) * Math.sin(theta);
       positions[i * 3 + 2] = r * Math.cos(phi);
@@ -234,8 +236,10 @@ const HeroCore = () => {
 
   useEffect(() => {
     const mobile = window.matchMedia("(max-width: 767px)").matches;
+    /* eslint-disable react-hooks/set-state-in-effect -- détection du support WebGL, possible seulement dans le navigateur */
     setIsMobile(mobile);
     setMode(canRunWebGL() && !isLowEnd() ? "3d" : "static");
+    /* eslint-enable react-hooks/set-state-in-effect */
 
     const onMove = (event) => {
       pointer.x = (event.clientX / window.innerWidth) * 2 - 1;

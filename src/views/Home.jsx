@@ -40,6 +40,7 @@ const Home = () => {
     const [showPreloader, setShowPreloader] = useState(true);
 
     useEffect(() => {
+        // eslint-disable-next-line react-hooks/set-state-in-effect -- lecture côté navigateur après le montage (page générée en statique)
         if (!shouldPlayIntro()) setShowPreloader(false);
     }, []);
 

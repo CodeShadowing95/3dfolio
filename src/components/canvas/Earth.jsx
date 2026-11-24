@@ -1,6 +1,5 @@
 "use client";
 
-/* eslint-disable react/no-unknown-property */
 
 import { Suspense, useEffect, useMemo, useRef } from 'react';
 import { Canvas, useFrame, useThree } from '@react-three/fiber';
@@ -144,8 +143,10 @@ Marker.propTypes = {
 const Globe = ({ steps }) => {
     const sphere = useRef(null);
     const texture = useTexture(earthDots);
+    /* eslint-disable react-hooks/immutability -- réglage de la texture Three.js, objet mutable par nature */
     texture.colorSpace = THREE.SRGBColorSpace;
     texture.anisotropy = 8;
+    /* eslint-enable react-hooks/immutability */
 
     return (
         <group rotation-x={THREE.MathUtils.degToRad(VIEW_CENTER.lat)}>

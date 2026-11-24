@@ -49,7 +49,6 @@ export const projectMetadata = (locale) =>
     };
   };
 
-// eslint-disable-next-line react/prop-types
 export async function ProjectPage({ params }) {
   const { id } = await params;
   if (LEGACY_IDS[id]) return <LegacyProjectRedirect from={id} to={LEGACY_IDS[id]} />;

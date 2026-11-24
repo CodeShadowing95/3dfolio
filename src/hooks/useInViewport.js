@@ -9,6 +9,7 @@ const useInViewport = (ref, rootMargin = "0px") => {
         if (!ref.current) return;
 
         if (!("IntersectionObserver" in window)) {
+            // eslint-disable-next-line react-hooks/set-state-in-effect -- lecture côté navigateur après le montage (page générée en statique)
             setIsInViewport(true);
             return;
         }

@@ -13,6 +13,7 @@ const LazyOnView = ({ children, className = "", rootMargin = "300px 0px", fallba
         if (!ref.current) return;
 
         if (!("IntersectionObserver" in window)) {
+            // eslint-disable-next-line react-hooks/set-state-in-effect -- lecture côté navigateur après le montage (page générée en statique)
             setIsVisible(true);
             return;
         }

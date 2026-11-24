@@ -41,3 +41,6 @@ dist-ssr
 
 # Formation privée (cours sur la refonte du site) : consultable en local, jamais publiée
 src/app/(fr)/formation/
+
+# Fichiers retirés du site (gardés en local, jamais déployés)
+_archives-non-deployees

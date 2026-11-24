@@ -6,6 +6,7 @@ import { getVisitorCompany } from "../utils/visitor";
 const useVisitorCompany = () => {
   const [company, setCompany] = useState(null);
   useEffect(() => {
+    // eslint-disable-next-line react-hooks/set-state-in-effect -- lecture côté navigateur après le montage (page générée en statique)
     setCompany(getVisitorCompany());
   }, []);
   return company;
