@@ -2,6 +2,8 @@
 
 import { useSyncExternalStore } from "react";
 
+import BrandMark from "../components/BrandMark";
+
 // Page 404 commune : la langue est déduite de l'adresse demandée (/en/… = anglais)
 const texts = {
   fr: {
@@ -33,7 +35,8 @@ export default function NotFound() {
         <section className="flex flex-col justify-between px-6 sm:px-10 py-8 border-r border-white/10 bg-[#0d1426]">
           {/* En‑tête avec logo */}
           <div className="flex items-center gap-3">
-            <img src="/logo.png" alt="Site logo" className="w-9 h-9 opacity-90" />
+            <BrandMark size={40} />
+            <span className="font-bold">Patrick Namegni</span>
           </div>
 
           {/* Contenu principal */}

@@ -5,6 +5,8 @@ import Link from "next/link";
 import { useI18n } from "../i18n/I18nProvider";
 import { track } from "../utils/analytics";
 import { LINKEDIN_URL } from "./Contact";
+import { CV_FILES } from "./CvDownload";
+import BrandMark from "./BrandMark";
 
 const GITHUB_URL = "https://github.com/CodeShadowing95";
 
@@ -24,12 +26,7 @@ const Footer = () => {
   return (
     <footer className="relative max-w-7xl mx-auto px-6 sm:px-12 pt-6 pb-24 sm:pb-10 flex flex-wrap items-center justify-between gap-4 border-t border-white/[0.08]">
       <div className="flex items-center gap-3">
-        <span
-          aria-hidden="true"
-          className="w-[34px] h-[34px] rounded-[10px] bg-[linear-gradient(135deg,#22d3ee,#804dee)] flex items-center justify-center font-black text-[13px] text-primary"
-        >
-          PN
-        </span>
+        <BrandMark size={36} />
         <span className="text-[14px] text-secondary">© {year} Patrick Namegni · patrktech.com</span>
       </div>
       <nav aria-label={c.nav} className="flex flex-wrap gap-x-[22px] text-[14px]">
@@ -52,7 +49,12 @@ const Footer = () => {
         >
           LinkedIn
         </a>
-        <a href="/CV.pdf" download onClick={() => track("cv-telecharge", { emplacement: "footer" })} className={linkClass}>
+        <a
+          href={CV_FILES[locale].pack}
+          download
+          onClick={() => track("cv-telecharge", { emplacement: "footer", langue: locale, contenu: "cv+lettre" })}
+          className={linkClass}
+        >
           {c.cv}
         </a>
       </nav>

@@ -32,6 +32,33 @@ import { experiences, projects } from "./index";
 
 const rawLayers = [
   {
+    id: "ai",
+    name: "IA",
+    color: "#e879f9",
+    techs: [
+      // « ai » = tag des projets qui intègrent de l'IA (BatiPilote, Merkod, Curriqulum.ai)
+      { name: "IA générative", monogram: "IA", aliases: ["ai", "ia", "ia générative"] },
+      {
+        name: "OpenAI API",
+        monogram: "AI",
+        aliases: ["openai", "openai api"],
+        extraUsedIn: [{ label: "BatiPilote", detail: "Devis dictés, analyse de photos", kind: "project" }],
+      },
+      {
+        name: "LangChain",
+        monogram: "LC",
+        aliases: ["langchain"],
+        extraUsedIn: [{ label: "BatiPilote", detail: "Service IA en Python", kind: "project" }],
+      },
+      {
+        name: "Claude API",
+        monogram: "C",
+        aliases: ["claude", "claude api"],
+        extraUsedIn: [{ label: "Merkod", detail: "Relecture des codes promo", kind: "project" }],
+      },
+    ],
+  },
+  {
     id: "infra",
     name: "Infra / DevOps",
     color: "#22d3ee",
@@ -100,6 +127,8 @@ const rawLayers = [
       },
       { name: "Spring Boot", icon: spring, aliases: ["spring boot", "springboot", "spring"] },
       { name: "Python", icon: python, aliases: ["python"] },
+      { name: "PHP", monogram: "PHP", aliases: ["php", "php / laravel", "laravel"] },
+      { name: "WordPress", monogram: "WP", aliases: ["wordpress"] },
     ],
   },
   {

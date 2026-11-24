@@ -242,6 +242,14 @@ const experiences = [
       to: "/etude-de-cas/build-ci",
       label: { fr: "Lire l'étude de cas : un build CI divisé par 5", en: "Read the case study: a CI build 5× faster" },
     },
+    context: {
+      fr: "Hapticmedia permet aux marques de présenter leurs produits en 3D et en réalité augmentée sur leur site. Dans une équipe d'une vingtaine de personnes, on m'a confié des sujets exigeants pour mon niveau, et l'équipe m'a formé de façon intensive au back-end.",
+      en: "Hapticmedia lets brands showcase their products in 3D and augmented reality on their websites. In a team of about twenty, I was trusted with demanding topics for my level, and the team trained me intensively on back-end work.",
+    },
+    quote: {
+      text: { fr: "Son investissement, sa curiosité et sa volonté d'apprendre.", en: "His commitment, his curiosity and his eagerness to learn." },
+      author: { fr: "Loïc Muhlmann, directeur général d'Hapticmedia (lettre de recommandation)", en: "Loïc Muhlmann, CEO of Hapticmedia (letter of recommendation)" },
+    },
     icon: hapticmedia,
     ringColor: "#22d3ee",
     highlight: true,
@@ -270,6 +278,10 @@ const experiences = [
     company_name: "TeePy Job",
     location: { fr: "Lyon · Alternance", en: "Lyon, France · Work-study" },
     stack: "PHP, jQuery, AJAX, WordPress, Elasticsearch, MySQL",
+    context: {
+      fr: "TeePy Job est un site d'offres d'emploi qui met en relation candidats et recruteurs. Dans une équipe de 8 personnes, je travaillais chaque jour avec le CTO, les commerciaux, le marketing et les recruteurs, et chacune de mes modifications était relue par le CTO.",
+      en: "TeePy Job is a job board connecting candidates and recruiters. In a team of 8, I worked daily with the CTO, sales, marketing and recruiters, and the CTO reviewed every change I made.",
+    },
     icon: teepyjob,
     ringColor: "#7c6cff",
     date: { fr: "Juin 2024 – Juillet 2025", en: "June 2024 – July 2025" },
@@ -286,6 +298,10 @@ const experiences = [
         fr: "Développement d’algorithmes de matching automatique basé sur géolocalisation et critères d’offres, suivi de mailing et gestion de priorités d’annonces. Augmentation de 30% du taux de mise en relation candidats/recruteurs et amélioration du délai de proposition des profils.",
         en: "Developed automatic matching algorithms based on location and job criteria, with mailing follow-up and ad prioritisation. Candidate / recruiter matches rose by 30% and profiles were proposed sooner.",
       },
+      {
+        fr: "Formation de la chargée de sourcing à l'application : trouver les candidats, récupérer et valider leurs CV, les rapprocher des offres, leur proposer des postes et les relancer. Elle l'utilise aujourd'hui en autonomie.",
+        en: "Trained the sourcing officer on the application: finding candidates, collecting and checking their résumés, matching them with offers, proposing roles and following up. She now uses it on her own.",
+      },
     ],
   },
   {
@@ -293,6 +309,10 @@ const experiences = [
     company_name: "Univers Binaire SARL",
     location: { fr: "Yaoundé, Cameroun", en: "Yaoundé, Cameroon" },
     stack: "Java / Spring Boot, Laravel, Angular, React, TypeScript, PostgreSQL, MySQL",
+    context: {
+      fr: "Univers Binaire crée des logiciels sur mesure pour des écoles, des banques, des agences de voyages, des établissements de santé et des hôtels. Mon premier poste, dans une équipe d'une vingtaine de personnes, où j'ai appris à travailler pour un client.",
+      en: "Univers Binaire builds custom software for schools, banks, travel agencies, healthcare providers and hotels. My first job, in a team of about twenty, where I learned to work for a client.",
+    },
     icon: ub,
     ringColor: "#b07cff",
     date: { fr: "Octobre 2019 – Juillet 2021", en: "October 2019 – July 2021" },
@@ -1127,6 +1147,7 @@ const languages = [
   { name: { fr: "Français", en: "French" }, level: { fr: "Courant", en: "Fluent" } },
   { name: { fr: "Allemand", en: "German" }, level: "C1" },
   { name: { fr: "Anglais", en: "English" }, level: "B2" },
+  { name: { fr: "Chinois", en: "Chinese" }, level: { fr: "A1 (en apprentissage)", en: "A1 (learning)" } },
 ];
 
 

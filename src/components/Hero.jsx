@@ -11,6 +11,7 @@ import { HeroCoreCanvas } from "./canvas";
 import { HeroCoreFallback } from "./canvas/HeroCore";
 import RecruiterPanel from "./RecruiterPanel";
 import RoleTitle from "./RoleTitle";
+import CvDownload from "./CvDownload";
 import { useI18n } from "../i18n/I18nProvider";
 
 // Bouton principal en #7c4dff : le blanc sur #915eff n'atteint que 4,0:1 de contraste
@@ -75,14 +76,7 @@ const Hero = () => {
           </motion.p>
 
           <motion.div {...reveal(0.32)} className="mt-2 flex flex-col xs:flex-row flex-wrap gap-3.5">
-            <a
-              href="/CV.pdf"
-              download
-              onClick={() => track("cv-telecharge", { emplacement: "hero" })}
-              className={primaryButton}
-            >
-              {t.common.downloadCv}
-            </a>
+            <CvDownload emplacement="hero" />
             <a
               href="#contact"
               onClick={() => track("contact-clic", { emplacement: "hero" })}

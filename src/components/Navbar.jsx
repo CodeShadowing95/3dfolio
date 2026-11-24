@@ -6,9 +6,11 @@ import { AnimatePresence, motion } from "framer-motion";
 
 import { navLinks } from "../constants";
 import { linkedin, github } from "../assets";
-import { track } from "../utils/analytics";
 import { useI18n } from "../i18n/I18nProvider";
 import LanguageSwitcher from "./LanguageSwitcher";
+import BrandMark from "./BrandMark";
+import { track } from "../utils/analytics";
+import CvDownload from "./CvDownload";
 
 const socialLinks = [
   {
@@ -29,12 +31,6 @@ const socialLinks = [
 
 // Lien vers la formation locale, seulement quand son dossier existe (jamais en ligne)
 const hasFormation = process.env.NEXT_PUBLIC_FORMATION === "1";
-
-const DownloadIcon = () => (
-  <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" aria-hidden="true">
-    <path fill="#ffffff" d="m12 16l-5-5l1.4-1.45l2.6 2.6V4h2v8.15l2.6-2.6L17 11zm-6 4q-.825 0-1.412-.587T4 18v-3h2v3h12v-3h2v3q0 .825-.587 1.413T18 20z"/>
-  </svg>
-);
 
 const Navbar = () => {
   const { t, href } = useI18n();
@@ -117,13 +113,8 @@ const Navbar = () => {
             window.scrollTo(0, 0);
           }}
         >
-          {/* Monogramme aux couleurs du dégradé de la charte */}
-          <span
-            className="w-10 h-10 rounded-xl bg-[linear-gradient(135deg,#22d3ee,#804dee)] flex items-center justify-center font-black text-[15px] text-primary"
-            aria-hidden="true"
-          >
-            PN
-          </span>
+          {/* Logo PN « Bloc » : cube isométrique, P à gauche, N à droite */}
+          <BrandMark size={42} />
           <span className="text-white text-[17px] font-bold whitespace-nowrap">Patrick Namegni</span>
         </Link>
 
@@ -148,6 +139,16 @@ const Navbar = () => {
               </a>
             </li>
           ))}
+          <li>
+            <Link
+              href={href("/labo-ia/")}
+              onClick={() => track("labo-ia-clic", { emplacement: "navbar" })}
+              className="inline-flex items-center gap-2 min-h-[36px] px-3.5 rounded-full border border-[#e879f9]/45 bg-[#e879f9]/10 hover:bg-[#e879f9]/20 text-[14px] font-semibold text-white transition-colors"
+            >
+              <span aria-hidden="true" className="w-1.5 h-1.5 rounded-full bg-[#e879f9] shadow-[0_0_8px_#e879f9]" />
+              {t.nav.lab}
+            </Link>
+          </li>
           {hasFormation && (
             <li>
               <Link href="/formation/" className="py-2.5 px-1 text-[15px] font-medium text-cyan hover:text-white transition-colors">
@@ -159,15 +160,7 @@ const Navbar = () => {
 
         <div className="hidden lg:flex items-center gap-3">
         <LanguageSwitcher />
-        <a
-          href="/CV.pdf"
-          download
-          onClick={() => track("cv-telecharge", { emplacement: "navbar" })}
-          className="inline-flex items-center gap-2 min-h-[44px] px-5 rounded-[14px] bg-accent-hover hover:bg-[#6a3cf0] text-white font-semibold text-[15px] transition-colors duration-300"
-        >
-          <DownloadIcon />
-          CV
-        </a>
+        <CvDownload emplacement="navbar" variant="compact" label="CV" showIcon />
         </div>
 
         {/* Bouton du menu sous 1024 px */}
@@ -228,6 +221,26 @@ const Navbar = () => {
                   </motion.li>
                 );
               })}
+              <motion.li
+                initial={{ opacity: 0, y: 12 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ delay: 0.04 * navLinks.length + 0.05, duration: 0.25 }}
+              >
+                <Link
+                  href={href("/labo-ia/")}
+                  onClick={() => {
+                    track("labo-ia-clic", { emplacement: "menu-mobile" });
+                    setToggle(false);
+                  }}
+                  className="flex justify-between items-center min-h-[60px] border-b border-white/[0.08] text-[26px] font-bold text-white hover:text-[#e879f9] transition-colors"
+                >
+                  <span className="flex items-center gap-3">
+                    {t.nav.lab}
+                    <span aria-hidden="true" className="w-2 h-2 rounded-full bg-[#e879f9] shadow-[0_0_10px_#e879f9]" />
+                  </span>
+                  <span className="font-mono text-[13px] text-[#e879f9]">IA</span>
+                </Link>
+              </motion.li>
               {hasFormation && (
                 <li>
                   <Link
@@ -249,18 +262,12 @@ const Navbar = () => {
                 </p>
                 <LanguageSwitcher large />
               </div>
-              <a
-                href="/CV.pdf"
-                download
-                onClick={() => {
-                  track("cv-telecharge", { emplacement: "menu-mobile" });
-                  setToggle(false);
-                }}
-                className="flex items-center justify-center gap-2 min-h-[50px] rounded-[14px] bg-accent-hover hover:bg-[#6a3cf0] text-white font-semibold transition-colors"
-              >
-                <DownloadIcon />
-                {t.common.downloadCv}
-              </a>
+              <CvDownload
+                emplacement="menu-mobile"
+                showIcon
+                fullWidth
+                onDownload={() => setToggle(false)}
+              />
               <div className="flex gap-2.5">
                 {socialLinks.map((social) => (
                   <a

@@ -14,10 +14,11 @@ const en = {
     linkedinLabel: "Patrick Namegni's LinkedIn profile",
     githubLabel: "Patrick Namegni's GitHub profile",
     language: "Site language",
+    lab: "AI lab",
   },
   hero: {
     greeting: (company) => ["Hello ", company, " team 👋 Thanks for stopping by."],
-    tagline: "I build fast, secure and maintainable web applications, from code to deployment.",
+    tagline: "I build the websites and apps people use every day, from the screen to the servers. Latest result: deployments 5 times faster.",
     recruiter: "Recruiter?",
     recruiterLink: "My profile in 30 seconds",
     scrollDown: "Scroll down to my profile",
@@ -28,7 +29,7 @@ const en = {
   },
   recruiter: {
     close: "Close summary",
-    mobility: "Open to roles anywhere in France",
+    mobility: "Open to roles anywhere in France · Driving licence",
     stack: "Main stack",
     figures: "Key figures",
     education: "Education",

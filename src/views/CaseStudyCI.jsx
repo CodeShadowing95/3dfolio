@@ -4,8 +4,8 @@ import Link from "next/link";
 import { motion, useReducedMotion } from "framer-motion";
 
 import { useI18n } from "../i18n/I18nProvider";
-import { track } from "../utils/analytics";
 import LanguageSwitcher from "../components/LanguageSwitcher";
+import CvDownload from "../components/CvDownload";
 
 // Étude de cas : optimisation de la CI du site corporate Hapticmedia
 const copy = {
@@ -230,14 +230,7 @@ const CaseStudyCI = () => {
             >
               {c.contact}
             </Link>
-            <a
-              href="/CV.pdf"
-              download
-              onClick={() => track("cv-telecharge", { emplacement: "etude-de-cas" })}
-              className="inline-flex items-center min-h-[50px] px-[26px] rounded-[14px] border border-white/40 hover:bg-white/10 text-white font-semibold transition-colors"
-            >
-              {c.cv}
-            </a>
+            <CvDownload emplacement="etude-de-cas" variant="outline" label={c.cv} />
           </div>
         </section>
       </div>

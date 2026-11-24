@@ -14,10 +14,11 @@ const fr = {
     linkedinLabel: "Profil LinkedIn de Patrick Namegni",
     githubLabel: "Profil GitHub de Patrick Namegni",
     language: "Langue du site",
+    lab: "Labo IA",
   },
   hero: {
     greeting: (company) => ["Bonjour l'équipe ", company, " 👋 Merci de votre visite."],
-    tagline: "Je conçois des applications web rapides, sécurisées et faciles à maintenir, du code au déploiement.",
+    tagline: "Je fabrique les sites et applications que les gens utilisent au quotidien, de l'écran jusqu'aux serveurs. Dernier résultat : une mise en ligne 5 fois plus rapide.",
     recruiter: "Recruteur ?",
     recruiterLink: "Mon profil en 30 secondes",
     scrollDown: "Descendre vers le profil",
@@ -28,7 +29,7 @@ const fr = {
   },
   recruiter: {
     close: "Fermer le résumé",
-    mobility: "Ouvert à toute la France",
+    mobility: "Mobile partout en France · Permis B",
     stack: "Stack principale",
     figures: "En chiffres",
     education: "Formation",

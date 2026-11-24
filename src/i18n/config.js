@@ -3,7 +3,10 @@ export const locales = ["fr", "en"];
 export const defaultLocale = "fr";
 
 // Segments d'adresse traduits (français -> anglais)
-const segments = [["/etude-de-cas/", "/case-study/"]];
+const segments = [
+  ["/etude-de-cas/", "/case-study/"],
+  ["/labo-ia/", "/ai-lab/"],
+];
 
 const withSlash = (path) => (path.endsWith("/") ? path : `${path}/`);
 

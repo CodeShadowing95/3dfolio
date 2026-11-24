@@ -65,11 +65,22 @@ const ExperienceCard = ({ experience, index }) => {
           </span>
         </div>
 
+        {experience.context && (
+          <p className="mt-4 text-[15px] leading-[1.65] text-secondary">{pick(experience.context)}</p>
+        )}
+
         <ul className="mt-4 pl-[18px] list-disc flex flex-col gap-2 text-[15px] leading-[1.6] text-[#dfd9ff] marker:text-accent-light">
           {experience.points.map((point, i) => (
             <li key={i}>{pick(point)}</li>
           ))}
         </ul>
+
+        {experience.quote && (
+          <figure className="mt-5 rounded-2xl bg-white/[0.04] border border-white/10 px-5 py-4">
+            <blockquote className="text-white text-[16px] italic leading-[1.6]">« {pick(experience.quote.text)} »</blockquote>
+            <figcaption className="mt-2 text-[13px] text-secondary">{pick(experience.quote.author)}</figcaption>
+          </figure>
+        )}
 
         {experience.stack && (
           <p className="mt-4 font-mono text-[12.5px] leading-[1.7] text-secondary">
@@ -100,6 +111,8 @@ ExperienceCard.propTypes = {
     ringColor: PropTypes.string,
     highlight: PropTypes.bool,
     stack: PropTypes.string,
+    context: PropTypes.object,
+    quote: PropTypes.shape({ text: PropTypes.object, author: PropTypes.object }),
     points: PropTypes.arrayOf(PropTypes.object).isRequired,
     caseStudy: PropTypes.shape({ to: PropTypes.string, label: PropTypes.object }),
   }).isRequired,

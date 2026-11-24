@@ -9,6 +9,7 @@ import { BOOKING_URL, keyAchievements, education, languages, experiences } from 
 import { track } from "../utils/analytics";
 import useMounted from "../hooks/useMounted";
 import { useI18n } from "../i18n/I18nProvider";
+import CvDownload from "./CvDownload";
 
 const mainStack = ["Java / Spring Boot", "Node.js", "TypeScript", "React / Next.js", "Vue.js / Nuxt", "AWS", "GitHub Actions"];
 
@@ -151,14 +152,7 @@ const RecruiterPanel = ({ open, onClose }) => {
 
             <div className="mt-auto flex flex-col gap-3">
               <div className="flex flex-col sm:flex-row flex-wrap gap-3">
-                <a
-                  href="/CV.pdf"
-                  download
-                  onClick={() => track("cv-telecharge", { emplacement: "panneau-recruteur" })}
-                  className="flex-1 inline-flex items-center justify-center min-h-[50px] rounded-[14px] bg-[#7c4dff] hover:bg-accent text-white font-semibold transition-colors"
-                >
-                  {t.common.downloadCv}
-                </a>
+                <CvDownload emplacement="panneau-recruteur" fullWidth className="sm:flex-[1.35]" />
                 <a
                   href="#contact"
                   onClick={() => {

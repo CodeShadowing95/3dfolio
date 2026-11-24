@@ -11,6 +11,7 @@ export const domains = [
   { id: "back", name: { fr: "Back-end", en: "Back-end" }, color: "#7c6cff", depth: 0.6, hub: "Python", corner: "right-[4%] top-[5%]" },
   { id: "data", name: { fr: "Données", en: "Data" }, color: "#4f8cff", depth: 0.8, hub: "PostgreSQL", corner: "left-[4%] bottom-[4%]" },
   { id: "infra", name: { fr: "Infra / DevOps", en: "Infra / DevOps" }, color: "#22d3ee", depth: 0.45, hub: "Docker", corner: "right-[4%] bottom-[4%]" },
+  { id: "ai", name: { fr: "IA", en: "AI" }, color: "#e879f9", depth: 0.7, hub: "IA générative", corner: "left-1/2 -translate-x-1/2 bottom-[4%]" },
 ];
 
 // Position de chaque étoile en % du cadre (x, y), et ordre du tracé de chaque constellation
@@ -26,21 +27,28 @@ const layout = {
   Java: [78, 12],
   "Spring Boot": [88, 27],
   Python: [71, 37],
+  PHP: [55, 34],
+  WordPress: [87, 45],
   MongoDB: [9, 70],
   PostgreSQL: [21, 76],
-  MySQL: [34, 84],
+  MySQL: [31, 86],
   Docker: [62, 72],
   "GitHub Actions": [76, 60],
   AWS: [87, 62],
   Kubernetes: [74, 86],
   Git: [90, 80],
+  "IA générative": [46, 66],
+  "OpenAI API": [41, 78],
+  LangChain: [51, 81],
+  "Claude API": [55, 73],
 };
 
 export const lines = {
   front: ["JavaScript", "React", "Next.js", "TypeScript", "Tailwind CSS", "Angular", "Vue.js / Nuxt", "React"],
-  back: ["Node.js", "Java", "Spring Boot", "Python", "Node.js"],
+  back: ["Node.js", "Java", "Spring Boot", "WordPress", "Python", "PHP", "Node.js"],
   data: ["MongoDB", "PostgreSQL", "MySQL"],
   infra: ["Docker", "GitHub Actions", "AWS", "Git", "Kubernetes", "Docker"],
+  ai: ["IA générative", "OpenAI API", "LangChain", "Claude API", "IA générative"],
 };
 
 // Technos présentes partout : toujours allumées, taille maximale
@@ -50,7 +58,7 @@ const impliedBy = { JavaScript: ["React", "Next.js", "TypeScript", "Vue.js / Nux
 // Libellés moins longs pour les puces de sélection
 const shortLabel = (label) => label.replace(/ SARL$/, "");
 
-const domainOrder = ["front", "back", "data", "infra"];
+const domainOrder = ["front", "back", "data", "infra", "ai"];
 
 export const stars = stackTechs
   .filter((tech) => layout[tech.name])

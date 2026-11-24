@@ -188,3 +188,36 @@ html[data-intro="skip"] [data-preloader] {
   .project-stage .stage-phone { animation: none; }
   .project-stage .stage-screen { transition: none; }
 }
+
+/* Page Labo IA : fils pointillés entre les étapes, point lumineux qui circule */
+.labo-wire {
+  background: repeating-linear-gradient(180deg, rgba(255, 255, 255, 0.22) 0 5px, transparent 5px 9px);
+}
+.labo-dot {
+  left: -3px;
+  animation: labo-run-y 2.6s linear infinite;
+}
+@media (min-width: 768px) {
+  .labo-wire {
+    background: repeating-linear-gradient(90deg, rgba(255, 255, 255, 0.22) 0 6px, transparent 6px 11px);
+  }
+  .labo-dot {
+    left: 0;
+    top: -3px;
+    animation-name: labo-run-x;
+  }
+}
+@keyframes labo-run-x {
+  from { left: 0; }
+  to { left: calc(100% - 8px); }
+}
+@keyframes labo-run-y {
+  from { top: 0; }
+  to { top: calc(100% - 8px); }
+}
+@media (prefers-reduced-motion: reduce) {
+  .labo-dot { animation: none; left: -3px; top: 40%; }
+}
+@media (prefers-reduced-motion: reduce) and (min-width: 768px) {
+  .labo-dot { left: 45%; top: -3px; }
+}
